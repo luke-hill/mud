@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171110140647) do
+ActiveRecord::Schema.define(version: 20171201164448) do
+
+  create_table "enemies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "weapon_id"
+    t.integer "armor_id"
+    t.integer "lower_hp_limit"
+    t.integer "upper_hp_limit"
+    t.float "accuracy", limit: 24
+    t.integer "lower_gold_limit"
+    t.integer "upper_gold_limit"
+    t.integer "xp"
+    t.integer "xp_killshot"
+    t.integer "stamina"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "locations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "town"
+    t.string "area"
+  end
+
+  create_table "room_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+  end
 
   create_table "rooms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "room_id"
@@ -41,6 +67,7 @@ ActiveRecord::Schema.define(version: 20171110140647) do
     t.string "advanced_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "enemy_hp", default: 0
   end
 
 end

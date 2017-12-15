@@ -1,0 +1,19 @@
+body {
+  padding: 10px;
+}
+
+.room {
+  padding: 10px 0;
+
+  &__unexplored {
+    background: lightgray;
+  }
+
+  &__cleared-out {
+    background: lightgreen;
+  }
+
+  &__monster-present {
+    background: red;
+  }
+}
