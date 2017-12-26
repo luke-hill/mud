@@ -1,17 +1,14 @@
 module Fighter
   class Player
-    attr_accessor :hp, :level, :stamina, :experience, :gold, :inventory, :room
-    attr_reader :name, :max_hp
+    attr_accessor :room
 
-    def initialize(name)
-      @name = name
-      @max_hp = 25
-      @hp = max_hp
-      @level = 1
-      @stamina = 1
-      @experience = 0
-      @gold = 200
-      @inventory = []
+    extend Forwardable
+
+    def_delegators :@attributes, :name, :max_hp, :hp, :level, :stamina, :experience, :gold, :inventory
+    def_delegators :@attributes, :name=, :max_hp=, :hp=, :level=, :stamina=, :experience=, :gold=, :inventory=
+
+    def initialize
+      @attributes = Attributes.new
       @room = starting_room
     end
 

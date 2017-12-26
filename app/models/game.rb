@@ -14,6 +14,6 @@ class Game
   end
 
   def create_player_object
-    @player ||= Fighter::Player.new('Test')
+    @player ||= Fighter::Player.new
   end
 end

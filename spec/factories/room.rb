@@ -20,7 +20,7 @@ FactoryGirl.define do
       default_enemy 2
     end
 
-    description 'Description'
-    advanced_description 'Advanced Description'
+    description 'This is a Test Description'
+    advanced_description 'Test Advanced Description'
   end
 end
