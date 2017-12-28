@@ -1,5 +1,5 @@
 start = Time.now
-puts 'Creating RoomType Types'
+puts 'Creating RoomTypes'
 
 RoomType.create(name: 'Town')
 RoomType.create(name: 'Weapon Shop')
@@ -14,4 +14,4 @@ RoomType.create(name: 'Out of Town')
 RoomType.create(name: 'Dungeon')
 RoomType.create(name: 'Underground')
 
-puts "RoomType Types created in #{(Time.now - start).round(2)}s"
+puts "RoomTypes created in #{(Time.now - start).round(2)}s"

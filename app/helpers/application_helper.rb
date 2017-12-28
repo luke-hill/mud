@@ -11,6 +11,10 @@ module ApplicationHelper
     end
   end
 
+  def current_player
+    ActivePlayer.last
+  end
+
   private
 
   def room_unvisited_within_5_mins?(room)

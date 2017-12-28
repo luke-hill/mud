@@ -1,6 +1,6 @@
 module Fighter
   class Player
-    attr_accessor :room
+    attr_accessor :room_id
 
     extend Forwardable
 
@@ -9,11 +9,11 @@ module Fighter
 
     def initialize
       @attributes = Attributes.new
-      @room = starting_room
+      @room_id = starting_room
     end
 
     def starting_room
-      Room.find_by_room_id(1)
+      1
     end
   end
 end

@@ -74,10 +74,6 @@ RSpec.describe Fighter::Player, type: :model do
   end
 
   it 'has a starting room' do
-    skip 'This is broken, need help'
-    p subject.room
-    p Fighter::Player.new.room
-
-    expect(subject.room.room_id).to eq(2)
+    expect(subject.room_id).to eq(1)
   end
 end

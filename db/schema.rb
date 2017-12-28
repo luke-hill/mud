@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171201164448) do
+ActiveRecord::Schema.define(version: 20171228145825) do
+
+  create_table "active_players", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.integer "max_hp"
+    t.integer "hp"
+    t.integer "level"
+    t.integer "stamina"
+    t.integer "experience"
+    t.integer "gold"
+    t.integer "room_id"
+    t.integer "item_one"
+    t.integer "item_two"
+    t.integer "item_three"
+    t.integer "item_four"
+    t.integer "item_five"
+    t.integer "item_six"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "enemies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -58,11 +77,11 @@ ActiveRecord::Schema.define(version: 20171201164448) do
     t.integer "west_key"
     t.integer "up_key"
     t.integer "down_key"
-    t.integer "room_type"
-    t.integer "location"
+    t.integer "room_type_id"
+    t.integer "location_id"
     t.boolean "guards"
     t.boolean "ktp"
-    t.integer "default_enemy"
+    t.integer "enemy_id"
     t.string "description"
     t.string "advanced_description"
     t.datetime "created_at", null: false
