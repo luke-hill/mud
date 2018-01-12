@@ -11,17 +11,16 @@ FactoryGirl.define do
     upper_gold_limit 10
     xp 1
     xp_killshot 10
+    stamina 1
 
     trait :goblin do
       name 'Goblin'
-
+      description 'Gobby Gobby Gobby Goblin'
     end
 
     trait :dead do
       lower_hp_limit 0
       upper_hp_limit 0
     end
-
-    stamina 1
   end
 end

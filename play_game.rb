@@ -1,4 +1,4 @@
-class GameStart
+class PlayGame
 
   include ApplicationHelper
 
@@ -35,4 +35,4 @@ class GameStart
   end
 end
 
-GameStart.new.begin
+PlayGame.new.begin

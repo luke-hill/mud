@@ -1,10 +1,10 @@
 module ApplicationHelper
-  def update_room(id)
-    room = room(id)
+  def update_room
+    return 'Unimplemented'
 
-    if room_unvisited_within_5_mins?(room)
+    if room_unvisited_within_5_mins?
       'Respawn, needs updating to n minutes'
-    elsif room_clear?(room)
+    elsif room_clear?
       'Clear'
     else
       'Monster'
@@ -17,15 +17,15 @@ module ApplicationHelper
 
   private
 
-  def room_unvisited_within_5_mins?(room)
+  def room_unvisited_within_5_mins?
     room.updated_at < 5.minutes.ago
   end
 
-  def room_clear?(room)
+  def room_clear?
     room.enemy_hp.zero?
   end
 
-  def room(room_id)
-    Room.find_by_room_id(room_id)
+  def room
+    current_player.room
   end
 end

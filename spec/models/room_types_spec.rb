@@ -6,9 +6,7 @@ RSpec.describe RoomType, type: :model do
   let(:room_type) { create(:room_type) }
 
   describe 'a valid room type' do
-    it 'has a name' do
-      expect(room_type.name).to be_a String
-    end
+    it { should validate_presence_of(:name) }
 
     it 'saves to the database' do
       expect { room_type }.to change { RoomType.count }.by(1)

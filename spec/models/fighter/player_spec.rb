@@ -1,79 +1,47 @@
 require 'rails_helper'
 
 RSpec.describe Fighter::Player, type: :model do
-  describe 'delegates to the relevant attributes object' do
+  describe 'delegates to the attributes object' do
     context 'when reading' do
-      it '#name' do
-        expect { subject.name }.not_to raise_error
-      end
+      it { should delegate_method(:name).to(:attributes) }
 
-      it '#max_hp' do
-        expect { subject.max_hp }.not_to raise_error
-      end
+      it { should delegate_method(:max_hp).to(:attributes) }
 
-      it '#hp' do
-        expect { subject.hp }.not_to raise_error
-      end
+      it { should delegate_method(:hp).to(:attributes) }
 
-      it '#stamina' do
-        expect { subject.stamina }.not_to raise_error
-      end
+      it { should delegate_method(:stamina).to(:attributes) }
 
-      it '#level' do
-        expect { subject.level }.not_to raise_error
-      end
+      it { should delegate_method(:level).to(:attributes) }
 
-      it '#experience' do
-        expect { subject.experience }.not_to raise_error
-      end
+      it { should delegate_method(:experience).to(:attributes) }
 
-      it '#gold' do
-        expect { subject.gold }.not_to raise_error
-      end
+      it { should delegate_method(:gold).to(:attributes) }
 
-      it '#inventory' do
-        expect { subject.inventory }.not_to raise_error
-      end
+      it { should delegate_method(:inventory).to(:attributes) }
     end
 
     context 'when writing' do
-      it '#name=' do
-        expect { subject.name = 'New Test Player' }.not_to raise_error
-      end
+      it { should delegate_method(:name=).to(:attributes) }
 
-      it '#max_hp=' do
-        expect { subject.max_hp = 26 }.not_to raise_error
-      end
+      it { should delegate_method(:max_hp=).to(:attributes) }
 
-      it '#hp=' do
-        expect { subject.hp = 26 }.not_to raise_error
-      end
+      it { should delegate_method(:hp=).to(:attributes) }
 
-      it '#stamina=' do
-        expect { subject.stamina = 2 }.not_to raise_error
-      end
+      it { should delegate_method(:stamina=).to(:attributes) }
 
-      it '#level=' do
-        expect { subject.level = 2 }.not_to raise_error
-      end
+      it { should delegate_method(:level=).to(:attributes) }
 
-      it '#experience=' do
-        expect { subject.experience = 100 }.not_to raise_error
-      end
+      it { should delegate_method(:experience=).to(:attributes) }
 
-      it '#gold=' do
-        expect { subject.gold = 250 }.not_to raise_error
-      end
+      it { should delegate_method(:gold=).to(:attributes) }
 
-      it '#inventory=' do
-        skip 'Have no items set yet'
-
-        expect { subject.inventory = [] }.not_to raise_error
-      end
+      it { should delegate_method(:inventory=).to(:attributes) }
     end
   end
 
-  it 'has a starting room' do
-    expect(subject.room_id).to eq(1)
+  describe '#starting_room' do
+    it 'is set' do
+      expect(subject.room_id).to eq(1)
+    end
   end
 end

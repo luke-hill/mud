@@ -6,9 +6,7 @@ RSpec.describe Location, type: :model do
   let(:location) { create(:location) }
 
   describe 'a valid location' do
-    it 'has an area' do
-      expect(location.area).to be_a String
-    end
+    it { should validate_presence_of(:area) }
 
     it 'saves to the database' do
       expect { location }.to change { Location.count }.by(1)

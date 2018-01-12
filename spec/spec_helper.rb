@@ -10,6 +10,7 @@ RSpec.configure do |config|
   end
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
-
   config.add_formatter :documentation
 end
+
+RSpec::Mocks.configuration.allow_message_expectations_on_nil = true

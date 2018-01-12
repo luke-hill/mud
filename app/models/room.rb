@@ -2,10 +2,13 @@ class Room < ApplicationRecord
   validates_presence_of :room_id,
                         :room_type_id,
                         :location_id,
-                        :description,
-                        :advanced_description
+                        :enemy_id
 
-  has_one :room_type, primary_key: :room_type_id, foreign_key: :id
-  has_one :location, primary_key: :location_id, foreign_key: :id
-  has_one :enemy, primary_key: :enemy_id, foreign_key: :id
+  validates :enemy_hp, numericality: { greater_than_or_equal_to: 0 }
+  validates :description, length: { minimum: 20 }
+  validates :advanced_description, length: { minimum: 20 }
+
+  belongs_to :room_type
+  belongs_to :location
+  belongs_to :enemy
 end

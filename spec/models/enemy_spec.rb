@@ -6,45 +6,31 @@ RSpec.describe Enemy, type: :model do
 
   describe 'validations' do
     context 'a valid enemy' do
-      it 'has a name' do
-        expect(enemy.name.length).to be > 3
-      end
+      it { should validate_presence_of(:name) }
 
-      it 'has a description' do
-        expect(enemy.description.length).to be > 15
-      end
+      it { should validate_presence_of(:description) }
 
-      it 'has a weapon and armor' do
-        expect(enemy.weapon_id).not_to be_nil
+      it { should validate_presence_of(:weapon_id) }
 
-        expect(enemy.armor_id).not_to be_nil
-      end
+      it { should validate_presence_of(:armor_id) }
 
       it 'has a lower and upper hp limit' do
-        skip 'Get some tips on if this is the best way to do this'
-        expect(enemy.lower_hp_limit).to be < enemy.upper_hp_limit
-      end
-
-      it "doesn't hit you all the time" do
-        expect(enemy.accuracy).to be < 1
+        expect(enemy).to validate_numericality_of(:upper_hp_limit)
+          .is_greater_than_or_equal_to(enemy.lower_hp_limit)
       end
 
       it 'has a lower and upper gold limit' do
-        skip 'Get some tips on if this is the best way to do this'
-        expect(enemy.lower_gold_limit).to be < enemy.upper_gold_limit
+        expect(enemy).to validate_numericality_of(:upper_gold_limit)
+          .is_greater_than_or_equal_to(enemy.lower_gold_limit)
       end
 
-      it 'has an xp value' do
-        expect(enemy.xp).not_to be_nil
-      end
+      it { should validate_presence_of(:xp) }
 
-      it 'has an xp_killshot value' do
-        expect(enemy.xp_killshot).not_to be_nil
-      end
+      it { should validate_presence_of(:xp_killshot) }
 
-      it 'has stamina' do
-        expect(enemy.stamina).to be_between(1, 2)
-      end
+      it { should validate_inclusion_of(:stamina).in_range(1..2) }
+
+      it { should validate_numericality_of(:accuracy).is_less_than(1) }
 
       it 'saves to the database' do
         expect { enemy }.to change { Enemy.count }.by(1)
@@ -103,39 +89,47 @@ RSpec.describe Enemy, type: :model do
     end
   end
 
-  describe 'hp' do
-    it '#hp returns the enemies hp' do
-      _enemy = enemy
+  describe 'Hit Points' do
+    context '#hp' do
+      it 'spawns with an initial hp inside the permitted values' do
+        _enemy = enemy
 
-      expect(_enemy.hp).to be_between(_enemy.lower_hp_limit, _enemy.upper_hp_limit)
+        expect(_enemy.hp).to be_between(_enemy.lower_hp_limit, _enemy.upper_hp_limit)
+      end
     end
 
-    it '#hp= updates the enemies hp' do
-      _enemy = enemy
-      initial_hp = _enemy.hp
+    context '#hp=' do
+      it 'Updates the enemies hit points' do
+        _enemy = enemy
+        initial_hp = _enemy.hp
 
-      _enemy.hp -= 1
-      updated_hp = _enemy.hp
+        _enemy.hp -= 1
+        updated_hp = _enemy.hp
 
-      expect(initial_hp).not_to eq(updated_hp)
+        expect(initial_hp).not_to eq(updated_hp)
+      end
     end
   end
 
-  describe 'gold' do
-    it '#gold returns the enemies gold' do
-      _enemy = enemy
+  describe 'Gold' do
+    context '#gold' do
+      it 'spawns with an amount of gold inside the permitted values' do
+        _enemy = enemy
 
-      expect(_enemy.gold).to be_between(_enemy.lower_gold_limit, _enemy.upper_gold_limit)
+        expect(_enemy.gold).to be_between(_enemy.lower_gold_limit, _enemy.upper_gold_limit)
+      end
     end
 
-    it '#gold= updates the enemies gold' do
-      _enemy = enemy
-      initial_gold = _enemy.gold
+    context '#gold=' do
+      it 'Updates the enemies gold' do
+        _enemy = enemy
+        initial_gold = _enemy.gold
 
-      _enemy.gold -= 1
-      updated_gold = _enemy.gold
+        _enemy.gold -= 1
+        updated_gold = _enemy.gold
 
-      expect(initial_gold).not_to eq(updated_gold)
+        expect(initial_gold).not_to eq(updated_gold)
+      end
     end
   end
 
@@ -150,16 +144,18 @@ RSpec.describe Enemy, type: :model do
   end
 
   describe '#prevent_negative_hp' do
-    it 'alters an enemies hp to 0 if it was negative' do
-      _enemy = dead_enemy
-      _enemy.hp
-      _enemy.hp -= 1
-      initial_hp = _enemy.hp
+    context 'an enemy with negative hp' do
+      it 'alters an enemies hp to 0 if it was negative' do
+        _enemy = dead_enemy
+        _enemy.hp
+        _enemy.hp -= 1
+        initial_hp = _enemy.hp
 
-      _enemy.prevent_negative_hp
-      updated_hp = _enemy.hp
+        _enemy.prevent_negative_hp
+        updated_hp = _enemy.hp
 
-      expect(initial_hp).not_to eq(updated_hp)
+        expect(initial_hp).not_to eq(updated_hp)
+      end
     end
 
     it 'has no affect if the enemy is alive' do

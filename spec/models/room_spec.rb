@@ -5,41 +5,25 @@ require 'rails_helper'
 RSpec.describe Room, type: :model do
   let(:room) { create(:room, :in_town) }
 
-  describe 'a valid room' do
-    it 'has a room id' do
-      expect(room.room_id).to be_an Integer
-    end
+  context 'with a valid room' do
+    it { should validate_presence_of(:room_id) }
 
-    it 'has a room type' do
-      expect(room.room_type).to be_an Integer
-    end
+    it { should validate_presence_of(:room_type_id) }
 
-    it 'has a location' do
-      expect(room.location).to be_an Integer
-    end
+    it { should validate_presence_of(:location_id) }
 
-    context 'has a default enemy' do
-      it 'that exists' do
-        expect(room.default_enemy).to be_an Integer
-      end
+    it { should validate_presence_of(:enemy_id) }
 
-      it 'with valid hp' do
-        expect(room.enemy_hp).to be >= 0
-      end
-    end
+    it { should validate_length_of(:description).is_at_least(20) }
 
-    it 'has a description and advanced description' do
-      expect(room.description.length).to be > 20
-
-      expect(room.advanced_description.length).to be > 20
-    end
+    it { should validate_length_of(:advanced_description).is_at_least(20) }
 
     it 'saves to the database' do
       expect { room }.to change { Room.count }.by(1)
     end
   end
 
-  describe 'an invalid room' do
+  context 'with an invalid room' do
     let(:room) { Room.create }
     let(:errors) { room.errors }
 
@@ -56,7 +40,7 @@ RSpec.describe Room, type: :model do
     end
 
     it 'has no default enemy' do
-      expect(errors).to have_key(:default_enemy)
+      expect(errors).to have_key(:enemy)
     end
 
     it 'has no description or advanced description' do

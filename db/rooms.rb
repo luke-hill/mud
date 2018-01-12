@@ -2,6 +2,7 @@ start = Time.now
 puts 'Creating Rooms'
 
 goblin = Enemy.find_by_name('Goblin')
+newtown = Location.find_by_area('Town Square')
 
 1.upto(25) do |n|
   north = n + 5 if n <= 20
@@ -11,7 +12,7 @@ goblin = Enemy.find_by_name('Goblin')
 
   Room.create(
     room_id: n, north: north, south: south, east: east, west: west, room_type_id: 1,
-    location_id: 1, guards: true, ktp: false,
+    location_id: newtown.id, guards: true, ktp: false,
     description: "Room #{n.humanize}", advanced_description: "Advanced - Room #{n.humanize}"
   )
 

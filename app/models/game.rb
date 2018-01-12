@@ -15,7 +15,7 @@ class Game
   end
 
   def set_player_attributes
-    puts 'For now you must be a Fighter, with 10 Strength and 10 Agility'
+    puts 'For now you must be a Fighter, with 25HP and other undetermined attributes'
   end
 
   def create_player_object
