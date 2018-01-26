@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Room, type: :model do
-  let(:room) { create(:room, :in_town) }
+  let(:room) { create(:room) }
 
   context 'with a valid room' do
     it { should validate_presence_of(:room_id) }

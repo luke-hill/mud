@@ -11,6 +11,10 @@ class PlayGame
         current_player.move('north')
       when 'south', 's'
         current_player.move('south')
+      when 'east', 'e'
+        current_player.move('north')
+      when 'west', 'w'
+        current_player.move('south')
       else
         puts 'Input not yet recognised'
       end

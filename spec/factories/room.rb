@@ -8,14 +8,9 @@ FactoryGirl.define do
     room_type
     location
     enemy
-
-    trait :in_town do
-      guards true
-      ktp false
-    end
+    ktp false
 
     trait :out_of_town do
-      guards false
       ktp true
     end
   end
