@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180119144903) do
+ActiveRecord::Schema.define(version: 20180126152408) do
 
   create_table "active_players", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20180119144903) do
     t.integer "down_key"
     t.integer "room_type_id"
     t.integer "location_id"
-    t.boolean "ktp"
+    t.boolean "ktp", default: false
     t.integer "enemy_id"
     t.string "description"
     t.string "advanced_description"

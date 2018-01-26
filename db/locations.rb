@@ -7,7 +7,11 @@ Location.create(town: 'Newtown', area: 'Training Area')
 Location.create(town: 'Newtown', area: 'Basic Training Guild')
 Location.create(town: 'Newtown', area: 'Gatehouse')
 Location.create(town: 'Newtown', area: 'Outskirts')
-Location.create(town: 'Newtown', area: 'Residential Area')
-Location.create(area: 'Dusty Path') #To fix
+Location.create(town: 'Newtown', area: 'Residential District')
+Location.create(town: 'Newtown', area: 'Residential District Crossroads')
+Location.create(town: 'Newtown', area: 'House')
+Location.create(town: 'Newtown', area: 'Bank')
+Location.create(area: 'Forest Path')
+Location.create(area: 'Barracks')
 
 puts "#{Location.count} Locations created in #{(Time.now - start).round(2)}s"
