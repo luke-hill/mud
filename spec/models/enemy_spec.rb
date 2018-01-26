@@ -28,7 +28,7 @@ RSpec.describe Enemy, type: :model do
 
       it { should validate_presence_of(:xp_killshot) }
 
-      it { should validate_inclusion_of(:stamina).in_range(1..2) }
+      it { should validate_inclusion_of(:stamina).in_range(0..2) }
 
       it { should validate_numericality_of(:accuracy).is_less_than(1) }
 
