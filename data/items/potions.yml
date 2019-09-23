@@ -1,0 +1,15 @@
+# TODO: Interpolate the value at end of +use_message+
+# TODO: Add message for when you're fully healed: "'You feel yourself regain full strength!'"
+
+hp_bonus:
+  use_message: 'You consume the potion, and feel enhanced almost immediately. Your maximum hp has increased by'
+  endurance_potion:
+    name: 'Endurance Potion'
+    description: 'This flask contains a potion with a green hue, it is rumoured to increase the damage you can take before dying'
+    value: 1
+healing:
+  use_message: 'You open the vial of the potion, and swill the contents with vigour. The potion heals you by'
+  lesser_potion:
+    name: 'Lesser Healing Potion'
+    description: 'A Basic Potion. This vial of liquid "promises" to heal the users injuries a small amount'
+    value: 10
