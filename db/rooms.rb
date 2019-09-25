@@ -141,40 +141,89 @@ Room.create(
   location: newtown_bank, room_type: town, enemy: no_enemy,
 )
 
-# V0.1 - V0.2 Newtown Directions
-Room.find_by(room_id: 1).update(north: 9, east: 2, west: 8)
-Room.find_by(room_id: 2).update(north: 3, south: 21, west: 1)
-Room.find_by(room_id: 3).update(north: 4, south: 2, west: 9)
-Room.find_by(room_id: 4).update(south: 3, west: 5)
-Room.find_by(room_id: 5).update(north: 10, south: 9, east: 4, west: 6)
-Room.find_by(room_id: 6).update(south: 7, east: 5)
-Room.find_by(room_id: 7).update(north: 6, south: 8, east: 9)
-Room.find_by(room_id: 8).update(north: 7, east: 1)
-Room.find_by(room_id: 9).update(north: 5, south: 1, east: 3, west: 7)
-Room.find_by(room_id: 10).update(north: 11, south: 5)
-Room.find_by(room_id: 11).update(north: 12, south: 10)
-Room.find_by(room_id: 12).update(south: 11, east: 13)
-Room.find_by(room_id: 13).update(east: 14, west: 12)
-Room.find_by(room_id: 14).update(east: 15, west: 13)
-Room.find_by(room_id: 15).update(east: 16, west: 14)
-Room.find_by(room_id: 16).update(east: 17, west: 15)
-Room.find_by(room_id: 17).update(east: 18, west: 16)
-Room.find_by(room_id: 18).update(east: 19, west: 17)
-Room.find_by(room_id: 19).update(east: 20, west: 18)
-Room.find_by(room_id: 20).update(west: 19)
-Room.find_by(room_id: 21).update(north: 2, south: 22)
-Room.find_by(room_id: 22).update(north: 21, south: 23)
-Room.find_by(room_id: 23).update(north: 22, south: 24, east: 34)
-Room.find_by(room_id: 24).update(north: 23, south: 25)
-Room.find_by(room_id: 25).update(north: 24, south: 26)
-Room.find_by(room_id: 26).update(north: 25, south: 27, east: 32, west: 33)
-Room.find_by(room_id: 27).update(north: 26, south: 28)
-Room.find_by(room_id: 28).update(north: 27, south: 29, east: 30, west: 31)
-Room.find_by(room_id: 29).update(north: 28)
-Room.find_by(room_id: 30).update(west: 28)
-Room.find_by(room_id: 31).update(east: 28)
-Room.find_by(room_id: 32).update(west: 26)
-Room.find_by(room_id: 33).update(east: 26)
-Room.find_by(room_id: 34).update(west: 23)
+#V1.0 Minor Content Update and modifying of room types
+Room.find_by(id: 3).update(room_type: 'Shop')
+Room.find_by(id: 12).update(location: 'Forest Path - Clearing', hide_east: true)
+Room.find_by(id: 19).update(east_key: 'Barracks Key')
+
+Room.find_by(id: 5).update(
+  description: 'There is a guard here who looks you up and down. You can leave freely for the Forest Path, or turn back to Newtown to the South.',
+  location: 'Newtown - Gatehouse'
+)
+
+(10..20).to_a.each do |id_number|
+  Room.find_by(id: id_number).update(room_type: 'Outside')
+end
+
+#V1.1 Forest Path Rooms
+(35..49).to_a.each do |id_number|
+  Room.create(
+    id: id_number,
+    description: 'This secluded area is notorious for being prime looting territory for local Bandits.',
+    advanced_description: 'The path is covered in a thin layer of leaves and shavings of Aurel Bark, an oft harvested ingredient by workers that used to be sold in Newtown.',
+    location: 'Forest Path',
+    room_type: 'Outside',
+    )
+end
+
+(51..57).to_a.each do |id_number|
+  Room.create(
+    id: id_number,
+    description: 'This secluded area is notorious for being prime looting territory for local Bandits. You notice a lot of large structures to the North, that seems to form a large town or city.',
+    advanced_description: 'The path seems to be covered in less Aurel Bark than earlier. Indicating that this path is perhaps used more. You can also hear what sounds like villagers, most likely from the neighbouring Sovereign City.',
+    location: 'Forest Path',
+    room_type: 'Outside',
+    )
+end
+
+[50, 58].each do |id_number|
+  Room.create(
+    id: id_number,
+    description: "This secluded area is notorious for being prime looting territory for local Bandits. You've happened on one of the inevitable dead-ends. Usually used to ambush travellers, you prepare for the worst.",
+    advanced_description: 'This area seems to be covered in rags, as if the Bandits wanted to keep the path clean, to lure even more un-suspecting travellers into it.',
+    location: 'Forest Path - Dead End',
+    room_type: 'Outside',
+    )
+end
+
+Room.create(
+  id: 59,
+  description: 'The guards at this gatehouse protect this city well, judging by how pristine everything looks. The city has an air of arrogance about it and the Guards do nothing to quell that, dressed in the finest Steel Chainmail.',
+  advanced_description: 'Looking ahead you can make out the Council Square, where most of the Cities business is ran from. There are no signs directing you anywhere, almost as if everyone in the city knows where everything is.',
+  location: 'Sovereign City - Gatehouse',
+  )
+
+#V1.1 Newtown Arena Rooms
+Room.create(
+  id: 60,
+  description: "You see 3 separate small patches of ground, each monitored closely by a burly guard. He reminds you to read the sign before continuing if you're not sure.",
+  advanced_description: 'You notice a sign that says North: Goblin Training Arena, West: Wolf Training Arena, South: Under Construction.',
+  location: 'Newtown - Training Area'
+)
+
+(61..63).to_a.each do |id_number|
+  Room.create(
+    id: id_number,
+    description: 'This Basic Arena is designed to get novice combatants ready to leave Newtown.',
+    advanced_description: 'A Guard is in the corner, just in case things get out of hand. You see a Portcullis which can release monsters one at a time.',
+    location: 'Newtown - Training Arena'
+  )
+end
+
+#V1.1 Default Enemies in DB
+(13..19).to_a.each do |id_number|
+  Room.find_by(id: id_number).update(enemy: 'Goblin')
+end
+
+Room.find_by(id: 20).update(enemy: 'Orc')
+
+[35, 36, 40, 42, 50, 52, 53, 54, 58].to_a.each do |id_number|
+  Room.find_by(id: id_number).update(enemy: 'Bandit')
+end
+
+Room.find_by(id: 44).update(enemy: 'Wolf')
+
+#V1.1 Change Pub's to type pub
+Room.find_by(id: 1).update(room_type: 'Pub')
 
 puts "#{Room.count} Rooms created in #{(Time.now - start).round(2)}s"
