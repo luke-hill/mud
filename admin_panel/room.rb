@@ -17,10 +17,13 @@ module AdminPanel
     end
 
     def seed(options)
-      raise ArgumentError unless options.key?(:id)
+      raise ArgumentError, 'Room ID not set' unless options.key?(:id)
+
+      room_data = directions_yml[options.delete(:id)]
+
+      raise ArgumentError, 'Room does not exist' if room_data.nil?
 
       puts "Seeding Data for #{options}"
-      room_data = directions_yml[options.delete(:id)]
       puts "Existing Room Data: #{room_data}"
 
       options.each do |key, value|
@@ -29,6 +32,7 @@ module AdminPanel
       end
 
       puts "New UPDATED Room Data: #{room_data}"
+      update_directions_data
     end
 
     private
@@ -105,6 +109,10 @@ module AdminPanel
         'west' => west_room_id
       }
 
+      update_directions_data
+    end
+
+    def update_directions_data
       File.write(
         '/home/luke/Code/mud/data/rooms/directions.yml',
         directions_yml.to_yaml
