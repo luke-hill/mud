@@ -1,8 +1,8 @@
 #V1.1 Forest Path Directions
 
-require_relative '../../room'
+require_relative '../../room/directions'
 
-ap = AdminPanel::Room.new(seed: true)
+ap = AdminPanel::Room::Directions.new(seed: true)
 
 ap.seed(id: 12, west: 35)
 ap.seed(id: 35, east: 12, west: 36)
