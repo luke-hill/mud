@@ -2,7 +2,10 @@ require 'yaml'
 
 module AdminPanel
   class Room
-    def initialize
+    def initialize(seed: false)
+      puts seed
+      return if seed
+
       puts 'dir -> Edit directions'
       puts 'desc -> Edit descriptions'
 
@@ -11,6 +14,21 @@ module AdminPanel
       when 'desc'; then edit_description_data
       else puts 'Quitting Room Admin'
       end
+    end
+
+    def seed(options)
+      raise ArgumentError unless options.key?(:id)
+
+      puts "Seeding Data for #{options}"
+      room_data = directions_yml[options.delete(:id)]
+      puts "Existing Room Data: #{room_data}"
+
+      options.each do |key, value|
+        string_key = key.to_s
+        room_data[string_key] = value
+      end
+
+      puts "New UPDATED Room Data: #{room_data}"
     end
 
     private
@@ -99,18 +117,6 @@ module AdminPanel
       end
     end
 
-    def edit_description_data
-      puts 'You want to edit descriptions?'
-      sleep 1.5
-      dump_description_data
-    end
-
-    def dump_description_data
-      descriptions_yml.keys.each do |key|
-        puts("Room #{key}: #{descriptions_yml[key]}")
-      end
-    end
-
     def number_of_directions_set
       directions_yml.keys.length
     end
@@ -118,11 +124,5 @@ module AdminPanel
     def directions_yml
       @directions_yml ||= YAML.load_file('/home/luke/Code/mud/data/rooms/directions.yml')
     end
-
-    def descriptions_yml
-      @descriptions_yml ||= YAML.load_file('/home/luke/Code/mud/data/rooms/descriptions.yml')
-    end
   end
 end
-
-AdminPanel::Room.new
