@@ -141,42 +141,6 @@ Room.create(
   location: newtown_bank, room_type: town, enemy: no_enemy,
 )
 
-# V0.1 - V0.2 Newtown Directions
-Room.find_by(room_id: 1).update(north: 9, east: 2, west: 8)
-Room.find_by(room_id: 2).update(north: 3, south: 21, west: 1)
-Room.find_by(room_id: 3).update(north: 4, south: 2, west: 9)
-Room.find_by(room_id: 4).update(south: 3, west: 5)
-Room.find_by(room_id: 5).update(north: 10, south: 9, east: 4, west: 6)
-Room.find_by(room_id: 6).update(south: 7, east: 5)
-Room.find_by(room_id: 7).update(north: 6, south: 8, east: 9)
-Room.find_by(room_id: 8).update(north: 7, east: 1)
-Room.find_by(room_id: 9).update(north: 5, south: 1, east: 3, west: 7)
-Room.find_by(room_id: 10).update(north: 11, south: 5)
-Room.find_by(room_id: 11).update(north: 12, south: 10)
-Room.find_by(room_id: 12).update(south: 11, east: 13)
-Room.find_by(room_id: 13).update(east: 14, west: 12)
-Room.find_by(room_id: 14).update(east: 15, west: 13)
-Room.find_by(room_id: 15).update(east: 16, west: 14)
-Room.find_by(room_id: 16).update(east: 17, west: 15)
-Room.find_by(room_id: 17).update(east: 18, west: 16)
-Room.find_by(room_id: 18).update(east: 19, west: 17)
-Room.find_by(room_id: 19).update(east: 20, west: 18)
-Room.find_by(room_id: 20).update(west: 19)
-Room.find_by(room_id: 21).update(north: 2, south: 22)
-Room.find_by(room_id: 22).update(north: 21, south: 23)
-Room.find_by(room_id: 23).update(north: 22, south: 24, east: 34)
-Room.find_by(room_id: 24).update(north: 23, south: 25)
-Room.find_by(room_id: 25).update(north: 24, south: 26)
-Room.find_by(room_id: 26).update(north: 25, south: 27, east: 32, west: 33)
-Room.find_by(room_id: 27).update(north: 26, south: 28)
-Room.find_by(room_id: 28).update(north: 27, south: 29, east: 30, west: 31)
-Room.find_by(room_id: 29).update(north: 28)
-Room.find_by(room_id: 30).update(west: 28)
-Room.find_by(room_id: 31).update(east: 28)
-Room.find_by(room_id: 32).update(west: 26)
-Room.find_by(room_id: 33).update(east: 26)
-Room.find_by(room_id: 34).update(west: 23)
-
 #V1.0 Minor Content Update and modifying of room types
 Room.find_by(id: 3).update(room_type: 'Shop')
 Room.find_by(id: 12).update(location: 'Forest Path - Clearing', hide_east: true)
@@ -229,34 +193,6 @@ Room.create(
   location: 'Sovereign City - Gatehouse',
   )
 
-#V1.1 Forest Path Directions
-Room.find_by(id: 12).update(west: 35)
-Room.find_by(id: 35).update(east: 12, west: 36)
-Room.find_by(id: 36).update(east: 35, west: 37)
-Room.find_by(id: 37).update(east: 36, north: 38)
-Room.find_by(id: 38).update(north: 39, south: 37)
-Room.find_by(id: 39).update(east: 40, south: 38)
-Room.find_by(id: 40).update(east: 41, west: 39)
-Room.find_by(id: 41).update(east: 42, west: 40)
-Room.find_by(id: 42).update(east: 43, west: 41)
-Room.find_by(id: 43).update(east: 44, west: 42)
-Room.find_by(id: 44).update(north: 51, east: 45, west: 43)
-Room.find_by(id: 45).update(east: 46, west: 44)
-Room.find_by(id: 46).update(north: 47, west: 45)
-Room.find_by(id: 47).update(north: 48, south: 46)
-Room.find_by(id: 48).update(east: 49, south: 47)
-Room.find_by(id: 49).update(east: 50, west: 48)
-Room.find_by(id: 50).update(west: 49)
-Room.find_by(id: 51).update(north: 52, south: 44)
-Room.find_by(id: 52).update(west: 53, south: 51)
-Room.find_by(id: 53).update(east: 52, west: 54)
-Room.find_by(id: 54).update(east: 53, west: 55)
-Room.find_by(id: 55).update(north: 56, east: 54, west: 58)
-Room.find_by(id: 56).update(north: 57, south: 55)
-Room.find_by(id: 57).update(north: 59, south: 56)
-Room.find_by(id: 58).update(east: 55)
-Room.find_by(id: 59).update(south: 57)
-
 #V1.1 Newtown Arena Rooms
 Room.create(
   id: 60,
@@ -273,13 +209,6 @@ Room.create(
     location: 'Newtown - Training Arena'
   )
 end
-
-#V1.1 Newtown Arena Directions
-Room.find_by(id: 6).update(west: 60)
-Room.find_by(id: 60).update(north: 61, south: 62, west: 63, east: 6)
-Room.find_by(id: 61).update(south: 60)
-Room.find_by(id: 62).update(north: 60)
-Room.find_by(id: 63).update(east: 60)
 
 #V1.1 Default Enemies in DB
 (13..19).to_a.each do |id_number|
