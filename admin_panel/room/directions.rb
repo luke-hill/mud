@@ -3,40 +3,46 @@ require 'yaml'
 module AdminPanel
   module Room
     class Directions
-      attr_accessor :room_id, :room_data
+      attr_reader :options
 
       def self.seed(options)
-        new(options).seed(options)
+        new(options).seed
       end
 
       def initialize(options)
-        @room_id = options.delete(:id)
-        @room_data = directions_yml[room_id] || {}
+        @options = options
       end
 
-      def seed(options)
-        raise ArgumentError, 'Room ID not set' unless room_id
+      def seed
+        raise ArgumentError, 'Room ID not set' unless id
 
-        update_direction_data(options, room_data)
-        save_updates
+        update_directions
+        save
       end
 
       private
 
-      def update_direction_data(options, room_data)
-        puts "Seeding Data for #{options}"
-        puts "Existing Room Data: #{room_data}"
-
-        options.each do |key, value|
-          string_key = key.to_s
-          room_data[string_key] = value
-        end
-
-        directions_yml[room_id] = room_data
-        puts "New UPDATED Room Data: #{room_data}"
+      def id
+        @id ||= options.delete(:id)
       end
 
-      def save_updates
+      def directions
+        @directions ||= directions_yml[id] || {}
+      end
+
+      def update_directions
+        puts "Data to be seeded: #{options}"
+        puts "Existing Room Data: #{directions}"
+
+        options.each do |key, value|
+          directions[key.to_s] = value
+        end
+
+        directions_yml[id] = directions
+        puts "New UPDATED Room Data: #{directions}"
+      end
+
+      def save
         File.write(
           '/home/luke/Code/mud/data/rooms/directions.yml',
           directions_yml.to_yaml
