@@ -19,7 +19,8 @@ module AdminPanel
     def seed(options)
       raise ArgumentError, 'Room ID not set' unless options.key?(:id)
 
-      room_data = directions_yml[options.delete(:id)]
+      room_id = options.delete(:id)
+      room_data = directions_yml[room_id] || {}
 
       raise ArgumentError, 'Room does not exist' if room_data.nil?
 
@@ -32,6 +33,7 @@ module AdminPanel
       end
 
       puts "New UPDATED Room Data: #{room_data}"
+      directions_yml[room_id] = room_data
       update_directions_data
     end
 
