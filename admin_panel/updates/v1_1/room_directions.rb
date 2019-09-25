@@ -2,7 +2,7 @@
 
 require_relative '../../room/directions'
 
-ap = AdminPanel::Room::Directions.new(seed: true)
+ap = AdminPanel::Room::Directions
 
 ap.seed(id: 12, west: 35)
 ap.seed(id: 35, east: 12, west: 36)
