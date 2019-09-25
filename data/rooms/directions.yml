@@ -1,0 +1,172 @@
+# V0.1 - V0.2 Newtown Directions ONLY
+
+1:
+  north: 9
+  east: 2
+  south:
+  west: 8
+2:
+  north: 3
+  east:
+  south: 21
+  west: 1
+3:
+  north: 4
+  east:
+  south: 2
+  west: 9
+4:
+  north:
+  east:
+  south: 3
+  west: 5
+5:
+  north: 10
+  east: 4
+  south: 9
+  west: 6
+6:
+  north:
+  east: 5
+  south: 7
+  west:
+7:
+  north: 6
+  east: 9
+  south: 8
+  west:
+8:
+  north: 7
+  east: 1
+  south:
+  west:
+9:
+  north: 5
+  east: 3
+  south: 1
+  west: 7
+10:
+  north: 11
+  east:
+  south: 5
+  west:
+11:
+  north: 12
+  east:
+  south: 10
+  west:
+12:
+  north:
+  east: 13
+  south: 11
+  west:
+13:
+  north:
+  east: 14
+  south:
+  west: 12
+14:
+  north:
+  east: 15
+  south:
+  west: 13
+15:
+  north:
+  east: 16
+  south:
+  west: 14
+16:
+  north:
+  east: 17
+  south:
+  west: 15
+17:
+  north:
+  east: 18
+  south:
+  west: 16
+18:
+  north:
+  east: 19
+  south:
+  west: 17
+19:
+  north:
+  east: 20
+  south:
+  west: 18
+20:
+  north:
+  east:
+  south:
+  west: 19
+21:
+  north: 2
+  east:
+  south: 22
+  west:
+22:
+  north: 21
+  east:
+  south: 23
+  west:
+23:
+  north: 22
+  east: 34
+  south: 24
+  west:
+24:
+  north: 23
+  east:
+  south: 25
+  west:
+25:
+  north: 24
+  east:
+  south: 26
+  west:
+26:
+  north: 25
+  east: 32
+  south: 27
+  west: 33
+27:
+  north: 26
+  east:
+  south: 28
+  west:
+28:
+  north: 27
+  east: 30
+  south: 29
+  west: 31
+29:
+  north: 28
+  east:
+  south:
+  west:
+30:
+  north:
+  east:
+  south:
+  west: 28
+31:
+  north:
+  east: 28
+  south:
+  west:
+32:
+  north:
+  east:
+  south:
+  west: 26
+33:
+  north:
+  east: 26
+  south:
+  west:
+34:
+  north:
+  east:
+  south:
+  west: 23
