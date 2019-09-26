@@ -1,0 +1,24 @@
+# TODO: Formulas for enemy attacking
+# TODO: Formulas for enemy talking to you
+
+orc:
+  name: 'Orc'
+  description: 'The Orc stands at over 8 feet tall. His Dagger that he is wielding is dripping with blood from its latest victim'
+  lower_hp_limit: 100
+  upper_hp_limit: 100
+  accuracy: 0.9
+  weapon: orc_dagger
+  armor: orc_shield
+
+# Formulas for dealing damage
+#module Enemy
+#class Goblin
+#def attack_value
+#rand((weapon.atk_min)..(weapon.atk_max))
+#end
+## Formulas for receiving damage
+#def defend_value
+#rand(0..(armor.def))
+#end
+#end
+#end

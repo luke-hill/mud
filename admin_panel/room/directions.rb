@@ -16,7 +16,7 @@ module AdminPanel
       def seed
         raise ArgumentError, 'Room ID not set' unless id
 
-        update_directions
+        update
         save
       end
 
@@ -30,7 +30,7 @@ module AdminPanel
         @directions ||= directions_yml[id] || {}
       end
 
-      def update_directions
+      def update
         puts "Data to be seeded: #{options}"
         puts "Existing Room Data: #{directions}"
 
