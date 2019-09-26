@@ -1,6 +1,4 @@
-class RoomController < ApplicationController
-  include ApplicationHelper
-
+class RoomController
   def look_around
     'Not implemented yet'
   end
