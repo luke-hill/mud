@@ -24,5 +24,13 @@ module AdminPanel
     def id
       @id ||= options.delete(:id)
     end
+
+    def save
+      File.write(yml_file_location, yml_file.to_yaml)
+    end
+
+    def yml_file
+      @yml_file ||= YAML.load_file(yml_file_location)
+    end
   end
 end
