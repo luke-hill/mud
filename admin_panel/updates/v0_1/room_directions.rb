@@ -1,7 +1,5 @@
 # V0.1 Newtown and first Dungeon
 
-require_relative '../../room/directions'
-
 ap = AdminPanel::Room::Directions
 
 ap.seed(id: 1, north: 9, east: 2, west: 8)

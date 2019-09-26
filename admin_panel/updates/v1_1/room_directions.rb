@@ -1,6 +1,4 @@
-#V1.1 Forest Path Directions
-
-require_relative '../../room/directions'
+# V1.1 Forest Path Directions
 
 ap = AdminPanel::Room::Directions
 
@@ -31,7 +29,7 @@ ap.seed(id: 57, north: 59, south: 56)
 ap.seed(id: 58, east: 55)
 ap.seed(id: 59, south: 57)
 
-#V1.1 Newtown Arena Directions
+# V1.1 Newtown Arena Directions
 ap.seed(id: 6, west: 60)
 ap.seed(id: 60, north: 61, south: 62, west: 63, east: 6)
 ap.seed(id: 61, south: 60)

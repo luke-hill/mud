@@ -1,7 +1,5 @@
 # V0.2 Newtown district directions
 
-require_relative '../../room/directions'
-
 ap = AdminPanel::Room::Directions
 
 ap.seed(id: 21, north: 2, south: 22)

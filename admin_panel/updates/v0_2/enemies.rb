@@ -1,7 +1,5 @@
 # V0.2 Enemy Creations
 
-require_relative '../../enemy/enemies'
-
 ap = AdminPanel::Enemy::Enemies
 
 ap.seed(
@@ -51,4 +49,3 @@ ap.seed(
 )
 
 # TODO: The Weapon / Armor for Brawlers is incorrect
-#

@@ -1,7 +1,5 @@
 # V1.0 Enemy Creations
 
-require_relative '../../enemy/enemies'
-
 ap = AdminPanel::Enemy::Enemies
 
 ap.seed(
@@ -21,4 +19,3 @@ ap.seed(
 )
 
 # TODO: The xp / xp killshot values here are incorrect
-#
