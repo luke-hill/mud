@@ -2,29 +2,8 @@ require 'yaml'
 
 module AdminPanel
   module Room
-    class Directions
-      attr_reader :options
-
-      def self.seed(options)
-        new(options).seed
-      end
-
-      def initialize(options)
-        @options = options
-      end
-
-      def seed
-        raise ArgumentError, 'Room ID not set' unless id
-
-        update
-        save
-      end
-
+    class Directions < AdminPanel::Base
       private
-
-      def id
-        @id ||= options.delete(:id)
-      end
 
       def directions
         @directions ||= directions_yml[id] || {}

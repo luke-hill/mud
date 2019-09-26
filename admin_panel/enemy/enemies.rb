@@ -3,28 +3,7 @@ require 'yaml'
 module AdminPanel
   module Enemy
     class Enemies
-      attr_reader :options
-
-      def self.seed(options)
-        new(options).seed
-      end
-
-      def initialize(options)
-        @options = options
-      end
-
-      def seed
-        raise ArgumentError, 'Enemy Name not set' unless id
-
-        update
-        save
-      end
-
       private
-
-      def id
-        @id ||= options.delete(:id)
-      end
 
       def enemy
         @enemy ||= enemies_yml[id] || {}
