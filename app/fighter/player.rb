@@ -12,8 +12,7 @@ module Fighter
 
     def initialize
       @attributes = Attributes.new
-      @current_room = MUD::Rooms::Room.find(starting_room)
-      @rooms_visited = {}
+      @current_room = MUD::Rooms::Room.new(starting_room)
     end
 
     def starting_room

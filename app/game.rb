@@ -1,12 +1,17 @@
 require_relative 'autoloader'
+require 'singleton'
 
 module MUD
   class Game
+    include Singleton
+
     attr_reader :player
+    attr_accessor :rooms_visited
 
     def initialize
       set_player_attributes
       create_player_object
+      set_rooms_visited_to_blank
     end
 
     private
@@ -31,8 +36,12 @@ module MUD
         room_id: player.room_id,
       }
     end
+
+    def set_rooms_visited_to_blank
+      @rooms_visited ||= {}
+    end
   end
 end
 
-m = MUD::Game.new
+m = MUD::Game.instance
 m
