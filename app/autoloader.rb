@@ -1,9 +1,11 @@
 require 'rails'
 require 'action_view/helpers'
 require 'singleton'
+require 'logger'
 
 require_relative 'enemy'
 require_relative 'game_other'
+require_relative 'logger'
 require_relative 'player'
 require_relative 'version'
 

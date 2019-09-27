@@ -9,8 +9,8 @@ module MUD
       end
 
       def debug
-        puts "Hero #{hero.inspect}"
-        puts "Enemy #{enemy.inspect}"
+        MUD::Logger.debug("Hero #{hero.inspect}")
+        MUD::Logger.debug("Enemy #{enemy.inspect}")
       end
     end
   end

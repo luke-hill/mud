@@ -11,9 +11,10 @@ module MUD
         def north
           if north_room_id
             move_to(north_room_id)
-            puts 'You went North'
+            MUD::Logger.info('You went North')
             'You went North'
           else
+            MUD::Logger.info('You cannot go that way')
             'No go'
           end
         end
@@ -21,9 +22,10 @@ module MUD
         def south
           if south_room_id
             move_to(south_room_id)
-            puts 'You went South'
+            MUD::Logger.info('You went South')
             'You went South'
           else
+            MUD::Logger.info('You cannot go that way')
             'No go'
           end
         end
@@ -31,9 +33,10 @@ module MUD
         def east
           if east_room_id
             move_to(east_room_id)
-            puts 'You went East'
+            MUD::Logger.info('You went East')
             'You went East'
           else
+            MUD::Logger.info('You cannot go that way')
             'No go'
           end
         end
@@ -41,9 +44,10 @@ module MUD
         def west
           if west_room_id
             move_to(west_room_id)
-            puts 'You went West'
+            MUD::Logger.info('You went West')
             'You went West'
           else
+            MUD::Logger.info('You cannot go that way')
             'No go'
           end
         end
@@ -75,7 +79,7 @@ module MUD
         private
 
         def move_to(room_id)
-          puts "Moving to Room-ID: #{room_id}"
+          MUD::Logger.info("Moving to Room-ID: #{room_id}")
 
           if room_already_visited?(room_id)
             room = fetch_room_from_cache(room_id)
