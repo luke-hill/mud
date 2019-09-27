@@ -11,8 +11,8 @@ module MUD
         @times_visited = 1
       end
 
-      def directions
-        @directions ||= directions_yml[room_id]
+      def connected_rooms
+        @connected_rooms ||= directions_yml[room_id]
       end
 
       def description
@@ -29,10 +29,6 @@ module MUD
 
       def leave
         game.rooms_visited[room_id] = self
-      end
-
-      def game
-        MUD::Game.instance
       end
     end
   end

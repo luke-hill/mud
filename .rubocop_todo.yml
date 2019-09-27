@@ -110,11 +110,6 @@ Lint/UnderscorePrefixedVariableName:
   Exclude:
     - 'spec/models/enemy_spec.rb'
 
-# Offense count: 1
-Lint/UnreachableCode:
-  Exclude:
-    - 'app/room_controller.rb'
-
 # Offense count: 6
 Metrics/AbcSize:
   Max: 33
@@ -173,7 +168,6 @@ Style/Documentation:
     - 'app/items/barracks_key.rb'
     - 'app/items/gold.rb'
     - 'app/player/avalanche.rb'
-    - 'app/room_controller.rb'
     - 'app/world/room.rb'
     - 'play_game.rb'
 

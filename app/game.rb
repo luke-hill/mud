@@ -1,5 +1,6 @@
+puts 'Beginning autoloading'
 require_relative 'autoloader'
-require 'singleton'
+puts 'Autoloading complete'
 
 module MUD
   class Game
@@ -14,6 +15,14 @@ module MUD
       set_rooms_visited_to_blank
     end
 
+    def connected_rooms
+      player.current_room.connected_rooms
+    end
+
+    def move(direction)
+      MUD::Movement::Move.send(direction)
+    end
+
     private
 
     def set_player_attributes
@@ -22,19 +31,6 @@ module MUD
 
     def create_player_object
       @player ||= Fighter::Player.new
-    end
-
-    def player_params
-      {
-        name: player.name,
-        max_hp: player.max_hp,
-        hp: player.hp,
-        level: player.level,
-        stamina: player.stamina,
-        experience: player.experience,
-        gold: player.gold,
-        room_id: player.room_id,
-      }
     end
 
     def set_rooms_visited_to_blank

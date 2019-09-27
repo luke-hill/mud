@@ -3,7 +3,7 @@ module Fighter
     attr_reader :attributes
     private :attributes
 
-    attr_accessor :rooms_visited, :current_room
+    attr_accessor :current_room
 
     extend Forwardable
 
@@ -11,7 +11,7 @@ module Fighter
     def_delegators :attributes, :name=, :max_hp=, :hp=, :level=, :stamina=, :experience=, :gold=, :inventory=
 
     def initialize
-      @attributes = Attributes.new
+      @attributes = MUD::Classes::Fighter::Attributes.new
       @current_room = MUD::Rooms::Room.new(starting_room)
     end
 

@@ -8,6 +8,12 @@ module MUD
       def directions_yml
         YAML.load_file('/home/luke/Code/mud/data/rooms/directions.yml')
       end
+
+      private
+
+      def game
+        MUD::Game.instance
+      end
     end
   end
 end
