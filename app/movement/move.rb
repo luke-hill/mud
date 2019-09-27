@@ -9,8 +9,8 @@ module MUD
         end
 
         def north
-          if north_room
-            move_to(north_room)
+          if north_room_id
+            move_to(north_room_id)
             puts 'You went North'
             'You went North'
           else
@@ -19,8 +19,8 @@ module MUD
         end
 
         def south
-          if south_room
-            move_to(south_room)
+          if south_room_id
+            move_to(south_room_id)
             puts 'You went South'
             'You went South'
           else
@@ -29,8 +29,8 @@ module MUD
         end
 
         def east
-          if east_room
-            move_to(east_room)
+          if east_room_id
+            move_to(east_room_id)
             puts 'You went East'
             'You went East'
           else
@@ -39,8 +39,8 @@ module MUD
         end
 
         def west
-          if west_room
-            move_to(west_room)
+          if west_room_id
+            move_to(west_room_id)
             puts 'You went West'
             'You went West'
           else
@@ -74,31 +74,46 @@ module MUD
 
         private
 
-        def move_to(room)
-          puts "Moving to #{room}"
+        def move_to(room_id)
+          puts "Moving to Room-ID: #{room_id}"
+
+          if room_already_visited?(room_id)
+            room = fetch_room_from_cache(room_id)
+          else
+            room = MUD::Rooms::Room.new(room_id)
+          end
+
           game.player.current_room.leave
           game.player.current_room = room
           game.player.current_room.visit
         end
 
-        def north_room
+        def north_room_id
           connected_rooms['north']
         end
 
-        def south_room
+        def south_room_id
           connected_rooms['south']
         end
 
-        def east_room
+        def east_room_id
           connected_rooms['east']
         end
 
-        def west_room
+        def west_room_id
           connected_rooms['west']
         end
         
         def connected_rooms
           game.connected_rooms
+        end
+
+        def room_already_visited?(room_id)
+          game.rooms_visited.include?(room_id)
+        end
+
+        def fetch_room_from_cache(room_id)
+          game.rooms_visited[room_id]
         end
       end
     end

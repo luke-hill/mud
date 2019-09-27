@@ -8,7 +8,7 @@ module MUD
 
       def initialize(room_id)
         @room_id = room_id
-        @times_visited = 1
+        @times_visited = 0
       end
 
       def connected_rooms
@@ -24,6 +24,7 @@ module MUD
       end
 
       def visit
+        puts "Visiting Room-ID: #{room_id}"
         self.times_visited += 1
       end
 

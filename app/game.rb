@@ -38,6 +38,3 @@ module MUD
     end
   end
 end
-
-m = MUD::Game.instance
-m

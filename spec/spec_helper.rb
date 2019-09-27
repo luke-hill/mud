@@ -14,3 +14,11 @@ RSpec.configure do |config|
 end
 
 RSpec::Mocks.configuration.allow_message_expectations_on_nil = true
+
+# frozen_string_literal: true
+
+require 'spec_helper'
+require 'factory_girl'
+require 'support/factory_girl'
+require 'shoulda/matchers'
+require_relative '../app/game'
