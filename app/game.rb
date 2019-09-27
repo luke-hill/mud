@@ -38,3 +38,6 @@ module MUD
     end
   end
 end
+
+rrr = Room
+rrr.find(11)

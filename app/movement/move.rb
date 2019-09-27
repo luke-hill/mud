@@ -81,11 +81,12 @@ module MUD
         def move_to(room_id)
           MUD::Logger.info("Moving to Room-ID: #{room_id}")
 
-          if room_already_visited?(room_id)
-            room = fetch_room_from_cache(room_id)
-          else
-            room = MUD::Rooms::Room.new(room_id)
-          end
+          room =
+            if room_already_visited?(room_id)
+              fetch_room_from_cache(room_id)
+            else
+              MUD::Rooms::Room.new(room_id)
+            end
 
           game.player.current_room.leave
           game.player.current_room = room
