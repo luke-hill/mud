@@ -5,7 +5,7 @@ module MUD
         include MUD::Helpers::Data
         
         def look_around
-          'Not implemented yet'
+          'Not implemented yet'.red
         end
 
         def north
@@ -15,7 +15,7 @@ module MUD
             'You went North'
           else
             MUD::Logger.info('You cannot go that way')
-            'No go'
+            'You cannot go north'.red
           end
         end
 
@@ -26,7 +26,7 @@ module MUD
             'You went South'
           else
             MUD::Logger.info('You cannot go that way')
-            'No go'
+            'You cannot go south'.red
           end
         end
 
@@ -37,7 +37,7 @@ module MUD
             'You went East'
           else
             MUD::Logger.info('You cannot go that way')
-            'No go'
+            'You cannot go east'.red
           end
         end
 
@@ -48,32 +48,32 @@ module MUD
             'You went West'
           else
             MUD::Logger.info('You cannot go that way')
-            'No go'
+            'You cannot go west'.red
           end
         end
 
         def up
-          'Not in active use'
+          'Not in active use'.red
         end
 
         def down
-          'Not in active use'
+          'Not in active use'.red
         end
 
         def pickup_item
-          'Not in active use'
+          'Not in active use'.red
         end
 
         def drop_item
-          'Not in active use'
+          'Not in active use'.red
         end
 
         def pickup_gold
-          'Not in active use'
+          'Not in active use'.red
         end
 
         def drop_gold
-          'Not in active use'
+          'Not in active use'.red
         end
 
         private
