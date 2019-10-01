@@ -2,6 +2,7 @@ require 'rails'
 require 'action_view/helpers'
 require 'singleton'
 require 'logger'
+require 'colorize'
 
 require_relative 'helpers/all'
 

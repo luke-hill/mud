@@ -10,6 +10,7 @@ module MUD
     attr_accessor :rooms_visited
 
     def initialize
+      Logger.info('Game started'.red)
       set_player_attributes
       create_player_object
       set_rooms_visited_to_blank
@@ -20,13 +21,19 @@ module MUD
     end
 
     def move(direction)
+      Logger.debug("Attempting to move #{direction}")
       MUD::Movement::Move.send(direction)
+    end
+
+    def reset!
+      self.instance_variables.each { |var| remove_instance_variable(var) }
+      initialize
     end
 
     private
 
     def set_player_attributes
-      puts 'For now you must be a Fighter, with 25HP.'
+      puts 'For now you must be a Fighter, with 25HP.'.blink
     end
 
     def create_player_object
