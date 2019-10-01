@@ -1,6 +1,6 @@
 # V1.0 Enemy Creations
 
-ap = AdminPanel::Enemy::Enemies
+ap = AdminPanel::Enemies::Enemy
 
 ap.seed(
   id: 'goblin_archer',

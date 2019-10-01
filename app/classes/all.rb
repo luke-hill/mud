@@ -1,2 +1,2 @@
-require_relative 'fighter/attributes'
+require_relative 'fighter'
 

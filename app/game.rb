@@ -1,8 +1,8 @@
-# First call must be puts as the +MUD::Screen.output+ class method doesn't exist yet!
+# First calls must be puts as the +MUD::Screen.output+ class method doesn't exist yet!
 
 puts 'Beginning autoloading'
 require_relative 'autoloader'
-MUD::Screen.output 'Autoloading complete'
+puts 'Autoloading complete'
 
 module MUD
   class Game
@@ -56,11 +56,11 @@ module MUD
     end
 
     def set_player_attributes
-      MUD::Screen.output 'For now you must be a Fighter, with 25HP.'.blink
+      MUD::Screen.output 'For now you are a Fighter, with 25HP.'.blink
     end
 
     def create_player_object
-      @player ||= Fighter::Player.new
+      @player ||= Classes::Fighter.new
     end
 
     def set_rooms_visited_to_blank
