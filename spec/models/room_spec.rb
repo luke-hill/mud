@@ -38,7 +38,7 @@ RSpec.describe Room, type: :model do
     end
 
     it 'has no default enemy' do
-      expect(errors).to have_key(:enemy)
+      expect(errors).to have_key(:enemies)
     end
 
     it 'has no description or advanced description' do

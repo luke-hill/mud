@@ -1,3 +1,5 @@
+# First calls must be puts as the +MUD::Screen.output+ class method doesn't exist yet!
+
 puts 'Beginning autoloading'
 require_relative 'autoloader'
 puts 'Autoloading complete'
@@ -32,12 +34,33 @@ module MUD
 
     private
 
+    def display_welcome_message
+      return if development?
+
+      sleep 0.5
+      MUD::Screen.output '............................................'
+      sleep 0.5
+      MUD::Screen.output "Hello and Welcome to MUD - Working title I know!!"
+      sleep 0.75
+      MUD::Screen.output "Current Version #{game_version}"
+      sleep 0.75
+      MUD::Screen.output "Whilst you're here, let me give you the down-low. You're about to begin LevelOne"
+      sleep 0.75
+      MUD::Screen.output 'LevelOne, sees you spawn in our village against Several Monsters and then the boss - The Orc!'
+      sleep 0.5
+      MUD::Screen.output '............................................'
+    end
+
+    def development?
+      true
+    end
+
     def set_player_attributes
-      puts 'For now you must be a Fighter, with 25HP.'.blink
+      MUD::Screen.output 'For now you are a Fighter, with 25HP.'.blink
     end
 
     def create_player_object
-      @player ||= Fighter::Player.new
+      @player ||= Classes::Fighter.new
     end
 
     def set_rooms_visited_to_blank
@@ -45,6 +68,3 @@ module MUD
     end
   end
 end
-
-rrr = Room
-rrr.find(11)

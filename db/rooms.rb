@@ -17,7 +17,7 @@ newtown_bank = Location.find_by(town: 'Newtown', area: 'Bank')
 (1..20).to_a.each do |id_number|
   Room.create(
     room_id: id_number, description: 'DescriptionBLAHBLAHBLAHBLAH', advanced_description: 'Advanced DescriptionBLAHBLAHBLAHBLAH',
-    room_type: town, location: newtown, enemy: no_enemy,
+    room_type: town, location: newtown, enemies: no_enemy,
   )
 end
 
@@ -105,7 +105,7 @@ Room.find_by(room_id: 20).update(
     room_id: id_number,
     description: 'The rocky street here looks unfinished, you notice a cable on the floor next to the main road.',
     advanced_description: 'Once destined to be the worlds first eco-friendly housing estate, The Newtown Residential District lingers unfinished, with equipment strewn everywhere.',
-    location: residential_district, room_type: town, enemy: no_enemy,
+    location: residential_district, room_type: town, enemies: no_enemy,
   )
 end
 
@@ -113,7 +113,7 @@ Room.create(
   room_id: 23,
   description: 'The rocky street here looks unfinished, you notice a cable on the floor next to the main road. There is a well to the east, next to a Small Bank for the Villagers.',
   advanced_description: 'Once destined to be the worlds first eco-friendly housing estate, The Newtown Residential District lingers unfinished. The sign for the bank looks rusty and dated as it flaps about in the wind.',
-  location: residential_district, room_type: town, enemy: no_enemy,
+  location: residential_district, room_type: town, enemies: no_enemy,
 )
 
 [26, 28].each do |id_number|
@@ -121,7 +121,7 @@ Room.create(
     room_id: id_number,
     description: 'The rocky street here looks unfinished, you see signs that this used to be regular hive of activity.',
     advanced_description: "This area of the Newtown Residential District houses office buildings and even a long disbanded children's playground. Not that any parent would want their child playing next to the machinery!",
-    location: residential_crossroads, room_type: town, enemy: no_enemy,
+    location: residential_crossroads, room_type: town, enemies: no_enemy,
   )
 end
 
@@ -130,7 +130,7 @@ end
     room_id: id_number,
     description: 'One of the few remaining houses in Newtown. The interior looks basic, befitting a town of little to no wealth.',
     advanced_description: 'Whilst Pristine in condition, this house shows no sign of materialistic wealth.',
-    location: newtown_house, room_type: town, enemy: no_enemy,
+    location: newtown_house, room_type: town, enemies: no_enemy,
   )
 end
 
@@ -138,7 +138,7 @@ Room.create(
   room_id: 34,
   description: 'The Newtown bank is served by a single Teller. He sits behind the bars guarding a small storage room, presumably the sole vault on the premises.',
   advanced_description: "As you'd expect from a small bank, there is little extravagance... or security. Posters lie on the walls offering rewards for information on the whereabouts of the local Bandits that are hiding out.",
-  location: newtown_bank, room_type: town, enemy: no_enemy,
+  location: newtown_bank, room_type: town, enemies: no_enemy,
 )
 
 #V1.0 Minor Content Update and modifying of room types
@@ -212,16 +212,16 @@ end
 
 #V1.1 Default Enemies in DB
 (13..19).to_a.each do |id_number|
-  Room.find_by(id: id_number).update(enemy: 'Goblin')
+  Room.find_by(id: id_number).update(enemies: 'Goblin')
 end
 
-Room.find_by(id: 20).update(enemy: 'Orc')
+Room.find_by(id: 20).update(enemies: 'Orc')
 
 [35, 36, 40, 42, 50, 52, 53, 54, 58].to_a.each do |id_number|
-  Room.find_by(id: id_number).update(enemy: 'Bandit')
+  Room.find_by(id: id_number).update(enemies: 'Bandit')
 end
 
-Room.find_by(id: 44).update(enemy: 'Wolf')
+Room.find_by(id: 44).update(enemies: 'Wolf')
 
 #V1.1 Change Pub's to type pub
 Room.find_by(id: 1).update(room_type: 'Pub')

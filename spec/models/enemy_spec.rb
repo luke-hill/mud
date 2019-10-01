@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Enemy, type: :model do
-  let(:enemy) { create(:enemy) }
-  let(:dead_enemy) { create(:enemy, :dead) }
+  let(:enemies) { create(:enemies) }
+  let(:dead_enemy) { create(:enemies, :dead) }
 
   describe 'validations' do
     context 'a valid enemy' do
@@ -38,7 +38,7 @@ RSpec.describe Enemy, type: :model do
     end
 
     context 'an invalid enemy' do
-      let(:enemy) { Enemy.create }
+      let(:enemies) { Enemy.create }
       let(:errors) { enemy.errors }
 
       it 'has no name' do

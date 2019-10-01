@@ -1,8 +1,8 @@
 require 'yaml'
 
 module AdminPanel
-  module Enemy
-    class Enemies
+  module Enemies
+    class Enemy
       private
 
       def enemy
