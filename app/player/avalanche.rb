@@ -3,10 +3,10 @@ module Player
     attr_accessor :weapon, :armor, :hp, :max_hp, :inventory, :accuracy, :gold
     attr_accessor :room, :rooms_visited
 
-    def initialize(weapon, armor, hp)
-      @weapon = weapon
-      @armor = armor
-      @hp = hp
+    def initialize
+      @weapon = Items::Weapon::Knife.new
+      @armor = Items::Armor::Vest.new
+      @hp = 28
       @max_hp = hp
       @inventory = [Items::Potion::LesserPotion.new, Items::Potion::LesserPotion.new]
       @accuracy = 0.85
