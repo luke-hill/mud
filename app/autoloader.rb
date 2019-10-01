@@ -11,6 +11,7 @@ require_relative 'game_other'
 require_relative 'logger'
 require_relative 'player'
 require_relative 'room'
+require_relative 'screen'
 require_relative 'version'
 
 require_relative 'combat/all'
