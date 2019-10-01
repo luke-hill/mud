@@ -2,14 +2,16 @@ require 'rails'
 require 'action_view/helpers'
 require 'singleton'
 require 'logger'
+require 'colorize'
+
+require_relative 'helpers/all'
 
 require_relative 'enemy'
 require_relative 'game_other'
 require_relative 'logger'
 require_relative 'player'
+require_relative 'room'
 require_relative 'version'
-
-require_relative 'helpers/all'
 
 require_relative 'combat/all'
 require_relative 'classes/all'
