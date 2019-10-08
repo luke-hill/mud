@@ -13,7 +13,7 @@ module AdminPanel
     end
 
     def seed
-      raise ArgumentError, 'Room ID not set' unless id
+      raise ArgumentError, 'ID not set' unless id
 
       update
       save

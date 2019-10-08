@@ -2,7 +2,7 @@ require 'yaml'
 
 module AdminPanel
   module Enemies
-    class Enemy
+    class Enemy < AdminPanel::Base
       private
 
       def enemy
