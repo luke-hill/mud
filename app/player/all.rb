@@ -1,1 +1,1 @@
-require_relative 'avalanche'
+require_relative '../shit_to_sort_out/avalanche'
