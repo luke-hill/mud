@@ -1,6 +1,3 @@
-start = Time.now
-puts 'Creating Rooms'
-
 # This has now been sanitized and simplified a bit, ignore the versions for now. They will be removed at a later date!
 
 no_enemy = Enemy.find_by_name('No Enemy')
@@ -12,14 +9,6 @@ residential_district = Location.find_by(town: 'Newtown', area: 'Residential Dist
 residential_crossroads = Location.find_by(town: 'Newtown', area: 'Residential District Crossroads')
 newtown_house = Location.find_by(town: 'Newtown', area: 'House')
 newtown_bank = Location.find_by(town: 'Newtown', area: 'Bank')
-
-# V0.1 - 20 Blank Rooms
-(1..20).to_a.each do |id_number|
-  Room.create(
-    room_id: id_number, description: 'DescriptionBLAHBLAHBLAHBLAH', advanced_description: 'Advanced DescriptionBLAHBLAHBLAHBLAH',
-    room_type: town, location: newtown, enemies: no_enemy,
-  )
-end
 
 #V0.1.1 Regular/Advanced Descriptions
 Room.find_by(room_id: 1).update(
