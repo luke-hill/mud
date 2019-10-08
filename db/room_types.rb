@@ -1,6 +1,7 @@
 start = Time.now
 puts 'Creating RoomTypes'
 
+# room type wasn't present until much later on especially with guards param (probably v1)
 RoomType.create(name: 'Town')
 RoomType.create(name: 'Weapon Shop')
 RoomType.create(name: 'Armor Shop')

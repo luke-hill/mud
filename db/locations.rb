@@ -1,6 +1,7 @@
 start = Time.now
 puts 'Creating Locations'
 
+#v0.1 locations - all to move
 Location.create(town: 'Newtown', area: 'Town Square')
 Location.create(town: 'Newtown', area: 'Travelling Merchants Shop')
 Location.create(town: 'Newtown', area: 'Training Area')

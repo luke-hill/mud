@@ -1,6 +1,6 @@
-require 'admin_panel/base'
-require 'admin_panel/enemy/enemies'
-require 'admin_panel/room/directions'
+require '../base'
+require '../enemies/enemy'
+require '../room/directions'
 
 def seed(version)
   Dir[File.absolute_path("./#{version}/*.rb")].each { |file| require file }
@@ -13,5 +13,7 @@ def seed_all
 end
 
 def current_seed_versions
-  Dir.glob('*').select { |f| File.directory? f }
+  Dir.glob('*').select { |f| File.directory? f }.sort
 end
+
+p current_seed_versions

@@ -6,10 +6,10 @@ require 'colorize'
 
 require_relative 'helpers/all'
 
-require_relative 'enemy'
-require_relative 'game_other'
+require_relative 'shit_to_sort_out/enemy'
+require_relative 'shit_to_sort_out/game_other'
 require_relative 'logger'
-require_relative 'room'
+require_relative 'shit_to_sort_out/room_top_level'
 require_relative 'screen'
 require_relative 'version'
 

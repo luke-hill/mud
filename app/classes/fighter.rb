@@ -36,6 +36,8 @@ module MUD
         }
       end
 
+      # Add extra logging so we can see what each reader / writer method is doing
+      # and we can store this in the games internal log files
       accessor_methods.each do |name|
         define_method(name) do
           proc do
