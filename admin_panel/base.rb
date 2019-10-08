@@ -42,7 +42,13 @@ module AdminPanel
     end
 
     def yml_file
-      @yml_file ||= YAML.load_file(yml_file_location)
+      @yml_file ||= begin
+        YAML.load_file(yml_file_location)
+      rescue Errno::ENOENT
+        puts "File does not exist @ #{yml_file_location}. Creating new blank YML file."
+        File.open(yml_file_location, 'w+') {|f| f.write({}) }
+        YAML.load_file(yml_file_location)
+      end
     end
 
     def save
