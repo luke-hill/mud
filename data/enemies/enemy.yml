@@ -1,4 +1,3 @@
-# TODO: Formulas for enemy attacking
 # TODO: Formulas for enemy talking to you
 
 regular:
@@ -18,16 +17,3 @@ regular:
     accuracy: 0.95
     weapon: short_bow
     armor: unarmored
-
-# Formulas for dealing damage
-#module Enemy
-#class Goblin
-#def attack_value
-#rand((weapon.atk_min)..(weapon.atk_max))
-#end
-## Formulas for receiving damage
-#def defend_value
-#rand(0..(armor.def))
-#end
-#end
-#end

@@ -17,6 +17,7 @@ ap.seed(
   xp_killshot: 0,
   stamina: 0
 )
+
 ap.seed(
   id: 'goblin',
   name: 'Goblin',
@@ -32,12 +33,13 @@ ap.seed(
   xp_killshot: 10,
   stamina: 1
 )
+
 ap.seed(
   id: 'brawler',
   name: 'Brawler',
   description: 'This Brawler is a Test',
-  weapon: 3,
-  armor: 2,
+  weapon: 'rusty_sword',
+  armor: 'vest',
   lower_hp_limit: 7,
   upper_hp_limit: 13,
   accuracy: 0.65,
@@ -47,5 +49,3 @@ ap.seed(
   xp_killshot: 20,
   stamina: 1
 )
-
-# TODO: The Weapon / Armor for Brawlers is incorrect
