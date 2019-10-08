@@ -13,7 +13,8 @@ module MUD
         MUD::Logger.debug("Enemy #{enemy.inspect}")
       end
 
-      # TODO: The values in this method  and the one below won't work
+      # TODO: The values in this method and the one below won't work
+      # They also need modifying after v2 to include and factor in strength!
       def attack_value
         rand((weapon.atk_min)..(weapon.atk_max))
       end

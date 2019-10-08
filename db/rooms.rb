@@ -1,55 +1,6 @@
 # This has now been sanitized and simplified a bit, ignore the versions for now. They will be removed at a later date!
 
-no_enemy = Enemy.find_by_name('No Enemy')
-town = RoomType.find_by_name('Town')
-residential_district = Location.find_by(town: 'Newtown', area: 'Residential District')
-residential_crossroads = Location.find_by(town: 'Newtown', area: 'Residential District Crossroads')
-newtown_house = Location.find_by(town: 'Newtown', area: 'House')
-newtown_bank = Location.find_by(town: 'Newtown', area: 'Bank')
-
-# V0.2 Newtown Residential District
-[21, 22, 24, 25, 27].each do |id_number|
-  Room.create(
-    room_id: id_number,
-    description: 'The rocky street here looks unfinished, you notice a cable on the floor next to the main road.',
-    advanced_description: 'Once destined to be the worlds first eco-friendly housing estate, The Newtown Residential District lingers unfinished, with equipment strewn everywhere.',
-    location: residential_district, room_type: town, enemies: no_enemy,
-  )
-end
-
-Room.create(
-  room_id: 23,
-  description: 'The rocky street here looks unfinished, you notice a cable on the floor next to the main road. There is a well to the east, next to a Small Bank for the Villagers.',
-  advanced_description: 'Once destined to be the worlds first eco-friendly housing estate, The Newtown Residential District lingers unfinished. The sign for the bank looks rusty and dated as it flaps about in the wind.',
-  location: residential_district, room_type: town, enemies: no_enemy,
-)
-
-[26, 28].each do |id_number|
-  Room.create(
-    room_id: id_number,
-    description: 'The rocky street here looks unfinished, you see signs that this used to be regular hive of activity.',
-    advanced_description: "This area of the Newtown Residential District houses office buildings and even a long disbanded children's playground. Not that any parent would want their child playing next to the machinery!",
-    location: residential_crossroads, room_type: town, enemies: no_enemy,
-  )
-end
-
-(29..33).each do |id_number|
-  Room.create(
-    room_id: id_number,
-    description: 'One of the few remaining houses in Newtown. The interior looks basic, befitting a town of little to no wealth.',
-    advanced_description: 'Whilst Pristine in condition, this house shows no sign of materialistic wealth.',
-    location: newtown_house, room_type: town, enemies: no_enemy,
-  )
-end
-
-Room.create(
-  room_id: 34,
-  description: 'The Newtown bank is served by a single Teller. He sits behind the bars guarding a small storage room, presumably the sole vault on the premises.',
-  advanced_description: "As you'd expect from a small bank, there is little extravagance... or security. Posters lie on the walls offering rewards for information on the whereabouts of the local Bandits that are hiding out.",
-  location: newtown_bank, room_type: town, enemies: no_enemy,
-)
-
-#V1.0 Minor Content Update and modifying of room types
+# V1.0 Minor Content Update and modifying of room types
 Room.find_by(id: 3).update(room_type: 'Shop')
 Room.find_by(id: 12).update(location: 'Forest Path - Clearing', hide_east: true)
 Room.find_by(id: 19).update(east_key: 'Barracks Key')
@@ -63,7 +14,7 @@ Room.find_by(id: 5).update(
   Room.find_by(id: id_number).update(room_type: 'Outside')
 end
 
-#V1.1 Forest Path Rooms
+# V1.1 Forest Path Rooms
 (35..49).to_a.each do |id_number|
   Room.create(
     id: id_number,
@@ -101,7 +52,7 @@ Room.create(
   location: 'Sovereign City - Gatehouse',
   )
 
-#V1.1 Newtown Arena Rooms
+# V1.1 Newtown Arena Rooms
 Room.create(
   id: 60,
   description: "You see 3 separate small patches of ground, each monitored closely by a burly guard. He reminds you to read the sign before continuing if you're not sure.",
@@ -118,7 +69,7 @@ Room.create(
   )
 end
 
-#V1.1 Default Enemies in DB
+# V1.1 Default Enemies in DB
 (13..19).to_a.each do |id_number|
   Room.find_by(id: id_number).update(enemies: 'Goblin')
 end
@@ -131,7 +82,7 @@ end
 
 Room.find_by(id: 44).update(enemies: 'Wolf')
 
-#V1.1 Change Pub's to type pub
+# V1.1 Change Pub's to type pub
 Room.find_by(id: 1).update(room_type: 'Pub')
 
 puts "#{Room.count} Rooms created in #{(Time.now - start).round(2)}s"
