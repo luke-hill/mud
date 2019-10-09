@@ -1,10 +1,6 @@
-# V1.0 Minor Content Update and modifying of room types
+# V1.0 Minor Content Update
 
 ap = AdminPanel::Room::Descriptions
-
-# TODO: Add this code into the room presenter logic when we get there!
-ap.seed(id: 12, hide_east: true)
-ap.seed(id: 19, east_key: 'barracks_key')
 
 ap.seed(
   id: 5,
