@@ -83,6 +83,10 @@ end
 Room.find_by(id: 44).update(enemies: 'Wolf')
 
 # V1.1 Change Pub's to type pub
-Room.find_by(id: 1).update(room_type: 'Pub')
+Room.find_by(id: 1).update(type: 'Pub')
 
 puts "#{Room.count} Rooms created in #{(Time.now - start).round(2)}s"
+
+# V2 TODO
+# Add guards as true to every room except the following room types
+# 'Arena', 'Out of Town', 'Dungeon', 'Underground'
