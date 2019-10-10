@@ -1,6 +1,6 @@
 # TODO: Interpolate the value at end of +use_message+
 # TODO: Add message for when you're fully healed: "'You feel yourself regain full strength!'"
-
+# TODO: This all needs seeding!
 hp_bonus:
   use_message: 'You consume the potion, and feel enhanced almost immediately. Your maximum hp has increased by'
   endurance_potion:

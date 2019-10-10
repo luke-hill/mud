@@ -1,8 +1,14 @@
-# V1.1 Forest Path Directions
+# V1.1
+# Room Presenter Logic (Hidden Rooms / Key Rooms)
+# Forest Path Directions
+# Newtown Arena Directions
 
 ap = AdminPanel::Room::Directions
 
-ap.seed(id: 12, west: 35)
+# TODO: Add this code into the room presenter logic when we get there!
+ap.seed(id: 12, west: 35, hide_east: true)
+ap.seed(id: 19, east_key: 'barracks_key')
+
 ap.seed(id: 35, east: 12, west: 36)
 ap.seed(id: 36, east: 35, west: 37)
 ap.seed(id: 37, east: 36, north: 38)
@@ -29,7 +35,6 @@ ap.seed(id: 57, north: 59, south: 56)
 ap.seed(id: 58, east: 55)
 ap.seed(id: 59, south: 57)
 
-# V1.1 Newtown Arena Directions
 ap.seed(id: 6, west: 60)
 ap.seed(id: 60, north: 61, south: 62, west: 63, east: 6)
 ap.seed(id: 61, south: 60)
