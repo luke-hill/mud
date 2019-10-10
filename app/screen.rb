@@ -1,18 +1,16 @@
 module MUD
   class Screen
     class << self
-      extend Forwardable
-
-      def logger
-        @logger ||= create_logger
-      end
-
       def output(msg)
         logger.info(msg)
         msg
       end
 
       private
+
+      def logger
+        @logger ||= create_logger
+      end
 
       def create_logger
         ::Logger.new(name, archived_logs, log_size_in_kb).tap do |logger|

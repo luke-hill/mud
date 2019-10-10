@@ -1,7 +1,4 @@
 class PlayGame
-
-  include ApplicationHelper
-
   def begin
     create_game
     while alive?
@@ -25,7 +22,7 @@ class PlayGame
   private
 
   def create_game
-    Game.new
+    MUD::Game.instance
   end
 
   def alive?

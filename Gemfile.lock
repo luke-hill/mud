@@ -153,6 +153,7 @@ DEPENDENCIES
   colorize
   humanize
   rails (~> 5.2)
+  rake
   rspec
   rubocop (~> 0.72.0)
   rubocop-performance (~> 1.4.0)
