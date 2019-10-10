@@ -21,6 +21,15 @@ module AdminPanel
 
     private
 
+    def yaml_locations
+      {
+        enemy: '/home/luke/Code/mud/data/enemies/enemy.yml',
+        descriptions: '/home/luke/Code/mud/data/rooms/descriptions.yml',
+        directions: '/home/luke/Code/mud/data/rooms/directions.yml',
+        locations: '/home/luke/Code/mud/data/rooms/locations.yml'
+      }
+    end
+
     def id
       @id ||= options.delete(:id)
     end
