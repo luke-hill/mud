@@ -1,39 +1,44 @@
-class PlayGame
-  def begin
-    create_game
+class Play
+  def play
+    require_relative 'app/game'
+
     while alive?
       input = gets.chomp
       case input.split.first.to_s.downcase
       when 'north', 'n'
-        current_player.move('north')
+        player.move('north')
       when 'south', 's'
-        current_player.move('south')
+        player.move('south')
       when 'east', 'e'
-        current_player.move('north')
+        player.move('north')
       when 'west', 'w'
-        current_player.move('south')
+        player.move('south')
       else
         puts 'Input not yet recognised'
       end
     end
-    game_quit
+    quit
   end
 
   private
 
-  def create_game
+  def game
     MUD::Game.instance
   end
 
-  def alive?
-    current_player.hp.positive?
+  def player
+    game.player
   end
 
-  def game_quit
-    puts 'You died'
+  def alive?
+    player.hp.positive?
+  end
+
+  def quit
+    Screen.output('You died')
     sleep 2
     exit
   end
 end
 
-PlayGame.new.begin
+Play.new.play

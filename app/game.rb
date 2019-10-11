@@ -13,18 +13,19 @@ module MUD
 
     def initialize
       Logger.info('Game started'.red)
-      set_player_attributes
+      display_welcome_message
       create_player_object
       set_rooms_visited_to_blank
     end
 
+    # TODO: This should be a player method
     def connected_rooms
-      player.current_room.connected_rooms
+      player.connected_rooms
     end
 
+    # TODO: This should be a player method
     def move(direction)
-      Logger.debug("Attempting to move #{direction}")
-      MUD::Movement::Move.send(direction)
+      player.move(direction)
     end
 
     def reset!
@@ -44,6 +45,8 @@ module MUD
       sleep 0.75
       MUD::Screen.output "Current Version #{game_version}"
       sleep 0.75
+      MUD::Screen.output 'For now you are a Fighter, with 25HP.'.blink
+      leep 0.75
       MUD::Screen.output "Whilst you're here, let me give you the down-low. You're about to begin LevelOne"
       sleep 0.75
       MUD::Screen.output 'LevelOne, sees you spawn in our village against Several Monsters and then the boss - The Orc!'
@@ -53,10 +56,6 @@ module MUD
 
     def development?
       true
-    end
-
-    def set_player_attributes
-      MUD::Screen.output 'For now you are a Fighter, with 25HP.'.blink
     end
 
     def create_player_object

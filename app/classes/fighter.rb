@@ -6,17 +6,7 @@ module MUD
 
       attr_accessor :current_room
 
-      def self.accessor_methods
-        reader_methods + writer_methods
-      end
-
-      def self.reader_methods
-        %i[name max_hp hp level stamina experience gold inventory]
-      end
-
-      def self.writer_methods
-        reader_methods.map { |s| "#{s}=".to_sym }
-      end
+      include MUD::Helpers::AttributeAccessors
 
       def initialize
         @attributes = starting_attributes
@@ -36,15 +26,13 @@ module MUD
         }
       end
 
-      # Add extra logging so we can see what each reader / writer method is doing
-      # and we can store this in the games internal log files
-      accessor_methods.each do |name|
-        define_method(name) do
-          proc do
-            MUD::Logger.debug("Call made to view attributes: #{attributes}")
-            MUD::Screen.output("#{name}: #{attributes[name]}")
-          end.call
-        end
+      def connected_rooms
+        current_room.connected_rooms
+      end
+
+      def move(direction)
+        Logger.debug("Attempting to move #{direction}")
+        MUD::Movement::Move.send(direction)
       end
 
       private
