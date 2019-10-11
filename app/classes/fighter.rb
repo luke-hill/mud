@@ -4,13 +4,14 @@ module MUD
       attr_reader :attributes
       private :attributes
 
-      attr_accessor :current_room
+      attr_accessor :current_room, :rooms_visited
 
       include MUD::Helpers::AttributeAccessors
 
       def initialize
         @attributes = starting_attributes
         @current_room = MUD::Rooms::Room.new(starting_room)
+        set_rooms_visited_to_blank
       end
 
       def starting_attributes
@@ -39,6 +40,10 @@ module MUD
 
       def starting_room
         1
+      end
+
+      def set_rooms_visited_to_blank
+        @rooms_visited ||= {}
       end
     end
   end

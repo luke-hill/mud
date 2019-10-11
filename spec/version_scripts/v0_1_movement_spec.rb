@@ -1,5 +1,5 @@
 RSpec.describe 'V0.1 Movement' do
-  subject(:game) { MUD::Game.instance }
+  subject(:game) { MUD::Game.new }
 
   before do
     allow($stdout).to receive(:write).and_return nil

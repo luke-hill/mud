@@ -11,8 +11,8 @@ module MUD
 
       private
 
-      def game
-        MUD::Game.instance
+      def player
+        MUD::Game.player
       end
     end
   end

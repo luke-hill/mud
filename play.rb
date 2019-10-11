@@ -1,7 +1,7 @@
+require_relative 'app/game'
+
 class Play
   def play
-    require_relative 'app/game'
-
     while alive?
       input = gets.chomp
       case input.split.first.to_s.downcase
@@ -10,9 +10,9 @@ class Play
       when 'south', 's'
         player.move('south')
       when 'east', 'e'
-        player.move('north')
+        player.move('east')
       when 'west', 'w'
-        player.move('south')
+        player.move('west')
       else
         puts 'Input not yet recognised'
       end
@@ -22,12 +22,8 @@ class Play
 
   private
 
-  def game
-    MUD::Game.instance
-  end
-
   def player
-    game.player
+    @player ||= MUD::Game.setup
   end
 
   def alive?
@@ -41,4 +37,5 @@ class Play
   end
 end
 
-Play.new.play
+p = Play.new
+p.send(:player).move('north')

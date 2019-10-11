@@ -22,7 +22,7 @@ module MUD
       end
 
       def name
-        File.absolute_path('../log/screen.log')
+        File.absolute_path('/home/luke/Code/mud/log/screen.log')
       end
 
       def archived_logs
