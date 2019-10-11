@@ -8,15 +8,42 @@ RSpec.describe MUD::Classes::Fighter do
   let(:gold)       { subject.gold }
   let(:inventory)  { subject.inventory }
 
-  describe 'has initial starting stats for' do
-    it { expect(name).to eq('Test Player') }
-    it { expect(max_hp).to eq(25) }
-    it { expect(hp).to eq(25) }
-    it { expect(stamina).to eq(1) }
-    it { expect(level).to eq(1) }
-    it { expect(experience).to eq(0) }
-    it { expect(gold).to eq(200) }
-    it { expect(inventory).to eq([]) }
+  before do
+    allow($stdout).to receive(:write).and_return nil
+  end
+
+  describe 'initial starting stats' do
+    it 'has a name' do
+      expect(name).to eq('Test Player')
+    end
+
+    it 'has 25 max hp' do
+      expect(max_hp).to eq(25)
+    end
+
+    it 'has 25 hp' do
+      expect(hp).to eq(25)
+    end
+
+    it 'has 1 stamina' do
+      expect(stamina).to eq(1)
+    end
+
+    it 'is level 1' do
+      expect(level).to eq(1)
+    end
+
+    it 'has no initial experience' do
+      expect(experience).to eq(0)
+    end
+
+    it 'has 200 gold' do
+      expect(gold).to eq(200)
+    end
+
+    it 'has no initial items' do
+      expect(inventory).to eq([])
+    end
   end
 
   describe '#current_room' do
