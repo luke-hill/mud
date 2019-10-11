@@ -5,7 +5,7 @@ module MUD
         include MUD::Helpers::Data
         
         def look_around
-          MUD::Screen.output('Not implemented yet').red
+          MUD::Screen.output('Not implemented yet'.red)
         end
 
         def north
@@ -15,7 +15,7 @@ module MUD
             MUD::Screen.output('You went North')
           else
             MUD::Logger.info('You cannot go that way')
-            MUD::Screen.output('You cannot go north').red
+            MUD::Screen.output('You cannot go north'.red)
           end
         end
 
@@ -26,7 +26,7 @@ module MUD
             MUD::Screen.output('You went South')
           else
             MUD::Logger.info('You cannot go that way')
-            MUD::Screen.output('You cannot go south').red
+            MUD::Screen.output('You cannot go south'.red)
           end
         end
 
@@ -37,7 +37,7 @@ module MUD
             MUD::Screen.output('You went East')
           else
             MUD::Logger.info('You cannot go that way')
-            MUD::Screen.output('You cannot go east').red
+            MUD::Screen.output('You cannot go east'.red)
           end
         end
 
@@ -48,32 +48,32 @@ module MUD
             MUD::Screen.output('You went West')
           else
             MUD::Logger.info('You cannot go that way')
-            MUD::Screen.output('You cannot go west').red
+            MUD::Screen.output('You cannot go west'.red)
           end
         end
 
         def up
-          MUD::Screen.output('Not in active use').red
+          MUD::Screen.output('Not in active use'.red)
         end
 
         def down
-          MUD::Screen.output('Not in active use').red
+          MUD::Screen.output('Not in active use'.red)
         end
 
         def pickup_item
-          MUD::Screen.output('Not in active use').red
+          MUD::Screen.output('Not in active use'.red)
         end
 
         def drop_item
-          MUD::Screen.output('Not in active use').red
+          MUD::Screen.output('Not in active use'.red)
         end
 
         def pickup_gold
-          MUD::Screen.output('Not in active use').red
+          MUD::Screen.output('Not in active use'.red)
         end
 
         def drop_gold
-          MUD::Screen.output('Not in active use').red
+          MUD::Screen.output('Not in active use'.red)
         end
 
         private

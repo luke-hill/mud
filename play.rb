@@ -5,19 +5,15 @@ class Play
     while alive?
       input = gets.chomp
       case input.split.first.to_s.downcase
-      when 'north', 'n'
-        player.move('north')
-      when 'south', 's'
-        player.move('south')
-      when 'east', 'e'
-        player.move('east')
-      when 'west', 'w'
-        player.move('west')
-      else
-        puts 'Input not yet recognised'
+      when 'north', 'n'; then player.move('north')
+      when 'south', 's'; then player.move('south')
+      when 'east', 'e';  then player.move('east')
+      when 'west', 'w';  then player.move('west')
+      when 'quit', 'q';  then die
+      else puts 'Input not yet recognised'
       end
     end
-    quit
+    die
   end
 
   private
@@ -30,12 +26,11 @@ class Play
     player.hp.positive?
   end
 
-  def quit
-    Screen.output('You died')
+  def die
+    MUD::Screen.output('You died'.red)
     sleep 2
     exit
   end
 end
 
-p = Play.new
-p.send(:player).move('north')
+Play.new.play

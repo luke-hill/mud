@@ -3,6 +3,7 @@ module MUD
     class << self
       def output(msg)
         logger.info(msg)
+        puts msg
         msg
       end
 
