@@ -2,17 +2,14 @@ require 'yaml'
 
 module AdminPanel
   class Base
-    attr_reader :options
+    attr_reader :options, :type
 
-    def self.seed(options)
-      new(options).seed
+    def initialize(type)
+      @type = type
     end
 
-    def initialize(options)
-      @options = options
-    end
-
-    def seed
+    def seed(options)
+      self.options = options
       raise ArgumentError, 'ID not set' unless id
 
       update
@@ -62,6 +59,10 @@ module AdminPanel
 
     def save
       File.write(yml_file_location, yml_file.to_yaml)
+    end
+
+    def yml_file_location
+      yaml_locations[type]
     end
   end
 end

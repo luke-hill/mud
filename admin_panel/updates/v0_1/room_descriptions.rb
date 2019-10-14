@@ -1,6 +1,6 @@
 # V0.1 - 20 Blank Rooms
 
-ap = AdminPanel::Room::Descriptions
+ap = AdminPanel::Room::Base.new(:descriptions)
 
 (1..20).to_a.each do |id_number|
   ap.seed(
