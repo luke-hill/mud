@@ -2,9 +2,10 @@ require 'yaml'
 
 module AdminPanel
   class Base
-    attr_reader :options, :type
+    attr_reader :type
+    attr_accessor :options
 
-    def initialize(type)
+      def initialize(type)
       @type = type
     end
 

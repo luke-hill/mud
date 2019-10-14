@@ -3,7 +3,7 @@
 # Forest Path Directions
 # Newtown Arena Directions
 
-ap = AdminPanel::Room::Base.new(:directions)
+ap = AdminPanel::Base.new(:directions)
 
 # TODO: Add this code into the room presenter logic when we get there!
 ap.seed(id: 12, west: 35, hide_east: true)
