@@ -1,21 +1,18 @@
-# TODO: Interpolate the value at end of +use_message+
-# TODO: Add message for when you're fully healed: "'You feel yourself regain full strength!'"
-# TODO: This all needs seeding!
 hp_bonus:
-  use_message: 'You consume the potion, and feel enhanced almost immediately. Your maximum hp has increased by'
   endurance_potion:
+    use_message: 'You consume the potion, and feel enhanced almost immediately. Your maximum hp has increased by'
     name: 'Endurance Potion'
     description: 'This flask contains a potion with a green hue, it is rumoured to increase the damage you can take before dying'
     value: 1
 healing:
-  use_message: 'You open the vial of the potion, and swill the contents with vigour. The potion heals you by'
   lesser_potion:
+    use_message: 'You open the vial of the potion, and swill the contents with vigour. The potion heals you by'
     name: 'Lesser Healing Potion'
     description: 'A Basic Potion. This vial of liquid "promises" to heal the users injuries a small amount'
     value: 10
 mana:
-  use_message: 'You open the vial of the potion, and swill the contents with vigour. The potion restores your mana by'
   lesser_potion:
+    use_message: 'You open the vial of the potion, and swill the contents with vigour. The potion restores your mana by'
     name: 'Lesser Magic Potion'
     description: 'A Basic Potion. This vial of liquid "promises" to heal the users magic power a small amount'
     value: 5

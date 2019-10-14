@@ -52,13 +52,16 @@ module AdminPanel
 
     def yaml_locations
       {
+        armor: '/home/luke/Code/mud/data/items/armor.yml',
         boss: '/home/luke/Code/mud/data/enemies/boss.yml',
         descriptions: '/home/luke/Code/mud/data/rooms/descriptions.yml',
         directions: '/home/luke/Code/mud/data/rooms/directions.yml',
         enemy: '/home/luke/Code/mud/data/enemies/enemy.yml',
-        armor: '/home/luke/Code/mud/data/items/armor.yml',
+        healing_potion: '/home/luke/Code/mud/data/items/potions/healing.yml',
+        hp_bonus_potion: '/home/luke/Code/mud/data/items/potions/hp_bonus.yml',
         locations: '/home/luke/Code/mud/data/rooms/locations.yml',
-        weapon: '/home/luke/Code/mud/data/items/weapons.yml',
+        mana_potion: '/home/luke/Code/mud/data/items/potions/mana.yml',
+        weapon: '/home/luke/Code/mud/data/items/weapons.yml'
       }
     end
 

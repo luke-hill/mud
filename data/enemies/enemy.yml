@@ -1,10 +1,3 @@
-# TODO: Formulas for enemy/boss talking to you
-# Add a new param into all enemies for phrase1/phrase2 e.t.c.
-# then we just cycle randomly through these phrases with a % chance
-# to say each / no phrase
-# Will be in a v3 release most likely, with the phrases being added as a v2 content
-# patch but not being consumed
-
 goblin:
   name: 'Goblin'
   description: "A Hideous creature, borne out of pure evil! Luckily this one is just an infant, so shouldn't pose much threat"
