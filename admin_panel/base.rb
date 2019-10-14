@@ -10,7 +10,7 @@ module AdminPanel
     end
 
     def seed(options)
-      self.remove_instance_variable(:@id)
+      self.remove_instance_variable(:@id) rescue nil
       self.options = options
       raise ArgumentError, 'ID not set' unless id
 
@@ -38,20 +38,25 @@ module AdminPanel
       puts "Data to be seeded: #{options}"
       puts "Existing Data: #{data}"
 
-      options.each do |key, value|
-        data[key.to_s] = value
-      end
+      # options.each do |key, value|
+      #   data[key.to_s] = value
+      # end
 
-      yml_file[id] = data
-      puts "New UPDATED Data: #{data}"
+      # yml_file[id] = data
+      stringified_keys_hash = options.collect{|k,v| [k.to_s, v]}.to_h
+      new_vals = { id => stringified_keys_hash }
+      new_full_hash = yml_file.merge(new_vals)
+
+      File.write(yml_file_location, new_full_hash.to_yaml)
+      puts "New UPDATED ID: #{id} Data: #{data}"
     end
 
     def data
-      @data ||= yml_file[id] || {}
+      @data = yml_file && yml_file[id] || {}
     end
 
     def yml_file
-      @yml_file ||= begin
+      @yml_file = begin
         YAML.load_file(yml_file_location)
       rescue Errno::ENOENT
         puts "File does not exist @ #{yml_file_location}. Creating new blank YML file."
