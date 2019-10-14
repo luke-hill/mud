@@ -29,7 +29,7 @@ module MUD
       end
 
       def leave
-        game.rooms_visited[room_id] = self
+        player.rooms_visited[room_id] = self
       end
     end
   end

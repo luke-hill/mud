@@ -34,7 +34,6 @@ Layout/EmptyLines:
 Layout/EmptyLinesAroundClassBody:
   Exclude:
     - 'app/shit_to_sort_out/room_top_level.rb'
-    - 'play_game.rb'
 
 # Offense count: 7
 # Configuration parameters: EnforcedStyle.

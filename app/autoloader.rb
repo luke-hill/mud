@@ -1,6 +1,7 @@
 require 'rails'
 require 'action_view/helpers'
 require 'singleton'
+require 'forwardable'
 require 'logger'
 require 'colorize'
 
