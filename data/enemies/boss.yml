@@ -1,4 +1,4 @@
-# TODO: Formulas for boss talking to you
+# TODO: Logic for boss talking to you
 orc:
   name: 'Orc'
   description: 'The Orc stands at over 8 feet tall. His Dagger that he is wielding is dripping with blood from its latest victim'
