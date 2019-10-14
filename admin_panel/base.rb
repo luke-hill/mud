@@ -20,6 +20,7 @@ module AdminPanel
 
     def yaml_locations
       {
+        boss: '/home/luke/Code/mud/data/enemies/boss.yml',
         enemy: '/home/luke/Code/mud/data/enemies/enemy.yml',
         descriptions: '/home/luke/Code/mud/data/rooms/descriptions.yml',
         directions: '/home/luke/Code/mud/data/rooms/directions.yml',
