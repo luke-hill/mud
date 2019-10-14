@@ -10,7 +10,7 @@ module AdminPanel
     end
 
     def seed(options)
-      self.remove_instance_variable(:@id) rescue nil
+      clear_id
       self.options = options
       raise ArgumentError, 'ID not set' unless id
 
@@ -20,14 +20,8 @@ module AdminPanel
 
     private
 
-    def yaml_locations
-      {
-        boss: '/home/luke/Code/mud/data/enemies/boss.yml',
-        enemy: '/home/luke/Code/mud/data/enemies/enemy.yml',
-        descriptions: '/home/luke/Code/mud/data/rooms/descriptions.yml',
-        directions: '/home/luke/Code/mud/data/rooms/directions.yml',
-        locations: '/home/luke/Code/mud/data/rooms/locations.yml'
-      }
+    def clear_id
+      remove_instance_variable(:@id) if instance_variable_defined?(:@id)
     end
 
     def id
@@ -36,19 +30,26 @@ module AdminPanel
 
     def update
       puts "Data to be seeded: #{options}"
-      puts "Existing Data: #{data}"
 
-      # options.each do |key, value|
-      #   data[key.to_s] = value
-      # end
-
-      # yml_file[id] = data
-      stringified_keys_hash = options.collect{|k,v| [k.to_s, v]}.to_h
       new_vals = { id => stringified_keys_hash }
       new_full_hash = yml_file.merge(new_vals)
 
       File.write(yml_file_location, new_full_hash.to_yaml)
       puts "New UPDATED ID: #{id} Data: #{data}"
+    end
+
+    def stringified_keys_hash
+      options.collect { |k, v| [k.to_s, v] }.to_h
+    end
+
+    def yaml_locations
+      {
+        boss: '/home/luke/Code/mud/data/enemies/boss.yml',
+        enemy: '/home/luke/Code/mud/data/enemies/enemy.yml',
+        descriptions: '/home/luke/Code/mud/data/rooms/descriptions.yml',
+        directions: '/home/luke/Code/mud/data/rooms/directions.yml',
+        locations: '/home/luke/Code/mud/data/rooms/locations.yml'
+      }
     end
 
     def data

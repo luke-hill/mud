@@ -17,4 +17,4 @@ def current_seed_versions
   Dir.glob('*').select { |f| File.directory? f }.sort
 end
 
-Dir[File.absolute_path("./v0_1/room_locations.rb")].each { |file| require file }
+seed('v0_1')
