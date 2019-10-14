@@ -5,11 +5,12 @@ module AdminPanel
     attr_reader :type
     attr_accessor :options
 
-      def initialize(type)
+    def initialize(type)
       @type = type
     end
 
     def seed(options)
+      self.remove_instance_variable(:@id)
       self.options = options
       raise ArgumentError, 'ID not set' unless id
 
