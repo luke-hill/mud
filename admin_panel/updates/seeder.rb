@@ -16,3 +16,5 @@ end
 def current_seed_versions
   Dir.glob('*').select { |f| File.directory? f }.sort
 end
+
+seed('v0_1')

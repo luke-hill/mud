@@ -1,6 +1,6 @@
 # V0.1.1 Regular / Advanced Descriptions
 
-ap = AdminPanel::Room::Descriptions
+ap = AdminPanel::Base.new(:descriptions)
 
 ap.seed(id: 1).update(
   description: 'The home of many of the men of the village of Newtown. The Newtown Pub offers its patrons a chance to sitdown, relax and rest your weary bones.',
@@ -48,7 +48,7 @@ ap.seed(id: 12).update(
 
 ap.seed(id: 13).update(
   description: "The Barracks are dimly lit and the room you're in is very cold.",
-  advanced_description: "As you look around, you see the light casting a shadow down the tunnel from the path you've just descended. The walls have various weapons hung up, all are broken beyond use.",
+  advanced_description: "As you look around, you see the light casting a shadow down the tunnel from the path you've just entered from. The walls have various weapons hung up, but all are broken beyond use.",
   type: 'Dungeon',
   location: 'barracks'
 )
@@ -56,7 +56,7 @@ ap.seed(id: 13).update(
 (14..18).to_a.each do |id_number|
   ap.seed(id: id_number).update(
     description: "The Barracks are dimly lit and the room you're in is very cold.",
-    advanced_description: "Looking around, you can tell that no traveller has ventured into these abandoned Barracks for a long time. There are some stains on the walls, but they're too dark to be blood, it almost looks inhuman.",
+    advanced_description: "Looking around, you can tell that no traveller has ventured into these abandoned Barracks for a long time. There are some stains on the walls, but they're too dark to be blood, it almost looks ... inhuman.",
     type: 'Dungeon',
     location: 'barracks',
     ktp: true
@@ -65,7 +65,7 @@ end
 
 ap.seed(id: 19).update(
   description: "The Barracks are dimly lit and the room you're in is very cold... But you can feel some heat radiating from the door.",
-  advanced_description: 'You notice that the style of the area is all the same, except for the fact there is a door to the east, what looks like some sort of Office. The door is locked and has not been opened in some time, judging by the rust build-up.',
+  advanced_description: 'You notice that the style of the area is all the same, except for the fact there is a door to the east, what looks like some sort of Office. The door is locked and has not been opened in some time, judging by the rust that has built up.',
   type: 'Dungeon',
   location: 'barracks',
   ktp: true
@@ -73,7 +73,7 @@ ap.seed(id: 19).update(
 
 ap.seed(id: 20).update(
   description: 'The room is covered in blood, stained from the battles of past. There is a worn stool in the corner, where it looks as if the Barracks Master has been sitting.',
-  advanced_description: "You've heard the stories since you were a child about some sort of Monster guarding the treasure, and now you know it's true. In the corner is a rudimentary smithing forge that looks ancient, with some leftover bits almost beyond salvage.",
+  advanced_description: "You've heard the stories since you were a child about some sort of Monster guarding the treasure, and now you know it's true. In the corner is a rudimentary smithing forge that looks ancient, with some leftover bits that are beyond salvage.",
   type: 'Dungeon',
   location: 'barracks',
   ktp: true
