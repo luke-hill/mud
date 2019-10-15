@@ -19,7 +19,7 @@ module MUD
       end
 
       def name
-        'log/mud.log'
+        File.absolute_path('/home/luke/Code/mud/log/mud.log')
       end
 
       def archived_logs

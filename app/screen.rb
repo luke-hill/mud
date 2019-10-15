@@ -2,7 +2,9 @@ module MUD
   class Screen
     class << self
       def output(msg)
+        MUD::Logger.debug("SCREEN - #{msg}")
         logger.info(msg)
+        puts msg
         msg
       end
 
@@ -22,7 +24,7 @@ module MUD
       end
 
       def name
-        'log/screen.log'
+        File.absolute_path('/home/luke/Code/mud/log/screen.log')
       end
 
       def archived_logs
