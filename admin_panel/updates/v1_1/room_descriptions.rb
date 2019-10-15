@@ -47,7 +47,7 @@ ap.seed(
 
 ap.seed(
   description: "You see 3 separate small patches of ground, each monitored closely by a burly guard. He reminds you to read the sign before continuing if you're not sure.",
-  advanced_description: 'You notice a sign that says North: Goblin Training Arena, West: Wolf Training Arena, South: Under Construction.',
+  advanced_description: 'You notice a sign that says North: Goblin Training Arena, West: Brawler Training Arena, South: Under Construction.',
   location: 'newtown_training_area'
 )
 
@@ -68,12 +68,8 @@ end
 
 ap.seed(id: 20, enemy: 'orc')
 
-# TODO: This enemy isn't seeded. Needs adding to v1.1 enemy seeds (Also need to remember data)
 [35, 36, 40, 42, 50, 52, 53, 54, 58].each do |id_number|
   ap.seed(id: id_number, enemy: 'bandit')
 end
 
-# TODO: This enemy isn't seeded. Needs adding to v1.1 enemy seeds (Also need to remember data)
-# This had bloody claws and wolf hide and was really tough (but still only 1 stam
-# accuracy was poor but hp and dmg was high - idea was you had to kill him to get to sovereign city
 ap.seed(id: 44, enemy: 'wolf')
