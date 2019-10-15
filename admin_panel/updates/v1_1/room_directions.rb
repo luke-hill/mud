@@ -7,7 +7,7 @@ ap = AdminPanel::Base.new(:directions)
 
 # TODO: Add this code into the room presenter logic when we get there!
 ap.seed(id: 12, west: 35, hide_east: true)
-ap.seed(id: 19, east_key: 'barracks_key')
+ap.seed(id: 19, east_key_id: 'barracks_key')
 
 ap.seed(id: 35, east: 12, west: 36)
 ap.seed(id: 36, east: 35, west: 37)

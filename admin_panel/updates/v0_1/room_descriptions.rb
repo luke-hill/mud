@@ -8,7 +8,7 @@ ap = AdminPanel::Base.new(:descriptions)
     description: 'DescriptionBLAHBLAHBLAHBLAH',
     advanced_description: 'Advanced DescriptionBLAHBLAHBLAHBLAH',
     type: 'town',
-    location: 'newtown_town_square',
-    enemy: 'no_enemy'
+    location_id: 'newtown_town_square',
+    enemy_id: 'no_enemy'
   )
 end
