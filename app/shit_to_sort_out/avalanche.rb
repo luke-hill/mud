@@ -1,18 +1,11 @@
 module Player
   class Avalanche
-    attr_accessor :weapon, :armor, :hp, :max_hp, :inventory, :accuracy, :gold
-    attr_accessor :room, :rooms_visited
+    attr_accessor :weapon, :armor, :accuracy
 
     def initialize
       @weapon = Items::Weapon::Knife.new
       @armor = Items::Armor::Vest.new
-      @hp = 28
-      @max_hp = hp
-      @inventory = [Items::Potion::LesserPotion.new, Items::Potion::LesserPotion.new]
       @accuracy = 0.85
-      @gold = 200
-      @room = World::Room.new(1)
-      @rooms_visited = [room]
     end
 
     def room_number
@@ -32,10 +25,6 @@ module Player
       else
         puts 'You do not have enough gold for that.'
       end
-    end
-
-    def room_numbers_visited
-      rooms_visited.map(&:number)
     end
 
     def enemy_present?
@@ -117,14 +106,6 @@ module Player
       end
     end
 
-    def north
-      puts cannot_move_in_direction
-    end
-
-    def south
-      puts cannot_move_in_direction
-    end
-
     def east
       return puts cannot_move_in_direction if room_number == 9
 
@@ -161,10 +142,6 @@ module Player
 
     def key?
       !!barracks_key
-    end
-
-    def cannot_move_in_direction
-      "You can't go in that direction. There is a wall in the way!"
     end
 
     def missing_key
