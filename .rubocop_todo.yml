@@ -29,7 +29,6 @@ Layout/EndOfLine:
     - 'app/shit_to_sort_out/avalanche.rb'
     - 'app/shit_to_sort_out/barracks_key.rb'
     - 'app/shit_to_sort_out/enemy_drops.rb'
-    - 'app/shit_to_sort_out/game_other.rb'
     - 'app/shit_to_sort_out/gold.rb'
     - 'app/shit_to_sort_out/room.rb'
     - 'app/shit_to_sort_out/sylvanian_ingot.rb'

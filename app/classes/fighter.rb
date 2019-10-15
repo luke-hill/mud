@@ -27,19 +27,25 @@ module MUD
         MUD::Movement::Move.send(direction)
       end
 
-      def equip(weapon_id)
-        MUD::Logger.debug("Looking for #{weapon_id}.")
-        new_weapon_id = find(weapon_id)
-        return MUD::Screen.output('You do not have this item to equip.') unless new_weapon_id
+      def equip(item_id)
+        MUD::Logger.debug("Looking for #{item_id}.")
+        new_item_id = find(item_id, types: %w[weapon armor])
+        return MUD::Screen.output('You do not have this item to equip.') unless new_item_id
 
         current_weapon_id = equipment[:weapon]
         inventory << current_weapon_id
-        equipment[:weapon] = new_weapon_id
-        remove_from_inventory(new_weapon_id)
+        equipment[:weapon] = new_item_id
+        remove_from_inventory(new_item_id)
       end
 
-      def find(item_id)
-        inventory.detect { |item| item.id == item_id }
+      def find(item_id, types = nil)
+        if types
+          inventory.collect { |item| types.include?(item.type) }
+        else
+          inventory
+        end.detect do |item|
+          item.id == item_id
+        end
       end
 
       def remove_from_inventory(item_id)
