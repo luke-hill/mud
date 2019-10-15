@@ -40,3 +40,4 @@ ID-Name-Type
 18) Add in logic for potion information when using them
   - Interpolate value defined in `use_message`
   - Add message if you're fully healed: `"'You feel yourself regain full strength!'"`
+19) Add quest to be able to buy draz-ghun fleece from newtown
