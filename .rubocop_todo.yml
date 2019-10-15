@@ -21,20 +21,6 @@ Layout/EmptyLineAfterGuardClause:
     - 'app/shit_to_sort_out/avalanche.rb'
     - 'app/shit_to_sort_out/room.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Layout/EmptyLines:
-  Exclude:
-    - 'app/shit_to_sort_out/room_top_level.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: empty_lines, empty_lines_except_namespace, empty_lines_special, no_empty_lines, beginning_only, ending_only
-Layout/EmptyLinesAroundClassBody:
-  Exclude:
-    - 'app/shit_to_sort_out/room_top_level.rb'
-
 # Offense count: 7
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: native, lf, crlf
@@ -110,11 +96,6 @@ Lint/AmbiguousBlockAssociation:
 Lint/UnderscorePrefixedVariableName:
   Exclude:
     - 'spec/models/enemy_spec.rb'
-
-# Offense count: 3
-Lint/UselessAssignment:
-  Exclude:
-    - 'app/shit_to_sort_out/active_model_faker.rb'
 
 # Offense count: 5
 Metrics/AbcSize:

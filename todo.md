@@ -41,3 +41,5 @@ ID-Name-Type
   - Interpolate value defined in `use_message`
   - Add message if you're fully healed: `"'You feel yourself regain full strength!'"`
 19) Add quest to be able to buy draz-ghun fleece from newtown
+20) v0.1 of adventures of avaLancHe ended when you killed the Orc. Lets try re-achieve this (We never did)
+21) Goblins dropped basic healing potions sometimes, this makes the above easier!
