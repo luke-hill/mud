@@ -37,7 +37,8 @@ ap.seed(
 ap.seed(
   id: 'brawler',
   name: 'Brawler',
-  description: 'This Brawler is a Test',
+  description: "This Brawler is one of the many test 'subjects' that have come to the arena to earn their weekly ale money.
+He staggers at you with a half rusted sword, and gargles something in-between swigs from his ale bottle.",
   weapon: 'rusty_sword',
   armor: 'vest',
   lower_hp_limit: 7,

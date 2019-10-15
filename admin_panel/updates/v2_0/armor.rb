@@ -12,6 +12,6 @@ ap.seed(
 ap.seed(
   id: 'draz_ghuns_fleece',
   name: "Draz'Ghun's Fleece",
-  description: 'This fleece, straight out of his shop in LevelOne, is said to be the perfect accompaniment to a travelling warrior',
+  description: 'This fleece, straight out of his shop in Newtown, is said to be the perfect accompaniment to a travelling warrior',
   defense: 5
 )

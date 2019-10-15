@@ -7,7 +7,7 @@ ap.seed(
   name: 'Bandit',
   description: 'The Bandit is a typical ruffian. Skulking in the shadows. He preys on targets roaming the Forest Path.',
   weapon: 'ivory_dagger',
-  armor: 'bandit_leathers', # todo: bandit leathers to create
+  armor: 'bandit_leathers',
   lower_hp_limit: 28,
   upper_hp_limit: 40,
   accuracy: 0.85,
@@ -23,8 +23,8 @@ ap.seed(
   name: 'Wolf',
   description: "This Wolf is unlike the normal Rabid Wolves you see floating around. Its fangs are dripping with blood,
 and it eyes you up... Like you're its next meal!",
-  weapon: 'sharp_fangs', # todo: sharp fangs to create - high damage
-  armor: 'wolf_hide', # todo: wolf hide to create
+  weapon: 'sharp_fangs',
+  armor: 'wolf_hide',
   lower_hp_limit: 85,
   upper_hp_limit: 114,
   accuracy: 0.6,
