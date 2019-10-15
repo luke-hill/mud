@@ -1,8 +1,8 @@
 module MUD
   module Classes
     class Fighter
-      attr_reader :attributes
-      private :attributes
+      attr_reader :attributes, :equipment
+      private :attributes, :equipment
 
       attr_accessor :current_room, :rooms_visited
 
@@ -29,18 +29,26 @@ module MUD
 
       def equip(weapon_id)
         MUD::Logger.debug("Looking for #{weapon_id}.")
+        new_weapon_id = find(weapon_id)
+        return MUD::Screen.output('You do not have this item to equip.') unless new_weapon_id
 
-        weapon = find(weapon_id)
-
-        return MUD::Screen.output('You do not have this item to equip.') unless weapon
-        
-        # if yes, then take the currently equipped weapon and put it in my inventory
-        # then take my inventory weapon and equip it.
-        # then delete the weapon from my inventory
+        current_weapon_id = equipment[:weapon]
+        inventory << current_weapon_id
+        equipment[:weapon] = new_weapon_id
+        remove_from_inventory(new_weapon_id)
       end
 
       def find(item_id)
         inventory.detect { |item| item.id == item_id }
+      end
+
+      def remove_from_inventory(item_id)
+        MUD::Logger.debug("Looking for #{item_id}.")
+        item = find(item_id)
+        return MUD::Screen.output('You do not have this item to remove.') unless item
+
+        removed_item = inventory.delete_at(inventory.index(item))
+        MUD::Screen.output("Removed #{removed_item}")
       end
 
       private
