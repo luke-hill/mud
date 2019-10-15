@@ -27,6 +27,22 @@ module MUD
         MUD::Movement::Move.send(direction)
       end
 
+      def equip(weapon_id)
+        MUD::Logger.debug("Looking for #{weapon_id}.")
+
+        weapon = find(weapon_id)
+
+        return MUD::Screen.output('You do not have this item to equip.') unless weapon
+        
+        # if yes, then take the currently equipped weapon and put it in my inventory
+        # then take my inventory weapon and equip it.
+        # then delete the weapon from my inventory
+      end
+
+      def find(item_id)
+        inventory.detect { |item| item.id == item_id }
+      end
+
       private
 
       def starting_attributes
