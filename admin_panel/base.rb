@@ -1,4 +1,5 @@
 require 'yaml'
+require 'core_ext/all'
 
 module AdminPanel
   class Base
@@ -39,11 +40,7 @@ module AdminPanel
     end
 
     def new_values
-      { id => stringified_hash }
-    end
-
-    def stringified_hash
-      options.collect { |k, v| [k.to_s, v] }.to_h
+      { id => options.stringify_keys }
     end
 
     def yml_file_location
