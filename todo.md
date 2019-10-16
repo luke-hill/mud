@@ -48,3 +48,6 @@ ID-Name-Type
 24) Add movement presenter logic which hides certain directions
 25) Open Question, do we need an attr_writer for gold for enemies? Do we ever need to reduce their gold? (Maybe if we create a thief class?)
 26) Quest idea that `They are known for their metallurgy` be applied to the Sylvanian Ingots?
+27) Add 4 stats, Str, Agility, Constitution, (Alias for Wisdom)
+27) Add strength modifier (Once strength stat has been added), to attack
+28) Add strength modifier (Once strength stat has been added), to defence

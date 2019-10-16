@@ -68,44 +68,6 @@ module Player
       inventory.delete(barracks_key)
     end
 
-    def fight
-      return puts 'There is no enemy present' if enemy.nil?
-      @dmg_dealt = damage_dealt
-      @dmg_taken = damage_taken
-      enemy_hp_after_attacking
-      if enemy_killed?
-        room.enemy_death_message
-      else
-        new_hp_after_taking_hit
-      end
-    end
-
-    def new_hp_after_taking_hit
-      return puts "The #{enemy_name} swung at you with his #{enemy_weapon_name}, but missed" if enemy_missed? || @dmg_taken == 0
-
-      puts "The #{enemy_name} hit you for #{@dmg_taken} damage"
-      update_own_hp
-
-      if dead?
-        raise StandardError, 'You died!'
-      else
-        puts "DEBUG --> YOUR HP:#{hp}hp."
-      end
-    end
-
-    def enemy_hp_after_attacking
-      return puts "You tried to attack the #{enemy_name} with your #{weapon_name}... but missed" if you_missed? || @dmg_dealt == 0
-
-      puts "You hit the #{enemy_name} with your #{weapon_name} for #{@dmg_dealt} damage"
-      update_enemy_hp
-
-      if enemy_killed?
-        puts 'Enemy killed'
-      else
-        puts "DEBUG --> ENEMY HP:#{enemy_hp}hp."
-      end
-    end
-
     def east
       return puts cannot_move_in_direction if room_number == 9
 
@@ -151,84 +113,6 @@ module Player
 
     def cannot_leave_whilst_enemy_alive
       "You must kill the #{enemy_name} before leaving the room!"
-    end
-
-    def enemy_name
-      enemy.name
-    end
-
-    def enemy_weapon_name
-      enemy.weapon.name
-    end
-
-    def enemy_killed?
-      enemy_hp <= 0
-    end
-
-    def damage_dealt
-      dmg = attack_value - enemy_defence
-      if dmg < 0
-        0
-      else
-        dmg
-      end
-    end
-
-    def damage_taken
-      dmg = enemy_attack - defend_value
-      if dmg < 0
-        0
-      else
-        dmg
-      end
-    end
-
-    def update_own_hp
-      self.hp -= @dmg_taken
-    end
-
-    def dead?
-      hp <= 0
-    end
-
-    def you_missed?
-      rand > accuracy
-    end
-
-    def enemy_missed?
-      rand > enemy.accuracy
-    end
-
-    def update_enemy_hp
-      enemy.hp -= @dmg_dealt
-    end
-
-    def enemy_hp
-      enemy.hp
-    end
-
-    def attack_value
-      rand((weapon.atk_min)..(weapon.atk_max))
-    end
-
-    def enemy_defence
-      enemy.defend_value
-    end
-
-    def enemy_attack
-      enemy.attack_value
-    end
-
-    def defend_value
-      rand(0..(armor.def))
-    end
-    
-    def enemy
-      room.enemy
-    end
-
-    def weapon_name
-      weapon.name
     end
   end
 end
