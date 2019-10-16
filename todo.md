@@ -45,3 +45,4 @@ ID-Name-Type
 21) Goblins dropped basic healing potions sometimes, this makes the above easier!
 22) Add movement logic which requires a key to go in a certain direction (And will use the key up during this)
 23) Add logic for enemies to be ktp
+24) Add movement presenter logic which hides certain directions
