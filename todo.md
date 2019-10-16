@@ -46,3 +46,4 @@ ID-Name-Type
 22) Add movement logic which requires a key to go in a certain direction (And will use the key up during this)
 23) Add logic for enemies to be ktp
 24) Add movement presenter logic which hides certain directions
+25) Open Question, do we need an attr_writer for gold for enemies? Do we ever need to reduce their gold? (Maybe if we create a thief class?)

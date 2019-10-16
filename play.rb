@@ -9,6 +9,7 @@ class Play
       when 'south', 's'; then player.move('south')
       when 'east', 'e';  then player.move('east')
       when 'west', 'w';  then player.move('west')
+      when '';           then output_diagnostic_info
       when 'quit', 'q';  then die
       else puts 'Input not yet recognised'
       end
@@ -18,12 +19,19 @@ class Play
 
   private
 
+  def alive?
+    player.hp.positive?
+  end
+
   def player
     @player ||= MUD::Game.setup
   end
 
-  def alive?
-    player.hp.positive?
+  def output_diagnostic_info
+    MUD::Logger.debug('Diagnostic info is...')
+    MUD::Screen.output("Description is: #{player.current_room.description.blue}")
+    MUD::Screen.output("Advanced Description is: #{player.current_room.description.blue}")
+    MUD::Screen.output(player.connected_rooms)
   end
 
   def die

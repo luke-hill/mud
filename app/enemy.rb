@@ -31,7 +31,6 @@ module MUD
       @gold ||= rand(lower_gold_limit..upper_gold_limit)
     end
 
-    # TODO: Not sure we need to write the amount of gold for an enemy
     attr_writer :gold
 
     def dead?

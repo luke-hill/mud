@@ -17,16 +17,6 @@ module MUD
         create_player_object
       end
 
-      # TODO: This should be a player method
-      def connected_rooms
-        player.connected_rooms
-      end
-
-      # TODO: This should be a player method
-      def move(direction)
-        player.move(direction)
-      end
-
       def reset!
         self.instance_variables.each { |var| remove_instance_variable(var) }
         initialize
@@ -42,7 +32,7 @@ module MUD
         sleep 0.5
         MUD::Screen.output "Hello and Welcome to MUD - Working title I know!!"
         sleep 0.75
-        MUD::Screen.output "Current Version #{game_version}"
+        MUD::Screen.output "Current Version #{VERSION}"
         sleep 0.75
         MUD::Screen.output 'For now you are a Fighter, with 25HP.'.blink
         sleep 0.75
@@ -59,11 +49,6 @@ module MUD
 
       def create_player_object
         @player ||= Classes::Fighter.new
-      end
-
-      # TODO: Move this to player object also
-      def set_rooms_visited_to_blank
-        @rooms_visited ||= {}
       end
     end
   end
