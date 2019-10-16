@@ -1,6 +1,6 @@
 # V1.0 Minor Content Update
 
-ap = AdminPanel::Base.new(:descriptions)
+ap = AdminPanel::Base.new(:description)
 
 ap.seed(
   id: 5,

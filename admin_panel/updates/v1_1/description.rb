@@ -3,7 +3,7 @@
 # Newtown Arena/Pub - Descriptions
 # Barracks - Basic / Boss Enemies
 
-ap = AdminPanel::Base.new(:descriptions)
+ap = AdminPanel::Base.new(:description)
 
 (35..49).each do |id_number|
   ap.seed(
