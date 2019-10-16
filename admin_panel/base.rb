@@ -59,6 +59,7 @@ module AdminPanel
         enemy: '/home/luke/Code/mud/data/enemies/enemy.yml',
         healing_potion: '/home/luke/Code/mud/data/items/potions/healing.yml',
         hp_bonus_potion: '/home/luke/Code/mud/data/items/potions/hp_bonus.yml',
+        key: '/home/luke/Code/mud/data/items/key.yml',
         location: '/home/luke/Code/mud/data/rooms/location.yml',
         mana_potion: '/home/luke/Code/mud/data/items/potions/mana.yml',
         weapon: '/home/luke/Code/mud/data/items/weapon.yml'
