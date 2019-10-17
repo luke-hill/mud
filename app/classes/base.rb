@@ -27,6 +27,10 @@ module MUD
         current_room.connected_rooms
       end
 
+      def prevent_negative_hp
+        self.hp = 0 if hp.negative?
+      end
+
       private
 
       def starting_equipment

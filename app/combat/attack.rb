@@ -14,8 +14,7 @@ module MUD
       end
 
       def fight
-        # TODO: This entire method needs reviewing, copied from previous logic
-        return puts 'There is no enemy present' if enemy.nil?
+        return MUD::Screen.output('There is no enemy present'.red) if enemy.nil?
 
         @dmg_dealt = damage_dealt
         @dmg_taken = damage_taken
@@ -50,7 +49,7 @@ module MUD
       end
 
       def hero_attack_value
-        rand((weapon.atk_min)..(weapon.atk_max))
+        rand((hero.weapon.atk_min)..(hero.weapon.atk_max))
       end
 
       def enemy_defence_value
@@ -62,12 +61,12 @@ module MUD
       end
 
       def hero_defence_value
-        rand(0..(armor.def))
+        rand(0..(hero.armor.def))
       end
 
       def enemy_hp_after_attacking
-        if you_missed? || @dmg_dealt.zero?
-          return MUD::Screen.output("You tried to attack the #{enemy_name} with your #{weapon_name}... but missed.")
+        if hero_missed? || @dmg_dealt.zero?
+          return MUD::Screen.output("You tried to attack the #{enemy_name} with your #{hero_weapon_name}... but missed.")
         end
 
         MUD::Screen.output("You hit the #{enemy_name} with your #{weapon_name} for #{@dmg_dealt} damage.")
@@ -75,6 +74,7 @@ module MUD
 
         if enemy_killed?
           MUD::Screen.output('Enemy killed')
+          @enemy = nil
         else
           MUD::Logger.debug("DEBUG --> ENEMY HP:#{enemy_hp}hp.")
         end
@@ -84,20 +84,21 @@ module MUD
         enemy.name
       end
 
-      def weapon_name
-        weapon.name
+      def hero_weapon_name
+        hero.weapon.name
       end
 
-      def you_missed?
-        rand > accuracy
+      def hero_missed?
+        rand > hero.accuracy
       end
 
       def update_enemy_hp
         enemy.hp -= @dmg_dealt
+        enemy.prevent_negative_hp
       end
 
       def enemy_killed?
-        enemy_hp <= 0
+        enemy.dead?
       end
 
       def enemy_hp
@@ -110,7 +111,7 @@ module MUD
         end
 
         MUD::Screen.output("The #{enemy_name} hit you for #{@dmg_taken} damage.")
-        update_own_hp
+        update_hero_hp
 
         if dead?
           raise StandardError, 'You died!'
@@ -127,12 +128,13 @@ module MUD
         enemy.weapon.name
       end
 
-      def update_own_hp
-        self.hp -= @dmg_taken
+      def update_hero_hp
+        hero.hp -= @dmg_taken
+        hero.prevent_negative_hp
       end
 
       def dead?
-        hp <= 0
+        hero.hp <= 0
       end
     end
   end
