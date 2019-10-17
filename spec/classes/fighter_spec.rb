@@ -48,7 +48,7 @@ RSpec.describe MUD::Classes::Fighter do
 
   describe '#current_room' do
     it 'returns what room you are in' do
-      expect(subject.current_room).to be_a MUD::Rooms::Room
+      expect(subject.current_room).to be_a MUD::Room
     end
 
     it 'is room 1 when starting a game' do

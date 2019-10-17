@@ -9,6 +9,7 @@ require_relative 'helpers/all'
 
 require_relative 'enemy'
 require_relative 'logger'
+require_relative 'room'
 require_relative 'screen'
 require_relative 'version'
 

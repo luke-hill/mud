@@ -87,7 +87,7 @@ module MUD
             if room_already_visited?(room_id)
               fetch_room_from_cache(room_id)
             else
-              MUD::Rooms::Room.new(room_id)
+              MUD::Room.new(room_id)
             end
 
           player.current_room.leave
