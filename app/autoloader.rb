@@ -1,4 +1,3 @@
-require 'rails'
 require 'action_view/helpers'
 require 'singleton'
 require 'forwardable'

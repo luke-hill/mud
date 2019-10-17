@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe Enemy, type: :classes do
   let(:enemies) { create(:enemies) }
   let(:dead_enemy) { create(:enemies, :dead) }
