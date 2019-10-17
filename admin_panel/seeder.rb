@@ -1,4 +1,4 @@
-require_relative '../base'
+require_relative 'base'
 
 def seed(version)
   Dir[File.absolute_path("./admin_panel/updates/#{version}/*.rb")].each { |file| require file }
