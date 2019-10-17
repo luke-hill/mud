@@ -30,7 +30,7 @@ class Play
   def output_diagnostic_info
     MUD::Logger.debug('Diagnostic info is...')
     MUD::Screen.output("Description is: #{player.current_room.description.blue}")
-    MUD::Screen.output("Advanced Description is: #{player.current_room.description.blue}")
+    MUD::Screen.output("Advanced Description is: #{player.current_room.advanced_description.blue}")
     MUD::Screen.output(player.connected_rooms)
   end
 
