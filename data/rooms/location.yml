@@ -1,0 +1,35 @@
+---
+newtown_town_square:
+  town: Newtown
+  area: Town Square
+newtown_travelling_merchants_shop:
+  town: Newtown
+  area: Travelling Merchants Shop
+newtown_training_area:
+  town: Newtown
+  area: Training Area
+newtown_basic_training_guild:
+  town: Newtown
+  area: Basic Training Guild
+newtown_gatehouse:
+  town: Newtown
+  area: Gatehouse
+newtown_outskirts:
+  town: Newtown
+  area: Outskirts
+newtown_residential_district:
+  town: Newtown
+  area: Residential District
+newtown_residential_district_crossroads:
+  town: Newtown
+  area: Residential District Crossroads
+newtown_house:
+  town: Newtown
+  area: House
+newtown_bank:
+  town: Newtown
+  area: Bank
+forest_path:
+  area: Forest Path
+barracks:
+  area: Barracks
