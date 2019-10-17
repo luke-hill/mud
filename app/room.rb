@@ -3,11 +3,12 @@ module MUD
     include Helpers::Data
 
     attr_reader :room_id
-    attr_accessor :times_visited
+    attr_accessor :times_visited, :floor
 
     def initialize(room_id)
       @room_id = room_id
       @times_visited = 0
+      @floor = []
     end
 
     def connected_rooms
