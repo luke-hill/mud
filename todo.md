@@ -51,3 +51,4 @@ ID-Name-Type
 27) Add 4 stats, Str, Agility, Constitution, (Alias for Wisdom)
 27) Add strength modifier (Once strength stat has been added), to attack
 28) Add strength modifier (Once strength stat has been added), to defence
+29) get the concept of a top levle directory where the mud folder is installed in ENV
