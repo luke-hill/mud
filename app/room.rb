@@ -24,7 +24,7 @@ module MUD
 
     def visit
       MUD::Logger.debug("Visiting Room-ID: #{room_id}")
-      MUD::Screen.output(room.description.yellow)
+      MUD::Screen.output(description.yellow)
       self.times_visited += 1
     end
 
