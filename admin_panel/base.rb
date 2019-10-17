@@ -35,14 +35,6 @@ module AdminPanel
       puts "New UPDATED ID: #{id} Data: #{data}"
     end
 
-    def full_values
-      yml_file.merge(new_values)
-    end
-
-    def new_values
-      { id => options.stringify_keys }
-    end
-
     def yml_file_location
       yaml_locations[type]
     end
@@ -63,18 +55,24 @@ module AdminPanel
       }
     end
 
-    def data
-      @data = yml_file && yml_file[id] || {}
+    def full_values
+      yml_file.merge(new_values)
     end
 
     def yml_file
-      @yml_file = begin
-        YAML.load_file(yml_file_location)
-      rescue Errno::ENOENT
-        puts "File does not exist @ #{yml_file_location}. Creating new blank YML file."
-        File.open(yml_file_location, 'w+') {|f| f.write({}) }
-        YAML.load_file(yml_file_location)
-      end
+      YAML.load_file(yml_file_location)
+    rescue Errno::ENOENT
+      puts "File does not exist @ #{yml_file_location}. Creating new blank YML file."
+      File.open(yml_file_location, 'w+') {|f| f.write({}) }
+      YAML.load_file(yml_file_location)
+    end
+
+    def new_values
+      { id => options.stringify_keys }
+    end
+
+    def data
+      yml_file[id]
     end
 
     def save
