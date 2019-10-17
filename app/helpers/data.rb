@@ -2,22 +2,26 @@ module MUD
   module Helpers
     module Data
       def descriptions_yml
-        YAML.load_file('/home/luke/Code/mud/data/rooms/descriptions.yml')
+        load_yml('/home/luke/Code/mud/data/rooms/description.yml')
       end
 
       def directions_yml
-        YAML.load_file('/home/luke/Code/mud/data/rooms/directions.yml')
+        load_yml('/home/luke/Code/mud/data/rooms/direction.yml')
       end
 
       def enemy_yml
-        YAML.load_file('/home/luke/Code/mud/data/enemies/enemy.yml')
+        load_yml('/home/luke/Code/mud/data/enemies/enemy.yml')
       end
 
       def boss_yml
-        YAML.load_file('/home/luke/Code/mud/data/enemies/boss.yml')
+        load_yml('/home/luke/Code/mud/data/enemies/boss.yml')
       end
 
       private
+
+      def load_yml(filename)
+        YAML.load_file(filename)
+      end
 
       def player
         MUD::Game.player

@@ -9,8 +9,7 @@ module MUD
 
       attribute_names.each do |name|
         define_method(name) do
-          MUD::Logger.debug("Call made to view attributes: #{attributes}")
-          MUD::Screen.output("#{name}: #{attributes[name]}")
+          MUD::Logger.debug("Call made to read attribute: #{name}")
           attributes[name]
         end
       end

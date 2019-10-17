@@ -3,11 +3,12 @@ module MUD
     include Helpers::Data
 
     attr_reader :room_id
-    attr_accessor :times_visited
+    attr_accessor :times_visited, :floor
 
     def initialize(room_id)
       @room_id = room_id
       @times_visited = 0
+      @floor = []
     end
 
     def connected_rooms
@@ -23,8 +24,8 @@ module MUD
     end
 
     def visit
-      MUD::Logger.debug("Visiting Room-ID: #{room_id}")
-      MUD::Screen.output(room.description.yellow)
+      MUD::Logger.debug("Visiting Room-ID: #{room_id} Description: #{description}")
+      MUD::Screen.output(description.blue)
       self.times_visited += 1
     end
 

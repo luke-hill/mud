@@ -1,15 +1,9 @@
 module Player
   class Avalanche
-    attr_accessor :weapon, :armor, :accuracy
+    attr_accessor :accuracy
 
     def initialize
-      @weapon = Items::Weapon::Knife.new
-      @armor = Items::Armor::Vest.new
       @accuracy = 0.85
-    end
-
-    def room_number
-      room.number
     end
 
     def buy(item)
@@ -69,46 +63,21 @@ module Player
     end
 
     def east
-      return puts cannot_move_in_direction if room_number == 9
-
-      if room_number == 8
-        if !key?
-          return puts missing_key
-        else
-          use_key
-        end
+      if !key?
+        return puts missing_key
+      else
+        use_key
       end
 
       if enemy_present?
         puts cannot_leave_whilst_enemy_alive
-      else
-        @room = rooms_visited[room_number] ||= World::Room.new(room_number + 1)
-        puts room.desc
       end
     end
 
     def west
-      return cannot_move_in_direction if room.number == 1
-
       if enemy_present?
         puts cannot_leave_whilst_enemy_alive
-      else
-        @room = rooms_visited[room_number - 2] ||= World::Room.new(room_number - 1)
-        puts room.desc
       end
-    end
-
-    def barracks_key
-      inventory.detect { |item| item.name == 'Barracks Key' }
-    end
-
-    def key?
-      !!barracks_key
-    end
-
-    def missing_key
-      'You are missing the key to the door that is blocking your passage. There are faint markings underneath the keyhole\
-       that closely resemble the insignia of the Barracks'
     end
 
     def cannot_leave_whilst_enemy_alive

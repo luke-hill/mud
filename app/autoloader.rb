@@ -1,5 +1,5 @@
-require 'rails'
-require 'action_view/helpers'
+require 'action_view'
+require 'yaml'
 require 'singleton'
 require 'forwardable'
 require 'logger'

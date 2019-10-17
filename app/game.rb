@@ -1,5 +1,4 @@
 # First calls must be puts as the +MUD::Screen.output+ class method doesn't exist yet!
-
 puts 'Beginning autoloading'
 require_relative 'autoloader'
 puts 'Autoloading complete'
@@ -11,9 +10,8 @@ module MUD
       attr_accessor :rooms_visited
 
       def setup
-        Logger.info('Game started'.red)
+        Screen.output('Game started'.red)
         display_welcome_message
-        set_rooms_visited_to_blank
         create_player_object
       end
 
@@ -38,7 +36,8 @@ module MUD
         sleep 0.75
         MUD::Screen.output "Whilst you're here, let me give you the down-low. You're about to begin your quest"
         sleep 0.75
-        MUD::Screen.output 'You are in Newtown, and as avaLancHe ... our intrepid explorer, you have spawned in our village to kill Several Monsters and then the boss - The Orc!'
+        MUD::Screen.output 'You are in Newtown, and as avaLancHe ... our intrepid explorer, you have spawned in our
+village to kill Several Monsters and then the boss - The Orc!'
         sleep 0.5
         MUD::Screen.output '............................................'
       end

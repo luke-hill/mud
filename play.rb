@@ -2,7 +2,7 @@ require_relative 'app/game'
 
 class Play
   def play
-    while alive?
+    while player.alive?
       input = gets.chomp
       case input.split.first.to_s.downcase
       when 'north', 'n'; then player.move('north')
@@ -19,10 +19,6 @@ class Play
 
   private
 
-  def alive?
-    player.hp.positive?
-  end
-
   def player
     @player ||= MUD::Game.setup
   end
@@ -32,6 +28,7 @@ class Play
     MUD::Screen.output("Description is: #{player.current_room.description.blue}")
     MUD::Screen.output("Advanced Description is: #{player.current_room.advanced_description.blue}")
     MUD::Screen.output(player.connected_rooms)
+    player.view_attributes
   end
 
   def die

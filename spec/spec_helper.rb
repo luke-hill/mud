@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'rspec'
-require 'shoulda/matchers'
 require_relative '../app/game'
 require_relative 'support/version_scripts/file'
 
