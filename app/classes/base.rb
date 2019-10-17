@@ -41,7 +41,7 @@ module MUD
       end
 
       def starting_room
-        MUD::Room.new(starting_room)
+        MUD::Room.new(starting_room_id)
       end
 
       def starting_room_id

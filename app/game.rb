@@ -13,7 +13,6 @@ module MUD
       def setup
         Logger.info('Game started'.red)
         display_welcome_message
-        set_rooms_visited_to_blank
         create_player_object
       end
 
