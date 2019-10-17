@@ -1,5 +1,5 @@
 require 'yaml'
-require 'core_ext/all'
+require_relative '../app/core_ext/all'
 
 module AdminPanel
   class Base

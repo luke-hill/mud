@@ -1,9 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 5.2'
-gem 'humanize'
 gem 'rspec'
-gem 'shoulda-matchers'
 gem 'rubocop', '~> 0.72.0'
 gem 'rubocop-rspec', '~> 1.33.0'
 gem 'rubocop-performance', '~> 1.5.0'

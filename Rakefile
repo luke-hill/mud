@@ -1,4 +1,7 @@
-# Add your own tasks in files placed in lib/tasks ending in .rake,
-# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
-
-Rails.application.load_tasks
+desc 'seed it'
+task :seed, :version do |task, version|
+  puts "Seeding Version #{version}"
+  p version
+  require_relative 'admin_panel/updates/seeder'
+  seed(version)
+end
