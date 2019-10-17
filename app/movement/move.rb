@@ -5,7 +5,7 @@ module MUD
         include MUD::Helpers::Data
         
         def look_around
-          MUD::Screen.output('Not implemented yet'.red)
+          MUD::Screen.output(player.current_room.advanced_description.yellow)
         end
 
         def north
@@ -45,11 +45,21 @@ module MUD
         end
 
         def up
-          MUD::Screen.output('Not in active use'.red)
+          if up_room_id
+            move_to(up_room_id)
+            MUD::Screen.output('You went up')
+          else
+            MUD::Screen.output('You cannot go up'.red)
+          end
         end
 
         def down
-          MUD::Screen.output('Not in active use'.red)
+          if down_room_id
+            move_to(down_room_id)
+            MUD::Screen.output('You went down')
+          else
+            MUD::Screen.output('You cannot go down'.red)
+          end
         end
 
         def pickup_item
@@ -99,6 +109,14 @@ module MUD
 
         def west_room_id
           connected_rooms['west']
+        end
+
+        def up_room_id
+          connected_rooms['up']
+        end
+
+        def down_room_id
+          connected_rooms['down']
         end
         
         def connected_rooms
