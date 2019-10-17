@@ -1,6 +1,11 @@
 module MUD
   module Classes
     class Fighter < Base
+      def initialize
+        @attributes = starting_attributes
+        super
+      end
+
       def equip(item_id)
         MUD::Logger.debug("Looking for #{item_id}.")
         new_item_id = find(item_id, types: %w[weapon armor])

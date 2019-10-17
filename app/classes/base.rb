@@ -12,7 +12,6 @@ module MUD
       include MUD::Helpers::AttributeAccessors
 
       def initialize
-        @attributes = starting_attributes
         @current_room = starting_room
         @equipment = starting_equipment
         set_rooms_visited_to_blank
