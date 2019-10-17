@@ -3,7 +3,7 @@
 # Newtown Arena/Pub - Descriptions
 # Barracks - Basic / Boss Enemies
 
-ap = AdminPanel::Base.new(:descriptions)
+ap = AdminPanel::Base.new(:description)
 
 (35..49).each do |id_number|
   ap.seed(
@@ -40,19 +40,17 @@ lure even more un-suspecting travellers into it.',
   )
 end
 
-# TODO: This previously had
-# location: 'Sovereign City - Gatehouse'
-# This isn't valid and will need fixing down the line in a v2 patch fix
 ap.seed(
   id: 59,
   description: 'The guards at this gatehouse protect this city well, judging by how pristine everything looks. The city
 has an air of arrogance about it and the Guards do nothing to quell that, dressed in the finest Steel Chainmail.',
   advanced_description: 'Looking ahead you can make out the Council Square, where most of the Cities business is ran
 from. There are no signs directing you anywhere, almost as if everyone in the city knows where everything is.',
-  location_id: 'forest_path',
+  location_id: 'sovereign_city_gatehouse',
 )
 
 ap.seed(
+  id: 60,
   description: "You see 3 separate small patches of ground, each monitored closely by a burly guard. He reminds you
 to read the sign before continuing if you're not sure.",
   advanced_description: 'You notice a sign that says North: Goblin Training Arena, West: Brawler Training Arena,

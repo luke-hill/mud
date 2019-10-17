@@ -1,6 +1,6 @@
 # V0.1 Locations
 
-ap = AdminPanel::Base.new(:locations)
+ap = AdminPanel::Base.new(:location)
 
 ap.seed(id: 'newtown_town_square', town: 'Newtown', area: 'Town Square')
 ap.seed(id: 'newtown_travelling_merchants_shop', town: 'Newtown', area: 'Travelling Merchants Shop')

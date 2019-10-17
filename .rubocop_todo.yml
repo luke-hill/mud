@@ -33,12 +33,6 @@ Layout/EndOfLine:
     - 'app/shit_to_sort_out/room.rb'
     - 'app/shit_to_sort_out/sylvanian_ingot.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Layout/LeadingBlankLines:
-  Exclude:
-    - 'admin_panel/updates/room_info_todo.rb'
-
 # Offense count: 12
 # Cop supports --auto-correct.
 Layout/LeadingCommentSpace:
@@ -276,7 +270,7 @@ Style/StringLiterals:
 # SupportedStylesForMultiline: comma, consistent_comma, no_comma
 Style/TrailingCommaInArguments:
   Exclude:
-    - 'admin_panel/updates/v1_1/room_descriptions.rb'
+    - 'admin_panel/updates/v1_1/description.rb'
 
 # Offense count: 83
 # Cop supports --auto-correct.

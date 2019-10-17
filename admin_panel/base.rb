@@ -1,4 +1,5 @@
 require 'yaml'
+require 'core_ext/all'
 
 module AdminPanel
   class Base
@@ -39,11 +40,7 @@ module AdminPanel
     end
 
     def new_values
-      { id => stringified_hash }
-    end
-
-    def stringified_hash
-      options.collect { |k, v| [k.to_s, v] }.to_h
+      { id => options.stringify_keys }
     end
 
     def yml_file_location
@@ -54,14 +51,15 @@ module AdminPanel
       {
         armor: '/home/luke/Code/mud/data/items/armor.yml',
         boss: '/home/luke/Code/mud/data/enemies/boss.yml',
-        descriptions: '/home/luke/Code/mud/data/rooms/descriptions.yml',
-        directions: '/home/luke/Code/mud/data/rooms/directions.yml',
+        description: '/home/luke/Code/mud/data/rooms/description.yml',
+        direction: '/home/luke/Code/mud/data/rooms/direction.yml',
         enemy: '/home/luke/Code/mud/data/enemies/enemy.yml',
         healing_potion: '/home/luke/Code/mud/data/items/potions/healing.yml',
         hp_bonus_potion: '/home/luke/Code/mud/data/items/potions/hp_bonus.yml',
-        locations: '/home/luke/Code/mud/data/rooms/locations.yml',
+        key: '/home/luke/Code/mud/data/items/key.yml',
+        location: '/home/luke/Code/mud/data/rooms/location.yml',
         mana_potion: '/home/luke/Code/mud/data/items/potions/mana.yml',
-        weapon: '/home/luke/Code/mud/data/items/weapons.yml'
+        weapon: '/home/luke/Code/mud/data/items/weapon.yml'
       }
     end
 

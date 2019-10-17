@@ -10,7 +10,7 @@ module MUD
       end
 
       def drop
-        send("#{snake_case(enemy_name)}_drop")
+        send("#{enemy_name.snake_case}_drop")
       end
 
       def floor
@@ -71,10 +71,6 @@ module MUD
           floor << enemy_weapon
           puts "The #{enemy_name} dropped its #{weapon_name}"
         end
-      end
-
-      def snake_case(string)
-        string.gsub(' ','_').downcase #TODO: Move to a helper?
       end
 
       def enemy_name
