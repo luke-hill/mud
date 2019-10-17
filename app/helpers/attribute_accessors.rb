@@ -7,8 +7,6 @@ module MUD
         %i[name max_hp hp level stamina experience gold inventory]
       end
 
-
-
       attribute_names.each do |name|
         define_method(name) do
           MUD::Logger.debug("Call made to read attribute: #{name}")

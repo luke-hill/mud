@@ -1,5 +1,4 @@
 # First calls must be puts as the +MUD::Screen.output+ class method doesn't exist yet!
-
 puts 'Beginning autoloading'
 require_relative 'autoloader'
 puts 'Autoloading complete'
