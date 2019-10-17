@@ -10,8 +10,8 @@ module MUD
 
         def north
           if north_room_id
-            move_to(north_room_id)
             MUD::Screen.output('You went north')
+            move_to(north_room_id)
           else
             MUD::Screen.output('You cannot go north'.red)
           end
@@ -19,8 +19,8 @@ module MUD
 
         def south
           if south_room_id
-            move_to(south_room_id)
             MUD::Screen.output('You went south')
+            move_to(south_room_id)
           else
             MUD::Screen.output('You cannot go south'.red)
           end
@@ -28,8 +28,8 @@ module MUD
 
         def east
           if east_room_id
-            move_to(east_room_id)
             MUD::Screen.output('You went east')
+            move_to(east_room_id)
           else
             MUD::Screen.output('You cannot go east'.red)
           end
@@ -37,8 +37,8 @@ module MUD
 
         def west
           if west_room_id
-            move_to(west_room_id)
             MUD::Screen.output('You went west')
+            move_to(west_room_id)
           else
             MUD::Screen.output('You cannot go west'.red)
           end
@@ -46,8 +46,8 @@ module MUD
 
         def up
           if up_room_id
-            move_to(up_room_id)
             MUD::Screen.output('You went up')
+            move_to(up_room_id)
           else
             MUD::Screen.output('You cannot go up'.red)
           end
@@ -55,8 +55,8 @@ module MUD
 
         def down
           if down_room_id
-            move_to(down_room_id)
             MUD::Screen.output('You went down')
+            move_to(down_room_id)
           else
             MUD::Screen.output('You cannot go down'.red)
           end
