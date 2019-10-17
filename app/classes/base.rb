@@ -18,6 +18,17 @@ module MUD
         set_rooms_visited_to_blank
       end
 
+      def view_attributes
+        attribute_names.each do |attribute|
+          MUD::Logger.debug('Call made to view attributes')
+          MUD::Screen.output("#{attribute}: #{attributes[attribute]}".yellow)
+        end
+      end
+
+      def alive?
+        hp.positive?
+      end
+
       def move(direction)
         Logger.debug("Attempting to move #{direction}")
         MUD::Movement::Move.send(direction)
@@ -50,6 +61,10 @@ module MUD
 
       def set_rooms_visited_to_blank
         @rooms_visited ||= {}
+      end
+
+      def attribute_names
+        %i[name max_hp hp level stamina experience gold inventory]
       end
     end
   end
