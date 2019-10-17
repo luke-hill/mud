@@ -2,11 +2,11 @@ module MUD
   module Helpers
     module Data
       def descriptions_yml
-        YAML.load_file('/home/luke/Code/mud/data/rooms/descriptions.yml')
+        YAML.load_file('/home/luke/Code/mud/data/rooms/description.yml')
       end
 
       def directions_yml
-        YAML.load_file('/home/luke/Code/mud/data/rooms/directions.yml')
+        YAML.load_file('/home/luke/Code/mud/data/rooms/direction.yml')
       end
 
       def enemy_yml
