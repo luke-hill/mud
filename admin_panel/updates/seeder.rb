@@ -1,10 +1,7 @@
-require '../base'
-require '../enemies/enemy'
-require '../room/directions'
-require '../room/descriptions'
+require_relative '../base'
 
 def seed(version)
-  Dir[File.absolute_path("./#{version}/*.rb")].each { |file| require file }
+  Dir[File.absolute_path("./admin_panel/updates/#{version}/*.rb")].each { |file| require file }
 end
 
 def seed_all
@@ -16,5 +13,3 @@ end
 def current_seed_versions
   Dir.glob('*').select { |f| File.directory? f }.sort
 end
-
-seed('v0_1')
