@@ -3,7 +3,7 @@
 ap = AdminPanel::Base.new(:direction)
 
 ap.seed(id: 1, north: 9, east: 2, west: 8)
-ap.seed(id: 2, north: 3, south: 21, west: 1)
+ap.seed(id: 2, north: 3, west: 1)
 ap.seed(id: 3, north: 4, south: 2, west: 9)
 ap.seed(id: 4, south: 3, west: 5)
 ap.seed(id: 5, north: 10, south: 9, east: 4, west: 6)

@@ -2,6 +2,7 @@
 
 ap = AdminPanel::Base.new(:direction)
 
+ap.seed(id: 2, south: 21)
 ap.seed(id: 21, north: 2, south: 22)
 ap.seed(id: 22, north: 21, south: 23)
 ap.seed(id: 23, north: 22, south: 24, east: 34)
