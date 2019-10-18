@@ -7,11 +7,11 @@ RSpec.describe MUD::Classes::Base do
     allow(player).to receive(:attributes).and_return(starting_attributes)
   end
 
-  before(:each) do
+  after(:each) { remove_test_screen_logs }
+
+  before do
     switch_logging_to_temp_file
   end
-
-  after(:each) { remove_test_screen_logs }
 
   let(:starting_attributes) do
     {
@@ -52,6 +52,14 @@ RSpec.describe MUD::Classes::Base do
       expect(MUD::Movement::Move).to receive(:south)
 
       player.move('south')
+    end
+  end
+
+  describe '#prevent_negative_hp' do
+    it 'prevents your hp from going negative' do
+      player.hp = -3
+      player.prevent_negative_hp
+      expect(player.hp).to eq(0)
     end
   end
 
