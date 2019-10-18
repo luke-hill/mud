@@ -34,14 +34,14 @@ module MUD
     attr_writer :gold
 
     def dead?
-      hp.zero?
+      @enemy.nil? || hp.zero?
     end
 
     def prevent_negative_hp
       self.hp = 0 if hp.negative?
     end
 
-    def defence
+    def defense
       Armor.new(armor_id).defense
     end
 

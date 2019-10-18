@@ -14,68 +14,73 @@ module MUD
       end
 
       def defend
-        damage_taken
-        new_hp_after_taking_hit
+        return missed_message if no_damage?
+
+        attack_message
+        reduce_hp
+
+        return MUD::Logger.debug("DEBUG --> YOUR HP:#{hp}hp.") unless hero_killed?
+
+        raise StandardError, 'You died!'
       end
 
       private
 
-      def damage_taken
-        dmg = enemy_attack_value - hero_defence_value
-
-        if dmg.negative?
-          0
-        else
-          dmg
-        end
-      end
-
-      def enemy_attack_value
-        enemy.attack_value
-      end
-
-      def hero_defence_value
-        rand(0..(hero.armor.def))
-      end
-
-      def new_hp_after_taking_hit
-        if enemy_missed? || @dmg_taken.zero?
-          return MUD::Screen.output("The #{enemy_name} swung at you with his #{enemy_weapon_name}, but missed.")
-        end
-
-        MUD::Screen.output("The #{enemy_name} hit you for #{@dmg_taken} damage.")
-        update_hero_hp
-
-        if dead?
-          raise StandardError, 'You died!'
-        else
-          MUD::Logger.debug("DEBUG --> YOUR HP:#{hp}hp.")
-        end
-      end
-
-      def enemy_missed?
-        rand > enemy.accuracy
+      def missed_message
+        MUD::Screen.output("The #{enemy_name} swung at you with its #{weapon_name}, but missed.")
       end
 
       def enemy_name
         enemy.name
       end
 
-      def enemy_weapon_name
+      def weapon_name
         enemy.weapon.name
       end
 
-      def enemy_hp
-        enemy.hp
+      def no_damage?
+        missed? || damage_taken.zero?
       end
 
-      def update_hero_hp
-        hero.hp -= @dmg_taken
+      def missed?
+        rand > enemy.accuracy
+      end
+
+      def damage_taken
+        @damage_taken ||= begin
+          dmg = attack_value - defense_value
+
+          if dmg.negative?
+            0
+          else
+            dmg
+          end
+        end
+      end
+
+      def attack_value
+        enemy.attack_value
+      end
+
+      def defense_value
+        rand(0..(armor.defense))
+      end
+
+      def armor
+        MUD::Armor.new(hero.armor_id)
+      end
+
+      def attack_message
+        MUD::Screen.output("The #{enemy_name} hit you with its #{weapon_name} for #{damage_taken} damage.")
+      end
+
+      def reduce_hp
+        hero.hp -= damage_taken
         hero.prevent_negative_hp
       end
 
-      def dead?
-        hero.hp <= 0
+      def hero_killed?
+        hero.dead?
       end
     end
   end

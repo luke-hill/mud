@@ -29,6 +29,10 @@ module MUD
         hp.positive?
       end
 
+      def dead?
+        !alive?
+      end
+
       def move(direction)
         Logger.debug("Attempting to move #{direction}")
         MUD::Movement::Move.send(direction)

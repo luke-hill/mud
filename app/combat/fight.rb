@@ -19,7 +19,7 @@ module MUD
       def fight_once
         return MUD::Screen.output('There is no enemy present'.red) if enemy.nil?
 
-        Attack.new(hero, enemy).damage
+        Attack.new(hero, enemy).attack
 
         if enemy_killed?
           MUD::Screen.output("You killed the #{enemy.name}".blue.blink)

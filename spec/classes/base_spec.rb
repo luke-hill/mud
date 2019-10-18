@@ -2,7 +2,10 @@ RSpec.describe MUD::Classes::Base do
   before do
     # Mock sample player
     allow(player).to receive(:attributes).and_return(starting_attributes)
-
+    # Mock loaded items
+    allow(player).to receive(:weapon_ids).and_return(%w(fists knife))
+    allow(player).to receive(:armor_ids).and_return(%w(unarmored vest))
+    # Remove console spam
     swallow_console_spam
   end
 
@@ -45,6 +48,20 @@ RSpec.describe MUD::Classes::Base do
     end
   end
 
+  describe '#dead?' do
+    subject { player.dead? }
+
+    context 'when a player has more than 0 hp' do
+      it { is_expected.to be false }
+    end
+
+    context 'when a player has 0 or less hp' do
+      before { allow(player).to receive(:hp).and_return(0) }
+
+      it { is_expected.to be true }
+    end
+  end
+
   describe '#move' do
     it 'delegates to the Movement::Move class' do
       expect(MUD::Movement::Move).to receive(:south)
@@ -61,54 +78,31 @@ RSpec.describe MUD::Classes::Base do
     end
   end
 
-  describe '#equip' do
-    before do
-      allow(player).to receive(:weapon_ids) do
-        %w(fists knife)
+  context 'equipping items' do
+    before { player.inventory << item_to_equip }
+
+    let(:item_to_equip) { 'vest' }
+
+    describe '#equip' do
+      it 'can equip valid items' do
+        expect { player.equip(item_to_equip) }.not_to raise_error
       end
 
-      allow(player).to receive(:armor_ids) do
-        %w(unarmored vest)
-      end
+      context 'an unrecognised item' do
+        let(:item_to_equip) { 'unknown' }
 
-      player.inventory << item_to_equip
-
-    end
-
-    context 'an armor' do
-      before { player.equip(item_to_equip) }
-
-      let(:item_to_equip) { 'vest' }
-
-      it 'equips the armor' do
-        expect(player.equipment[:armor]).to eq('vest')
+        it 'will not equip the invalid item' do
+          expect { player.equip(item_to_equip) }
+            .to raise_error(RuntimeError)
+            .with_message("Cannot classify #{item_to_equip}.")
+        end
       end
     end
 
-    context 'a weapon' do
-      before { player.equip(item_to_equip) }
-
-      let(:item_to_equip) { 'knife' }
-
-      it 'equips the weapon' do
-        expect(player.equipment[:weapon]).to eq('knife')
+    describe '#equipment' do
+      it 'contains a hash of all currently equipped items' do
+        expect(player.equipment.keys).to eq(%i(weapon armor))
       end
-    end
-
-    context 'an unrecognised item' do
-      let(:item_to_equip) { 'unknown' }
-
-      it 'will not do anything' do
-        expect { player.equip(item_to_equip) }
-          .to raise_error(RuntimeError)
-          .with_message("Cannot classify #{item_to_equip}.")
-      end
-    end
-  end
-
-  describe '#equipment' do
-    it 'contains a hash of all currently equipped items' do
-      expect(player.equipment.keys).to eq(%i(weapon armor))
     end
   end
 
@@ -141,6 +135,32 @@ RSpec.describe MUD::Classes::Base do
   describe '#rooms_visited=' do
     it 'can update the rooms you have visited' do
       expect(subject).to respond_to(:rooms_visited=)
+    end
+  end
+
+  describe '#weapon' do
+    before do
+      player.inventory << item_to_equip
+      player.equip(item_to_equip)
+    end
+
+    let(:item_to_equip) { 'knife' }
+
+    it 'shows the id of the currently equipped weapon' do
+      expect(player.weapon).to eq('knife')
+    end
+  end
+
+  describe '#armor' do
+    before do
+      player.inventory << item_to_equip
+      player.equip(item_to_equip)
+    end
+
+    let(:item_to_equip) { 'vest' }
+
+    it 'shows the id of the currently equipped armor' do
+      expect(player.armor).to eq('vest')
     end
   end
 end
