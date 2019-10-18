@@ -17,6 +17,14 @@ module MUD
         load_yml('/home/luke/Code/mud/data/enemies/boss.yml')
       end
 
+      def weapon_yml
+        load_yml('/home/luke/Code/mud/data/items/weapon.yml')
+      end
+
+      def armor_yml
+        load_yml('/home/luke/Code/mud/data/items/armor.yml')
+      end
+
       private
 
       def load_yml(filename)

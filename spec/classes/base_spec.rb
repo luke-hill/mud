@@ -63,6 +63,57 @@ RSpec.describe MUD::Classes::Base do
     end
   end
 
+  describe '#equip' do
+    before do
+      allow(player).to receive(:weapon_ids) do
+        %w(fists knife)
+      end
+
+      allow(player).to receive(:armor_ids) do
+        %w(unarmored vest)
+      end
+
+      player.inventory << item_to_equip
+
+    end
+
+    context 'an armor' do
+      before { player.equip(item_to_equip) }
+
+      let(:item_to_equip) { 'vest' }
+
+      it 'equips the armor' do
+        expect(player.equipment[:armor]).to eq('vest')
+      end
+    end
+
+    context 'a weapon' do
+      before { player.equip(item_to_equip) }
+
+      let(:item_to_equip) { 'knife' }
+
+      it 'equips the weapon' do
+        expect(player.equipment[:weapon]).to eq('knife')
+      end
+    end
+
+    context 'an unrecognised item' do
+      let(:item_to_equip) { 'unknown' }
+
+      it 'will not do anything' do
+        expect { player.equip(item_to_equip) }
+          .to raise_error(RuntimeError)
+          .with_message("Cannot classify #{item_to_equip}.")
+      end
+    end
+  end
+
+  describe '#equipment' do
+    it 'contains a hash of all currently equipped items' do
+      expect(player.equipment.keys).to eq(%i(weapon armor))
+    end
+  end
+
   describe '#current_room' do
     it 'returns what room you are in' do
       expect(subject.current_room).to be_a MUD::Room
