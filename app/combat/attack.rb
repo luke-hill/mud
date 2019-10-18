@@ -13,16 +13,35 @@ module MUD
         MUD::Logger.debug("Enemy #{enemy.inspect}")
       end
 
-      def damage
-        damage_dealt
-        enemy_hp_after_attacking
+      def attack
+        return missed_message if no_damage?
+
+        attack_message
+        reduce_enemy_hp
+
+        return MUD::Logger.debug("DEBUG --> ENEMY HP:#{enemy.hp}hp.") unless enemy_killed?
+
+        kill_message
+        @enemy = nil
       end
 
-      # private
+      private
+
+      def missed_message
+        MUD::Screen.output("You tried to attack the #{enemy_name} with your #{weapon_name}... but missed.")
+      end
+
+      def no_damage?
+        missed? || damage_dealt.zero?
+      end
+
+      def missed?
+        rand > hero.accuracy
+      end
 
       def damage_dealt
-        @dmg_dealt ||= begin
-          dmg = attack_value - defence_value
+        @damage_dealt ||= begin
+          dmg = attack_value - defense_value
 
           if dmg.negative?
             0
@@ -32,36 +51,8 @@ module MUD
         end
       end
 
-      def attack_value
-        rand((weapon.min_power)..(weapon.max_power))
-      end
-
-      def weapon
-        MUD::Weapon.new(hero.weapon)
-      end
-
-      def defence_value
-        enemy.defence
-      end
-
-      def enemy_hp_after_attacking
-        if missed? || @dmg_dealt.zero?
-          return MUD::Screen.output("You tried to attack the #{enemy_name} with your #{weapon_name}... but missed.")
-        end
-
-        MUD::Screen.output("You hit the #{enemy_name} with your #{weapon_name} for #{@dmg_dealt} damage.")
-        update_enemy_hp
-
-        if enemy_killed?
-          MUD::Screen.output('Enemy killed')
-          @enemy = nil
-        else
-          MUD::Logger.debug("DEBUG --> ENEMY HP:#{enemy_hp}hp.")
-        end
-      end
-
-      def missed?
-        rand > hero.accuracy
+      def attack_message
+        MUD::Screen.output("You hit the #{enemy_name} with your #{weapon_name} for #{damage_dealt} damage.")
       end
 
       def enemy_name
@@ -72,8 +63,20 @@ module MUD
         weapon.name
       end
 
-      def update_enemy_hp
-        enemy.hp -= @dmg_dealt
+      def attack_value
+        rand((weapon.min_power)..(weapon.max_power))
+      end
+
+      def weapon
+        MUD::Weapon.new(hero.weapon)
+      end
+
+      def defense_value
+        rand(0..(enemy.defense))
+      end
+
+      def reduce_enemy_hp
+        enemy.hp -= damage_dealt
         enemy.prevent_negative_hp
       end
 
@@ -81,8 +84,8 @@ module MUD
         enemy.dead?
       end
 
-      def enemy_hp
-        enemy.hp
+      def kill_message
+        MUD::Screen.output("You killed the #{enemy_name}.".blink)
       end
     end
   end
