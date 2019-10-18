@@ -8,9 +8,7 @@ RSpec.describe MUD::Classes::Fighter do
   let(:gold)       { subject.gold }
   let(:inventory)  { subject.inventory }
 
-  before do
-    allow($stdout).to receive(:write).and_return nil
-  end
+  before { swallow_console_spam }
 
   describe 'initial starting stats' do
     it 'has a name' do

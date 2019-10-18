@@ -3,19 +3,15 @@
 require 'rspec'
 require_relative '../app/game'
 require_relative 'support/version_scripts/file'
+require_relative 'support/console'
 
 RSpec.configure do |config|
-  config.expect_with :rspec do |expectations|
-    expectations.include_chain_clauses_in_custom_matcher_descriptions = true
-  end
-
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true
   end
 
   config.include SpecSupport::VersionScripts::File
+  config.include SpecSupport::Console
 
   config.add_formatter :documentation
 end
-
-RSpec::Mocks.configuration.allow_message_expectations_on_nil = true
