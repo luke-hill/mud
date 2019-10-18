@@ -13,7 +13,7 @@ module AdminPanel
 
       def seed_all_versions
         current_seed_versions.each do |version|
-          seed(version)
+          seed_version(version)
         end
       end
 
@@ -90,7 +90,7 @@ module AdminPanel
     end
 
     def data
-      yml_file[id]
+      yml_file[id] || {}
     end
 
     def save
