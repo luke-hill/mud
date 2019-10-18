@@ -48,6 +48,20 @@ RSpec.describe MUD::Classes::Base do
     end
   end
 
+  describe '#dead?' do
+    subject { player.dead? }
+
+    context 'when a player has more than 0 hp' do
+      it { is_expected.to be false }
+    end
+
+    context 'when a player has 0 or less hp' do
+      before { allow(player).to receive(:hp).and_return(0) }
+
+      it { is_expected.to be true }
+    end
+  end
+
   describe '#move' do
     it 'delegates to the Movement::Move class' do
       expect(MUD::Movement::Move).to receive(:south)

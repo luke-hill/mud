@@ -17,7 +17,7 @@ module MUD
         return missed_message if no_damage?
 
         attack_message
-        reduce_enemy_hp
+        reduce_hp
 
         return MUD::Logger.debug("DEBUG --> ENEMY HP:#{enemy.hp}hp.") unless enemy_killed?
 
@@ -29,6 +29,14 @@ module MUD
 
       def missed_message
         MUD::Screen.output("You tried to attack the #{enemy_name} with your #{weapon_name}... but missed.")
+      end
+
+      def enemy_name
+        enemy.name
+      end
+
+      def weapon_name
+        weapon.name
       end
 
       def no_damage?
@@ -51,18 +59,6 @@ module MUD
         end
       end
 
-      def attack_message
-        MUD::Screen.output("You hit the #{enemy_name} with your #{weapon_name} for #{damage_dealt} damage.")
-      end
-
-      def enemy_name
-        enemy.name
-      end
-
-      def weapon_name
-        weapon.name
-      end
-
       def attack_value
         rand((weapon.min_power)..(weapon.max_power))
       end
@@ -75,7 +71,11 @@ module MUD
         rand(0..(enemy.defense))
       end
 
-      def reduce_enemy_hp
+      def attack_message
+        MUD::Screen.output("You hit the #{enemy_name} with your #{weapon_name} for #{damage_dealt} damage.")
+      end
+
+      def reduce_hp
         enemy.hp -= damage_dealt
         enemy.prevent_negative_hp
       end
