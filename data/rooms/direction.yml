@@ -6,6 +6,7 @@
 2:
   north: 3
   west: 1
+  south: 21
 3:
   north: 4
   south: 2
@@ -65,3 +66,44 @@
   west: 18
 20:
   west: 19
+21:
+  north: 2
+  south: 22
+22:
+  north: 21
+  south: 23
+23:
+  north: 22
+  south: 24
+  east: 34
+24:
+  north: 23
+  south: 25
+25:
+  north: 24
+  south: 26
+26:
+  north: 25
+  south: 27
+  east: 32
+  west: 33
+27:
+  north: 26
+  south: 28
+28:
+  north: 27
+  south: 29
+  east: 30
+  west: 31
+29:
+  north: 28
+30:
+  west: 28
+31:
+  east: 28
+32:
+  west: 26
+33:
+  east: 26
+34:
+  west: 23

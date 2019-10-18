@@ -158,3 +158,125 @@
   type: Dungeon
   location_id: barracks
   ktp: true
+21:
+  description: The rocky street here looks unfinished, you notice a cable on the floor
+    next to the main road.
+  advanced_description: Once destined to be the worlds first eco-friendly housing
+    estate, The Newtown Residential District lingers unfinished, with equipment strewn
+    everywhere.
+  location_id: newtown_residential_district
+  type: town
+  enemy_id: no_enemy
+22:
+  description: The rocky street here looks unfinished, you notice a cable on the floor
+    next to the main road.
+  advanced_description: Once destined to be the worlds first eco-friendly housing
+    estate, The Newtown Residential District lingers unfinished, with equipment strewn
+    everywhere.
+  location_id: newtown_residential_district
+  type: town
+  enemy_id: no_enemy
+24:
+  description: The rocky street here looks unfinished, you notice a cable on the floor
+    next to the main road.
+  advanced_description: Once destined to be the worlds first eco-friendly housing
+    estate, The Newtown Residential District lingers unfinished, with equipment strewn
+    everywhere.
+  location_id: newtown_residential_district
+  type: town
+  enemy_id: no_enemy
+25:
+  description: The rocky street here looks unfinished, you notice a cable on the floor
+    next to the main road.
+  advanced_description: Once destined to be the worlds first eco-friendly housing
+    estate, The Newtown Residential District lingers unfinished, with equipment strewn
+    everywhere.
+  location_id: newtown_residential_district
+  type: town
+  enemy_id: no_enemy
+27:
+  description: The rocky street here looks unfinished, you notice a cable on the floor
+    next to the main road.
+  advanced_description: Once destined to be the worlds first eco-friendly housing
+    estate, The Newtown Residential District lingers unfinished, with equipment strewn
+    everywhere.
+  location_id: newtown_residential_district
+  type: town
+  enemy_id: no_enemy
+23:
+  description: The rocky street here looks unfinished, you notice a cable on the floor
+    next to the main road. There is a well to the east, next to a Small Bank for the
+    Villagers.
+  advanced_description: Once destined to be the worlds first eco-friendly housing
+    estate, The Newtown Residential District lingers unfinished. The sign for the
+    bank looks rusty and dated as it flaps about in the wind.
+  location_id: newtown_residential_district
+  type: town
+  enemy_id: no_enemy
+26:
+  description: The rocky street here looks unfinished, you see signs that this used
+    to be regular hive of activity.
+  advanced_description: This area of the Newtown Residential District houses office
+    buildings and even a long disbanded children's playground. Not that any parent
+    would want their child playing next to the machinery!
+  location_id: newtown_residential_district_crossroads
+  type: town
+  enemy_id: no_enemy
+28:
+  description: The rocky street here looks unfinished, you see signs that this used
+    to be regular hive of activity.
+  advanced_description: This area of the Newtown Residential District houses office
+    buildings and even a long disbanded children's playground. Not that any parent
+    would want their child playing next to the machinery!
+  location_id: newtown_residential_district_crossroads
+  type: town
+  enemy_id: no_enemy
+29:
+  description: One of the few remaining houses in Newtown. The interior looks basic,
+    befitting a town of little to no wealth.
+  advanced_description: Whilst Pristine in condition, this house shows no sign of
+    materialistic wealth.
+  location_id: newtown_house
+  type: town
+  enemy_id: no_enemy
+30:
+  description: One of the few remaining houses in Newtown. The interior looks basic,
+    befitting a town of little to no wealth.
+  advanced_description: Whilst Pristine in condition, this house shows no sign of
+    materialistic wealth.
+  location_id: newtown_house
+  type: town
+  enemy_id: no_enemy
+31:
+  description: One of the few remaining houses in Newtown. The interior looks basic,
+    befitting a town of little to no wealth.
+  advanced_description: Whilst Pristine in condition, this house shows no sign of
+    materialistic wealth.
+  location_id: newtown_house
+  type: town
+  enemy_id: no_enemy
+32:
+  description: One of the few remaining houses in Newtown. The interior looks basic,
+    befitting a town of little to no wealth.
+  advanced_description: Whilst Pristine in condition, this house shows no sign of
+    materialistic wealth.
+  location_id: newtown_house
+  type: town
+  enemy_id: no_enemy
+33:
+  description: One of the few remaining houses in Newtown. The interior looks basic,
+    befitting a town of little to no wealth.
+  advanced_description: Whilst Pristine in condition, this house shows no sign of
+    materialistic wealth.
+  location_id: newtown_house
+  type: town
+  enemy_id: no_enemy
+34:
+  description: The Newtown bank is served by a single Teller. He sits behind the bars
+    guarding a small storage room, presumably the sole vault on the premises.
+  advanced_description: As you'd expect from a small bank, there is little extravagance...
+    or security. Posters lie on the walls offering rewards for information on the
+    whereabouts of the local Bandits that are hiding out.
+  location_id: newtown_bank
+  type: town
+  enemy_id: no_enemy
