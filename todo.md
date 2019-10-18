@@ -1,4 +1,3 @@
-1) Armor Model needs setting up
 2) Potions model needs setting up
 3) Overall Item model needs setting up
 ```
@@ -22,6 +21,7 @@ ID-Name-Type
 - [ ] shit_to_sort_out
 11) Checklist of all top level files inside app folder
 - [ ] autoloader
+- [ ] armor
 - [ ] enemy
 - [ ] game
 - [ ] logger
