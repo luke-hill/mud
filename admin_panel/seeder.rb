@@ -6,6 +6,24 @@ module AdminPanel
     attr_reader :type
     attr_accessor :options
 
+    class << self
+      def seed_version(version)
+        Dir[File.absolute_path("./admin_panel/updates/#{version}/*.rb")].each { |file| require file }
+      end
+
+      def seed_all_versions
+        current_seed_versions.each do |version|
+          seed(version)
+        end
+      end
+
+      private
+
+      def current_seed_versions
+        Dir.glob('*').select { |f| File.directory? f }.sort
+      end
+    end
+
     def initialize(type)
       @type = type
     end
@@ -17,16 +35,6 @@ module AdminPanel
 
       update
       save
-    end
-
-    def seed_version(version)
-      Dir[File.absolute_path("./admin_panel/updates/#{version}/*.rb")].each { |file| require file }
-    end
-
-    def seed_all_versions
-      current_seed_versions.each do |version|
-        seed(version)
-      end
     end
 
     private
@@ -87,10 +95,6 @@ module AdminPanel
 
     def save
       File.write(yml_file_location, yml_file.to_yaml)
-    end
-
-    def current_seed_versions
-      Dir.glob('*').select { |f| File.directory? f }.sort
     end
   end
 end
