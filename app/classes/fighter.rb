@@ -6,7 +6,6 @@ module MUD
         super
       end
 
-
       private
 
       def starting_attributes

@@ -1,17 +1,13 @@
 RSpec.describe MUD::Classes::Base do
   before do
-    # Stop console spam
-    allow($stdout).to receive(:write).and_return nil
-
     # Mock sample player
     allow(player).to receive(:attributes).and_return(starting_attributes)
+
+    swallow_console_spam
   end
 
+  before(:each) { switch_logging_to_temp_file }
   after(:each) { remove_test_screen_logs }
-
-  before do
-    switch_logging_to_temp_file
-  end
 
   let(:starting_attributes) do
     {
@@ -29,7 +25,9 @@ RSpec.describe MUD::Classes::Base do
 
   describe '#view_attributes' do
     it 'logs the relevant attribute information to the game console' do
-      expect(log_lines).to be >= 8
+      player.view_attributes
+
+      expect(log_lines.length).to be >= 8
     end
   end
 

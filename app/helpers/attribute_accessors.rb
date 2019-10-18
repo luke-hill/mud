@@ -18,8 +18,8 @@ module MUD
         define_method("#{name}=") do |value|
           MUD::Logger.debug("Call made to set attributes: #{attributes}")
           attributes[name] = value
-          MUD::Screen.output("Your #{name} was updated")
-          MUD::Screen.output("#{name}: #{attributes[name]}")
+          MUD::Logger.debug("Your #{name} was updated")
+          MUD::Logger.info("New Value --> #{name}: #{attributes[name]}")
         end
       end
     end
