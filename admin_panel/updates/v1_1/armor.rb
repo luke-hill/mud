@@ -1,6 +1,6 @@
 # V1.1 New Enemy Armors
 
-ap = AdminPanel::Base.new(:armor)
+ap = AdminPanel::Seeder.new(:armor)
 
 ap.seed(
   id: 'bandit_leathers',

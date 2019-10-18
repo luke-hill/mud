@@ -4,10 +4,10 @@ module MUD
     extend Forwardable
 
     def initialize(id)
-      @enemy = enemy(id)
+      @enemy = OpenStruct.new(enemy(id))
     end
 
-    def_delegators @enemy,
+    def_delegators :@enemy,
                    :name,
                    :description,
                    :weapon_id,
@@ -39,6 +39,10 @@ module MUD
 
     def prevent_negative_hp
       self.hp = 0 if hp.negative?
+    end
+
+    def defence
+      Armor.new(armor_id).defense
     end
 
     private

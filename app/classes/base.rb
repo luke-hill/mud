@@ -45,6 +45,14 @@ module MUD
         MUD::Screen.output("#{item_id} equipped")
       end
 
+      def weapon
+        equipment[:weapon]
+      end
+
+      def armor
+        equipment[:armor]
+      end
+
       private
 
       def weapon?(item_id)

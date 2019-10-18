@@ -1,6 +1,6 @@
 # V2.0 Adding guards to locations
 
-ap = AdminPanel::Base.new(:location)
+ap = AdminPanel::Seeder.new(:location)
 
 ap.seed(id: 'newtown_town_square', guards: true)
 ap.seed(id: 'newtown_travelling_merchants_shop', guards: true)

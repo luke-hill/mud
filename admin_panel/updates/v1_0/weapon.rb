@@ -1,6 +1,6 @@
 # V1.0 Goblin Archer Bow
 
-ap = AdminPanel::Base.new(:weapon)
+ap = AdminPanel::Seeder.new(:weapon)
 
 ap.seed(
   id: 'small_bow',

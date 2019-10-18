@@ -1,6 +1,6 @@
 # V2.0 New Key items, previously never seeded
 
-ap = AdminPanel::Base.new(:key)
+ap = AdminPanel::Seeder.new(:key)
 
 ap.seed(
   id: 'barracks_key',

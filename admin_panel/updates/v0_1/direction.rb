@@ -1,6 +1,6 @@
 # V0.1 Newtown and first Dungeon
 
-ap = AdminPanel::Base.new(:direction)
+ap = AdminPanel::Seeder.new(:direction)
 
 ap.seed(id: 1, north: 9, east: 2, west: 8)
 ap.seed(id: 2, north: 3, west: 1)

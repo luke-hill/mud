@@ -18,32 +18,38 @@ module MUD
         enemy_hp_after_attacking
       end
 
-      private
+      # private
 
       def damage_dealt
-        dmg = hero_attack_value - enemy_defence_value
+        @dmg_dealt ||= begin
+          dmg = attack_value - defence_value
 
-        if dmg.negative?
-          0
-        else
-          dmg
+          if dmg.negative?
+            0
+          else
+            dmg
+          end
         end
       end
 
-      def hero_attack_value
-        rand((hero.weapon.atk_min)..(hero.weapon.atk_max))
+      def attack_value
+        rand((weapon.min_power)..(weapon.max_power))
       end
 
-      def enemy_defence_value
-        enemy.defend_value
+      def weapon
+        MUD::Weapon.new(hero.weapon)
+      end
+
+      def defence_value
+        enemy.defence
       end
 
       def enemy_hp_after_attacking
-        if hero_missed? || @dmg_dealt.zero?
-          return MUD::Screen.output("You tried to attack the #{enemy_name} with your #{hero_weapon_name}... but missed.")
+        if missed? || @dmg_dealt.zero?
+          return MUD::Screen.output("You tried to attack the #{enemy_name} with your #{weapon_name}... but missed.")
         end
 
-        MUD::Screen.output("You hit the #{enemy_name} with your #{hero_weapon_name} for #{@dmg_dealt} damage.")
+        MUD::Screen.output("You hit the #{enemy_name} with your #{weapon_name} for #{@dmg_dealt} damage.")
         update_enemy_hp
 
         if enemy_killed?
@@ -54,7 +60,7 @@ module MUD
         end
       end
 
-      def hero_missed?
+      def missed?
         rand > hero.accuracy
       end
 
@@ -62,8 +68,8 @@ module MUD
         enemy.name
       end
 
-      def hero_weapon_name
-        hero.weapon.name
+      def weapon_name
+        weapon.name
       end
 
       def update_enemy_hp

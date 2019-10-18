@@ -120,7 +120,7 @@ module MUD
         end
         
         def connected_rooms
-          player.connected_rooms
+          player.current_room.connected_rooms
         end
 
         def room_already_visited?(room_id)

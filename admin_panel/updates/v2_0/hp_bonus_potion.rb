@@ -1,6 +1,6 @@
 # V2.0 Missing (First), Potion items
 
-ap = AdminPanel::Base.new(:hp_bonus_potion)
+ap = AdminPanel::Seeder.new(:hp_bonus_potion)
 
 ap.seed(
   id: 'endurance_potion',

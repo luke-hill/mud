@@ -1,6 +1,6 @@
 # V2.0 Missing (First), Potion items
 
-ap = AdminPanel::Base.new(:mana_potion)
+ap = AdminPanel::Seeder.new(:mana_potion)
 
 ap.seed(
   id: 'lesser_magic_potion',

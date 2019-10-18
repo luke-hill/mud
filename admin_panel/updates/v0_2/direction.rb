@@ -1,6 +1,6 @@
 # V0.2 Newtown district directions
 
-ap = AdminPanel::Base.new(:direction)
+ap = AdminPanel::Seeder.new(:direction)
 
 ap.seed(id: 2, south: 21)
 ap.seed(id: 21, north: 2, south: 22)

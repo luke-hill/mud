@@ -1,6 +1,6 @@
 # V0.2 Basic Armor items
 
-ap = AdminPanel::Base.new(:armor)
+ap = AdminPanel::Seeder.new(:armor)
 
 ap.seed(
   id: 'unarmored',
@@ -26,6 +26,7 @@ ap.seed(
 ap.seed(
   id: 'orc_shield',
   name: 'Orc Shield',
-  description: 'This shield is fashioned from the bones of its last few victims. It is covered in spikes that offer some basic protection.',
+  description: 'This shield is fashioned from the bones of its last few victims. It is covered in spikes that offer '\
+'some basic protection.',
   defense: 2
 )
