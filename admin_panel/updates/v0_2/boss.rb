@@ -1,6 +1,6 @@
 # V0.2 Boss Enemy Creations
 
-ap = AdminPanel::Base.new(:boss)
+ap = AdminPanel::Seeder.new(:boss)
 
 ap.seed(
   id: 'orc',

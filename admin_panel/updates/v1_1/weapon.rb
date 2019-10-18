@@ -1,6 +1,6 @@
 # V1.1 New Enemy Weapons
 
-ap = AdminPanel::Base.new(:weapon)
+ap = AdminPanel::Seeder.new(:weapon)
 
 ap.seed(
   id: 'sharp_fangs',

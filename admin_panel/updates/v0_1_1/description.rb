@@ -1,6 +1,6 @@
 # V0.1.1 Regular / Advanced Descriptions
 
-ap = AdminPanel::Base.new(:description)
+ap = AdminPanel::Seeder.new(:description)
 
 ap.seed(id: 1).update(
   description: 'The home of many of the men of the village of Newtown. The Newtown Pub offers its patrons a chance to

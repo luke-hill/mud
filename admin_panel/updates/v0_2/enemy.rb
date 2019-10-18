@@ -1,6 +1,6 @@
 # V0.2 Enemy Creations
 
-ap = AdminPanel::Base.new(:enemy)
+ap = AdminPanel::Seeder.new(:enemy)
 
 ap.seed(
   id: 'no_enemy',

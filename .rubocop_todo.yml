@@ -44,7 +44,7 @@ Layout/LeadingCommentSpace:
 # SupportedStylesForEmptyBraces: space, no_space
 Layout/SpaceInsideBlockBraces:
   Exclude:
-    - 'admin_panel/base.rb'
+    - 'admin_panel/seeder.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -101,7 +101,7 @@ Metrics/MethodLength:
 # SupportedStylesForLeadingUnderscores: disallowed, required, optional
 Naming/MemoizedInstanceVariableName:
   Exclude:
-    - 'app/classes/base.rb'
+    - 'app/classes/seeder.rb'
     - 'app/game.rb'
 
 # Offense count: 1

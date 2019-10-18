@@ -1,6 +1,6 @@
 # V2.0 Missing Armor items
 
-ap = AdminPanel::Base.new(:armor)
+ap = AdminPanel::Seeder.new(:armor)
 
 ap.seed(
   id: 'cloak',

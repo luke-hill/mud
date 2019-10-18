@@ -1,6 +1,6 @@
 # V0.1 Basic Weapon items
 
-ap = AdminPanel::Base.new(:weapon)
+ap = AdminPanel::Seeder.new(:weapon)
 
 ap.seed(
   id: 'fists',

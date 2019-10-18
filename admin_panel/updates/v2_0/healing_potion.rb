@@ -1,6 +1,6 @@
 # V2.0 Missing (First), Potion items
 
-ap = AdminPanel::Base.new(:healing_potion)
+ap = AdminPanel::Seeder.new(:healing_potion)
 
 ap.seed(
   id: 'lesser_healing_potion',

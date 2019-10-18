@@ -1,6 +1,6 @@
 # V0.2 Basic Armor items
 
-ap = AdminPanel::Base.new(:armor)
+ap = AdminPanel::Seeder.new(:armor)
 
 ap.seed(
   id: 'unarmored',

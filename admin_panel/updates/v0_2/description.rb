@@ -1,6 +1,6 @@
 # V0.2 Newtown Residential District
 
-ap = AdminPanel::Base.new(:description)
+ap = AdminPanel::Seeder.new(:description)
 
 [21, 22, 24, 25, 27].each do |id_number|
   ap.seed(

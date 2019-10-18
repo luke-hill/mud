@@ -1,6 +1,6 @@
 # V2.0 Missing Weapon items
 
-ap = AdminPanel::Base.new(:weapon)
+ap = AdminPanel::Seeder.new(:weapon)
 
 ap.seed(
   id: 'ivory_dagger',
