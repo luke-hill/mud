@@ -11,6 +11,10 @@
   description: The streets of Newtown are fairly quiet, as you'd expect from this
     remote area. You notice a side-path that leads to what looks like a Residential
     Area.
+  advanced_description: Cobbled with primitive cut stone, and put together many years
+    ago, these streets look like they've seen better times. The signs for the once
+    active market scene are now worn, you can vaguely make out a sign for "Draz'ghun"
+    the Potion Salesman.
 3:
   description: Draz'ghun's Shop. Whilst small in nature, the vendor here can offer
     a small selection of potions from Draz'ghuns famed brewing.

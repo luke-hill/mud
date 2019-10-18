@@ -86,7 +86,7 @@ module AdminPanel
     end
 
     def new_values
-      { id => options.stringify_keys }
+      { id => data.merge(options.stringify_keys) }
     end
 
     def data
