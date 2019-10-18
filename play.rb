@@ -27,7 +27,7 @@ class Play
     MUD::Logger.debug('Diagnostic info is...')
     MUD::Screen.output("Description is: #{player.current_room.description.blue}")
     MUD::Screen.output("Advanced Description is: #{player.current_room.advanced_description.blue}")
-    MUD::Screen.output(player.connected_rooms)
+    MUD::Screen.output(player.current_room.connected_rooms)
     player.view_attributes
   end
 
