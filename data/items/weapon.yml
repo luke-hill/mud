@@ -28,3 +28,9 @@ small_bow:
     hunting rabbits and not much more.
   min_power: 3
   max_power: 4
+sharp_fangs:
+  name: Sharp Fangs
+  description: The sharp fangs of the Forest Path Wolves. They glisten with blood
+    from their latest victim.
+  min_power: 11
+  max_power: 17

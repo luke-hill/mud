@@ -33,3 +33,6 @@ forest_path:
   area: Forest Path
 barracks:
   area: Barracks
+sovereign_city_gatehouse:
+  town: Sovereign City
+  area: Gatehouse
