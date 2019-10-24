@@ -1,5 +1,8 @@
 RSpec.describe MUD::Enemy do
   let(:enemy) { create(enemy_data) }
+  let(:dead_enemy) do
+    enemy.tap { |enemy| enemy.hp = 0 }
+  end
   let(:enemy_data) do
     {
       name: 'Enemy',
@@ -97,7 +100,6 @@ RSpec.describe MUD::Enemy do
     context 'an enemy with negative hp' do
       it 'alters an enemies hp to 0 if it was negative' do
         _enemy = dead_enemy
-        _enemy.hp
         _enemy.hp -= 1
         initial_hp = _enemy.hp
 
