@@ -7,7 +7,7 @@ ap = AdminPanel::Seeder.new(:description)
     id: id_number,
     description: 'DescriptionBLAHBLAHBLAHBLAH',
     advanced_description: 'Advanced DescriptionBLAHBLAHBLAHBLAH',
-    type: 'town',
+    type: 'Town',
     location_id: 'newtown_town_square',
     enemy_id: 'no_enemy'
   )

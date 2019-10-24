@@ -22,6 +22,7 @@
 6:
   south: 7
   east: 5
+  west: 60
 7:
   north: 6
   south: 8
@@ -43,6 +44,8 @@
 12:
   south: 11
   east: 13
+  west: 35
+  hide_east: true
 13:
   east: 14
   west: 12
@@ -64,6 +67,7 @@
 19:
   east: 20
   west: 18
+  east_key_id: barracks_key
 20:
   west: 19
 21:
@@ -107,3 +111,88 @@
   east: 26
 34:
   west: 23
+35:
+  east: 12
+  west: 36
+36:
+  east: 35
+  west: 37
+37:
+  east: 36
+  north: 38
+38:
+  north: 39
+  south: 37
+39:
+  east: 40
+  south: 38
+40:
+  east: 41
+  west: 39
+41:
+  east: 42
+  west: 40
+42:
+  east: 43
+  west: 41
+43:
+  east: 44
+  west: 42
+44:
+  north: 51
+  east: 45
+  west: 43
+45:
+  east: 46
+  west: 44
+46:
+  north: 47
+  west: 45
+47:
+  north: 48
+  south: 46
+48:
+  east: 49
+  south: 47
+49:
+  east: 50
+  west: 48
+50:
+  west: 49
+51:
+  north: 52
+  south: 44
+52:
+  west: 53
+  south: 51
+53:
+  east: 52
+  west: 54
+54:
+  east: 53
+  west: 55
+55:
+  north: 56
+  east: 54
+  west: 58
+56:
+  north: 57
+  south: 55
+57:
+  north: 59
+  south: 56
+58:
+  east: 55
+59:
+  south: 57
+60:
+  north: 61
+  south: 62
+  west: 63
+  east: 6
+61:
+  south: 60
+62:
+  north: 60
+63:
+  east: 60
