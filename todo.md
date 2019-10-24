@@ -1,9 +1,6 @@
 4) Enemy Spec is a bit manky for the methods near the bottom, try cleanup?
 5) Fix up Spec for ActivePlayer (None working yet)
-7) Copy over all seed data from previous repo
-8) Go through Admin Panel and validate all v0.2 - v1.1 seed files
 10) Checklist of all app subfolders
-- [ ] classes
 - [ ] combat
 - [ ] helpers
 - [ ] movement
@@ -44,3 +41,5 @@
 31) Add Simplecov, initial aim for 20%
 32) Update Simplecov to pass 50%
 33) Add integration tests (Not sure if we can we feature test this using cucumber?)
+34) Re-run seed files v0.1 - v1.1 (This should change little to no data)
+35) Re-run seed file v2.0

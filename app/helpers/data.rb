@@ -1,6 +1,10 @@
 module MUD
   module Helpers
+    # Package Private Helpers to load the various data files up
+    # Used to fetch values and data about almost anything in the game
     module Data
+      private
+
       def descriptions_yml
         load_yml('/home/luke/Code/mud/data/rooms/description.yml')
       end
@@ -36,8 +40,6 @@ module MUD
       def armor_yml
         load_yml('/home/luke/Code/mud/data/items/armor.yml')
       end
-
-      private
 
       def load_yml(filename)
         YAML.load_file(filename)
