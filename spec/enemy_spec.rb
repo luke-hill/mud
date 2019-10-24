@@ -1,11 +1,5 @@
 RSpec.describe MUD::Enemy do
-
-  before do
-    allow(MUD::Enemy).to receive(:new).with(enemy_id).and_return(enemy)
-    allow(enemy).to receive(:enemy).with(enemy_id).and_return(enemy_data)
-  end
-
-  let(:enemy_id) { 'enemy' }
+  let(:enemy) { create(enemy_data) }
   let(:enemy_data) do
     {
       name: 'Enemy',
@@ -22,8 +16,6 @@ RSpec.describe MUD::Enemy do
       stamina: 1
     }
   end
-
-  subject(:enemy) { instance_double(MUD::Enemy, 'An Enemy', enemy: enemy_data) }
 
   describe 'delegated methods' do
     data_keys = %i(
@@ -42,23 +34,7 @@ RSpec.describe MUD::Enemy do
     )
     data_keys.each do |key|
       it "delegates calling #{key} on the Enemy class to the enemy data" do
-        enemy.send(key)
-
-        expect(enemy_data).to have_received(key)
-      end
-    end
-  end
-
-  describe 'delegated methods' do
-    context 'a valid enemy' do
-      it 'has a lower and upper hp limit' do
-        expect(enemy).to validate_numericality_of(:upper_hp_limit)
-          .is_greater_than_or_equal_to(enemy.lower_hp_limit)
-      end
-
-      it 'has a lower and upper gold limit' do
-        expect(enemy).to validate_numericality_of(:upper_gold_limit)
-          .is_greater_than_or_equal_to(enemy.lower_gold_limit)
+        expect { enemy.send(key) }.not_to raise_error
       end
     end
   end
