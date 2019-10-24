@@ -16,6 +16,8 @@ module MUD
         end
       end
 
+      private
+
       def fight_once
         return MUD::Screen.output('There is no enemy present'.red) if enemy.nil?
 

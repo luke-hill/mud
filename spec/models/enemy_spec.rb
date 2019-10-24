@@ -1,17 +1,6 @@
 RSpec.describe Enemy, type: :classes do
-  let(:enemies) { create(:enemies) }
-  let(:dead_enemy) { create(:enemies, :dead) }
-
   describe 'validations' do
     context 'a valid enemy' do
-      it { should validate_presence_of(:name) }
-
-      it { should validate_presence_of(:description) }
-
-      it { should validate_presence_of(:weapon_id) }
-
-      it { should validate_presence_of(:armor_id) }
-
       it 'has a lower and upper hp limit' do
         expect(enemy).to validate_numericality_of(:upper_hp_limit)
           .is_greater_than_or_equal_to(enemy.lower_hp_limit)
@@ -20,69 +9,6 @@ RSpec.describe Enemy, type: :classes do
       it 'has a lower and upper gold limit' do
         expect(enemy).to validate_numericality_of(:upper_gold_limit)
           .is_greater_than_or_equal_to(enemy.lower_gold_limit)
-      end
-
-      it { should validate_presence_of(:xp) }
-
-      it { should validate_presence_of(:xp_killshot) }
-
-      it { should validate_inclusion_of(:stamina).in_range(0..2) }
-
-      it { should validate_numericality_of(:accuracy).is_less_than(1) }
-
-      it 'saves to the database' do
-        expect { enemy }.to change { Enemy.count }.by(1)
-      end
-    end
-
-    context 'an invalid enemy' do
-      let(:enemies) { Enemy.create }
-      let(:errors) { enemy.errors }
-
-      it 'has no name' do
-        expect(errors).to have_key(:name)
-      end
-
-      it 'has no description' do
-        expect(errors).to have_key(:description)
-      end
-
-      it 'has no weapon or armor' do
-        expect(errors).to have_key(:weapon_id)
-
-        expect(errors).to have_key(:armor_id)
-      end
-
-      it 'has no lower or upper hp limit' do
-        expect(errors).to have_key(:lower_hp_limit)
-
-        expect(errors).to have_key(:upper_hp_limit)
-      end
-
-      it 'has no accuracy value' do
-        expect(errors).to have_key(:accuracy)
-      end
-
-      it 'has no lower or upper gold limit' do
-        expect(errors).to have_key(:lower_gold_limit)
-
-        expect(errors).to have_key(:upper_gold_limit)
-      end
-
-      it 'has no xp value' do
-        expect(errors).to have_key(:xp)
-      end
-
-      it 'has no xp_killshot value' do
-        expect(errors).to have_key(:xp_killshot)
-      end
-
-      it 'has no stamina value' do
-        expect(errors).to have_key(:stamina)
-      end
-
-      it 'does not save to the database' do
-        expect { enemy }.not_to change { Enemy.count }
       end
     end
   end
