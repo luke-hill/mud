@@ -7,6 +7,8 @@
     begins to give you an angry look, then he asks you to leave asyou're not spending
     Gold!
   type: Pub
+  location_id: newtown_town_square
+  enemy_id: no_enemy
 2:
   description: The streets of Newtown are fairly quiet, as you'd expect from this
     remote area. You notice a side-path that leads to what looks like a Residential
@@ -15,6 +17,9 @@
     ago, these streets look like they've seen better times. The signs for the once
     active market scene are now worn, you can vaguely make out a sign for "Draz'ghun"
     the Potion Salesman.
+  type: town
+  location_id: newtown_town_square
+  enemy_id: no_enemy
 3:
   description: Draz'ghun's Shop. Whilst small in nature, the vendor here can offer
     a small selection of potions from Draz'ghuns famed brewing.
@@ -22,6 +27,8 @@
     remarks that he's away on his adventures. The bottles on the shelves seem dirty,
     but you're told that the look is purely designed that way... To appeal to Travellers.
   type: Potion Shop
+  location_id: newtown_town_square
+  enemy_id: no_enemy
 4:
   description: The streets of Newtown are fairly quiet, as you'd expect from this
     remote area.
@@ -29,12 +36,18 @@
     ago, these streets look like they've seen better times. The signs for the once
     active market scene are now worn, you can vaguely make out a sign for "Draz'ghun"
     the Potion Salesman.
+  type: town
+  location_id: newtown_town_square
+  enemy_id: no_enemy
 5:
   description: Gatehouse. The guard looks you up and down as you leave for the Forest
     Path.
   advanced_description: Looking ahead, you can see the Forest Path out ahead, covered
     in a thin trail of leaves from the Trees that have been cut down for their Aurel
     Bark.
+  type: town
+  location_id: newtown_town_square
+  enemy_id: no_enemy
 6:
   description: The streets of Newtown are fairly quiet, as you'd expect from this
     remote area.
@@ -42,6 +55,9 @@
     ago, these streets look like they've seen better times. The signs for the once
     active market scene are now worn, you can vaguely make out a sign for "Draz'ghun"
     the Potion Salesman.
+  type: town
+  location_id: newtown_town_square
+  enemy_id: no_enemy
 7:
   description: The streets of Newtown are fairly quiet, as you'd expect from this
     remote area.
@@ -49,6 +65,9 @@
     ago, these streets look like they've seen better times. The signs for the once
     active market scene are now worn, you can vaguely make out a sign for "Draz'ghun"
     the Potion Salesman.
+  type: town
+  location_id: newtown_town_square
+  enemy_id: no_enemy
 8:
   description: The streets of Newtown are fairly quiet, as you'd expect from this
     remote area.
@@ -56,6 +75,9 @@
     ago, these streets look like they've seen better times. The signs for the once
     active market scene are now worn, you can vaguely make out a sign for "Draz'ghun"
     the Potion Salesman.
+  type: town
+  location_id: newtown_town_square
+  enemy_id: no_enemy
 9:
   description: The streets of Newtown are fairly quiet, as you'd expect from this
     remote area.
@@ -63,6 +85,9 @@
     ago, these streets look like they've seen better times. The signs for the once
     active market scene are now worn, you can vaguely make out a sign for "Draz'ghun"
     the Potion Salesman.
+  type: town
+  location_id: newtown_town_square
+  enemy_id: no_enemy
 10:
   description: This secluded area is notorious for being prime looting territory for
     local Bandits.
@@ -71,6 +96,7 @@
     Newtown.
   type: Out of Town
   location_id: forest_path
+  enemy_id: no_enemy
 11:
   description: This secluded area is notorious for being prime looting territory for
     local Bandits.
@@ -79,6 +105,7 @@
     Newtown.
   type: Out of Town
   location_id: forest_path
+  enemy_id: no_enemy
 12:
   description: This clearing appears to be some sort of crossroads, the sign you can
     barely make out. You can see to your West that there is a long and windy path,
@@ -89,6 +116,7 @@
     there is mention of a Reward?
   type: Out of Town
   location_id: forest_path
+  enemy_id: no_enemy
 13:
   description: The Barracks are dimly lit and the room you're in is very cold.
   advanced_description: As you look around, you see the light casting a shadow down
@@ -96,6 +124,7 @@
     hung up, but all are broken beyond use.
   type: Dungeon
   location_id: barracks
+  enemy_id: no_enemy
 14:
   description: The Barracks are dimly lit and the room you're in is very cold.
   advanced_description: Looking around, you can tell that no traveller has ventured
@@ -104,6 +133,7 @@
   type: Dungeon
   location_id: barracks
   ktp: true
+  enemy_id: no_enemy
 15:
   description: The Barracks are dimly lit and the room you're in is very cold.
   advanced_description: Looking around, you can tell that no traveller has ventured
@@ -112,6 +142,7 @@
   type: Dungeon
   location_id: barracks
   ktp: true
+  enemy_id: no_enemy
 16:
   description: The Barracks are dimly lit and the room you're in is very cold.
   advanced_description: Looking around, you can tell that no traveller has ventured
@@ -120,6 +151,7 @@
   type: Dungeon
   location_id: barracks
   ktp: true
+  enemy_id: no_enemy
 17:
   description: The Barracks are dimly lit and the room you're in is very cold.
   advanced_description: Looking around, you can tell that no traveller has ventured
@@ -128,6 +160,7 @@
   type: Dungeon
   location_id: barracks
   ktp: true
+  enemy_id: no_enemy
 18:
   description: The Barracks are dimly lit and the room you're in is very cold.
   advanced_description: Looking around, you can tell that no traveller has ventured
@@ -136,6 +169,7 @@
   type: Dungeon
   location_id: barracks
   ktp: true
+  enemy_id: no_enemy
 19:
   description: |-
     The Barracks are dimly lit and the room you're in is very cold... But you can feel some heat
@@ -147,6 +181,7 @@
   type: Dungeon
   location_id: barracks
   ktp: true
+  enemy_id: no_enemy
 20:
   description: The room is covered in blood, stained from the battles of past. There
     is a worn stool in the corner, here it looks as if the Barracks Master has been
@@ -158,6 +193,7 @@
   type: Dungeon
   location_id: barracks
   ktp: true
+  enemy_id: no_enemy
 21:
   description: The rocky street here looks unfinished, you notice a cable on the floor
     next to the main road.
