@@ -21,6 +21,18 @@ module MUD
         load_yml('/home/luke/Code/mud/data/items/weapon.yml')
       end
 
+      def healing_potion_yml
+        load_yml('/home/luke/Code/mud/data/items/potions/healing.yml')
+      end
+
+      def hp_bonus_potion_yml
+        load_yml('/home/luke/Code/mud/data/items/potions/hp_bonus.yml')
+      end
+
+      def mana_potion_yml
+        load_yml('/home/luke/Code/mud/data/items/potions/mana.yml')
+      end
+
       def armor_yml
         load_yml('/home/luke/Code/mud/data/items/armor.yml')
       end
