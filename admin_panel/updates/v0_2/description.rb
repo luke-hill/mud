@@ -9,7 +9,7 @@ ap = AdminPanel::Seeder.new(:description)
     advanced_description: 'Once destined to be the worlds first eco-friendly housing estate, The Newtown Residential '\
 'District lingers unfinished, with equipment strewn everywhere.',
     location_id: 'newtown_residential_district',
-    type: 'town',
+    type: 'Town',
     enemy_id: 'no_enemy'
   )
 end
@@ -21,7 +21,7 @@ ap.seed(
   advanced_description: 'Once destined to be the worlds first eco-friendly housing estate, The Newtown Residential '\
 'District lingers unfinished. The sign for the bank looks rusty and dated as it flaps about in the wind.',
   location_id: 'newtown_residential_district',
-  type: 'town',
+  type: 'Town',
   enemy_id: 'no_enemy'
 )
 
@@ -32,7 +32,7 @@ ap.seed(
     advanced_description: "This area of the Newtown Residential District houses office buildings and even a long "\
 "disbanded children's playground. Not that any parent would want their child playing next to the machinery!",
     location_id: 'newtown_residential_district_crossroads',
-    type: 'town',
+    type: 'Town',
     enemy_id: 'no_enemy'
   )
 end
@@ -44,7 +44,7 @@ end
 'little to no wealth.',
     advanced_description: 'Whilst Pristine in condition, this house shows no sign of materialistic wealth.',
     location_id: 'newtown_house',
-    type: 'town',
+    type: 'Town',
     enemy_id: 'no_enemy'
   )
 end
@@ -56,6 +56,6 @@ ap.seed(
   advanced_description: "As you'd expect from a small bank, there is little extravagance... or security. Posters lie "\
 "on the walls offering rewards for information on the whereabouts of the local Bandits that are hiding out.",
   location_id: 'newtown_bank',
-  type: 'town',
+  type: 'Town',
   enemy_id: 'no_enemy'
 )

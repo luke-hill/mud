@@ -17,7 +17,7 @@
     ago, these streets look like they've seen better times. The signs for the once
     active market scene are now worn, you can vaguely make out a sign for "Draz'ghun"
     the Potion Salesman.
-  type: town
+  type: Town
   location_id: newtown_town_square
   enemy_id: no_enemy
 3:
@@ -36,7 +36,7 @@
     ago, these streets look like they've seen better times. The signs for the once
     active market scene are now worn, you can vaguely make out a sign for "Draz'ghun"
     the Potion Salesman.
-  type: town
+  type: Town
   location_id: newtown_town_square
   enemy_id: no_enemy
 5:
@@ -45,7 +45,7 @@
   advanced_description: Looking ahead, you can see the Forest Path out ahead, covered
     in a thin trail of leaves from the Trees that have been cut down for their Aurel
     Bark.
-  type: town
+  type: Town
   location_id: newtown_gatehouse
   enemy_id: no_enemy
 6:
@@ -55,7 +55,7 @@
     ago, these streets look like they've seen better times. The signs for the once
     active market scene are now worn, you can vaguely make out a sign for "Draz'ghun"
     the Potion Salesman.
-  type: town
+  type: Town
   location_id: newtown_town_square
   enemy_id: no_enemy
 7:
@@ -65,7 +65,7 @@
     ago, these streets look like they've seen better times. The signs for the once
     active market scene are now worn, you can vaguely make out a sign for "Draz'ghun"
     the Potion Salesman.
-  type: town
+  type: Town
   location_id: newtown_town_square
   enemy_id: no_enemy
 8:
@@ -75,7 +75,7 @@
     ago, these streets look like they've seen better times. The signs for the once
     active market scene are now worn, you can vaguely make out a sign for "Draz'ghun"
     the Potion Salesman.
-  type: town
+  type: Town
   location_id: newtown_town_square
   enemy_id: no_enemy
 9:
@@ -85,7 +85,7 @@
     ago, these streets look like they've seen better times. The signs for the once
     active market scene are now worn, you can vaguely make out a sign for "Draz'ghun"
     the Potion Salesman.
-  type: town
+  type: Town
   location_id: newtown_town_square
   enemy_id: no_enemy
 10:
@@ -201,7 +201,7 @@
     estate, The Newtown Residential District lingers unfinished, with equipment strewn
     everywhere.
   location_id: newtown_residential_district
-  type: town
+  type: Town
   enemy_id: no_enemy
 22:
   description: The rocky street here looks unfinished, you notice a cable on the floor
@@ -210,7 +210,7 @@
     estate, The Newtown Residential District lingers unfinished, with equipment strewn
     everywhere.
   location_id: newtown_residential_district
-  type: town
+  type: Town
   enemy_id: no_enemy
 24:
   description: The rocky street here looks unfinished, you notice a cable on the floor
@@ -219,7 +219,7 @@
     estate, The Newtown Residential District lingers unfinished, with equipment strewn
     everywhere.
   location_id: newtown_residential_district
-  type: town
+  type: Town
   enemy_id: no_enemy
 25:
   description: The rocky street here looks unfinished, you notice a cable on the floor
@@ -228,7 +228,7 @@
     estate, The Newtown Residential District lingers unfinished, with equipment strewn
     everywhere.
   location_id: newtown_residential_district
-  type: town
+  type: Town
   enemy_id: no_enemy
 27:
   description: The rocky street here looks unfinished, you notice a cable on the floor
@@ -237,7 +237,7 @@
     estate, The Newtown Residential District lingers unfinished, with equipment strewn
     everywhere.
   location_id: newtown_residential_district
-  type: town
+  type: Town
   enemy_id: no_enemy
 23:
   description: The rocky street here looks unfinished, you notice a cable on the floor
@@ -247,7 +247,7 @@
     estate, The Newtown Residential District lingers unfinished. The sign for the
     bank looks rusty and dated as it flaps about in the wind.
   location_id: newtown_residential_district
-  type: town
+  type: Town
   enemy_id: no_enemy
 26:
   description: The rocky street here looks unfinished, you see signs that this used
@@ -256,7 +256,7 @@
     buildings and even a long disbanded children's playground. Not that any parent
     would want their child playing next to the machinery!
   location_id: newtown_residential_district_crossroads
-  type: town
+  type: Town
   enemy_id: no_enemy
 28:
   description: The rocky street here looks unfinished, you see signs that this used
@@ -265,7 +265,7 @@
     buildings and even a long disbanded children's playground. Not that any parent
     would want their child playing next to the machinery!
   location_id: newtown_residential_district_crossroads
-  type: town
+  type: Town
   enemy_id: no_enemy
 29:
   description: One of the few remaining houses in Newtown. The interior looks basic,
@@ -273,7 +273,7 @@
   advanced_description: Whilst Pristine in condition, this house shows no sign of
     materialistic wealth.
   location_id: newtown_house
-  type: town
+  type: Town
   enemy_id: no_enemy
 30:
   description: One of the few remaining houses in Newtown. The interior looks basic,
@@ -281,7 +281,7 @@
   advanced_description: Whilst Pristine in condition, this house shows no sign of
     materialistic wealth.
   location_id: newtown_house
-  type: town
+  type: Town
   enemy_id: no_enemy
 31:
   description: One of the few remaining houses in Newtown. The interior looks basic,
@@ -289,7 +289,7 @@
   advanced_description: Whilst Pristine in condition, this house shows no sign of
     materialistic wealth.
   location_id: newtown_house
-  type: town
+  type: Town
   enemy_id: no_enemy
 32:
   description: One of the few remaining houses in Newtown. The interior looks basic,
@@ -297,7 +297,7 @@
   advanced_description: Whilst Pristine in condition, this house shows no sign of
     materialistic wealth.
   location_id: newtown_house
-  type: town
+  type: Town
   enemy_id: no_enemy
 33:
   description: One of the few remaining houses in Newtown. The interior looks basic,
@@ -305,7 +305,7 @@
   advanced_description: Whilst Pristine in condition, this house shows no sign of
     materialistic wealth.
   location_id: newtown_house
-  type: town
+  type: Town
   enemy_id: no_enemy
 34:
   description: The Newtown bank is served by a single Teller. He sits behind the bars
@@ -314,7 +314,7 @@
     or security. Posters lie on the walls offering rewards for information on the
     whereabouts of the local Bandits that are hiding out.
   location_id: newtown_bank
-  type: town
+  type: Town
   enemy_id: no_enemy
 35:
   description: This secluded area is notorious for being prime looting territory for
@@ -514,7 +514,7 @@
   advanced_description: This area seems to be covered in rags, as if the Bandits wanted
     to keep the path clean, to lure even more un-suspecting travellers into it.
   location_id: forest_path
-  room_type: Outside
+  type: Outside
   enemy_id: bandit
 58:
   description: This secluded area is notorious for being prime looting territory for
@@ -523,7 +523,7 @@
   advanced_description: This area seems to be covered in rags, as if the Bandits wanted
     to keep the path clean, to lure even more un-suspecting travellers into it.
   location_id: forest_path
-  room_type: Outside
+  type: Outside
   enemy_id: bandit
 59:
   description: The guards at this gatehouse protect this city well, judging by how

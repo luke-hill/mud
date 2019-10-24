@@ -36,7 +36,7 @@ end
     advanced_description: 'This area seems to be covered in rags, as if the Bandits wanted to keep the path clean, '\
 'to lure even more un-suspecting travellers into it.',
     location_id: 'forest_path',
-    room_type: 'Outside'
+    type: 'Outside'
   )
 end
 
@@ -48,6 +48,7 @@ ap.seed(
   advanced_description: 'Looking ahead you can make out the Council Square, where most of the Cities business is ran '\
 'from. There are no signs directing you anywhere, almost as if everyone in the city knows where everything is.',
   location_id: 'sovereign_city_gatehouse',
+  type: 'Town'
 )
 
 ap.seed(
@@ -56,7 +57,8 @@ ap.seed(
 "to read the sign before continuing if you're not sure.",
   advanced_description: 'You notice a sign that says North: Goblin Training Arena, West: Brawler Training Arena, '\
 'South: Under Construction.',
-  location_id: 'newtown_training_area'
+  location_id: 'newtown_training_area',
+  type: 'Town'
 )
 
 (61..63).each do |id_number|
@@ -65,7 +67,8 @@ ap.seed(
     description: 'This Basic Arena is designed to get novice combatants ready to leave Newtown.',
     advanced_description: 'A Guard is in the corner, just in case things get out of hand. You see a Portcullis which '\
 'can release various adversaries one at a time.',
-    location_id: 'newtown_training_area'
+    location_id: 'newtown_training_area',
+    type: 'Arena'
   )
 end
 

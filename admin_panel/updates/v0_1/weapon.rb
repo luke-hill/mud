@@ -13,7 +13,8 @@ ap.seed(
 ap.seed(
   id: 'goblin_axe',
   name: 'Goblin Axe',
-  description: 'A primitive axe fashioned out of a branch and a piece of old flint, tied together with a single orc hair',
+  description: 'A primitive axe fashioned out of a branch and a piece of old flint, tied together with a '\
+' bunch of horse hair.',
   min_power: 1,
   max_power: 3
 )
@@ -21,7 +22,7 @@ ap.seed(
 ap.seed(
   id: 'knife',
   name: 'Knife',
-  description: 'A primitive knife used by huntsmen',
+  description: 'A small knife used by huntsmen and traders alike.',
   min_power: 1,
   max_power: 2
 )
