@@ -15,8 +15,8 @@ orc_hide:
   defense: 8
 orc_shield:
   name: Orc Shield
-  description: This shield is fashioned from the bones of its last few victims. It
-    is covered in spikes that offer some basic protection.
+  description: This shield is fashioned from the bones of the last few victims the
+    Orc has killed! It is covered in spikes that offer some basic protection.
   defense: 2
 bandit_leathers:
   name: Bandit Leathers
