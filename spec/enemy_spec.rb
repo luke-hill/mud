@@ -1,5 +1,55 @@
-RSpec.describe Enemy, type: :classes do
-  describe 'validations' do
+RSpec.describe MUD::Enemy do
+
+  before do
+    allow(MUD::Enemy).to receive(:new).with(enemy_id).and_return(enemy)
+    allow(enemy).to receive(:enemy).with(enemy_id).and_return(enemy_data)
+  end
+
+  let(:enemy_id) { 'enemy' }
+  let(:enemy_data) do
+    {
+      name: 'Enemy',
+      description: 'A Description',
+      weapon_id: 'fists',
+      armor_id: 'unarmored',
+      lower_hp_limit: 5,
+      upper_hp_limit: 13,
+      accuracy: 0.7,
+      lower_gold_limit: 0,
+      upper_gold_limit: 3,
+      xp: 2,
+      xp_killshot: 10,
+      stamina: 1
+    }
+  end
+
+  subject(:enemy) { instance_double(MUD::Enemy, 'An Enemy', enemy: enemy_data) }
+
+  describe 'delegated methods' do
+    data_keys = %i(
+      name
+      description
+      weapon_id
+      armor_id
+      lower_hp_limit
+      upper_hp_limit
+      accuracy
+      lower_gold_limit
+      upper_gold_limit
+      xp
+      xp_killshot
+      stamina
+    )
+    data_keys.each do |key|
+      it "delegates calling #{key} on the Enemy class to the enemy data" do
+        enemy.send(key)
+
+        expect(enemy_data).to have_received(key)
+      end
+    end
+  end
+
+  describe 'delegated methods' do
     context 'a valid enemy' do
       it 'has a lower and upper hp limit' do
         expect(enemy).to validate_numericality_of(:upper_hp_limit)
