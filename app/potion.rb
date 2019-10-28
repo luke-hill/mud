@@ -27,6 +27,7 @@ module MUD
       return self.type = :healing if healing_potion?
       return self.type = :mana if mana_potion?
       return self.type = :hp_bonus if hp_bonus_potion?
+
       self.type = :unknown
     end
 

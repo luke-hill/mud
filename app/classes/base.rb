@@ -74,6 +74,7 @@ module MUD
       def type_of(item_id)
         return :weapon if weapon_ids.include?(item_id)
         return :armor if armor_ids.include?(item_id)
+
         MUD::Logger.error("An error has occurred trying to classify the type of #{item_id}")
         raise "Cannot classify #{item_id}."
       end

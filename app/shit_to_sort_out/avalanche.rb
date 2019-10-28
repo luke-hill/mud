@@ -8,6 +8,7 @@ module Player
 
     def buy(item)
       return puts "I'm sorry we dont have that item for sale" unless room.list_of_items_for_sale.include?(item)
+
       if item == 'Lesser Healing Potion' && gold > 25
         inventory << Items::Potion::LesserPotion.new
         self.gold -= 25
