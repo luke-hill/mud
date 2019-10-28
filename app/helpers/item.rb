@@ -18,8 +18,8 @@ module MUD
       end
 
       def missing_barracks_key
-        'You are missing the key to the door that is blocking your passage. There are faint markings underneath the keyhole\
-       that closely resemble the insignia of the Barracks'
+        'You are missing the key to the door that is blocking your passage. There are faint markings '\
+'underneath the keyhole that closely resemble the insignia of the Barracks'
       end
     end
   end

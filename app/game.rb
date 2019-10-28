@@ -14,7 +14,7 @@ module MUD
       def setup
         Screen.output('Game started'.red)
         display_welcome_message
-        create_player_object
+        player
       end
 
       def reset!
@@ -38,8 +38,8 @@ module MUD
         sleep 0.75
         MUD::Screen.output "Whilst you're here, let me give you the down-low. You're about to begin your quest"
         sleep 0.75
-        MUD::Screen.output 'You are in Newtown, and as avaLancHe ... our intrepid explorer, you have spawned in our '\
-'village to kill Several Monsters and then the boss - The Orc!'
+        MUD::Screen.output 'You are in Newtown, and as avaLancHe ... our intrepid explorer, '\
+'you have spawned in our village to kill Several Monsters and then the boss - The Orc!'
         sleep 0.5
         MUD::Screen.output '............................................'
       end
@@ -48,7 +48,7 @@ module MUD
         true
       end
 
-      def create_player_object
+      def player
         @player ||= Classes::Fighter.new
       end
     end

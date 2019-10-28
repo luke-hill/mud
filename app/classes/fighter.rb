@@ -19,7 +19,8 @@ module MUD
           level: 1,
           experience: 0,
           gold: 200,
-          inventory: []
+          inventory: [],
+          accuracy: 0.7
         }
       end
     end

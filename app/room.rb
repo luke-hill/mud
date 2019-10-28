@@ -18,7 +18,8 @@ module MUD
     end
 
     def advanced_description
-      @advanced_description ||= "#{description_yml.dig(room_id, 'advanced_description').blue}\n#{directions_string.yellow}"
+      @advanced_description ||=
+        "#{description_yml.dig(room_id, 'advanced_description').blue}\n#{directions_string.yellow}"
     end
 
     def visit
@@ -35,6 +36,14 @@ module MUD
       direction_yml[room_id]
     end
 
+    def enemy?
+      enemy.alive?
+    end
+
+    def enemy
+      @enemy ||= Enemy.new(description_yml.dig(room_id, 'enemy_id'))
+    end
+
     private
 
     def directions_string
@@ -43,7 +52,7 @@ module MUD
         when 0; then "You cannot move in any direction"
         when 1; then "You can only go #{visible_directions_as_string}"
         when 2..4; then "You can go #{visible_directions_as_string}"
-        else raise RuntimeError, "This room is incorrectly configured"
+        else raise RuntimeError, "This room (Room-ID: #{room_id}), is incorrectly configured"
         end
       end
     end

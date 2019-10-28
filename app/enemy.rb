@@ -36,7 +36,11 @@ module MUD
     attr_writer :gold
 
     def dead?
-      @enemy.nil? || hp.zero?
+      @enemy.nil? || !hp.positive?
+    end
+
+    def alive?
+      !dead?
     end
 
     def prevent_negative_hp

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'yaml'
-require_relative '../app/core_ext/all'
+require 'active_support/all'
 
 module AdminPanel
   class Seeder

@@ -20,5 +20,4 @@ require_relative 'weapon'
 
 require_relative 'classes/all'
 require_relative 'combat/all'
-require_relative 'core_ext/all'
-require_relative 'movement/all'
+require_relative 'actions/all'
