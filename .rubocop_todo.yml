@@ -36,7 +36,7 @@ Layout/LeadingCommentSpace:
 # Configuration parameters: AllowInHeredoc.
 Layout/TrailingWhitespace:
   Exclude:
-    - 'app/movement/move.rb'
+    - 'app/actions/move.rb'
 
 # Offense count: 7
 # Configuration parameters: AllowKeywordBlockArguments.

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module MUD
-  module Movement
+  module Actions
     class Move
       class << self
         include MUD::Helpers::Data

@@ -66,8 +66,8 @@ RSpec.describe MUD::Classes::Base do
   end
 
   describe '#move' do
-    it 'delegates to the Movement::Move class' do
-      expect(MUD::Movement::Move).to receive(:south)
+    it 'delegates to the Actions::Move class' do
+      expect(MUD::Actions::Move).to receive(:south)
 
       player.move('south')
     end
