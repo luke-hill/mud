@@ -18,6 +18,10 @@ module MUD
         set_rooms_visited_to_blank
       end
 
+      def look_around
+        MUD::Screen.output(player.current_room.advanced_description)
+      end
+
       def view_attributes
         attribute_names.each do |attribute|
           MUD::Logger.debug('Call made to view attributes')

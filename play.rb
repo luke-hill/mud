@@ -9,7 +9,8 @@ class Play
       when 'south', 's'; then player.move('south')
       when 'east', 'e';  then player.move('east')
       when 'west', 'w';  then player.move('west')
-      when '';           then output_diagnostic_info
+      when '';           then player.look_around
+      when 'debug';      then output_diagnostic_info
       when 'quit', 'q';  then die
       else puts 'Input not yet recognised'
       end
@@ -24,10 +25,11 @@ class Play
   end
 
   def output_diagnostic_info
-    MUD::Logger.debug('Diagnostic info is...')
+    MUD::Screen.output(player.current_room.advanced_description)
+    MUD::Logger.debug('... DEBUG DIAGNOSTIC DUMP...')
     MUD::Screen.output("Description is: #{player.current_room.description.blue}")
     MUD::Screen.output("Advanced Description is: #{player.current_room.advanced_description.blue}")
-    MUD::Screen.output(player.current_room.connected_rooms)
+    MUD::Screen.output(player.current_room.send(:connected_rooms))
     player.view_attributes
   end
 
