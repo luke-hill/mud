@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe MUD::Classes::Base do
   before do
     # Mock sample player

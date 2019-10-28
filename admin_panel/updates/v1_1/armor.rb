@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # V1.1 New Enemy Armors
 
 ap = AdminPanel::Seeder.new(:armor)

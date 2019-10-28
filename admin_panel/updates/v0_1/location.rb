@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # V0.1 Locations
 
 ap = AdminPanel::Seeder.new(:location)

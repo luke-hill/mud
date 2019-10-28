@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # V0.1.1 Regular / Advanced Descriptions
 
 ap = AdminPanel::Seeder.new(:description)

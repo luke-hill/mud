@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Player
   class Avalanche
     attr_accessor :accuracy

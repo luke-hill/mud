@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # V0.1 - 20 Blank Rooms
 
 ap = AdminPanel::Seeder.new(:description)

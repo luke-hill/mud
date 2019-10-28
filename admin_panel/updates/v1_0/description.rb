@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # V1.0 Minor Content Update
 
 ap = AdminPanel::Seeder.new(:description)

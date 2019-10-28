@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # V0.1 Newtown and first Dungeon
 
 ap = AdminPanel::Seeder.new(:direction)

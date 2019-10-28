@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MUD
   class Weapon
     include Helpers::Data

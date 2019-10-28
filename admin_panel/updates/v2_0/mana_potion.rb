@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # V2.0 Missing (First), Potion items
 
 ap = AdminPanel::Seeder.new(:mana_potion)

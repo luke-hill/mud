@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # V1.1 Sovereign City Gatehouse
 # (Sovereign City needs re-mapping and full descriptions doing)
 

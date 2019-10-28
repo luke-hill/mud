@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Items
   class Gold
     attr_reader :name, :desc, :amount

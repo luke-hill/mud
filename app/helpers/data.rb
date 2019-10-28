@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MUD
   module Helpers
     # Package Private Helpers to load the various data files up

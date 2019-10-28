@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # V2.0 Adding guards to locations
 
 ap = AdminPanel::Seeder.new(:location)

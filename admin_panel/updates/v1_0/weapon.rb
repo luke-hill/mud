@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # V1.0 Goblin Archer Bow
 
 ap = AdminPanel::Seeder.new(:weapon)

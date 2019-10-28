@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # V0.1 Basic Weapon items
 
 ap = AdminPanel::Seeder.new(:weapon)

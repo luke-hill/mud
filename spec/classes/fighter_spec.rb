@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe MUD::Classes::Fighter do
   let(:name)       { subject.name }
   let(:max_hp)     { subject.max_hp }
