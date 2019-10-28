@@ -1,4 +1,3 @@
-require 'action_view'
 require 'active_support/all'
 require 'yaml'
 require 'singleton'
