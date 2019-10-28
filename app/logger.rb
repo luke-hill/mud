@@ -19,7 +19,7 @@ module MUD
       end
 
       def name
-        File.absolute_path('/home/luke/Code/mud/log/mud.log')
+        File.join(Dir.pwd, 'log/mud.log')
       end
 
       def archived_logs

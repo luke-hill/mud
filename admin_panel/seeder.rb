@@ -59,17 +59,17 @@ module AdminPanel
 
     def yaml_locations
       {
-        armor: '/home/luke/Code/mud/data/items/armor.yml',
-        boss: '/home/luke/Code/mud/data/enemies/boss.yml',
-        description: '/home/luke/Code/mud/data/rooms/description.yml',
-        direction: '/home/luke/Code/mud/data/rooms/direction.yml',
-        enemy: '/home/luke/Code/mud/data/enemies/enemy.yml',
-        healing_potion: '/home/luke/Code/mud/data/items/potions/healing.yml',
-        hp_bonus_potion: '/home/luke/Code/mud/data/items/potions/hp_bonus.yml',
-        key: '/home/luke/Code/mud/data/items/key.yml',
-        location: '/home/luke/Code/mud/data/rooms/location.yml',
-        mana_potion: '/home/luke/Code/mud/data/items/potions/mana.yml',
-        weapon: '/home/luke/Code/mud/data/items/weapon.yml'
+        armor: "#{home_dir}/data/items/armor.yml",
+        boss: "#{home_dir}/data/enemies/boss.yml",
+        description: "#{home_dir}/data/rooms/description.yml",
+        direction: "#{home_dir}/data/rooms/direction.yml",
+        enemy: "#{home_dir}/data/enemies/enemy.yml",
+        healing_potion: "#{home_dir}/data/items/potions/healing.yml",
+        hp_bonus_potion: "#{home_dir}/data/items/potions/hp_bonus.yml",
+        key: "#{home_dir}/data/items/key.yml",
+        location: "#{home_dir}/data/rooms/location.yml",
+        mana_potion: "#{home_dir}/data/items/potions/mana.yml",
+        weapon: "#{home_dir}/data/items/weapon.yml"
       }
     end
 
@@ -95,6 +95,10 @@ module AdminPanel
 
     def save
       File.write(yml_file_location, yml_file.to_yaml)
+    end
+
+    def home_dir
+      File.join(Dir.pwd)
     end
   end
 end
