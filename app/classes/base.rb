@@ -49,10 +49,8 @@ module MUD
       end
 
       def equip(item_id)
-        MUD::Logger.debug("Looking for #{item_id}.")
-        equip_weapon(item_id) if weapon?(item_id)
-        equip_armor(item_id) if armor?(item_id)
-        MUD::Screen.output("#{item_id} equipped")
+        Logger.debug("Attempting to equip #{item_id}")
+        MUD::Actions::Equip.new(item_id).equip
       end
 
       def weapon
@@ -64,42 +62,6 @@ module MUD
       end
 
       private
-
-      def weapon?(item_id)
-        type_of(item_id) == :weapon
-      end
-
-      def armor?(item_id)
-        type_of(item_id) == :armor
-      end
-
-      def type_of(item_id)
-        return :weapon if weapon_ids.include?(item_id)
-        return :armor if armor_ids.include?(item_id)
-
-        MUD::Logger.error("An error has occurred trying to classify the type of #{item_id}")
-        raise "Cannot classify #{item_id}."
-      end
-
-      def equip_weapon(item_id)
-        new_weapon_id = find(item_id, %w[weapon])
-        return MUD::Screen.output('You do not have this weapon to equip.') unless new_weapon_id
-
-        current_weapon_id = equipment[:weapon]
-        inventory << current_weapon_id
-        equipment[:weapon] = new_weapon_id
-        remove_from_inventory(new_weapon_id)
-      end
-
-      def equip_armor(item_id)
-        new_armor_id = find(item_id, %w[armor])
-        return MUD::Screen.output('You do not have this armor to equip.') unless new_armor_id
-
-        current_armor_id = equipment[:armor]
-        inventory << current_armor_id
-        equipment[:armor] = new_armor_id
-        remove_from_inventory(new_armor_id)
-      end
 
       def starting_room
         MUD::Room.new(starting_room_id)
@@ -120,35 +82,8 @@ module MUD
         @rooms_visited ||= {}
       end
 
-      def remove_from_inventory(item_id)
-        MUD::Logger.debug("Looking for #{item_id}.")
-        item = find(item_id)
-        return MUD::Screen.output('You do not have this item to remove.') unless item
-
-        removed_item = inventory.delete_at(inventory.index(item))
-        MUD::Screen.output("Removed #{removed_item}")
-      end
-
       def attribute_names
-        %i[name max_hp hp level stamina experience gold inventory]
-      end
-
-      def find(item_id, types = [])
-        items_of_type(types).detect do |item|
-          item == item_id
-        end
-      end
-
-      def items_of_type(types)
-        if types.any?
-          inventory.select { |item| item_ids(types).include?(item) }
-        else
-          inventory
-        end
-      end
-
-      def item_ids(types)
-        types.map { |type| send("#{type}_ids") }.flatten
+        %i[name max_hp hp level stamina experience gold inventory accuracy]
       end
     end
   end
