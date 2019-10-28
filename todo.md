@@ -50,3 +50,4 @@
 34) Re-run seed files v0.1 - v1.1 (This should change little to no data)
 35) Re-run seed file v2.0
 36) Re-check specs again and add missing specs
+37) Work out for v3 who would or should drop endurance potion (It also could be crafted?)
