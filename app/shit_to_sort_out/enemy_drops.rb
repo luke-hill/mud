@@ -16,7 +16,6 @@ module MUD
       end
 
       def orc_drop
-        weapon_drop
         armor_drop
         gold_drop
       end
@@ -75,7 +74,8 @@ module MUD
       end
 
       def notify_potion_drop
-        'Amongst the corpse of the Goblin, you stumble across a Potion... It falls to the floor, along with its lifeless corpse'
+        'Amongst the corpse of the Goblin, you stumble across a Potion... '\
+'It falls to the floor, along with its lifeless corpse'
       end
     end
   end
