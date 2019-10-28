@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'actionview', '~> 5.2'
+gem 'activesupport', '~> 5.2'
 gem 'rspec'
 gem 'rspec-rails'
 gem 'rubocop', '~> 0.74.0'

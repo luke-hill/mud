@@ -1,5 +1,4 @@
 require 'action_view'
-require 'action_view/helpers'
 require 'active_support/all'
 require 'yaml'
 require 'singleton'
