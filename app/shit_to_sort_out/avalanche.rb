@@ -2,12 +2,6 @@
 
 module Player
   class Avalanche
-    attr_accessor :accuracy
-
-    def initialize
-      @accuracy = 0.85
-    end
-
     def buy(item)
       return puts "I'm sorry we dont have that item for sale" unless room.list_of_items_for_sale.include?(item)
 
@@ -22,10 +16,6 @@ module Player
       else
         puts 'You do not have enough gold for that.'
       end
-    end
-
-    def enemy_present?
-      room.enemy_alive?
     end
 
     def all_gold_items
@@ -72,15 +62,7 @@ module Player
         use_key
       end
 
-      if enemy_present?
-        puts cannot_leave_whilst_enemy_alive
-      end
-    end
-
-    def west
-      if enemy_present?
-        puts cannot_leave_whilst_enemy_alive
-      end
+      puts cannot_leave_whilst_enemy_alive if enemy?
     end
 
     def cannot_leave_whilst_enemy_alive

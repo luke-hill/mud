@@ -9,6 +9,7 @@ RSpec.describe MUD::Classes::Fighter do
   let(:experience) { subject.experience }
   let(:gold)       { subject.gold }
   let(:inventory)  { subject.inventory }
+  let(:accuracy)   { subject.accuracy }
 
   before { swallow_console_spam }
 
@@ -43,6 +44,10 @@ RSpec.describe MUD::Classes::Fighter do
 
     it 'has no initial items' do
       expect(inventory).to eq([])
+    end
+
+    it 'has an accuracy rating of 0.7' do
+      expect(accuracy).to eq(0.7)
     end
   end
 end
