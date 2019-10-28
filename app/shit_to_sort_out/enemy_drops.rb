@@ -4,7 +4,7 @@ module MUD
   module Room
     class EnemyDrops
       def drop
-        send("#{enemy_name.snake_case}_drop")
+        send("#{enemy_name.underscore}_drop")
       end
 
       private
