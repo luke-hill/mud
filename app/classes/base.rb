@@ -50,7 +50,7 @@ module MUD
 
       def equip(item_id)
         Logger.debug("Attempting to equip #{item_id}")
-        MUD::Actions::Equip.new(item_id).equip
+        MUD::Actions::Equip.new(self, item_id).equip
       end
 
       def weapon

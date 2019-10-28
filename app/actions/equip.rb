@@ -6,8 +6,10 @@ module MUD
       attr_reader :item_id
 
       include Helpers::Item
+      extend Forwardable
 
-      def initialize(item_id)
+      def initialize(hero, item_id)
+        @hero = hero
         @item_id = item_id
       end
 
@@ -17,6 +19,11 @@ module MUD
         equip_armor if armor?
         MUD::Screen.output("#{item_id} equipped")
       end
+
+      def_delegators \
+        :@hero,
+        :inventory,
+        :equipment
 
       private
 

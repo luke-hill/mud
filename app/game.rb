@@ -14,7 +14,7 @@ module MUD
       def setup
         Screen.output('Game started'.red)
         display_welcome_message
-        create_player_object
+        player
       end
 
       def reset!
@@ -48,7 +48,7 @@ module MUD
         true
       end
 
-      def create_player_object
+      def player
         @player ||= Classes::Fighter.new
       end
     end
