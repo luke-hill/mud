@@ -1,14 +1,43 @@
-RSpec.describe Enemy, type: :classes do
-  describe 'validations' do
-    context 'a valid enemy' do
-      it 'has a lower and upper hp limit' do
-        expect(enemy).to validate_numericality_of(:upper_hp_limit)
-          .is_greater_than_or_equal_to(enemy.lower_hp_limit)
-      end
+RSpec.describe MUD::Enemy do
+  let(:enemy) { create(enemy_data) }
+  let(:dead_enemy) do
+    enemy.tap { |enemy| enemy.hp = 0 }
+  end
+  let(:enemy_data) do
+    {
+      name: 'Enemy',
+      description: 'A Description',
+      weapon_id: 'fists',
+      armor_id: 'unarmored',
+      lower_hp_limit: 5,
+      upper_hp_limit: 13,
+      accuracy: 0.7,
+      lower_gold_limit: 0,
+      upper_gold_limit: 3,
+      xp: 2,
+      xp_killshot: 10,
+      stamina: 1
+    }
+  end
 
-      it 'has a lower and upper gold limit' do
-        expect(enemy).to validate_numericality_of(:upper_gold_limit)
-          .is_greater_than_or_equal_to(enemy.lower_gold_limit)
+  describe 'delegated methods' do
+    data_keys = %i(
+      name
+      description
+      weapon_id
+      armor_id
+      lower_hp_limit
+      upper_hp_limit
+      accuracy
+      lower_gold_limit
+      upper_gold_limit
+      xp
+      xp_killshot
+      stamina
+    )
+    data_keys.each do |key|
+      it "delegates calling #{key} on the Enemy class to the enemy data" do
+        expect { enemy.send(key) }.not_to raise_error
       end
     end
   end
@@ -71,7 +100,6 @@ RSpec.describe Enemy, type: :classes do
     context 'an enemy with negative hp' do
       it 'alters an enemies hp to 0 if it was negative' do
         _enemy = dead_enemy
-        _enemy.hp
         _enemy.hp -= 1
         initial_hp = _enemy.hp
 
