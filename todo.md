@@ -4,14 +4,7 @@
 - [ ] combat
 - [ ] helpers
 - [ ] movement
-- [ ] shit_to_sort_out
-11) Checklist of all top level files inside app folder
-- [ ] enemy
-- [ ] game
-- [ ] logger
-- [ ] room
-- [ ] screen
-- [ ] weapon
+12) Begin to remove the remaining items from shit_to_sort_out folder
 14) Begin final review of gems, purge anything remotely left-over from rails
 15) Begin first pass of rubocop config (Not fixes)
 16) Begin to code YML db model readers (For things like the attack logic)
