@@ -28,7 +28,10 @@ class Play
     MUD::Logger.debug('... DEBUG DIAGNOSTIC DUMP...')
     MUD::Screen.output("Description is: #{player.current_room.description}")
     MUD::Screen.output("Advanced Description is: #{player.current_room.advanced_description}")
-    MUD::Screen.output(player.current_room.connected_rooms)
+    MUD::Screen.output("Connected rooms #{player.current_room.connected_rooms}")
+    MUD::Screen.output("Inventory: #{player.inventory}")
+    MUD::Screen.output("Weapon: #{player.weapon.green}")
+    MUD::Screen.output("Armor: #{player.armor.green}")
     player.view_attributes
   end
 
