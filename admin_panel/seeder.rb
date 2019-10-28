@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'yaml'
 require_relative '../app/core_ext/all'
 
@@ -81,7 +83,7 @@ module AdminPanel
       YAML.load_file(yml_file_location)
     rescue Errno::ENOENT
       puts "File does not exist @ #{yml_file_location}. Creating new blank YML file."
-      File.open(yml_file_location, 'w+') {|f| f.write({}) }
+      File.open(yml_file_location, 'w+') { |f| f.write({}) }
       YAML.load_file(yml_file_location)
     end
 

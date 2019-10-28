@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # V0.2 Newtown Residential District
 
 ap = AdminPanel::Seeder.new(:description)

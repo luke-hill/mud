@@ -1,12 +1,10 @@
+# frozen_string_literal: true
+
 module MUD
   module Movement
     class Move
       class << self
         include MUD::Helpers::Data
-        
-        def look_around
-          MUD::Screen.output(player.current_room.advanced_description.yellow)
-        end
 
         def north
           if north_room_id

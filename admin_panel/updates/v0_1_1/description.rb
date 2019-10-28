@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # V0.1.1 Regular / Advanced Descriptions
 
 ap = AdminPanel::Seeder.new(:description)
@@ -6,8 +8,8 @@ ap.seed(
   id: 1,
   description: "The home of many of the men of the village of Newtown. The Newtown Pub offers its patrons a chance to "\
 'sitdown, relax and rest your weary bones.',
-  advanced_description: "The Fire is roaring, you hear chatter from the local villagers (What few reside here), about"\
-"exploits in the neighbouring villages. The Barkeep begins to give you an angry look, then he asks you to leave as"\
+  advanced_description: "The Fire is roaring, you hear chatter from the local villagers (What few reside here), about "\
+"exploits in the neighbouring villages. The Barkeep begins to give you an angry look, then he asks you to leave as "\
 "you're not spending Gold!",
   type: 'Pub'
 )

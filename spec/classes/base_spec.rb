@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe MUD::Classes::Base do
   before do
     # Mock sample player
@@ -9,8 +11,9 @@ RSpec.describe MUD::Classes::Base do
     swallow_console_spam
   end
 
-  before(:each) { switch_logging_to_temp_file }
-  after(:each) { remove_test_screen_logs }
+  before { switch_logging_to_temp_file }
+
+  after { remove_test_screen_logs }
 
   let(:starting_attributes) do
     {

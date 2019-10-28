@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe MUD::Enemy do
   let(:enemy) { create(enemy_data) }
   let(:dead_enemy) do

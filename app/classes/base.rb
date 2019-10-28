@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MUD
   module Classes
     class Base
@@ -16,6 +18,10 @@ module MUD
         @current_room = starting_room
         @equipment = starting_equipment
         set_rooms_visited_to_blank
+      end
+
+      def look_around
+        MUD::Screen.output(player.current_room.advanced_description)
       end
 
       def view_attributes
@@ -70,6 +76,7 @@ module MUD
       def type_of(item_id)
         return :weapon if weapon_ids.include?(item_id)
         return :armor if armor_ids.include?(item_id)
+
         MUD::Logger.error("An error has occurred trying to classify the type of #{item_id}")
         raise "Cannot classify #{item_id}."
       end

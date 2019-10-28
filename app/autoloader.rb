@@ -1,4 +1,6 @@
-require 'action_view'
+# frozen_string_literal: true
+
+require 'active_support/all'
 require 'yaml'
 require 'singleton'
 require 'forwardable'

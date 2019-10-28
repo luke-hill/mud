@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # V2.0 Missing Armor items
 
 ap = AdminPanel::Seeder.new(:armor)

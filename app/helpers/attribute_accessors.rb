@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MUD
   module Helpers
     # Add extra logging so we can see what each reader / writer method is doing

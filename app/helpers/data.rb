@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MUD
   module Helpers
     # Package Private Helpers to load the various data files up
@@ -5,11 +7,11 @@ module MUD
     module Data
       private
 
-      def descriptions_yml
+      def description_yml
         load_yml('data/rooms/description.yml')
       end
 
-      def directions_yml
+      def direction_yml
         load_yml('data/rooms/direction.yml')
       end
 
@@ -42,11 +44,7 @@ module MUD
       end
 
       def load_yml(file_subdir)
-        YAML.load_file("#{home_dir}/#{file_subdir}")
-      end
-      
-      def home_dir
-        File.join(Dir.pwd)
+        YAML.load_file("#{Dir.pwd}/#{file_subdir}")
       end
 
       def player

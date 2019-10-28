@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # V0.2 Enemy Creations
 
 ap = AdminPanel::Seeder.new(:enemy)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # V1.1
 # Room Presenter Logic (Hidden Rooms / Key Rooms)
 # Forest Path Directions

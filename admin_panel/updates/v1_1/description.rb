@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # V1.1 (large content update)
 # Forest Path - Descriptions and Basic Enemies
 # Newtown Arena/Pub - Descriptions

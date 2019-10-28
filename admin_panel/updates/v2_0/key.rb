@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # V2.0 New Key items, previously never seeded
 
 ap = AdminPanel::Seeder.new(:key)
