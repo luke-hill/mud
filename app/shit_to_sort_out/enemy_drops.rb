@@ -26,7 +26,10 @@ module MUD
       end
 
       def armor_drop
-        floor << enemy_armor
+        if rand(100) < 8 #8%
+          floor << enemy_armor
+          puts "The #{enemy_name} dropped its #{armor_name}"
+        end
       end
     end
   end
