@@ -46,3 +46,4 @@
 36) Re-check specs again and add missing specs
 37) Work out for v3 who would or should drop endurance potion (It also could be crafted?)
 38) When items have been dropped. Auto-add them to players inventory if available
+39) enable up and down directions. Begin to add the first 10-20 places on the map where up and down are viable
