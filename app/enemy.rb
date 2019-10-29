@@ -21,7 +21,16 @@ module MUD
                    :upper_gold_limit,
                    :xp,
                    :xp_killshot,
-                   :stamina
+                   :stamina,
+                   :dropped_potion_id,
+                   :dropped_potion_chance,
+                   :dropped_potion_message,
+                   :dropped_weapon_id,
+                   :dropped_weapon_chance,
+                   :dropped_weapon_message,
+                   :dropped_armor_id,
+                   :dropped_armor_chance,
+                   :dropped_armor_message
 
     def hp
       @hp ||= rand(lower_hp_limit..upper_hp_limit)

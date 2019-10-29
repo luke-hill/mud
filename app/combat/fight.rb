@@ -27,6 +27,7 @@ module MUD
 
         if enemy_killed?
           MUD::Screen.output("You killed the #{enemy.name}".blue.blink)
+          ItemDrops.new(hero, enemy).process
         else
           Defend.new(hero, enemy).defend
         end
