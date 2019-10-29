@@ -47,14 +47,7 @@ module MUD
     private
 
     def directions_string
-      @directions_string ||= begin
-        case visible_directions.length
-        when 0; then "You cannot move in any direction"
-        when 1; then "You can only go #{visible_directions_as_string}"
-        when 2..4; then "You can go #{visible_directions_as_string}"
-        else raise RuntimeError, "This room (Room-ID: #{room_id}), is incorrectly configured"
-        end
-      end
+      @directions_string ||= DirectionsPresenter.new(room_id).string
     end
 
     def visible_directions
