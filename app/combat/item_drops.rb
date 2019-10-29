@@ -14,12 +14,16 @@ module MUD
         drop_potion
         drop_weapon
         drop_armor
+        drop_gold
       end
 
       private
 
       def drop_potion
-        floor << enemy.dropped_potion_id if potion_drop?
+        return unless potion_drop?
+
+        floor << enemy.dropped_potion_id
+        MUD::Screen.output(enemy.dropped_potion_message.yellow)
       end
 
       def potion_drop?
@@ -30,7 +34,10 @@ module MUD
       end
 
       def drop_weapon
-        floor << enemy.dropped_weapon_id if weapon_drop?
+        return unless weapon_drop?
+
+        floor << enemy.dropped_weapon_id
+        MUD::Screen.output(enemy.dropped_weapon_message.yellow)
       end
 
       def weapon_drop?
@@ -41,7 +48,10 @@ module MUD
       end
 
       def drop_armor
-        floor << enemy.dropped_armor_id if armor_drop?
+        return unless armor_drop?
+
+        floor << enemy.dropped_armor_id
+        MUD::Screen.output(enemy.dropped_armor_message.yellow)
       end
 
       def armor_drop?
@@ -49,6 +59,14 @@ module MUD
         MUD::Logger.debug("Random chance to drop armor #{chance}")
         MUD::Logger.debug("Chance needed #{enemy.dropped_armor_chance}")
         chance < enemy.dropped_armor_chance
+      end
+
+      def drop_gold
+        MUD::Screen.output("You found #{gold_amount} on the corpse of the #{enemy.name}")
+      end
+
+      def gold_amount
+        pluralize(enemy.gold, 'gold coin')
       end
 
       def floor

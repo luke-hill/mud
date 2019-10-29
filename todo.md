@@ -51,3 +51,4 @@
 35) Re-run seed file v2.0
 36) Re-check specs again and add missing specs
 37) Work out for v3 who would or should drop endurance potion (It also could be crafted?)
+38) When items have been dropped. Auto-add them to players inventory if available
