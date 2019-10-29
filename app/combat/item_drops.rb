@@ -50,6 +50,10 @@ module MUD
         MUD::Logger.debug("Chance needed #{enemy.dropped_armor_chance}")
         chance < enemy.dropped_armor_chance
       end
+
+      def floor
+        hero.current_room.floor
+      end
     end
   end
 end
