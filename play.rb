@@ -34,6 +34,7 @@ class Play
     MUD::Screen.output("Inventory: #{player.inventory}")
     MUD::Screen.output("Weapon: #{player.weapon.green}")
     MUD::Screen.output("Armor: #{player.armor.green}")
+    MUD::Screen.output("Current Enemy in Room: #{player.current_room.enemy.inspect}")
     player.view_attributes
   end
 
