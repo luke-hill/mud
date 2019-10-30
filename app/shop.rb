@@ -3,7 +3,7 @@
 module MUD
   class Shop < Room
     def buy(item_id)
-      Actions::Buy.new(player, item_id).buy(item_id)
+      Actions::Buy.new(player, item_id).buy
     end
 
     def enemy
