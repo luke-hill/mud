@@ -2,22 +2,6 @@
 
 module Player
   class Avalanche
-    def buy(item)
-      return puts "I'm sorry we dont have that item for sale" unless room.list_of_items_for_sale.include?(item)
-
-      if item == 'Lesser Healing Potion' && gold > 25
-        inventory << Items::Potion::LesserPotion.new
-        self.gold -= 25
-        puts "You bought a #{item} for 25 gold"
-      elsif item == 'Endurance Potion' && gold > 200
-        inventory << Items::Potion::EndurancePotion.new
-        self.gold -= 200
-        puts "You bought a #{item} for 200 gold"
-      else
-        puts 'You do not have enough gold for that.'
-      end
-    end
-
     def all_gold_items
       room.floor.select { |item| item.name == 'Gold' }
     end

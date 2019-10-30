@@ -48,3 +48,4 @@
 38) When items have been dropped. Auto-add them to players inventory if available
 39) enable up and down directions. Begin to add the first 10-20 places on the map where up and down are viable
 40) Have rspec seed a "test" dummy set of data files. These can be then "trusted" in the terms of unit/feature tests
+41) Add items to have different costs in different locations
