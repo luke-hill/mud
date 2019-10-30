@@ -35,7 +35,7 @@
 26) Quest idea that `They are known for their metallurgy` be applied to the Sylvanian Ingots?
 27) Add 4 stats, Str, Agility, Constitution, (Alias for Wisdom)
 27) Add strength modifier (Once strength stat has been added), to attack
-28) Add strength modifier (Once strength stat has been added), to defence
+28) Add strength modifier (Once strength stat has been added), to defense
 29) get the concept of a top levle directory where the mud folder is installed in ENV
 30) move missing barracks key into some form of data lookup
 31) Add Simplecov, initial aim for 20%
@@ -47,3 +47,4 @@
 37) Work out for v3 who would or should drop endurance potion (It also could be crafted?)
 38) When items have been dropped. Auto-add them to players inventory if available
 39) enable up and down directions. Begin to add the first 10-20 places on the map where up and down are viable
+40) Have rspec seed a "test" dummy set of data files. These can be then "trusted" in the terms of unit/feature tests
