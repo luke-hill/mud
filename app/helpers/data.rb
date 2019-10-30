@@ -5,6 +5,10 @@ module MUD
     # Package Private Helpers to load the various data files up
     # Used to fetch values and data about almost anything in the game
     module Data
+      def player
+        MUD::Game.player
+      end
+      
       private
 
       def description_yml
@@ -45,10 +49,6 @@ module MUD
 
       def load_yml(file_subdir)
         YAML.load_file("#{Dir.pwd}/#{file_subdir}")
-      end
-
-      def player
-        MUD::Game.player
       end
     end
   end
