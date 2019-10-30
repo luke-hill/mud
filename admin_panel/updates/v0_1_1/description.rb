@@ -92,8 +92,8 @@ end
 
 ap.seed(
   id: 19,
-  description: "The Barracks are dimly lit and the room you're in is very cold... But you can feel some heat
-radiating from the door.",
+  description: "The Barracks are dimly lit and the room you're in is very cold... But you can feel some heat "\
+"radiating from the door.",
   advanced_description: 'You notice that the style of the area is all the same, except for the fact there is a door '\
 'to the east, what looks like some sort of Office. The door is locked and has not been opened in some time, judging '\
 'by the rust that has built up.',

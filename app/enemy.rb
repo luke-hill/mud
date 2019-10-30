@@ -2,14 +2,16 @@
 
 module MUD
   class Enemy
+    attr_reader :id
+
     include Helpers::Data
     extend Forwardable
 
     def initialize(id)
-      @enemy = OpenStruct.new(enemy(id))
+      @id = id
     end
 
-    def_delegators :@enemy,
+    def_delegators :enemy,
                    :name,
                    :description,
                    :weapon_id,
@@ -62,7 +64,11 @@ module MUD
 
     private
 
-    def enemy(id)
+    def enemy
+      @enemy ||= OpenStruct.new(enemy_data)
+    end
+
+    def enemy_data
       enemy_yml[id] || boss_yml[id] || raise(RuntimeError, "Enemy/Boss not found with ID: #{id}")
     end
   end

@@ -16,7 +16,7 @@ ap.seed(
   id: 'goblin_axe',
   name: 'Goblin Axe',
   description: 'A primitive axe fashioned out of a branch and a piece of old flint, tied together with a '\
-' bunch of horse hair.',
+'bunch of horse hair.',
   min_power: 1,
   max_power: 3
 )

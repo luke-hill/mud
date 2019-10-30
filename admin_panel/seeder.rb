@@ -5,9 +5,6 @@ require 'active_support/all'
 
 module AdminPanel
   class Seeder
-    attr_reader :type
-    attr_accessor :options
-
     class << self
       def seed_version(version)
         Dir[File.absolute_path("./admin_panel/updates/#{version}/*.rb")].each { |file| require file }
@@ -25,6 +22,9 @@ module AdminPanel
         Dir.glob('*').select { |f| File.directory? f }.sort
       end
     end
+
+    attr_reader :type
+    attr_accessor :options
 
     def initialize(type)
       @type = type
@@ -61,17 +61,17 @@ module AdminPanel
 
     def yaml_locations
       {
-        armor: "#{home_dir}/data/items/armor.yml",
-        boss: "#{home_dir}/data/enemies/boss.yml",
-        description: "#{home_dir}/data/rooms/description.yml",
-        direction: "#{home_dir}/data/rooms/direction.yml",
-        enemy: "#{home_dir}/data/enemies/enemy.yml",
-        healing_potion: "#{home_dir}/data/items/potions/healing.yml",
-        hp_bonus_potion: "#{home_dir}/data/items/potions/hp_bonus.yml",
-        key: "#{home_dir}/data/items/key.yml",
-        location: "#{home_dir}/data/rooms/location.yml",
-        mana_potion: "#{home_dir}/data/items/potions/mana.yml",
-        weapon: "#{home_dir}/data/items/weapon.yml"
+        armor: "#{Dir.pwd}/data/items/armor.yml",
+        boss: "#{Dir.pwd}/data/enemies/boss.yml",
+        description: "#{Dir.pwd}/data/rooms/description.yml",
+        direction: "#{Dir.pwd}/data/rooms/direction.yml",
+        enemy: "#{Dir.pwd}/data/enemies/enemy.yml",
+        healing_potion: "#{Dir.pwd}/data/items/potions/healing.yml",
+        hp_bonus_potion: "#{Dir.pwd}/data/items/potions/hp_bonus.yml",
+        key: "#{Dir.pwd}/data/items/key.yml",
+        location: "#{Dir.pwd}/data/rooms/location.yml",
+        mana_potion: "#{Dir.pwd}/data/items/potions/mana.yml",
+        weapon: "#{Dir.pwd}/data/items/weapon.yml"
       }
     end
 
@@ -97,10 +97,6 @@ module AdminPanel
 
     def save
       File.write(yml_file_location, yml_file.to_yaml)
-    end
-
-    def home_dir
-      File.join(Dir.pwd)
     end
   end
 end

@@ -21,7 +21,7 @@ module MUD
       end
 
       def look_around
-        MUD::Screen.output(player.current_room.advanced_description)
+        MUD::Screen.output(current_room.advanced_description)
       end
 
       def view_attributes

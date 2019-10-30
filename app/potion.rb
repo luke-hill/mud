@@ -10,20 +10,15 @@ module MUD
 
     def initialize(id)
       @id = id
-      @potion = OpenStruct.new(potion)
     end
 
-    def_delegators :@potion,
+    def_delegators :potion,
                    :name,
                    :use_message,
                    :description,
                    :value
 
     private
-
-    def potion
-      determine_type && assign_potion_data
-    end
 
     def determine_type
       return self.type = :healing if healing_potion?
@@ -50,8 +45,16 @@ module MUD
       when :healing;  then healing_potion_yml[id]
       when :mana;     then mana_potion_yml[id]
       when :hp_bonus; then hp_bonus_potion_yml[id]
-      else            raise(RuntimeError, "Weapon not found with ID: #{id}")
+      else            raise RuntimeError, "Potion not found with ID: #{id}"
       end
+    end
+
+    def potion
+      @potion ||= OpenStruct.new(potion_data)
+    end
+
+    def potion_data
+      determine_type && assign_potion_data
     end
   end
 end
