@@ -2,14 +2,16 @@
 
 module MUD
   class Weapon
+    attr_reader :id
+
     include Helpers::Data
     extend Forwardable
 
     def initialize(id)
-      @weapon = OpenStruct.new(weapon(id))
+      @id = id
     end
 
-    def_delegators :@weapon,
+    def_delegators :weapon,
                    :name,
                    :description,
                    :min_power,
@@ -17,7 +19,11 @@ module MUD
 
     private
 
-    def weapon(id)
+    def weapon
+      @weapon ||= OpenStruct.new(weapon_data)
+    end
+
+    def weapon_data
       weapon_yml[id] || raise(RuntimeError, "Weapon not found with ID: #{id}")
     end
   end
