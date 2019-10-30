@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Classes::Fighter do
-  let(:name)       { subject.name }
-  let(:max_hp)     { subject.max_hp }
-  let(:hp)         { subject.hp }
-  let(:stamina)    { subject.stamina }
-  let(:level)      { subject.level }
+  let(:name) { subject.name }
+  let(:max_hp) { subject.max_hp }
+  let(:hp) { subject.hp }
+  let(:stamina) { subject.stamina }
+  let(:level) { subject.level }
   let(:experience) { subject.experience }
-  let(:gold)       { subject.gold }
-  let(:inventory)  { subject.inventory }
-  let(:accuracy)   { subject.accuracy }
+  let(:gold) { subject.gold }
+  let(:inventory) { subject.inventory }
+  let(:accuracy) { subject.accuracy }
+  let(:max_inventory_size) { subject.max_inventory_size }
 
   before { swallow_console_spam }
 
@@ -48,6 +49,10 @@ RSpec.describe MUD::Classes::Fighter do
 
     it 'has an accuracy rating of 0.7' do
       expect(accuracy).to eq(0.7)
+    end
+
+    it 'has 10 inventory slots' do
+      expect(max_inventory_size).to eq(10)
     end
   end
 end
