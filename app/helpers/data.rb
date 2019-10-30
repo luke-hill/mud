@@ -8,7 +8,7 @@ module MUD
       def player
         MUD::Game.player
       end
-      
+
       private
 
       def description_yml

@@ -22,6 +22,10 @@ module MUD
         setup
       end
 
+      def player
+        @player ||= Classes::Fighter.new
+      end
+
       private
 
       def display_welcome_message
@@ -46,10 +50,6 @@ module MUD
 
       def development?
         true
-      end
-
-      def player
-        @player ||= Classes::Fighter.new
       end
     end
   end
