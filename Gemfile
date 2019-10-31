@@ -2,9 +2,8 @@
 
 source 'https://rubygems.org'
 
-gem 'activesupport', '~> 5.2'
+gem 'activesupport', '~> 6.0'
 gem 'rspec'
-gem 'rspec-rails'
 gem 'rubocop', '~> 0.74.0'
 gem 'rubocop-rspec', '~> 1.35.0'
 gem 'rubocop-performance', '~> 1.5.0'
