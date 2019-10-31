@@ -85,7 +85,7 @@ module MUD
             if room_already_visited?(room_id)
               fetch_room_from_cache(room_id)
             else
-              MUD::Room.new(room_id)
+              create_room(room_id)
             end
 
           player.current_room.leave
@@ -127,6 +127,22 @@ module MUD
 
         def fetch_room_from_cache(room_id)
           player.rooms_visited[room_id]
+        end
+
+        def create_room(room_id)
+          if shop?(room_id)
+            MUD::Shop.new(room_id)
+          else
+            MUD::Room.new(room_id)
+          end
+        end
+
+        def shop?(room_id)
+          type(room_id).end_with?('Shop')
+        end
+
+        def type(room_id)
+          description_yml.dig(room_id, 'type')
         end
       end
     end

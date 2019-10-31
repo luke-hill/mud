@@ -6,6 +6,15 @@ module MUD
       Actions::Buy.new(player, item_id).buy
     end
 
+    def items_for_sale
+      # This needs altering as well to be more variant and read from the DB
+      MUD::Screen.output('-------------------------------------------------')
+      MUD::Screen.output('|       Lesser Healing Potion        |  25 gold |')
+      MUD::Screen.output('-------------------------------------------------')
+      MUD::Screen.output('|   Endurance Potion (OUT OF STOCK)  | 200 gold |')
+      MUD::Screen.output('-------------------------------------------------')
+    end
+
     def enemy
       super
       return if no_enemy?
