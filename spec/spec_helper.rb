@@ -1,6 +1,17 @@
 # frozen_string_literal: true
 
 require 'rspec'
+require 'simplecov'
+
+SimpleCov.start do
+  coverage_dir "tmp/coverage"
+
+  add_group "App", "app"
+  add_group "Spec", "spec"
+
+  minimum_coverage 20
+end
+
 require_relative '../app/game'
 require_relative 'support/file'
 require_relative 'support/console'
