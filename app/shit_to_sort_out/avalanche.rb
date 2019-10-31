@@ -2,22 +2,6 @@
 
 module Player
   class Avalanche
-    def all_gold_items
-      room.floor.select { |item| item.name == 'Gold' }
-    end
-
-    def total_gold_on_floor
-      all_gold_items.map(&:amount).sum
-    end
-
-    def pickup_gold
-      amount = total_gold_on_floor
-      @gold += amount
-      item = room.item_object_on_floor('Gold')
-      room.floor.delete(item)
-      puts "You picked up #{amount} gold"
-    end
-
     def pickup_item(name)
       item = room.item_object_on_floor(name)
       return puts 'Item is not on floor' if item.nil?
