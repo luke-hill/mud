@@ -12,12 +12,12 @@ RSpec.describe MUD::Potion do
   end
 
   describe 'delegated methods' do
-    data_keys = %i(
+    data_keys = %i[
       name
       use_message
       description
       value
-    )
+    ]
     data_keys.each do |key|
       it "delegates calling #{key} on the Potion class to the potion data" do
         expect(potion).to receive(:potion).and_call_original

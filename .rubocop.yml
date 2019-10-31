@@ -9,4 +9,3 @@ Metrics/LineLength:
 
 RSpec/MessageSpies:
   EnforcedStyle: receive
-  

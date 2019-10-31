@@ -12,10 +12,10 @@ module MUD
 
     def string
       case visible_directions.length
-      when 0; then "You cannot move in any direction"
+      when 0; then 'You cannot move in any direction'
       when 1; then "You can only go #{visible_directions_as_string}"
       when 2..4; then "You can go #{visible_directions_as_string}"
-      else raise RuntimeError, "This room (Room-ID: #{room_id}), is incorrectly configured"
+      else raise "This room (Room-ID: #{room_id}), is incorrectly configured"
       end
     end
 
@@ -43,9 +43,9 @@ module MUD
     end
 
     def hidden_directions
-      initial_room_data.
-        map { |key, value| key.split('_').last if key.start_with?('hide') && value == true }.
-        compact
+      initial_room_data
+        .map { |key, value| key.split('_').last if key.start_with?('hide') && value == true }
+        .compact
     end
 
     def visible_directions_as_string
