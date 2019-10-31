@@ -2,6 +2,11 @@
 
 module MUD
   module Actions
+    # The Buy Action
+    # Like the other ones, this provides a single public method +#buy+
+    # This will make a series of checks which will determine if you are allowed to buy the +item_id+
+    # that is passed in on initialization of the class. If all checks pass. It will deduct the cost
+    # of the item from your gold, and then add a copy to your inventory
     class Buy
       attr_reader :item_id
 
