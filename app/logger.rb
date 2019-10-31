@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 module MUD
+  # The Games Logger Utility
+  # This will store internal messages such as calculation logic, debug logic and any
+  # errors that might be propagated up if something goes awry
+  #
+  # These messages are NOT displayed to the player
   class Logger
     class << self
       extend Forwardable

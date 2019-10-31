@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 module MUD
+  # The top level Room Class
+  # This acts a bit like ActiveRecord, and will load the room into Memory for usage
+  # It uses the ID of the item (Which is a snake_cased string), and then create a Struct
+  # which can access all of the properties through the delegated struct.
+  # All Data is stored in the games data yml files, which are seeded.
+  #
+  # Methods which can access some of the properties of the room are also stored here as well
+  # as helpful booleans and other ease of access methods
   class Room
     include Helpers::Data
 
