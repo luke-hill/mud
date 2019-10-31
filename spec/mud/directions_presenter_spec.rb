@@ -9,7 +9,7 @@ RSpec.describe MUD::DirectionsPresenter do
     allow(presenter).to receive(:directions).and_return(directions)
     allow(presenter).to receive(:hidden_directions).and_return(hidden_directions)
   end
-  
+
   describe '#string' do
     context 'with no hidden directions' do
       let(:hidden_directions) { [] }
@@ -18,7 +18,7 @@ RSpec.describe MUD::DirectionsPresenter do
         let(:directions) { [] }
 
         it 'shows no directions' do
-          expect(presenter.string).to eq("You cannot move in any direction")
+          expect(presenter.string).to eq('You cannot move in any direction')
         end
       end
 
@@ -62,7 +62,7 @@ RSpec.describe MUD::DirectionsPresenter do
         let(:directions) { [] }
 
         it 'shows no directions' do
-          expect(presenter.string).to eq("You cannot move in any direction")
+          expect(presenter.string).to eq('You cannot move in any direction')
         end
       end
 
@@ -70,7 +70,7 @@ RSpec.describe MUD::DirectionsPresenter do
         let(:directions) { %w[north] }
 
         it 'shows no directions' do
-          expect(presenter.string).to eq("You cannot move in any direction")
+          expect(presenter.string).to eq('You cannot move in any direction')
         end
       end
 

@@ -45,7 +45,7 @@ module MUD
       when :healing;  then healing_potion_yml[id]
       when :mana;     then mana_potion_yml[id]
       when :hp_bonus; then hp_bonus_potion_yml[id]
-      else            raise RuntimeError, "Potion not found with ID: #{id}"
+      else            raise "Potion not found with ID: #{id}"
       end
     end
 

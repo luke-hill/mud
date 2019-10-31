@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 module MUD
+  # The Games Screen Utility - Visible Console
+  # This will store external messages that are shown to the user on the screen
+  #
+  # These messages are displayed to the player, stored in a screen log file, and also
+  # copied into the main game log file, so the traceability is maximised.
   class Screen
     class << self
       def output(msg)

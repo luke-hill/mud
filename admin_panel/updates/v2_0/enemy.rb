@@ -12,5 +12,5 @@ ap.seed(
 'from one of the victims he cornered in the Dungeon. It falls to the floor, along with its lifeless corpse.',
   dropped_weapon_id: 'goblin_axe',
   dropped_weapon_chance: 0.05,
-  dropped_weapon_message: "The Goblin dropped its Goblin Axe."
+  dropped_weapon_message: 'The Goblin dropped its Goblin Axe.'
 )

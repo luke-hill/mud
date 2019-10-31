@@ -2,7 +2,8 @@
 
 module MUD
   module Helpers
-    # Add extra logging so we can see what each reader / writer method is doing
+    # These Attribute Accessors are slightly different to standard ones.
+    # We provide extra logging so we can see what each reader / writer method is doing
     # and we can store this in the games internal log files
     module AttributeAccessors
       def self.attribute_names

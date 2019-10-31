@@ -20,7 +20,7 @@ module MUD
       return if no_enemy?
 
       MUD::Logger.debug("Enemy found: #{enemy.inspect}")
-      raise RuntimeError, "There shouldn't be any enemies in shops!"
+      raise "There shouldn't be any enemies in shops!"
     end
 
     private

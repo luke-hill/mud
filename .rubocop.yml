@@ -3,3 +3,9 @@ require:
   - rubocop-performance
 
 inherit_from: .rubocop_todo.yml
+
+Metrics/LineLength:
+  Max: 100
+
+RSpec/MessageSpies:
+  EnforcedStyle: receive

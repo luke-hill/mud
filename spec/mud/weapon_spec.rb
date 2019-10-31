@@ -12,12 +12,12 @@ RSpec.describe MUD::Weapon do
   end
 
   describe 'delegated methods' do
-    data_keys = %i(
+    data_keys = %i[
       name
       description
       min_power
       max_power
-    )
+    ]
     data_keys.each do |key|
       it "delegates calling #{key} on the Weapon class to the weapon data" do
         expect(weapon).to receive(:weapon).and_call_original

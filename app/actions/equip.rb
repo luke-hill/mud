@@ -2,6 +2,12 @@
 
 module MUD
   module Actions
+    # The Equip Action
+    # Like the other ones, this provides a single public method +#equip+
+    # This will make a series of checks which will determine if you are allowed to equip the +item_id+
+    # that is passed in on initialization of the class. If all checks pass. It will then equip the item
+    # in either your weapon or armor slot. Any previously equipped items in the slot will then be passed
+    # back into your inventory
     class Equip
       attr_reader :item_id
 
@@ -87,7 +93,7 @@ module MUD
         return :armor if armor_ids.include?(item_id)
 
         MUD::Logger.error("An error has occurred trying to classify the type of #{item_id}")
-        raise RuntimeError, "Cannot classify #{item_id}."
+        raise "Cannot classify #{item_id}."
       end
     end
   end
