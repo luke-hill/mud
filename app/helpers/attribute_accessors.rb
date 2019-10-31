@@ -6,7 +6,7 @@ module MUD
     # and we can store this in the games internal log files
     module AttributeAccessors
       def self.attribute_names
-        %i[name max_hp hp level stamina experience gold inventory accuracy]
+        %i[name max_hp hp level stamina experience gold inventory accuracy max_inventory_size]
       end
 
       attribute_names.each do |name|

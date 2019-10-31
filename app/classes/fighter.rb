@@ -20,7 +20,8 @@ module MUD
           experience: 0,
           gold: 200,
           inventory: [],
-          accuracy: 0.7
+          accuracy: 0.7,
+          max_inventory_size: 10
         }
       end
     end
