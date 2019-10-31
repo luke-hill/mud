@@ -28,7 +28,7 @@ module MUD
     end
 
     def armor_data
-      armor_yml[id] || raise(RuntimeError, "Armor not found with ID: #{id}")
+      armor_yml[id] || raise("Armor not found with ID: #{id}")
     end
   end
 end

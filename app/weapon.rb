@@ -29,7 +29,7 @@ module MUD
     end
 
     def weapon_data
-      weapon_yml[id] || raise(RuntimeError, "Weapon not found with ID: #{id}")
+      weapon_yml[id] || raise("Weapon not found with ID: #{id}")
     end
   end
 end

@@ -69,7 +69,7 @@ module MUD
     end
 
     def enemy_data
-      enemy_yml[id] || boss_yml[id] || raise(RuntimeError, "Enemy/Boss not found with ID: #{id}")
+      enemy_yml[id] || boss_yml[id] || raise("Enemy/Boss not found with ID: #{id}")
     end
   end
 end

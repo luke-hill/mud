@@ -18,7 +18,7 @@ module MUD
       end
 
       def reset!
-        self.instance_variables.each { |var| remove_instance_variable(var) }
+        instance_variables.each { |var| remove_instance_variable(var) }
         setup
       end
 
