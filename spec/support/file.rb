@@ -23,7 +23,11 @@ module SpecSupport
     end
 
     def file_location
-      "log/#{ENV['TEST_LOG_NAME']}.log"
+      "log/#{log_name}.log"
+    end
+
+    def log_name
+      ENV['TEST_LOG_NAME'] || "rspec_tests"
     end
   end
 end
