@@ -38,4 +38,28 @@ RSpec.describe MUD::Actions::Move do
     let(:direction) { 'down'}
     include_examples "Movement examples"
   end
+
+  describe '#pickup_item' do
+    it 'does not work' do
+      expect(described_class.pickup_item).to eq('Not in active use'.red)
+    end
+  end
+
+  describe '#drop_item' do
+    it 'does not work' do
+      expect(described_class.drop_item).to eq('Not in active use'.red)
+    end
+  end
+
+  describe '#pickup_gold' do
+    it 'does not work' do
+      expect(described_class.pickup_gold).to eq('Not in active use'.red)
+    end
+  end
+
+  describe '#drop_gold' do
+    it 'does not work' do
+      expect(described_class.drop_gold).to eq('Not in active use'.red)
+    end
+  end
 end
