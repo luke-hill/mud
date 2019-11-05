@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 gem 'activesupport', '~> 6.0'
 gem 'colorize'
+gem 'delegate_matcher'
 gem 'rake'
 gem 'rspec'
 gem 'rubocop', '~> 0.74.0'
