@@ -2,16 +2,12 @@
 
 RSpec.describe MUD::Classes::Base do
   before do
-    # Mock sample player
     allow(player).to receive(:attributes).and_return(starting_attributes)
-    # Mock loaded items
     allow(player).to receive(:weapon_ids).and_return(%w(fists knife))
     allow(player).to receive(:armor_ids).and_return(%w(unarmored vest))
-    # Remove console spam
     swallow_console_spam
+    switch_logging_to_temp_file
   end
-
-  before { switch_logging_to_temp_file }
 
   after { remove_test_screen_logs }
 
@@ -28,6 +24,14 @@ RSpec.describe MUD::Classes::Base do
     }
   end
   let(:player) { described_class.new }
+
+  describe '#look_around' do
+    it 'shows you the advanced description of the area' do
+      expect(player.current_room).to receive(:advanced_description)
+
+      player.look_around
+    end
+  end
 
   describe '#view_attributes' do
     it 'logs the relevant attribute information to the game console' do
@@ -89,11 +93,29 @@ RSpec.describe MUD::Classes::Base do
     end
   end
 
-  context 'equipping items' do
-    describe '#equipment' do
-      it 'contains a hash of all currently equipped items' do
-        expect(player.equipment.keys).to eq(%i(weapon armor))
-      end
+  describe '#weapon' do
+    before do
+      player.inventory << item_to_equip
+      player.equip(item_to_equip)
+    end
+
+    let(:item_to_equip) { 'knife' }
+
+    it 'shows the id of the currently equipped weapon' do
+      expect(player.weapon).to eq('knife')
+    end
+  end
+
+  describe '#armor' do
+    before do
+      player.inventory << item_to_equip
+      player.equip(item_to_equip)
+    end
+
+    let(:item_to_equip) { 'vest' }
+
+    it 'shows the id of the currently equipped armor' do
+      expect(player.armor).to eq('vest')
     end
   end
 
@@ -126,32 +148,6 @@ RSpec.describe MUD::Classes::Base do
   describe '#rooms_visited=' do
     it 'can update the rooms you have visited' do
       expect(subject).to respond_to(:rooms_visited=)
-    end
-  end
-
-  describe '#weapon' do
-    before do
-      player.inventory << item_to_equip
-      player.equip(item_to_equip)
-    end
-
-    let(:item_to_equip) { 'knife' }
-
-    it 'shows the id of the currently equipped weapon' do
-      expect(player.weapon).to eq('knife')
-    end
-  end
-
-  describe '#armor' do
-    before do
-      player.inventory << item_to_equip
-      player.equip(item_to_equip)
-    end
-
-    let(:item_to_equip) { 'vest' }
-
-    it 'shows the id of the currently equipped armor' do
-      expect(player.armor).to eq('vest')
     end
   end
 end
