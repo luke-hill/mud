@@ -82,26 +82,6 @@ RSpec.describe MUD::Classes::Base do
   end
 
   context 'equipping items' do
-    before { player.inventory << item_to_equip }
-
-    let(:item_to_equip) { 'vest' }
-
-    describe '#equip' do
-      it 'can equip valid items' do
-        expect { player.equip(item_to_equip) }.not_to raise_error
-      end
-
-      context 'an unrecognised item' do
-        let(:item_to_equip) { 'unknown' }
-
-        it 'will not equip the invalid item' do
-          expect { player.equip(item_to_equip) }
-            .to raise_error(RuntimeError)
-            .with_message("Cannot classify #{item_to_equip}.")
-        end
-      end
-    end
-
     describe '#equipment' do
       it 'contains a hash of all currently equipped items' do
         expect(player.equipment.keys).to eq(%i(weapon armor))
