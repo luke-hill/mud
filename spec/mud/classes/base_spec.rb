@@ -81,6 +81,14 @@ RSpec.describe MUD::Classes::Base do
     end
   end
 
+  describe '#equip' do
+    it 'delegates to the `Actions::Equip` class' do
+      expect(MUD::Actions::Equip).to receive(:new).with(player, 'knife').and_call_original
+
+      player.equip('knife')
+    end
+  end
+
   context 'equipping items' do
     describe '#equipment' do
       it 'contains a hash of all currently equipped items' do
