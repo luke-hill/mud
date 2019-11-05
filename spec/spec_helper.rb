@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'rspec'
 require 'simplecov'
 
 SimpleCov.start do
@@ -11,6 +10,9 @@ SimpleCov.start do
 
   minimum_coverage 20
 end
+
+require 'rspec'
+require 'delegate_matcher'
 
 require_relative '../app/game'
 require_relative 'support/file'
