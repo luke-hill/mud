@@ -32,7 +32,7 @@ module MUD
 
         self.gold -= cost
         inventory << item_id
-        MUD::Screen.output("You bought a #{item_id.blue} for #{cost.yellow} gold.")
+        MUD::Screen.output("You bought a #{item_id.blue} for #{cost.to_s.yellow} gold.")
       end
 
       private

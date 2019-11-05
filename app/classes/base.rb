@@ -8,7 +8,7 @@ module MUD
     # There are also wrapper calls to each of the Actions Classes allowing all Heros to Move or Equip items
     class Base
       attr_reader :attributes, :equipment
-      private :attributes
+      private :attributes, :equipment
 
       attr_accessor :current_room, :rooms_visited
 
