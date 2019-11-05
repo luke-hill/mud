@@ -19,6 +19,8 @@ require_relative 'support/file'
 require_relative 'support/console'
 require_relative 'support/factory'
 
+require_relative 'support/shared_examples/movement'
+
 RSpec.configure do |config|
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true
