@@ -62,6 +62,10 @@ module MUD
       find_on_floor('barracks_key').nil?
     end
 
+    def exitable?
+      !(ktp? && enemy?)
+    end
+
     private
 
     def directions_string
@@ -74,6 +78,10 @@ module MUD
 
     def visible_directions_as_string
       visible_directions.to_sentence(last_word_connector: ' and ')
+    end
+
+    def ktp?
+      description_yml.dig(room_id, 'ktp')
     end
   end
 end
