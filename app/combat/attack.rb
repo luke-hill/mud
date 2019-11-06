@@ -20,10 +20,8 @@ module MUD
 
         attack_message
         reduce_hp
+        return MUD::Screen.output("DEBUG --> ENEMY HP:#{enemy.hp}hp.") unless enemy_killed?
 
-        return MUD::Logger.debug("DEBUG --> ENEMY HP:#{enemy.hp}hp.") unless enemy_killed?
-
-        kill_message
         @enemy = nil
       end
 
@@ -84,10 +82,6 @@ module MUD
 
       def enemy_killed?
         enemy.dead?
-      end
-
-      def kill_message
-        MUD::Screen.output("You killed the #{enemy_name}.".blink)
       end
     end
   end

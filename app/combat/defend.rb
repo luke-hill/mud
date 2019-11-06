@@ -21,7 +21,7 @@ module MUD
         attack_message
         reduce_hp
 
-        return MUD::Logger.debug("DEBUG --> YOUR HP:#{hp}hp.") unless hero_killed?
+        return MUD::Screen.output("DEBUG --> YOUR HP:#{hero.hp}hp.") unless hero_killed?
 
         raise StandardError, 'You died!'
       end
@@ -37,7 +37,7 @@ module MUD
       end
 
       def weapon_name
-        enemy.weapon.name
+        weapon.name
       end
 
       def no_damage?
@@ -61,7 +61,11 @@ module MUD
       end
 
       def attack_value
-        enemy.attack_value
+        rand((weapon.min_power)..(weapon.max_power))
+      end
+
+      def weapon
+        MUD::Weapon.new(enemy.weapon_id)
       end
 
       def defense_value
@@ -69,7 +73,7 @@ module MUD
       end
 
       def armor
-        MUD::Armor.new(hero.armor_id)
+        MUD::Armor.new(hero.armor)
       end
 
       def attack_message
