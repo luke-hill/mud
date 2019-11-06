@@ -26,7 +26,7 @@ module MUD
         :max_inventory_size
 
       def buy
-        return MUD::Screen.output("I'm sorry we dont have that item for sale".yellow) unless for_sale?
+        return MUD::Screen.output("I'm sorry we dont have that item for sale".red) unless for_sale?
         return MUD::Screen.output('You do not have enough gold for that.'.red) unless enough_money?
         return MUD::Screen.output('You do not have enough space for that.'.red) unless enough_space?
 

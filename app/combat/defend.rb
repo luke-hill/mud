@@ -29,7 +29,9 @@ module MUD
       private
 
       def missed_message
-        MUD::Screen.output("The #{enemy_name} swung at you with its #{weapon_name}, but missed.")
+        MUD::Screen.output(
+          "The #{enemy_name} swung at you with its #{weapon_name}, but missed.".yellow
+        )
       end
 
       def enemy_name
@@ -77,7 +79,9 @@ module MUD
       end
 
       def attack_message
-        MUD::Screen.output("The #{enemy_name} hit you with its #{weapon_name} for #{damage_taken} damage.")
+        MUD::Screen.output(
+          "The #{enemy_name} hit you with its #{weapon_name} for #{damage_taken} damage."
+        )
       end
 
       def reduce_hp
