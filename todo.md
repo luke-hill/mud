@@ -18,8 +18,10 @@
   - Interpolate value defined in `use_message`
   - Add message if you're fully healed: `"'You feel yourself regain full strength!'"`
 9) Add quest to be able to buy draz-ghun fleece from newtown
+10) Reduce rubocop offenses below 75
 12) v0.1 of adventures of avaLancHe ended when you killed the Orc. Lets try re-achieve this (We never did)
 13) Re-check specs again and add missing specs
+14) Reduce rubocop offenses below 50
 20) Update Simplecov to pass 80%
 21) Allow gold to be dropped and picked up (Currently just traded from hand) - Low Priority!
 22) Add movement logic which requires a key to go in a certain direction (And will use the key up during this)
