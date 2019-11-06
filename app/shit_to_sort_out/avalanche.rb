@@ -10,13 +10,5 @@ module Player
       puts "You picked up the #{name}"
       room.floor.delete(item)
     end
-
-    def east
-      if !key?
-        return puts missing_key
-      else
-        use_key
-      end
-    end
   end
 end
