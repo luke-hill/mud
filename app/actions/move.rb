@@ -91,21 +91,6 @@ module MUD
         end
       end
 
-      def move_to(room_id)
-        MUD::Logger.info("Moving to Room-ID: #{room_id}")
-
-        room =
-          if room_already_visited?(room_id)
-            fetch_room_from_cache(room_id)
-          else
-            create_room(room_id)
-          end
-
-        player.current_room.leave
-        player.current_room = room
-        player.current_room.visit
-      end
-
       def north_room_id
         connected_rooms['north']
       end
@@ -132,6 +117,21 @@ module MUD
 
       def connected_rooms
         player.current_room.connected_rooms
+      end
+
+      def move_to(room_id)
+        MUD::Logger.info("Moving to Room-ID: #{room_id}")
+        player.current_room.leave
+        player.current_room = fetch_or_create_room(room_id)
+        player.current_room.visit
+      end
+      
+      def fetch_or_create_room(room_id)
+        if room_already_visited?(room_id)
+          fetch_room_from_cache(room_id)
+        else
+          create_room(room_id)
+        end
       end
 
       def room_already_visited?(room_id)
