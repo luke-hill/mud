@@ -14,10 +14,11 @@ module MUD
       def move(direction)
         if player.current_room.exitable?
           if required_key(direction)
-            if player.barracks_key
-              # use it then move
+            if player.barracks_key?
+              player.use('barracks_key')
+              send(direction)
             else
-              # say you need the key
+              MUD::Screen.output(MUD::Key.new('barracks_key').missing_message.red)
             end
           else
             send(direction)

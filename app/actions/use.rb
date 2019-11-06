@@ -60,6 +60,10 @@ module MUD
         @potion ||= MUD::Potion.new(item_id)
       end
 
+      def barracks_key
+        @barracks_key ||= MUD::Key.new(item_id)
+      end
+
       def in_inventory?
         inventory.include?(item_id)
       end

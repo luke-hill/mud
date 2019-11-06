@@ -66,9 +66,9 @@ module MUD
         equipment[:armor]
       end
 
-      def use_potion(potion_id)
-        Logger.debug("Attempting to drink potion #{potion_id}")
-        MUD::Actions::Use.new(self, potion_id).use
+      def use(item_id)
+        Logger.debug("Attempting to use key/potion '#{item_id}'")
+        MUD::Actions::Use.new(self, item_id).use
       end
 
       private
