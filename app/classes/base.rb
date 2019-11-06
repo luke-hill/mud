@@ -46,7 +46,7 @@ module MUD
 
       def move(direction)
         Logger.debug("Attempting to move #{direction}")
-        MUD::Actions::Move.send(direction)
+        MUD::Actions::Move.new(self).move(direction)
       end
 
       def prevent_negative_hp

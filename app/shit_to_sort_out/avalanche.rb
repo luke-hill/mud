@@ -17,12 +17,6 @@ module Player
       else
         use_key
       end
-
-      puts cannot_leave_whilst_enemy_alive if enemy?
-    end
-
-    def cannot_leave_whilst_enemy_alive
-      "You must kill the #{enemy_name} before leaving the room!"
     end
   end
 end

@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 RSpec.shared_examples 'Movement examples' do
-  let(:move_direction) { described_class.send(direction) }
+  let(:move_direction) { described_class.new(player).move(direction) }
   let(:new_room_id) { 2 }
+
 
   context 'with an available room' do
     let(:connected_rooms) { { direction => new_room_id } }
