@@ -5,6 +5,8 @@ module MUD
     # Package Private Helpers to load the various data files up
     # Used to fetch values and data about almost anything in the game
     module Data
+      # @return [MUD::Classes::Fighter]
+      # The active player inside the game
       def player
         MUD::Game.player
       end

@@ -1,5 +1,3 @@
-1) Checklist of all app subfolders
-- [ ] helpers
 2) Begin to remove the remaining items from shit_to_sort_out folder
 3) Check all specs of each file / folder recursively and begin to fix them up (Or delay them until later)
 - [ ] combat folder
@@ -9,7 +7,7 @@
 - room model
 - screen utility
 4) Add strength modifier (Once strength stat has been added), to attack
-6) Re-run seed file v2.0
+5) Add logic for enemies to be ktp (ktp logic exists in codebase currently as a param)
 7) Logic for enemies talking to you
   - Add new params into seeders called `phrase1` `phrase2` e.t.c.
   - Cycle randomly through these with % chance for each to trigger (Also no trigger)
@@ -25,7 +23,6 @@
 20) Update Simplecov to pass 80%
 21) Allow gold to be dropped and picked up (Currently just traded from hand) - Low Priority!
 22) Add movement logic which requires a key to go in a certain direction (And will use the key up during this)
-23) Add logic for enemies to be ktp (ktp logic exists in codebase currently as a param)
 25) Open Question, do we need an `attr_writer` for gold for enemies? Do we ever need to reduce their gold? (Maybe if we create a thief class?)
 26) Quest idea that `They are known for their metallurgy` be applied to the Sylvanian Ingots?
 27) Add 4 stats, Str, Agility, Constitution, (Alias for Wisdom)
