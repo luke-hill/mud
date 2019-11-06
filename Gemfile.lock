@@ -74,6 +74,7 @@ GEM
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     unicode-display_width (1.6.0)
+    yard (0.9.20)
     zeitwerk (2.2.0)
 
 PLATFORMS
@@ -89,6 +90,7 @@ DEPENDENCIES
   rubocop-performance (~> 1.5.0)
   rubocop-rspec (~> 1.35.0)
   simplecov
+  yard
 
 BUNDLED WITH
    2.0.2

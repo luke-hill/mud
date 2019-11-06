@@ -26,6 +26,10 @@ module MUD
         :@hero,
         :inventory,
 
+      # @return [String]
+      # This method will use the relevant item (If the item is usable)
+      # Once the item has been used, a string representation of the usage is sent
+      # to the playing console.
       def use
         return MUD::Screen.output("You cannot use this item!".red) unless usable?
 

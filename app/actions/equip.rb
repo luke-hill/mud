@@ -19,11 +19,16 @@ module MUD
         @item_id = item_id
       end
 
+      # @return [String]
+      # This method will equip the relevant item (If they pass the checks)
+      # Once the item has been equipped, the existing item is moved back to their inventory
+      # and the equipped item is removed from the inventory. The player is then informed
+      # via the playing console of the switch of items.
       def equip
         MUD::Logger.debug("Looking for #{item_id}.")
         equip_weapon if weapon?
         equip_armor if armor?
-        MUD::Screen.output("#{item_id} equipped")
+        MUD::Screen.output("#{item_id} equipped.")
       end
 
       def_delegators \

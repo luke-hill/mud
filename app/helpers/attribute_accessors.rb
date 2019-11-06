@@ -6,6 +6,8 @@ module MUD
     # We provide extra logging so we can see what each reader / writer method is doing
     # and we can store this in the games internal log files
     module AttributeAccessors
+      # @return [Array => Symbol]
+      # The individual statistic names that comprise a characters class
       def self.attribute_names
         %i[name max_hp hp level stamina experience gold inventory accuracy max_inventory_size]
       end
