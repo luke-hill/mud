@@ -20,7 +20,7 @@ RSpec.describe MUD::Actions::Buy do
       before { allow(buy_class).to receive(:for_sale?).and_return(false) }
 
       it "informs the player that the item isn't for sale" do
-        expect(buy_item).to eq("I'm sorry we dont have that item for sale".yellow)
+        expect(buy_item).to eq("I'm sorry we dont have that item for sale".red)
       end
     end
 
