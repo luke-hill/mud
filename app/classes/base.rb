@@ -46,7 +46,7 @@ module MUD
 
       def move(direction)
         Logger.debug("Attempting to move #{direction}")
-        MUD::Actions::Move.send(direction)
+        MUD::Actions::Move.new(self).move(direction)
       end
 
       def prevent_negative_hp
@@ -66,9 +66,9 @@ module MUD
         equipment[:armor]
       end
 
-      def use_potion(potion_id)
-        Logger.debug("Attempting to drink potion #{potion_id}")
-        MUD::Actions::Use.new(self, potion_id).use
+      def use(item_id)
+        Logger.debug("Attempting to use key/potion '#{item_id}'")
+        MUD::Actions::Use.new(self, item_id).use
       end
 
       private

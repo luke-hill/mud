@@ -19,10 +19,10 @@ module MUD
         armor_yml.keys
       end
 
-      # @return [String, nil]
-      # The first instance of a barracks key if one exists in your inventory
-      def barracks_key
-        inventory.detect { |item| item.name == 'Barracks Key' }
+      # @return [Boolean]
+      # Whether you have a barracks key in your inventory
+      def barracks_key?
+        inventory.detect { |item| item == 'barracks_key' }.nil?
       end
 
       # @return [String]

@@ -23,7 +23,7 @@ RSpec.describe MUD::Enemy do
   end
 
   describe 'delegated methods' do
-    data_keys = %i(
+    data_keys = %i[
       name
       description
       weapon_id
@@ -36,7 +36,7 @@ RSpec.describe MUD::Enemy do
       xp
       xp_killshot
       stamina
-    )
+    ]
     data_keys.each do |key|
       it "delegates calling #{key} on the Enemy class to the enemy data" do
         expect { enemy.send(key) }.not_to raise_error
@@ -101,7 +101,7 @@ RSpec.describe MUD::Enemy do
   end
 
   describe '#prevent_negative_hp' do
-    context 'an enemy with negative hp' do
+    context 'with an enemy with negative hp' do
       it 'alters an enemies hp to 0 if it was negative' do
         dead_enemy.hp -= 1
         initial_hp = dead_enemy.hp

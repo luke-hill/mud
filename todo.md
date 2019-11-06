@@ -16,10 +16,10 @@
   - Interpolate value defined in `use_message`
   - Add message if you're fully healed: `"'You feel yourself regain full strength!'"`
 9) Add quest to be able to buy draz-ghun fleece from newtown
-10) Reduce rubocop offenses below 75
 12) v0.1 of adventures of avaLancHe ended when you killed the Orc. Lets try re-achieve this (We never did)
 13) Re-check specs again and add missing specs
 14) Reduce rubocop offenses below 50
+15) Add `use_message` seed property to keys (`v2.x`)
 20) Update Simplecov to pass 80%
 21) Allow gold to be dropped and picked up (Currently just traded from hand) - Low Priority!
 22) Add movement logic which requires a key to go in a certain direction (And will use the key up during this)
@@ -35,3 +35,4 @@
 41) Add items to have different costs in different locations
 42) Completely rework Buy class and remove all comments about stuff that is hard-coded!
 43) Add the first 2-4 places on the map where up and down exist
+44) Add a second usable key to the codebase, and validate both key usages work (This is likely to be tricky)

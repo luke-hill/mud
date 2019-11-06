@@ -8,7 +8,6 @@ puts 'Autoloading complete'
 module MUD
   class Game
     class << self
-      attr_reader :player
       attr_accessor :rooms_visited
 
       def setup

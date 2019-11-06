@@ -10,12 +10,12 @@ RSpec.describe MUD::Actions::Buy do
 
   describe '#buy' do
     subject(:buy_item) { buy_class.buy }
-    
+
     before do
       allow(buy_class).to receive(:cost).and_return(item_cost)
       swallow_console_spam
     end
-    
+
     context "when the item_id isn't recognised as being for sale" do
       before { allow(buy_class).to receive(:for_sale?).and_return(false) }
 

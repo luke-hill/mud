@@ -7,7 +7,7 @@ module AdminPanel
   class Seeder
     class << self
       def seed_version(version)
-        Dir[File.absolute_path("./admin_panel/updates/#{version}/*.rb")].each { |file| require file }
+        Dir[File.absolute_path("./admin_panel/updates/#{version}/*.rb")].each(&method(:require))
       end
 
       def seed_all_versions
