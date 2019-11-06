@@ -22,7 +22,8 @@ module MUD
     end
 
     def description
-      @description ||= "#{description_yml.dig(room_id, 'description').blue}\n#{directions_string.yellow}"
+      @description ||=
+        "#{description_yml.dig(room_id, 'description').blue}\n#{directions_string.yellow}"
     end
 
     def advanced_description

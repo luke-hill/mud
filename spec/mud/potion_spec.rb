@@ -12,26 +12,26 @@ RSpec.describe MUD::Potion do
   end
 
   describe '#use_effect' do
-    context 'for a healing potion' do
+    context 'when the potion is a "healing" potion' do
       before { allow(potion).to receive(:type).and_return(:healing) }
 
-      it "returns a proc of the use effect" do
+      it "returns a proc of the +hp use effect" do
         expect(potion.use_effect).to be_a Proc
       end
     end
 
-    context 'for a mana potion' do
+    context 'when the potion is a "mana" potion' do
       before { allow(potion).to receive(:type).and_return(:mana) }
 
-      it "returns a proc of the use effect" do
+      it "returns a proc of the +mp use effect" do
         expect(potion.use_effect).to be_a Proc
       end
     end
 
-    context 'for a hp bonus potion' do
+    context 'when the potion is a "hp bonus" potion' do
       before { allow(potion).to receive(:type).and_return(:hp_bonus) }
 
-      it "returns a proc of the use effect" do
+      it "returns a proc of the +hp_max use effect" do
         expect(potion.use_effect).to be_a Proc
       end
     end

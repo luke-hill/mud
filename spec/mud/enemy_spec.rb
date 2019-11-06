@@ -101,7 +101,7 @@ RSpec.describe MUD::Enemy do
   end
 
   describe '#prevent_negative_hp' do
-    context 'an enemy with negative hp' do
+    context 'with an enemy with negative hp' do
       it 'alters an enemies hp to 0 if it was negative' do
         dead_enemy.hp -= 1
         initial_hp = dead_enemy.hp

@@ -24,7 +24,9 @@ module MUD
             send(direction)
           end
         else
-          MUD::Screen.output("You must kill the #{player.current_room.enemy.name} before leaving the room!")
+          MUD::Screen.output(
+            "You must kill the #{player.current_room.enemy.name} before leaving the room!".red
+          )
         end
       end
 
