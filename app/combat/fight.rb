@@ -23,10 +23,10 @@ module MUD
       def fight_once
         return MUD::Screen.output('There is no enemy present'.red) if enemy.nil?
 
-        Attack.new(hero, enemy).attack
+        attack
 
         if enemy_killed?
-          MUD::Screen.output("You killed the #{enemy.name}".blue.blink)
+          MUD::Screen.output("You killed the #{enemy.name}.".blue.blink)
           ItemDrops.new(hero, enemy).process
         else
           Defend.new(hero, enemy).defend
@@ -35,6 +35,18 @@ module MUD
 
       def fight_until_death
         fight_once until hero.dead? || enemy.dead?
+      end
+
+      def attack
+        attack_class.attack
+      end
+
+      def enemy_killed?
+        enemy.dead?
+      end
+
+      def attack_class
+        @attack_class ||= Attack.new(hero, enemy)
       end
     end
   end
