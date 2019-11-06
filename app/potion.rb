@@ -18,7 +18,24 @@ module MUD
                    :description,
                    :value
 
+    def use_effect
+      case type
+      when :healing;  then proc { self.hp += value }
+      when :mana;     then proc { self.mp += value }
+      when :hp_bonus; then proc { self.max_hp += value }
+      else raise "Unreachable code. Potion Type should already have been defined!"
+      end
+    end
+
     private
+
+    def potion
+      @potion ||= OpenStruct.new(potion_data)
+    end
+
+    def potion_data
+      determine_type && assign_potion_data
+    end
 
     def determine_type
       return self.type = :healing if healing_potion?
@@ -47,14 +64,6 @@ module MUD
       when :hp_bonus; then hp_bonus_potion_yml[id]
       else            raise "Potion not found with ID: #{id}"
       end
-    end
-
-    def potion
-      @potion ||= OpenStruct.new(potion_data)
-    end
-
-    def potion_data
-      determine_type && assign_potion_data
     end
   end
 end

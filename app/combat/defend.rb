@@ -21,7 +21,7 @@ module MUD
         attack_message
         reduce_hp
 
-        return MUD::Logger.debug("DEBUG --> YOUR HP:#{hp}hp.") unless hero_killed?
+        return MUD::Screen.output("DEBUG --> YOUR HP:#{hero.hp}hp.") unless hero_killed?
 
         raise StandardError, 'You died!'
       end
@@ -29,7 +29,9 @@ module MUD
       private
 
       def missed_message
-        MUD::Screen.output("The #{enemy_name} swung at you with its #{weapon_name}, but missed.")
+        MUD::Screen.output(
+          "The #{enemy_name} swung at you with its #{weapon_name}, but missed.".yellow
+        )
       end
 
       def enemy_name
@@ -37,7 +39,7 @@ module MUD
       end
 
       def weapon_name
-        enemy.weapon.name
+        weapon.name
       end
 
       def no_damage?
@@ -61,7 +63,11 @@ module MUD
       end
 
       def attack_value
-        enemy.attack_value
+        rand((weapon.min_power)..(weapon.max_power))
+      end
+
+      def weapon
+        MUD::Weapon.new(enemy.weapon_id)
       end
 
       def defense_value
@@ -69,11 +75,13 @@ module MUD
       end
 
       def armor
-        MUD::Armor.new(hero.armor_id)
+        MUD::Armor.new(hero.armor)
       end
 
       def attack_message
-        MUD::Screen.output("The #{enemy_name} hit you with its #{weapon_name} for #{damage_taken} damage.")
+        MUD::Screen.output(
+          "The #{enemy_name} hit you with its #{weapon_name} for #{damage_taken} damage."
+        )
       end
 
       def reduce_hp

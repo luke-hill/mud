@@ -25,7 +25,7 @@ ap.seed(
 ap.seed(
   id: 'wolf',
   name: 'Wolf',
-  description: "This Wolf is unlike the normal Rabid Wolves you see floating around. Its fangs "\
+  description: 'This Wolf is unlike the normal Rabid Wolves you see floating around. Its fangs '\
 "are dripping with blood, and it eyes you up... Like you're its next meal!",
   weapon_id: 'sharp_fangs',
   armor_id: 'wolf_hide',

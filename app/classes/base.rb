@@ -3,9 +3,10 @@
 module MUD
   module Classes
     # The Base class
-    # All other classes inherit from this. Here we provide the classes with their base functionality
-    # Things such as viewing attributes, looking around, as well as some basic boolean checks are defined
-    # There are also wrapper calls to each of the Actions Classes allowing all Heros to Move or Equip items
+    # All other classes inherit from this. Here we provide the classes with their
+    # base functionality. Things such as viewing attributes, looking around, as well as
+    # some basic boolean checks are defined. There are also wrapper calls to each of the
+    # Actions Classes allowing all Heroes to Move or Equip items.
     class Base
       attr_reader :attributes, :equipment
       private :attributes, :equipment
@@ -63,6 +64,11 @@ module MUD
 
       def armor
         equipment[:armor]
+      end
+
+      def use_potion(potion_id)
+        Logger.debug("Attempting to drink potion #{potion_id}")
+        MUD::Actions::Use.new(self, potion_id).use
       end
 
       private

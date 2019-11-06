@@ -26,7 +26,7 @@ module MUD
     private
 
     def no_enemy?
-      enemy.id == nil || enemy.id == 'no_enemy'
+      enemy.id.nil? || enemy.id == 'no_enemy'
     end
   end
 end

@@ -3,3 +3,4 @@
 require_relative 'buy'
 require_relative 'equip'
 require_relative 'move'
+require_relative 'use'

@@ -16,11 +16,11 @@ RSpec.describe MUD::Actions::Equip do
 
   describe '#equip' do
     it 'can equip an armor' do
-      expect { hero.equip(armor) }.to change { hero.armor }.to(armor)
+      expect { hero.equip(armor) }.to change(hero, :armor).to(armor)
     end
 
     it 'can equip a weapon' do
-      expect { hero.equip(weapon) }.to change { hero.weapon }.to(weapon)
+      expect { hero.equip(weapon) }.to change(hero, :weapon).to(weapon)
     end
 
     it 'cannot equip an invalid item' do
@@ -31,7 +31,7 @@ RSpec.describe MUD::Actions::Equip do
   end
 
   describe 'delegated methods' do
-    it { should delegate(:inventory).to(:@hero) }
-    it { should delegate(:equipment).to(:@hero) }
+    it { is_expected.to delegate(:inventory).to(:@hero) }
+    it { is_expected.to delegate(:equipment).to(:@hero) }
   end
 end

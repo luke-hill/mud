@@ -20,17 +20,17 @@ module MUD
 
         attack_message
         reduce_hp
+        return MUD::Screen.output("DEBUG --> ENEMY HP:#{enemy.hp}hp.") unless enemy_killed?
 
-        return MUD::Logger.debug("DEBUG --> ENEMY HP:#{enemy.hp}hp.") unless enemy_killed?
-
-        kill_message
         @enemy = nil
       end
 
       private
 
       def missed_message
-        MUD::Screen.output("You tried to attack the #{enemy_name} with your #{weapon_name}... but missed.")
+        MUD::Screen.output(
+          "You tried to attack the #{enemy_name} with your #{weapon_name}... but missed.".yellow
+        )
       end
 
       def enemy_name
@@ -74,7 +74,9 @@ module MUD
       end
 
       def attack_message
-        MUD::Screen.output("You hit the #{enemy_name} with your #{weapon_name} for #{damage_dealt} damage.")
+        MUD::Screen.output(
+          "You hit the #{enemy_name} with your #{weapon_name} for #{damage_dealt} damage."
+        )
       end
 
       def reduce_hp
@@ -84,10 +86,6 @@ module MUD
 
       def enemy_killed?
         enemy.dead?
-      end
-
-      def kill_message
-        MUD::Screen.output("You killed the #{enemy_name}.".blink)
       end
     end
   end
