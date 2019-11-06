@@ -8,8 +8,8 @@ ap.seed(
   id: 1,
   description: "The 'home' of many of the men of the village of Newtown. The Newtown Pub offers "\
 'its patrons a chance to sitdown, relax and rest their weary bones.',
-  advanced_description: "The Fire is roaring, you hear chatter from the local villagers "\
-"(What few reside here), about exploits in the neighbouring villages. The Barkeep begins to "\
+  advanced_description: 'The Fire is roaring, you hear chatter from the local villagers '\
+'(What few reside here), about exploits in the neighbouring villages. The Barkeep begins to '\
 "give you an angry look, then he asks you to leave as you're not spending Gold!",
   type: 'Pub'
 )
@@ -18,7 +18,7 @@ ap.seed(
   ap.seed(
     id: id_number,
     description: "The streets of Newtown are fairly quiet, as you'd expect from this remote area.",
-    advanced_description: "Cobbled with primitive cut stone, and put together many years ago, "\
+    advanced_description: 'Cobbled with primitive cut stone, and put together many years ago, '\
 "these streets look like they've seen better times. The signs for the once active market scene "\
 "are now worn, you can vaguely make out a sign for \"Draz'ghun\" the Potion Salesman."
   )
@@ -27,16 +27,16 @@ end
 ap.seed(
   id: 2,
   description: "The streets of Newtown are fairly quiet, as you'd expect from this remote area. "\
-"You notice a side-path that leads to what looks like a Residential Area."
+'You notice a side-path that leads to what looks like a Residential Area.'
 )
 
 ap.seed(
   id: 3,
   description: "Draz'ghun's Shop. Whilst small in nature, the vendor here can offer a small "\
 "selection of potions from Draz'ghuns famed brewing selection.",
-  advanced_description: "You look around and ask the Vendor for the Owner, who simply remarks "\
+  advanced_description: 'You look around and ask the Vendor for the Owner, who simply remarks '\
 "that he's away on his adventures. The bottles on the shelves seem dirty, but you're told that "\
-"the look is purely designed that way... To appeal to Travellers.",
+'the look is purely designed that way... To appeal to Travellers.',
   type: 'Potion Shop'
 )
 
@@ -73,9 +73,9 @@ ap.seed(
 ap.seed(
   id: 13,
   description: "The Barracks are dimly lit and the room you're in is very cold.",
-  advanced_description: "As you look around, you see the light casting a shadow down the "\
+  advanced_description: 'As you look around, you see the light casting a shadow down the '\
 "tunnel from the path you've just entered from. The walls have various weapons hung up, but "\
-"all are broken beyond use.",
+'all are broken beyond use.',
   type: 'Dungeon',
   location_id: 'barracks'
 )
@@ -84,9 +84,9 @@ ap.seed(
   ap.seed(
     id: id_number,
     description: "The Barracks are dimly lit and the room you're in is very cold.",
-    advanced_description: "Looking around, you can tell that no traveller has ventured into "\
+    advanced_description: 'Looking around, you can tell that no traveller has ventured into '\
 "these abandoned Barracks for a long time. There are some stains on the walls, but they're "\
-"too dark to be blood, it almost looks ... inhuman.",
+'too dark to be blood, it almost looks ... inhuman.',
     type: 'Dungeon',
     location_id: 'barracks',
     ktp: true
@@ -96,7 +96,7 @@ end
 ap.seed(
   id: 19,
   description: "The Barracks are dimly lit and the room you're in is very cold... "\
-"But you can feel some heat radiating from the door.",
+'But you can feel some heat radiating from the door.',
   advanced_description: 'You notice that the style of the area is all the same, except for '\
 'the fact there is a door to the east, what looks like some sort of Office. The door is locked '\
 'and has not been opened in some time, judging by the rust that has built up.',
@@ -111,7 +111,7 @@ ap.seed(
 'worn stool in the corner, here it looks as if the Barracks Master has been sitting.',
   advanced_description: "You've heard the stories since you were a child about some sort of "\
 "Monster guarding the treasure, and now you know it's true. In the corner is a rudimentary "\
-"smithing forge that looks ancient, with some leftover bits that are beyond salvage.",
+'smithing forge that looks ancient, with some leftover bits that are beyond salvage.',
   type: 'Dungeon',
   location_id: 'barracks',
   ktp: true

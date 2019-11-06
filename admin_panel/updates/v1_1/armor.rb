@@ -8,8 +8,8 @@ ap.seed(
   id: 'bandit_leathers',
   name: 'Bandit Leathers',
   description: "These leathers have been put together piecemeal. They're flaking at the edges, "\
-"and look as if they could fall apart at any minute. They look as if they used to be part "\
-"of something much greater.",
+'and look as if they could fall apart at any minute. They look as if they used to be part '\
+'of something much greater.',
   defense: 2
 )
 

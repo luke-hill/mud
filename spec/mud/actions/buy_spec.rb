@@ -41,19 +41,19 @@ RSpec.describe MUD::Actions::Buy do
     end
 
     it "reduces the hero's gold by the item_ids cost" do
-      expect { buy_item }.to change { hero.gold }.from(initial_gold).to(initial_gold - item_cost)
+      expect { buy_item }.to change(hero, :gold).from(initial_gold).to(initial_gold - item_cost)
     end
 
     it "adds the item_id to the hero's inventory" do
-      expect { buy_item }.to change { hero.inventory }.from([]).to([item_id])
+      expect { buy_item }.to change(hero, :inventory).from([]).to([item_id])
     end
 
-    it "informs the player the hero bought the item" do
+    it 'informs the player the hero bought the item' do
       expect(buy_item).to eq("You bought a #{item_id.blue} for #{item_cost.to_s.yellow} gold.")
     end
   end
 
-  describe "delegated methods" do
+  describe 'delegated methods' do
     it { is_expected.to delegate(:inventory).to(:@hero) }
     it { is_expected.to delegate(:gold).to(:@hero) }
     it { is_expected.to delegate(:gold=).with(1).to(:@hero) }

@@ -27,7 +27,7 @@ module SpecSupport
     end
 
     def log_name
-      ENV['TEST_LOG_NAME'] || "rspec_tests"
+      ENV['TEST_LOG_NAME'] || 'rspec_tests'
     end
   end
 end

@@ -37,7 +37,7 @@ module MUD
         1_048_576
       end
 
-      private def log_level
+      def log_level
         ENV.fetch('LOG_LEVEL', 'debug')
       end
 

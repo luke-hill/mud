@@ -36,9 +36,9 @@ end
 [50, 58].each do |id_number|
   ap.seed(
     id: id_number,
-    description: "This secluded area is notorious for being prime looting territory "\
+    description: 'This secluded area is notorious for being prime looting territory '\
 "for local Bandits. You've happened on one of the inevitable dead-ends. Usually used to "\
-"ambush travellers, you prepare for the worst.",
+'ambush travellers, you prepare for the worst.',
     advanced_description: 'This area seems to be covered in rags, as if the Bandits wanted '\
 'to keep the path clean, to lure even more un-suspecting travellers into it.',
     location_id: 'forest_path',
@@ -52,15 +52,15 @@ ap.seed(
 'everything looks. The city has an air of arrogance about it and the Guards do nothing to quell '\
 'that, dressed in the finest Steel Chainmail.',
   advanced_description: 'Looking ahead you can make out the Council Square, where most of the '\
-"business of Sovereign City is ran from. There are no signs directing you anywhere, almost as "\
-"if everyone in the city knows where everything is.",
+'business of Sovereign City is ran from. There are no signs directing you anywhere, almost as '\
+'if everyone in the city knows where everything is.',
   location_id: 'sovereign_city_gatehouse',
   type: 'Town'
 )
 
 ap.seed(
   id: 60,
-  description: "You see 3 separate small patches of ground, each monitored closely by a "\
+  description: 'You see 3 separate small patches of ground, each monitored closely by a '\
 "burly guard. He reminds you to read the sign before continuing if you're not sure.",
   advanced_description: 'You notice a sign that says North: Goblin Training Arena, '\
 'West: Brawler Training Arena, South: Under Construction.',

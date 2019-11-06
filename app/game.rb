@@ -34,7 +34,7 @@ module MUD
         sleep 0.5
         MUD::Screen.output('............................................')
         sleep 0.5
-        MUD::Screen.output("Hello and Welcome to MUD - Working title I know!!")
+        MUD::Screen.output('Hello and Welcome to MUD - Working title I know!!')
         sleep 0.75
         MUD::Screen.output("Current Version #{VERSION}")
         sleep 0.75
@@ -45,8 +45,8 @@ module MUD
         )
         sleep 0.75
         MUD::Screen.output(
-          "You are in Newtown, and as avaLancHe ... our intrepid explorer, you have spawned "\
-"in our village to kill Several Monsters and then the boss - The Orc!"
+          'You are in Newtown, and as avaLancHe ... our intrepid explorer, you have spawned '\
+'in our village to kill Several Monsters and then the boss - The Orc!'
         )
         sleep 0.5
         MUD::Screen.output('............................................')
