@@ -31,7 +31,7 @@ RSpec.describe MUD::Actions::Equip do
   end
 
   describe 'delegated methods' do
-    it { should delegate(:inventory).to(:@hero) }
-    it { should delegate(:equipment).to(:@hero) }
+    it { is_expected.to delegate(:inventory).to(:@hero) }
+    it { is_expected.to delegate(:equipment).to(:@hero) }
   end
 end

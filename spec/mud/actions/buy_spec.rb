@@ -54,9 +54,9 @@ RSpec.describe MUD::Actions::Buy do
   end
 
   describe "delegated methods" do
-    it { should delegate(:inventory).to(:@hero) }
-    it { should delegate(:gold).to(:@hero) }
-    it { should delegate(:gold=).with(1).to(:@hero) }
-    it { should delegate(:max_inventory_size).to(:@hero) }
+    it { is_expected.to delegate(:inventory).to(:@hero) }
+    it { is_expected.to delegate(:gold).to(:@hero) }
+    it { is_expected.to delegate(:gold=).with(1).to(:@hero) }
+    it { is_expected.to delegate(:max_inventory_size).to(:@hero) }
   end
 end
