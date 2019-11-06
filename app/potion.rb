@@ -23,7 +23,7 @@ module MUD
       when :healing;  then proc { self.hp += value }
       when :mana;     then proc { self.mp += value }
       when :hp_bonus; then proc { self.max_hp += value }
-      else raise "Unreachable code. Potion Type should already have been defined!"
+      else raise 'Unreachable code. Potion Type should already have been defined!'
       end
     end
 
@@ -46,15 +46,15 @@ module MUD
     end
 
     def healing_potion?
-      !!healing_potion_yml[id]
+      !healing_potion_yml[id].nil?
     end
 
     def mana_potion?
-      !!mana_potion_yml[id]
+      !mana_potion_yml[id].nil?
     end
 
     def hp_bonus_potion?
-      !!hp_bonus_potion_yml[id]
+      !hp_bonus_potion_yml[id].nil?
     end
 
     def assign_potion_data

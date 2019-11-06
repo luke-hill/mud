@@ -23,7 +23,7 @@ RSpec.describe MUD::Enemy do
   end
 
   describe 'delegated methods' do
-    data_keys = %i(
+    data_keys = %i[
       name
       description
       weapon_id
@@ -36,7 +36,7 @@ RSpec.describe MUD::Enemy do
       xp
       xp_killshot
       stamina
-    )
+    ]
     data_keys.each do |key|
       it "delegates calling #{key} on the Enemy class to the enemy data" do
         expect { enemy.send(key) }.not_to raise_error
