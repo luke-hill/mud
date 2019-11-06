@@ -8,7 +8,7 @@ SimpleCov.start do
   add_group "App", "app"
   add_group "Spec", "spec"
 
-  minimum_coverage 40
+  minimum_coverage 60
 end
 
 require 'rspec'
