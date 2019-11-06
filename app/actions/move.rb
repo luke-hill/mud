@@ -13,7 +13,15 @@ module MUD
 
       def move(direction)
         if player.current_room.exitable?
-          send(direction)
+          if required_key(direction)
+            if player.barracks_key
+              # use it then move
+            else
+              # say you need the key
+            end
+          else
+            send(direction)
+          end
         else
           MUD::Screen.output("You must kill the #{player.current_room.enemy.name} before leaving the room!")
         end
@@ -36,6 +44,10 @@ module MUD
       end
 
       private
+
+      def required_key(direction)
+        direction_yml.dig(player.current_room.room_id, "#{direction}_key_id")
+      end
 
       def north
         if north_room_id
@@ -125,7 +137,7 @@ module MUD
         player.current_room = fetch_or_create_room(room_id)
         player.current_room.visit
       end
-      
+
       def fetch_or_create_room(room_id)
         if room_already_visited?(room_id)
           fetch_room_from_cache(room_id)
