@@ -49,6 +49,10 @@ module MUD
         load_yml('data/items/armor.yml')
       end
 
+      def key_yml
+        load_yml('data/items/key.yml')
+      end
+
       def load_yml(file_subdir)
         YAML.load_file("#{Dir.pwd}/#{file_subdir}")
       end
