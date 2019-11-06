@@ -24,7 +24,7 @@ module MUD
 
       def_delegators \
         :@hero,
-        :inventory,
+        :inventory
 
       # @return [String]
       # This method will use the relevant item (If the item is usable)
