@@ -11,18 +11,6 @@ module Player
       room.floor.delete(item)
     end
 
-    def use_potion
-      return puts "You don't have any potions" if inventory.empty?
-
-      inventory.first.use(self)
-      inventory.delete_at(0)
-    end
-
-    def use_key
-      puts 'You hear a click as you turn the key. The door slowly opens'
-      inventory.delete(barracks_key)
-    end
-
     def east
       if !key?
         return puts missing_key
