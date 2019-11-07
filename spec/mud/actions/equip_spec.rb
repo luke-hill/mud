@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Actions::Equip do
-  subject(:equip_class) { described_class.new(hero, weapon) }
-
   let(:hero) { MUD::Classes::Fighter.new }
   let(:weapon) { 'knife' }
   let(:armor) { 'vest' }
