@@ -5,7 +5,7 @@ module MUD
     include Helpers::Data
     extend Forwardable
 
-    attr_accessor :type
+    attr_writer :type
     attr_reader :id
 
     def initialize(id)
@@ -27,6 +27,10 @@ module MUD
       end
     end
 
+    def type
+      @type ||= determine_type
+    end
+
     private
 
     def potion
@@ -34,7 +38,7 @@ module MUD
     end
 
     def potion_data
-      determine_type && assign_potion_data
+      assign_potion_data
     end
 
     def determine_type
