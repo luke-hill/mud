@@ -10,6 +10,7 @@ RSpec.describe MUD::Actions::Use do
   before do
     swallow_console_spam
     hero.inventory << item_id
+    allow(MUD::Game).to receive(:player).and_return(hero)
   end
 
   describe '#use' do

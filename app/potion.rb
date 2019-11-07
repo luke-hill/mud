@@ -20,11 +20,29 @@ module MUD
 
     def use_effect
       case type
-      when :healing;  then proc { self.hp += value }
-      when :mana;     then proc { self.mp += value }
-      when :hp_bonus; then proc { self.max_hp += value }
-      else raise 'Unreachable code. Potion Type should already have been defined!'
+      when :healing;  then proc { player.hp += value }
+      when :mana;     then proc { player.mp += value }
+      when :hp_bonus; then proc { player.max_hp += value }
+      else            raise 'Unreachable code. Potion Type should already have been defined!'
       end
+    end
+
+    def potion_use_amount
+      use_effect
+      player.prevent_overflow_hp
+      player.prevent_overflow_mp
+    end
+
+    def potion_use_message
+      msg =
+        case type
+        when :healing;  then "#{use_message} #{value}hp".yellow
+        when :mana;     then "#{use_message} #{value}mp".blue
+        when :hp_bonus; then "#{use_message} #{value}hp".blink
+        else            raise 'Unreachable code. Potion Type should already have been defined!'
+        end
+
+      MUD::Screen.output(msg)
     end
 
     def type

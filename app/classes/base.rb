@@ -53,6 +53,18 @@ module MUD
         self.hp = 0 if hp.negative?
       end
 
+      def prevent_overflow_hp
+        self.hp = max_hp if hp > max_hp
+      end
+
+      def prevent_negative_mp
+        self.mp = 0 if mp.negative?
+      end
+
+      def prevent_overflow_mp
+        self.mp = 0
+      end
+
       def equip(item_id)
         Logger.debug("Attempting to equip #{item_id}")
         MUD::Actions::Equip.new(self, item_id).equip

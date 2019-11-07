@@ -19,7 +19,10 @@ module MUD
 
       def_delegators \
         :@hero,
-        :inventory
+        :inventory,
+        :hp=,
+        :mp=,
+        :max_hp=
 
       # @return [String]
       # This method will use the relevant item (If the item is usable)
@@ -32,7 +35,7 @@ module MUD
         if potion?
           MUD::Logger.debug("Previous hp #{@hero.hp}. Previous mp #{@hero.mp}")
           potion.use_effect.call
-          MUD::Screen.output("#{item_id.use_message} #{item_id.value}".yellow)
+          MUD::Screen.output("#{potion.use_message} #{potion.value}".yellow)
         else
           MUD::Screen.output('You hear a click as you turn the key. The door slowly opens'.yellow)
         end
