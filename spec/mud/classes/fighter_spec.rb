@@ -11,6 +11,7 @@ RSpec.describe MUD::Classes::Fighter do
   let(:inventory) { subject.inventory }
   let(:accuracy) { subject.accuracy }
   let(:max_inventory_size) { subject.max_inventory_size }
+  let(:mp) { subject.mp }
 
   before { swallow_console_spam }
 
@@ -53,6 +54,10 @@ RSpec.describe MUD::Classes::Fighter do
 
     it 'has 10 inventory slots' do
       expect(max_inventory_size).to eq(10)
+    end
+
+    it 'has 0 mp' do
+      expect(mp).to eq(0)
     end
   end
 end

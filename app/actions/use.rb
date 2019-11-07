@@ -30,7 +30,7 @@ module MUD
         return MUD::Screen.output("You do not have a #{item_id}".red) unless in_inventory?
 
         if potion?
-          MUD::Logger.debug("Previous hp #{hero.hp}. Previous mp #{hero&.mp}")
+          MUD::Logger.debug("Previous hp #{@hero.hp}. Previous mp #{@hero.mp}")
           potion.use_effect.call
           MUD::Screen.output("#{item_id.use_message} #{item_id.value}".yellow)
         else
