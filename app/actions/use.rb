@@ -2,15 +2,10 @@
 
 module MUD
   module Actions
-    # The Use Action
-    # Like the other ones, this provides a single public method +#use+
-    # This will use up the item in your inventory (If it is able to be used).
-    #
-    # If it cannot be used, an error is thrown.
-    # If it can be used, the use_effect from the Model will be passed as a proc and then
-    # applied to the hero or wherever relevant.
-    #
-    # Once the item is used, a single copy is deleted from your inventory.
+    # This provides a single public method +#use+
+    # This will use up the item in your inventory (If it is able to be used). If it cannot
+    # be used, an error is thrown. If it can be used, the +use_effect+ from the Model
+    # will be passed as a proc and then applied, then it is deleted from your inventory.
     class Use
       attr_reader :item_id
 

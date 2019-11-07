@@ -2,8 +2,7 @@
 
 module MUD
   module Actions
-    # The Buy Action
-    # Like the other ones, this provides a single public method +#buy+
+    # This provides a single public method +#buy+
     # This will make a series of checks which will determine if you are allowed to buy the +item_id+
     # that is passed in on initialization of the class. If all checks pass. It will deduct the cost
     # of the item from your gold, and then add a copy to your inventory
@@ -26,9 +25,8 @@ module MUD
         :max_inventory_size
 
       # @return [String]
-      # This method will buy the relevant item (If they pass the checks)
-      # Once the item has been bought, a string representation of the transaction is sent
-      # to the playing console.
+      # This method will buy the relevant item (If they pass the checks). Once the item has been
+      # bought, a string representation of the transaction is sent to the playing console.
       def buy
         return MUD::Screen.output("I'm sorry we dont have that item for sale".red) unless for_sale?
         return MUD::Screen.output('You do not have enough gold for that.'.red) unless enough_money?

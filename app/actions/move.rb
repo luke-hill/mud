@@ -2,6 +2,10 @@
 
 module MUD
   module Actions
+    # This provides a single public method +#move+
+    # This will make a series of checks which will determine if you are allowed to move
+    # in the direction you requested. If all checks pass, you will then move in the desired
+    # direction. Then the relevant room variables will be updated.
     class Move
       include MUD::Helpers::Data
 
@@ -11,6 +15,9 @@ module MUD
         @player = player
       end
 
+      # @return [String]
+      # This method will move in the relevant direction (If they pass the checks). Once you have
+      # moved, a string representation of the movement is sent to the playing console.
       def move(direction)
         if player.current_room.exitable?
           if required_key(direction)
@@ -30,18 +37,26 @@ module MUD
         end
       end
 
+      # @return [String]
+      # This is an unused API method currently and will be removed
       def pickup_item
         MUD::Screen.output('Not in active use'.red)
       end
 
+      # @return [String]
+      # This is an unused API method currently and will be removed
       def drop_item
         MUD::Screen.output('Not in active use'.red)
       end
 
+      # @return [String]
+      # This is an unused API method currently and will be removed
       def pickup_gold
         MUD::Screen.output('Not in active use'.red)
       end
 
+      # @return [String]
+      # This is an unused API method currently and will be removed
       def drop_gold
         MUD::Screen.output('Not in active use'.red)
       end
