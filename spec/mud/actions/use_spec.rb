@@ -40,28 +40,24 @@ RSpec.describe MUD::Actions::Use do
       end
     end
 
-    context "when the item_id is a valid potion" do
+    context "when the item_id is a valid healing potion" do
       let(:item_id) { 'lesser_healing_potion' }
 
-      it "uses up the potion hero's inventory" do
+      it "uses up the potion in the heroes inventory" do
         expect { use_attempt }.to change(hero, :inventory).from([item_id]).to([])
       end
 
-      it "does not reduce the hero's gold" do
-        expect { use_attempt }.not_to change(hero, :gold)
+      it "increases the heroes current hp" do
+        expect { use_attempt }.to change(hero, :hp)
       end
     end
 
-    it "reduces the hero's gold by the item_ids cost" do
-      expect { use_attempt }.to change(hero, :gold).from(initial_gold).to(initial_gold - item_cost)
-    end
+    context "when the item_id is `barracks_key`" do
+      let(:item_id) { 'barracks_key' }
 
-    it "adds the item_id to the hero's inventory" do
-      expect { use_attempt }.to change(hero, :inventory).from([]).to([item_id])
-    end
-
-    it 'informs the player the hero bought the item' do
-      expect(buy_attempt).to eq("You bought a #{item_id.blue} for #{item_cost.to_s.yellow} gold.")
+      it "uses up the barracks key in the heroes inventory" do
+        expect { use_attempt }.to change(hero, :inventory).from([item_id]).to([])
+      end
     end
   end
 
