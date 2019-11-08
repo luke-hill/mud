@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe MUD::Weapon do
+RSpec.describe MUD::Key do
   let(:key) { create(:key, key_data) }
   let(:key_data) do
     {

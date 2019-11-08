@@ -2,6 +2,7 @@
 
 RSpec.describe MUD::Potion do
   subject(:potion) { create(:potion, potion_data) }
+
   let(:potion_data) do
     {
       name: 'Dummy Potion',

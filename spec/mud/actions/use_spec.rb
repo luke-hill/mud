@@ -23,7 +23,7 @@ RSpec.describe MUD::Actions::Use do
         expect(use_attempt).to eq('You cannot use this item!'.red)
       end
 
-      it "does not use the item up" do
+      it 'does not use the item up' do
         expect { use_attempt }.not_to change(hero, :inventory)
       end
     end
@@ -35,29 +35,29 @@ RSpec.describe MUD::Actions::Use do
         expect(use_attempt).to eq("You do not have a #{item_id}".red)
       end
 
-      it "does not use the item up" do
+      it 'does not use the item up' do
         expect { use_attempt }.not_to change(hero, :inventory)
       end
     end
 
-    context "when the item_id is a valid healing potion" do
+    context 'when the item_id is a valid healing potion' do
       let(:item_id) { 'lesser_healing_potion' }
 
       before { hero.hp = 10 }
 
-      it "uses up the potion in the heroes inventory" do
+      it 'uses up the potion in the heroes inventory' do
         expect { use_attempt }.to change(hero, :inventory).from([item_id]).to([])
       end
 
-      it "increases the heroes current hp" do
+      it 'increases the heroes current hp' do
         expect { use_attempt }.to change(hero, :hp).from(10).to(20)
       end
     end
 
-    context "when the item_id is `barracks_key`" do
+    context 'when the item_id is `barracks_key`' do
       let(:item_id) { 'barracks_key' }
 
-      it "uses up the barracks key in the heroes inventory" do
+      it 'uses up the barracks key in the heroes inventory' do
         expect { use_attempt }.to change(hero, :inventory).from([item_id]).to([])
       end
     end

@@ -12,7 +12,7 @@ RSpec.describe MUD::Actions::Equip do
   end
 
   describe '#equip' do
-    context "when the item_id is an armor" do
+    context 'when the item_id is an armor' do
       let(:item_id) { 'vest' }
 
       it 'can equip an armor' do
@@ -20,7 +20,7 @@ RSpec.describe MUD::Actions::Equip do
       end
     end
 
-    context "when the item_id is an armor" do
+    context 'when the item_id is an armor' do
       let(:item_id) { 'knife' }
 
       it 'can equip a weapon' do
@@ -28,7 +28,7 @@ RSpec.describe MUD::Actions::Equip do
       end
     end
 
-    context "when the item_id is unknown" do
+    context 'when the item_id is unknown' do
       let(:item_id) { 'unknown' }
 
       it 'cannot equip an invalid item' do

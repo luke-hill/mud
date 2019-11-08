@@ -121,33 +121,33 @@ RSpec.describe MUD::Classes::Base do
 
   describe '#current_room' do
     it 'returns what room you are in' do
-      expect(subject.current_room).to be_a MUD::Room
+      expect(player.current_room).to be_a MUD::Room
     end
 
     it 'is room 1 when starting a game' do
-      expect(subject.current_room.room_id).to eq(1)
+      expect(player.current_room.room_id).to eq(1)
     end
   end
 
   describe '#current_room=' do
     it 'can update the current_room' do
-      expect(subject).to respond_to(:current_room=)
+      expect(player).to respond_to(:current_room=)
     end
   end
 
   describe '#rooms_visited' do
     it 'returns what rooms you have visited' do
-      expect(subject.rooms_visited).to be_a Hash
+      expect(player.rooms_visited).to be_a Hash
     end
 
     it 'is blank when starting a game' do
-      expect(subject.rooms_visited).to eq({})
+      expect(player.rooms_visited).to eq({})
     end
   end
 
   describe '#rooms_visited=' do
     it 'can update the rooms you have visited' do
-      expect(subject).to respond_to(:rooms_visited=)
+      expect(player).to respond_to(:rooms_visited=)
     end
   end
 end
