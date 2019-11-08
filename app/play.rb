@@ -11,10 +11,7 @@ module MUD
   # logic again
   class Play
     def play
-      while player.alive?
-        MUD::Actions::Command.new(user_input).process
-        MUD::Screen.output('Input not yet recognised as a valid command')
-      end
+      MUD::Actions::Command.new(user_input).process while player.alive?
       die
     end
 

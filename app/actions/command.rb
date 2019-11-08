@@ -12,10 +12,16 @@ module MUD
     class Command
       attr_reader :command_input
 
+      include Helpers::Data
+
       def initialize(command_input)
         @command_input = command_input
       end
 
+      # @return [String]
+      # This method will process the command and either
+      # Perform the command (and return the output)
+      # Return a "Input not yet recognised as a valid command"
       def process
         MUD::Logger.debug("Raw input received from user: '#{command_input}'")
         return process_miscellaneous if miscellaneous?
