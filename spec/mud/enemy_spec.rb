@@ -2,6 +2,7 @@
 
 RSpec.describe MUD::Enemy do
   subject(:enemy) { create(:enemy, enemy_data) }
+
   let(:dead_enemy) do
     enemy.tap { |enemy| enemy.hp = 0 }
   end

@@ -2,6 +2,7 @@
 
 RSpec.describe MUD::Weapon do
   subject(:weapon) { create(:weapon, weapon_data) }
+
   let(:weapon_data) do
     {
       name: 'Dummy Weapon',

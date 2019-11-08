@@ -2,6 +2,7 @@
 
 RSpec.describe MUD::Key do
   subject(:key) { create(:key, key_data) }
+
   let(:key_data) do
     {
       name: 'Dummy Key',
