@@ -5,7 +5,7 @@ module MUD
     include Helpers::Data
     extend Forwardable
 
-    attr_accessor :type
+    attr_writer :type
     attr_reader :id
 
     def initialize(id)
@@ -18,13 +18,15 @@ module MUD
                    :description,
                    :value
 
-    def use_effect
-      case type
-      when :healing;  then proc { self.hp += value }
-      when :mana;     then proc { self.mp += value }
-      when :hp_bonus; then proc { self.max_hp += value }
-      else raise 'Unreachable code. Potion Type should already have been defined!'
-      end
+    def use
+      effect
+      player.prevent_overflow_hp
+      player.prevent_overflow_mp
+      MUD::Screen.output(dynamic_used_message)
+    end
+
+    def type
+      @type ||= determine_type
     end
 
     private
@@ -34,7 +36,25 @@ module MUD
     end
 
     def potion_data
-      determine_type && assign_potion_data
+      assign_potion_data
+    end
+
+    def effect
+      case type
+      when :healing;  then player.hp += value
+      when :mana;     then player.mp += value
+      when :hp_bonus; then player.max_hp += value
+      else            raise 'Unreachable code. Potion Type should already have been defined!'
+      end
+    end
+
+    def dynamic_used_message
+      case type
+      when :healing;  then "#{use_message} #{value}hp".yellow
+      when :mana;     then "#{use_message} #{value}mp".blue
+      when :hp_bonus; then "#{use_message} #{value}hp".blink
+      else            raise 'Unreachable code. Potion Type should already have been defined!'
+      end
     end
 
     def determine_type

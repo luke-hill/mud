@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Enemy do
-  let(:enemy) { create(:enemy, enemy_data) }
+  subject(:enemy) { create(:enemy, enemy_data) }
+
   let(:dead_enemy) do
     enemy.tap { |enemy| enemy.hp = 0 }
   end
@@ -20,28 +21,6 @@ RSpec.describe MUD::Enemy do
       xp_killshot: 10,
       stamina: 1
     }
-  end
-
-  describe 'delegated methods' do
-    data_keys = %i[
-      name
-      description
-      weapon_id
-      armor_id
-      lower_hp_limit
-      upper_hp_limit
-      accuracy
-      lower_gold_limit
-      upper_gold_limit
-      xp
-      xp_killshot
-      stamina
-    ]
-    data_keys.each do |key|
-      it "delegates calling #{key} on the Enemy class to the enemy data" do
-        expect { enemy.send(key) }.not_to raise_error
-      end
-    end
   end
 
   describe 'Hit Points' do
@@ -133,5 +112,20 @@ RSpec.describe MUD::Enemy do
     it 'returns the integer value of the defense value of the equipped armor' do
       expect(enemy.defense).to eq(0)
     end
+  end
+
+  describe 'delegated methods' do
+    it { is_expected.to delegate(:name).to(:enemy) }
+    it { is_expected.to delegate(:description).to(:enemy) }
+    it { is_expected.to delegate(:weapon_id).to(:enemy) }
+    it { is_expected.to delegate(:armor_id).to(:enemy) }
+    it { is_expected.to delegate(:lower_hp_limit).to(:enemy) }
+    it { is_expected.to delegate(:upper_hp_limit).to(:enemy) }
+    it { is_expected.to delegate(:accuracy).to(:enemy) }
+    it { is_expected.to delegate(:lower_gold_limit).to(:enemy) }
+    it { is_expected.to delegate(:upper_gold_limit).to(:enemy) }
+    it { is_expected.to delegate(:xp).to(:enemy) }
+    it { is_expected.to delegate(:xp_killshot).to(:enemy) }
+    it { is_expected.to delegate(:stamina).to(:enemy) }
   end
 end

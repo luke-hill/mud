@@ -2,8 +2,7 @@
 
 module MUD
   module Actions
-    # The Equip Action
-    # Like the other ones, this provides a single public method +#equip+
+    # This provides a single public method +#equip+
     # This will make a series of checks which will determine if you are allowed to equip
     # the +item_id+ that is passed in on initialization of the class. If all checks pass.
     # It will then equip the item in either your weapon or armor slot. Any previously
@@ -20,10 +19,9 @@ module MUD
       end
 
       # @return [String]
-      # This method will equip the relevant item (If they pass the checks)
-      # Once the item has been equipped, the existing item is moved back to their inventory
-      # and the equipped item is removed from the inventory. The player is then informed
-      # via the playing console of the switch of items.
+      # This method will equip the relevant item (If they pass the checks). Once the item has been
+      # equipped, the existing item is switched with the item in their inventory.
+      # The player is then informed via the playing console of the switch of items.
       def equip
         MUD::Logger.debug("Looking for #{item_id}.")
         equip_weapon if weapon?

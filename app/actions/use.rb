@@ -2,15 +2,10 @@
 
 module MUD
   module Actions
-    # The Use Action
-    # Like the other ones, this provides a single public method +#use+
-    # This will use up the item in your inventory (If it is able to be used).
-    #
-    # If it cannot be used, an error is thrown.
-    # If it can be used, the use_effect from the Model will be passed as a proc and then
-    # applied to the hero or wherever relevant.
-    #
-    # Once the item is used, a single copy is deleted from your inventory.
+    # This provides a single public method +#use+
+    # This will use up the item in your inventory (If it is able to be used). If it cannot
+    # be used, an error is thrown. If it can be used, the +use_effect+ from the Model
+    # will be passed as a proc and then applied, then it is deleted from your inventory.
     class Use
       attr_reader :item_id
 
@@ -24,7 +19,10 @@ module MUD
 
       def_delegators \
         :@hero,
-        :inventory
+        :inventory,
+        :hp=,
+        :mp=,
+        :max_hp=
 
       # @return [String]
       # This method will use the relevant item (If the item is usable)
@@ -35,9 +33,8 @@ module MUD
         return MUD::Screen.output("You do not have a #{item_id}".red) unless in_inventory?
 
         if potion?
-          MUD::Logger.debug("Previous hp #{hero.hp}. Previous mp #{hero&.mp}")
-          potion.use_effect.call
-          MUD::Screen.output("#{item_id.use_message} #{item_id.value}".yellow)
+          MUD::Logger.debug("Previous hp #{@hero.hp}. Previous mp #{@hero.mp}")
+          potion.use
         else
           MUD::Screen.output('You hear a click as you turn the key. The door slowly opens'.yellow)
         end

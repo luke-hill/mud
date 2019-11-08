@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Weapon do
-  let(:weapon) { create(:weapon, weapon_data) }
+  subject(:weapon) { create(:weapon, weapon_data) }
+
   let(:weapon_data) do
     {
       name: 'Dummy Weapon',
@@ -12,18 +13,9 @@ RSpec.describe MUD::Weapon do
   end
 
   describe 'delegated methods' do
-    data_keys = %i[
-      name
-      description
-      min_power
-      max_power
-    ]
-    data_keys.each do |key|
-      it "delegates calling #{key} on the Weapon class to the weapon data" do
-        expect(weapon).to receive(:weapon).and_call_original
-
-        weapon.send(key)
-      end
-    end
+    it { is_expected.to delegate(:name).to(:weapon) }
+    it { is_expected.to delegate(:description).to(:weapon) }
+    it { is_expected.to delegate(:min_power).to(:weapon) }
+    it { is_expected.to delegate(:max_power).to(:weapon) }
   end
 end

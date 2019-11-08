@@ -26,7 +26,8 @@ module MUD
           gold: 200,
           inventory: [],
           accuracy: 0.7,
-          max_inventory_size: 10
+          max_inventory_size: 10,
+          mp: 0
         }
       end
     end
