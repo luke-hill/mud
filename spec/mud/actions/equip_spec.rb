@@ -1,30 +1,41 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Actions::Equip do
+  subject(:equip_instance) { described_class.new(hero, item_id) }
+
   let(:hero) { MUD::Classes::Fighter.new }
-  let(:weapon) { 'knife' }
-  let(:armor) { 'vest' }
-  let(:not_a_weapon) { 'unknown' }
+  let(:item_id) { 'vest' }
 
   before do
     swallow_console_spam
-    hero.inventory << weapon
-    hero.inventory << armor
+    hero.inventory << item_id
   end
 
   describe '#equip' do
-    it 'can equip an armor' do
-      expect { hero.equip(armor) }.to change(hero, :armor).to(armor)
+    context "when the item_id is an armor" do
+      let(:item_id) { 'vest' }
+
+      it 'can equip an armor' do
+        expect { equip_instance.equip }.to change(hero, :armor).to(item_id)
+      end
     end
 
-    it 'can equip a weapon' do
-      expect { hero.equip(weapon) }.to change(hero, :weapon).to(weapon)
+    context "when the item_id is an armor" do
+      let(:item_id) { 'knife' }
+
+      it 'can equip a weapon' do
+        expect { equip_instance.equip }.to change(hero, :weapon).to(item_id)
+      end
     end
 
-    it 'cannot equip an invalid item' do
-      expect { hero.equip(not_a_weapon) }
-        .to raise_error(RuntimeError)
-        .with_message("Cannot classify #{not_a_weapon}.")
+    context "when the item_id is unknown" do
+      let(:item_id) { 'unknown' }
+
+      it 'cannot equip an invalid item' do
+        expect { equip_instance.equip }
+          .to raise_error(RuntimeError)
+          .with_message("Cannot classify #{item_id}.")
+      end
     end
   end
 
