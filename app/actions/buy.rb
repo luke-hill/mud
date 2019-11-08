@@ -32,9 +32,7 @@ module MUD
         return MUD::Screen.output('You do not have enough gold for that.'.red) unless enough_money?
         return MUD::Screen.output('You do not have enough space for that.'.red) unless enough_space?
 
-        self.gold -= cost
-        inventory << item_id
-        MUD::Screen.output("You bought a #{item_id.blue} for #{cost.to_s.yellow} gold.")
+        buy_item
       end
 
       private
@@ -58,6 +56,12 @@ module MUD
         # We need the concept of what items are for sale where
         # For now this will be true for the 1 shop
         true
+      end
+
+      def buy_item
+        self.gold -= cost
+        inventory << item_id
+        MUD::Screen.output("You bought a #{item_id.blue} for #{cost.to_s.yellow} gold.")
       end
     end
   end
