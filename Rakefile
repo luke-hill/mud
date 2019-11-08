@@ -2,11 +2,10 @@
 
 require 'rspec/core/rake_task'
 
-desc 'Seed the game from a specific version (Provided)'
-task :seed, :version do |_, args|
-  puts "Seeding Version #{args.version}"
+desc 'Seed the game using the seed files'
+task :seed do
   require_relative 'admin_panel/seeder'
-  AdminPanel::Seeder.seed_version(args.version)
+  AdminPanel::Seeder.seed_all_versions
 end
 
 RSpec::Core::RakeTask.new(:spec)
