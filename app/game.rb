@@ -11,7 +11,6 @@ module MUD
       attr_accessor :rooms_visited
 
       def setup
-        Screen.output('Game started'.red)
         display_welcome_message
         player
       end
