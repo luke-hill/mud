@@ -46,9 +46,9 @@ RSpec.describe MUD::Potion do
   end
 
   describe 'delegated methods' do
-    it { is_expected.to delegate(:name).to(potion) }
-    it { is_expected.to delegate(:use_message).to(potion) }
-    it { is_expected.to delegate(:description).to(potion) }
-    it { is_expected.to delegate(:value).to(potion) }
+    it { is_expected.to delegate(:name).to(:potion) }
+    it { is_expected.to delegate(:use_message).to(:potion) }
+    it { is_expected.to delegate(:description).to(:potion) }
+    it { is_expected.to delegate(:value).to(:potion) }
   end
 end

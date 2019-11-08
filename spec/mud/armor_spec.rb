@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Armor do
-  let(:armor) { create(:armor, armor_data) }
+  subject(:armor) { create(:armor, armor_data) }
   let(:armor_data) do
     {
       name: 'Dummy Armor',
@@ -11,17 +11,8 @@ RSpec.describe MUD::Armor do
   end
 
   describe 'delegated methods' do
-    data_keys = %i[
-      name
-      description
-      defense
-    ]
-    data_keys.each do |key|
-      it "delegates calling #{key} on the Armor class to the armor data" do
-        expect(armor).to receive(:armor).and_call_original
-
-        armor.send(key)
-      end
-    end
+    it { is_expected.to delegate(:name).to(:armor) }
+    it { is_expected.to delegate(:description).to(:armor) }
+    it { is_expected.to delegate(:defense).to(:armor) }
   end
 end
