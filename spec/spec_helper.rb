@@ -22,6 +22,7 @@ require_relative 'support/factory'
 require_relative 'support/file'
 require_relative 'support/room'
 
+require_relative 'support/shared_examples/command_movement'
 require_relative 'support/shared_examples/movement'
 
 RSpec.configure do |config|

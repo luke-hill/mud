@@ -37,13 +37,13 @@ module MUD
         case command_input
         when '';           then player.look_around
         when 'debug';      then output_diagnostic_info
-        when 'quit', 'q';  then die
+        when 'quit';       then die
         else               raise "Unreachable code - Command Input: #{command_input}"
         end
       end
 
       def miscellaneous?
-        ['', 'debug', 'quit', 'q'].include?(command_input)
+        ['', 'debug', 'quit'].include?(command_input)
       end
 
       def process_north_south_east_west

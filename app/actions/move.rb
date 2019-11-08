@@ -9,18 +9,19 @@ module MUD
     class Move
       include MUD::Helpers::Data
 
-      attr_reader :player
+      attr_reader :player, :direction
 
-      def initialize(player)
+      def initialize(player, direction)
         @player = player
+        @direction = direction
       end
 
       # @return [String]
       # This method will move in the relevant direction (If they pass the checks). Once you have
       # moved, a string representation of the movement is sent to the playing console.
-      def move(direction)
+      def move
         if player.current_room.exitable?
-          if required_key(direction)
+          if required_key
             if player.barracks_key?
               player.use('barracks_key')
               send(direction)
@@ -63,7 +64,7 @@ module MUD
 
       private
 
-      def required_key(direction)
+      def required_key
         direction_yml.dig(player.current_room.room_id, "#{direction}_key_id")
       end
 
