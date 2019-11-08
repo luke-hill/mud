@@ -13,7 +13,7 @@ module AdminPanel
       private
 
       def current_seed_files
-        Dir[File.absolute_path("./admin_panel/updates/**/*.rb")].sort
+        Dir[File.absolute_path('./admin_panel/updates/**/*.rb')].sort
       end
     end
 

@@ -11,14 +11,14 @@ module MUD
   # logic again
   class Play
     def play
-      MUD::Actions::Command.new(user_input).process while player.alive?
+      MUD::Actions::Command.new(user_input) while player.alive?
       die
     end
 
     private
 
     def user_input
-      gets.chomp.split.first.to_s.downcase
+      $stdin.gets.chomp.split.first.to_s.downcase
     end
 
     def player
@@ -28,9 +28,7 @@ module MUD
     def die
       MUD::Screen.output('You died'.red)
       sleep 2
-      exit
+      Kernel.exit
     end
   end
 end
-
-Play.new.play

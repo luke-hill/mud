@@ -15,6 +15,7 @@ require 'rspec'
 require 'delegate_matcher'
 
 require_relative '../app/game'
+require_relative '../app/play'
 
 require_relative 'support/console'
 require_relative 'support/factory'
