@@ -10,9 +10,17 @@ module MUD
   # Once the action/s have completed, we check to see if we're +alive?+ and then we repeat the
   # logic again
   class Play
+    def initialize
+      setup
+    end
+
     def play
-      MUD::Actions::Command.new(user_input) while player.alive?
-      die
+      Actions::Command.new(user_input)
+      if player.alive?
+        play
+      else
+        die
+      end
     end
 
     private
@@ -21,13 +29,16 @@ module MUD
       $stdin.gets.chomp.split.first.to_s.downcase
     end
 
+    def setup
+      Game.setup
+    end
+
     def player
-      @player ||= MUD::Game.setup
+      @player ||= Game.player
     end
 
     def die
-      MUD::Screen.output('You died'.red)
-      sleep 2
+      Screen.output('You died'.red)
       Kernel.exit
     end
   end
