@@ -34,7 +34,7 @@ module MUD
 
         if potion?
           MUD::Logger.debug("Previous hp #{@hero.hp}. Previous mp #{@hero.mp}")
-          potion.potion_being_used
+          potion.use
         else
           MUD::Screen.output('You hear a click as you turn the key. The door slowly opens'.yellow)
         end

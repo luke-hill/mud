@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Potion do
-  let(:potion) { create(:potion, potion_data) }
+  subject(:potion) { create(:potion, potion_data) }
   let(:potion_data) do
     {
       name: 'Dummy Potion',
@@ -10,46 +10,44 @@ RSpec.describe MUD::Potion do
       value: 3
     }
   end
+  let(:player) { MUD::Game.player }
 
-  describe '#use_effect' do
+  describe '#use' do
     context 'when the potion is a "healing" potion' do
       before { allow(potion).to receive(:type).and_return(:healing) }
 
-      it 'returns a proc of the +hp use effect' do
-        expect(potion.use_effect).to be_a Proc
+      it 'will recover some hp for the player' do
+        expect(player).to receive(:hp=).once
+
+        potion.use
       end
     end
 
     context 'when the potion is a "mana" potion' do
       before { allow(potion).to receive(:type).and_return(:mana) }
 
-      it 'returns a proc of the +mp use effect' do
-        expect(potion.use_effect).to be_a Proc
+      it 'will recover some mp for the player' do
+        expect(player).to receive(:mp=).twice
+
+        potion.use
       end
     end
 
     context 'when the potion is a "hp bonus" potion' do
       before { allow(potion).to receive(:type).and_return(:hp_bonus) }
 
-      it 'returns a proc of the +hp_max use effect' do
-        expect(potion.use_effect).to be_a Proc
+      it 'will increase the players `max_hp`' do
+        expect(player).to receive(:max_hp=).once
+
+        potion.use
       end
     end
   end
 
   describe 'delegated methods' do
-    data_keys = %i[
-      name
-      use_message
-      description
-      value
-    ]
-    data_keys.each do |key|
-      it "delegates calling #{key} on the Potion class to the potion data" do
-        expect(potion).to receive(:potion).and_call_original
-
-        potion.send(key)
-      end
-    end
+    it { is_expected.to delegate(:name).to(potion) }
+    it { is_expected.to delegate(:use_message).to(potion) }
+    it { is_expected.to delegate(:description).to(potion) }
+    it { is_expected.to delegate(:value).to(potion) }
   end
 end

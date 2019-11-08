@@ -18,14 +18,28 @@ module MUD
                    :description,
                    :value
 
-    def potion_being_used
-      use_effect
+    def use
+      effect
       player.prevent_overflow_hp
       player.prevent_overflow_mp
       MUD::Screen.output(dynamic_used_message)
     end
 
-    def use_effect
+    def type
+      @type ||= determine_type
+    end
+
+    private
+
+    def potion
+      @potion ||= OpenStruct.new(potion_data)
+    end
+
+    def potion_data
+      assign_potion_data
+    end
+
+    def effect
       case type
       when :healing;  then player.hp += value
       when :mana;     then player.mp += value
@@ -41,20 +55,6 @@ module MUD
       when :hp_bonus; then "#{use_message} #{value}hp".blink
       else            raise 'Unreachable code. Potion Type should already have been defined!'
       end
-    end
-
-    def type
-      @type ||= determine_type
-    end
-
-    private
-
-    def potion
-      @potion ||= OpenStruct.new(potion_data)
-    end
-
-    def potion_data
-      assign_potion_data
     end
 
     def determine_type

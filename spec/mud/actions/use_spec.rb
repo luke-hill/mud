@@ -43,12 +43,14 @@ RSpec.describe MUD::Actions::Use do
     context "when the item_id is a valid healing potion" do
       let(:item_id) { 'lesser_healing_potion' }
 
+      before { hero.hp = 10 }
+
       it "uses up the potion in the heroes inventory" do
         expect { use_attempt }.to change(hero, :inventory).from([item_id]).to([])
       end
 
       it "increases the heroes current hp" do
-        expect { use_attempt }.to change(hero, :hp)
+        expect { use_attempt }.to change(hero, :hp).from(10).to(20)
       end
     end
 
