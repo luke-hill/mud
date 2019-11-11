@@ -2,6 +2,10 @@
 
 module MUD
   module Combat
+    # This provides a single public method +#attack+
+    # This is entirely api private but it will be called by using +MUD::Combat::Fight.fight+
+    # This will perform the act of the hero attacking the enemy
+    # (With the Defend class doing the opposite)
     class Attack
       attr_reader :hero, :enemy
 
@@ -15,6 +19,10 @@ module MUD
         MUD::Logger.debug("Enemy #{enemy.inspect}")
       end
 
+      # This provides a single public method +#buy+
+      # This will make a series of checks which will determine if you are allowed to buy the +item_id+
+      # that is passed in on initialization of the class. If all checks pass. It will deduct the cost
+      # of the item from your gold, and then add a copy to your inventory
       def attack
         return missed_message if no_damage?
 

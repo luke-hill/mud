@@ -2,6 +2,10 @@
 
 module MUD
   module Combat
+    # This provides a single public method +#defend+
+    # This is entirely api private but it will be called by using +MUD::Combat::Fight.fight+
+    # This will perform the act of the enemy attacking the hero
+    # (With the Attack class doing the opposite)
     class Defend
       attr_reader :hero, :enemy
 
