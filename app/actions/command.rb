@@ -71,15 +71,23 @@ module MUD
 
       def output_diagnostic_info
         MUD::Logger.debug('... DEBUG DIAGNOSTIC DUMP...')
+        output_room_data
+        output_player_data
+        MUD::Screen.output("Current Enemy in Room: #{player.current_room.enemy.inspect}")
+        MUD::Logger.debug('... END DEBUG DIAGNOSTIC DUMP...')
+      end
+
+      def output_room_data
         MUD::Screen.output("Description is: #{player.current_room.description}")
         MUD::Screen.output("Advanced Description is: #{player.current_room.advanced_description}")
         MUD::Screen.output("Connected rooms #{player.current_room.connected_rooms}")
+      end
+
+      def output_player_data
         MUD::Screen.output("Inventory: #{player.inventory}")
         MUD::Screen.output("Weapon: #{player.weapon.green}")
         MUD::Screen.output("Armor: #{player.armor.green}")
-        MUD::Screen.output("Current Enemy in Room: #{player.current_room.enemy.inspect}")
         player.view_attributes
-        MUD::Logger.debug('... END DEBUG DIAGNOSTIC DUMP...')
       end
 
       def die
