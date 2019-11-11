@@ -49,25 +49,25 @@ RSpec.describe MUD::Actions::Move do
 
   describe '#pickup_item' do
     it 'does not work' do
-      expect(described_class.new(player).pickup_item).to eq('Not in active use'.red)
+      expect(described_class.new(player, double).pickup_item).to eq('Not in active use'.red)
     end
   end
 
   describe '#drop_item' do
     it 'does not work' do
-      expect(described_class.new(player).drop_item).to eq('Not in active use'.red)
+      expect(described_class.new(player, double).drop_item).to eq('Not in active use'.red)
     end
   end
 
   describe '#pickup_gold' do
     it 'does not work' do
-      expect(described_class.new(player).pickup_gold).to eq('Not in active use'.red)
+      expect(described_class.new(player, double).pickup_gold).to eq('Not in active use'.red)
     end
   end
 
   describe '#drop_gold' do
     it 'does not work' do
-      expect(described_class.new(player).drop_gold).to eq('Not in active use'.red)
+      expect(described_class.new(player, double).drop_gold).to eq('Not in active use'.red)
     end
   end
 end

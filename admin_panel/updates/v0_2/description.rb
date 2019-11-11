@@ -62,7 +62,7 @@ ap.seed(
 'a small storage room, presumably the sole vault on the premises.',
   advanced_description: "As you'd expect from a small bank, there is little extravagance... "\
 'or security it seems. Posters lie on the walls offering rewards for information on the '\
-'whereabouts of the local Bandits that are hiding out stealing from the patrons of the Bank.',
+'whereabouts of the local Bandits that are hiding out and stealing from the patrons of the Bank.',
   location_id: 'newtown_bank',
   type: 'Town',
   enemy_id: 'no_enemy'

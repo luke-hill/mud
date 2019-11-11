@@ -33,7 +33,7 @@ module MUD
         return MUD::Screen.output("You do not have a #{item_id}".red) unless in_inventory?
 
         if potion?
-          MUD::Logger.debug("Previous hp #{@hero.hp}. Previous mp #{@hero.mp}")
+          dump_hp_mp_stats
           potion.use
         else
           MUD::Screen.output('You hear a click as you turn the key. The door slowly opens'.yellow)
@@ -55,6 +55,10 @@ module MUD
 
       def potion
         @potion ||= MUD::Potion.new(item_id)
+      end
+
+      def dump_hp_mp_stats
+        MUD::Logger.debug("Previous hp #{@hero.hp}. Previous mp #{@hero.mp}")
       end
 
       def barracks_key

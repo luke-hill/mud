@@ -6,20 +6,14 @@ require 'active_support/all'
 module AdminPanel
   class Seeder
     class << self
-      def seed_version(version)
-        Dir[File.absolute_path("./admin_panel/updates/#{version}/*.rb")].each(&method(:require))
-      end
-
       def seed_all_versions
-        current_seed_versions.each do |version|
-          seed_version(version)
-        end
+        current_seed_files.each(&method(:require))
       end
 
       private
 
-      def current_seed_versions
-        Dir.glob('*').select { |f| File.directory? f }.sort
+      def current_seed_files
+        Dir[File.absolute_path('./admin_panel/updates/**/*.rb')].sort
       end
     end
 

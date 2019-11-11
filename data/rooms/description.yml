@@ -1,7 +1,7 @@
 ---
 1:
-  description: The home of many of the men of the village of Newtown. The Newtown
-    Pub offers its patrons a chance to sitdown, relax and rest your weary bones.
+  description: The 'home' of many of the men of the village of Newtown. The Newtown
+    Pub offers its patrons a chance to sitdown, relax and rest their weary bones.
   advanced_description: The Fire is roaring, you hear chatter from the local villagers
     (What few reside here), about exploits in the neighbouring villages. The Barkeep
     begins to give you an angry look, then he asks you to leave as you're not spending
@@ -22,7 +22,7 @@
   enemy_id: no_enemy
 3:
   description: Draz'ghun's Shop. Whilst small in nature, the vendor here can offer
-    a small selection of potions from Draz'ghuns famed brewing.
+    a small selection of potions from Draz'ghuns famed brewing selection.
   advanced_description: You look around and ask the Vendor for the Owner, who simply
     remarks that he's away on his adventures. The bottles on the shelves seem dirty,
     but you're told that the look is purely designed that way... To appeal to Travellers.
@@ -197,8 +197,8 @@
   description: The rocky street here looks unfinished, you notice a cable on the floor
     next to the main road.
   advanced_description: Once destined to be the worlds first eco-friendly housing
-    estate, The Newtown Residential District lingers unfinished, with equipment strewn
-    everywhere.
+    estate, The Newtown Residential District lingers unfinished, with construction
+    equipment strewn everywhere.
   location_id: newtown_residential_district
   type: Town
   enemy_id: no_enemy
@@ -206,8 +206,8 @@
   description: The rocky street here looks unfinished, you notice a cable on the floor
     next to the main road.
   advanced_description: Once destined to be the worlds first eco-friendly housing
-    estate, The Newtown Residential District lingers unfinished, with equipment strewn
-    everywhere.
+    estate, The Newtown Residential District lingers unfinished, with construction
+    equipment strewn everywhere.
   location_id: newtown_residential_district
   type: Town
   enemy_id: no_enemy
@@ -215,8 +215,8 @@
   description: The rocky street here looks unfinished, you notice a cable on the floor
     next to the main road.
   advanced_description: Once destined to be the worlds first eco-friendly housing
-    estate, The Newtown Residential District lingers unfinished, with equipment strewn
-    everywhere.
+    estate, The Newtown Residential District lingers unfinished, with construction
+    equipment strewn everywhere.
   location_id: newtown_residential_district
   type: Town
   enemy_id: no_enemy
@@ -224,8 +224,8 @@
   description: The rocky street here looks unfinished, you notice a cable on the floor
     next to the main road.
   advanced_description: Once destined to be the worlds first eco-friendly housing
-    estate, The Newtown Residential District lingers unfinished, with equipment strewn
-    everywhere.
+    estate, The Newtown Residential District lingers unfinished, with construction
+    equipment strewn everywhere.
   location_id: newtown_residential_district
   type: Town
   enemy_id: no_enemy
@@ -233,8 +233,8 @@
   description: The rocky street here looks unfinished, you notice a cable on the floor
     next to the main road.
   advanced_description: Once destined to be the worlds first eco-friendly housing
-    estate, The Newtown Residential District lingers unfinished, with equipment strewn
-    everywhere.
+    estate, The Newtown Residential District lingers unfinished, with construction
+    equipment strewn everywhere.
   location_id: newtown_residential_district
   type: Town
   enemy_id: no_enemy
@@ -250,7 +250,7 @@
   enemy_id: no_enemy
 26:
   description: The rocky street here looks unfinished, you see signs that this used
-    to be regular hive of activity.
+    to be a regular hive of activity.
   advanced_description: This area of the Newtown Residential District houses office
     buildings and even a long disbanded children's playground. Not that any parent
     would want their child playing next to the machinery!
@@ -259,7 +259,7 @@
   enemy_id: no_enemy
 28:
   description: The rocky street here looks unfinished, you see signs that this used
-    to be regular hive of activity.
+    to be a regular hive of activity.
   advanced_description: This area of the Newtown Residential District houses office
     buildings and even a long disbanded children's playground. Not that any parent
     would want their child playing next to the machinery!
@@ -310,8 +310,9 @@
   description: The Newtown bank is served by a single Teller. He sits behind the bars
     guarding a small storage room, presumably the sole vault on the premises.
   advanced_description: As you'd expect from a small bank, there is little extravagance...
-    or security. Posters lie on the walls offering rewards for information on the
-    whereabouts of the local Bandits that are hiding out.
+    or security it seems. Posters lie on the walls offering rewards for information
+    on the whereabouts of the local Bandits that are hiding out and stealing from
+    the patrons of the Bank.
   location_id: newtown_bank
   type: Town
   enemy_id: no_enemy
@@ -529,8 +530,8 @@
     pristine everything looks. The city has an air of arrogance about it and the Guards
     do nothing to quell that, dressed in the finest Steel Chainmail.
   advanced_description: Looking ahead you can make out the Council Square, where most
-    of the Cities business is ran from. There are no signs directing you anywhere,
-    almost as if everyone in the city knows where everything is.
+    of the business of Sovereign City is ran from. There are no signs directing you
+    anywhere, almost as if everyone in the city knows where everything is.
   location_id: sovereign_city_gatehouse
   type: Town
 60:

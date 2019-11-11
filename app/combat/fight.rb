@@ -26,27 +26,31 @@ module MUD
         attack
 
         if enemy_killed?
-          MUD::Screen.output("You killed the #{enemy.name}.".blue.blink)
-          ItemDrops.new(hero, enemy).process
+          notify_enemy_killed
+          process_item_drops
         else
           Defend.new(hero, enemy).defend
         end
       end
 
-      def fight_until_death
-        fight_once until hero.dead? || enemy.dead?
-      end
-
       def attack
-        attack_class.attack
+        Attack.new(hero, enemy).attack
       end
 
       def enemy_killed?
         enemy.dead?
       end
 
-      def attack_class
-        @attack_class ||= Attack.new(hero, enemy)
+      def notify_enemy_killed
+        MUD::Screen.output("You killed the #{enemy.name}.".blue.blink)
+      end
+
+      def process_item_drops
+        ItemDrops.new(hero, enemy).process
+      end
+
+      def fight_until_death
+        fight_once until hero.dead? || enemy_killed?
       end
     end
   end

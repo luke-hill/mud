@@ -22,7 +22,7 @@ module MUD
       def initialize
         @current_room = starting_room
         @equipment = starting_equipment
-        set_rooms_visited_to_blank
+        @rooms_visited = starting_rooms_visited
       end
 
       def look_around
@@ -46,7 +46,7 @@ module MUD
 
       def move(direction)
         Logger.debug("Attempting to move #{direction}")
-        MUD::Actions::Move.new(self).move(direction)
+        MUD::Actions::Move.new(self, direction).move
       end
 
       def prevent_negative_hp
@@ -100,8 +100,8 @@ module MUD
         }
       end
 
-      def set_rooms_visited_to_blank
-        @rooms_visited ||= {}
+      def starting_rooms_visited
+        {}
       end
 
       def attribute_names
