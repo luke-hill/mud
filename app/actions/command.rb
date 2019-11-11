@@ -48,16 +48,13 @@ module MUD
 
       def process_north_south_east_west
         case command_input[0]
-        when 'n'; then player.move('north')
-        when 's'; then player.move('south')
-        when 'e'; then player.move('east')
-        when 'w'; then player.move('west')
-        else      raise "Unreachable code - Command Input: #{command_input}"
+        when 'n', 's', 'e', 'w'; then player.move(command_input)
+        else                     raise "Unreachable code - Command Input: #{command_input}"
         end
       end
 
       def compass_direction?
-        %w[n north s south w west e east u up d down].include?(command_input)
+        %w[n north s south w west e east].include?(command_input)
       end
 
       def process_up_down

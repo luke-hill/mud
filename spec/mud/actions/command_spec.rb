@@ -5,6 +5,8 @@ RSpec.describe MUD::Actions::Command do
 
   let(:player) { MUD::Game.player }
 
+  before { swallow_console_spam }
+
   describe '#process' do
     context 'when command input is an empty string' do
       let(:command_input) { '' }
@@ -42,6 +44,46 @@ RSpec.describe MUD::Actions::Command do
       include_examples 'Command movement examples'
     end
 
-    # %w[n north s south w west e east u up d down].include?(command_input)
+    context 'when command input is "n"' do
+      let(:command_input) { 'n' }
+
+      include_examples 'Command movement examples'
+    end
+
+    context 'when command input is "south"' do
+      let(:command_input) { 'south' }
+
+      include_examples 'Command movement examples'
+    end
+
+    context 'when command input is "s"' do
+      let(:command_input) { 's' }
+
+      include_examples 'Command movement examples'
+    end
+
+    context 'when command input is "east"' do
+      let(:command_input) { 'east' }
+
+      include_examples 'Command movement examples'
+    end
+
+    context 'when command input is "e"' do
+      let(:command_input) { 'e' }
+
+      include_examples 'Command movement examples'
+    end
+
+    context 'when command input is "west"' do
+      let(:command_input) { 'west' }
+
+      include_examples 'Command movement examples'
+    end
+
+    context 'when command input is "w"' do
+      let(:command_input) { 'w' }
+
+      include_examples 'Command movement examples'
+    end
   end
 end

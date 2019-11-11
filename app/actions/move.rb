@@ -76,6 +76,7 @@ module MUD
           MUD::Screen.output('You cannot go north'.red)
         end
       end
+      alias n north
 
       def south
         if south_room_id
@@ -85,6 +86,7 @@ module MUD
           MUD::Screen.output('You cannot go south'.red)
         end
       end
+      alias s south
 
       def east
         if east_room_id
@@ -94,6 +96,7 @@ module MUD
           MUD::Screen.output('You cannot go east'.red)
         end
       end
+      alias e east
 
       def west
         if west_room_id
@@ -103,6 +106,7 @@ module MUD
           MUD::Screen.output('You cannot go west'.red)
         end
       end
+      alias w west
 
       def up
         if up_room_id
