@@ -30,6 +30,12 @@ RSpec.describe MUD::Combat::Defend do
 
     let(:damage_taken) { 2 }
     let(:missed?) { false }
+    let(:missed_message) do
+      "The #{enemy_name} swung at you with its #{weapon_name}, but missed.".yellow
+    end
+    let(:attack_message_regex) do
+      /The #{enemy_name} hit you with its #{weapon_name} for #{damage_taken} damage./
+    end
 
     before do
       swallow_console_spam
@@ -43,8 +49,7 @@ RSpec.describe MUD::Combat::Defend do
       let(:missed?) { true }
 
       it 'informs the player that the attack attempt missed' do
-        expect(defend_attempt)
-          .to eq("The #{enemy_name} swung at you with its #{weapon_name}, but missed.".yellow)
+        expect(defend_attempt).to eq(missed_message)
       end
     end
 
@@ -52,15 +57,14 @@ RSpec.describe MUD::Combat::Defend do
       let(:damage_taken) { 0 }
 
       it 'informs the player that the attack attempt missed' do
-        expect(defend_attempt)
-          .to eq("The #{enemy_name} swung at you with its #{weapon_name}, but missed.".yellow)
+        expect(defend_attempt).to eq(missed_message)
       end
     end
 
     it 'informs the player that the attack dealt damage' do
       defend_attempt
 
-      expect(log_lines).to include(/The #{enemy_name} hit you with its #{weapon_name} for #{damage_taken} damage./)
+      expect(log_lines).to include(attack_message_regex)
     end
 
     it 'reduces the heroes hp by the amount of damage dealt' do
@@ -77,12 +81,8 @@ RSpec.describe MUD::Combat::Defend do
       let(:damage_taken) { 25 }
 
       it 'does not send a debug statement with the enemies new hp value' do
-        begin
-          defend_attempt
-        rescue StandardError
-          StandardError
-        end
-
+        defend_attempt
+      rescue StandardError
         expect(log_lines).not_to include(/DEBUG --> YOUR HP:\d+hp./)
       end
 

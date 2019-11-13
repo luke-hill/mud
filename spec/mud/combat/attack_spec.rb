@@ -30,6 +30,12 @@ RSpec.describe MUD::Combat::Attack do
 
     let(:damage_dealt) { 2 }
     let(:missed?) { false }
+    let(:missed_message) do
+      "You tried to attack the #{enemy_name} with your #{weapon_name}... but missed.".yellow
+    end
+    let(:attack_message_regex) do
+      /You hit the #{enemy_name} with your #{weapon_name} for #{damage_dealt} damage./
+    end
 
     before do
       swallow_console_spam
@@ -43,8 +49,7 @@ RSpec.describe MUD::Combat::Attack do
       let(:missed?) { true }
 
       it 'informs the player that the attack attempt missed' do
-        expect(attack_attempt)
-          .to eq("You tried to attack the #{enemy_name} with your #{weapon_name}... but missed.".yellow)
+        expect(attack_attempt).to eq(missed_message)
       end
     end
 
@@ -52,15 +57,14 @@ RSpec.describe MUD::Combat::Attack do
       let(:damage_dealt) { 0 }
 
       it 'informs the player that the attack attempt missed' do
-        expect(attack_attempt)
-          .to eq("You tried to attack the #{enemy_name} with your #{weapon_name}... but missed.".yellow)
+        expect(attack_attempt).to eq(missed_message)
       end
     end
 
     it 'informs the player that the attack dealt damage' do
       attack_attempt
 
-      expect(log_lines).to include(/You hit the #{enemy_name} with your #{weapon_name} for #{damage_dealt} damage./)
+      expect(log_lines).to include(attack_message_regex)
     end
 
     it 'reduces the enemies hp by the amount of damage dealt' do

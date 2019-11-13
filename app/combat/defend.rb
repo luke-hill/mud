@@ -21,8 +21,9 @@ module MUD
 
       # @return [String, StandardError]
       # This will make a single enemy on hero attack using the enemies weapon
-      # if the attack misses or deals 0 damage, then a missed message is output. Otherwise the attack
-      # succeeds and outputs a message indicating the damage and then deducts that amount from the heroes hp.
+      # if the attack misses or deals 0 damage, then a missed message is output.
+      # Otherwise the attack succeeds and outputs a message indicating the damage and then
+      # deducts that amount from the heroes hp.
       #
       # If the attack kills the hero. The game crashes.
       def defend

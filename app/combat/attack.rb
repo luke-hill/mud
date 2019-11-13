@@ -21,8 +21,9 @@ module MUD
 
       # @return [String, NilClass]
       # This will make a single hero on enemy attack using the heroes weapon
-      # if the attack misses or deals 0 damage, then a missed message is output. Otherwise the attack
-      # succeeds and outputs a message indicating the damage and then deducts that amount from the enemies hp.
+      # if the attack misses or deals 0 damage, then a missed message is output.
+      # Otherwise the attack succeeds and outputs a message indicating the damage and then
+      # deducts that amount from the enemies hp.
       #
       # If the attack kills the enemy. The enemy is deleted from the room.
       def attack
