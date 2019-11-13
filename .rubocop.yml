@@ -12,3 +12,8 @@ Metrics/LineLength:
 # We use lots of delegation classes so this is better
 RSpec/MessageSpies:
   EnforcedStyle: receive
+
+# All spec files are huge blocks, should just ignore them
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'
