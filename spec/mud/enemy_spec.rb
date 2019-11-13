@@ -115,17 +115,30 @@ RSpec.describe MUD::Enemy do
   end
 
   describe 'delegated methods' do
-    it { is_expected.to delegate(:name).to(:enemy) }
-    it { is_expected.to delegate(:description).to(:enemy) }
-    it { is_expected.to delegate(:weapon_id).to(:enemy) }
-    it { is_expected.to delegate(:armor_id).to(:enemy) }
-    it { is_expected.to delegate(:lower_hp_limit).to(:enemy) }
-    it { is_expected.to delegate(:upper_hp_limit).to(:enemy) }
-    it { is_expected.to delegate(:accuracy).to(:enemy) }
-    it { is_expected.to delegate(:lower_gold_limit).to(:enemy) }
-    it { is_expected.to delegate(:upper_gold_limit).to(:enemy) }
-    it { is_expected.to delegate(:xp).to(:enemy) }
-    it { is_expected.to delegate(:xp_killshot).to(:enemy) }
-    it { is_expected.to delegate(:stamina).to(:enemy) }
+    %i[
+      name
+      description
+      weapon_id
+      armor_id
+      lower_hp_limit
+      upper_hp_limit
+      accuracy
+      upper_gold_limit
+      lower_gold_limit
+      xp
+      xp_killshot
+      stamina
+      dropped_potion_id
+      dropped_potion_chance
+      dropped_potion_message
+      dropped_weapon_id
+      dropped_weapon_chance
+      dropped_weapon_message
+      dropped_armor_id
+      dropped_armor_chance
+      dropped_armor_message
+    ].each do |method|
+      it { is_expected.to delegate(method).to(:enemy) }
+    end
   end
 end
