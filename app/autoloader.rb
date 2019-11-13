@@ -19,6 +19,7 @@ require_relative 'logger'
 require_relative 'potion'
 require_relative 'room'
 require_relative 'screen'
+require_relative 'shop'
 require_relative 'version'
 require_relative 'weapon'
 
