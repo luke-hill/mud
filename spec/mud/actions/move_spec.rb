@@ -4,7 +4,6 @@ RSpec.describe MUD::Actions::Move do
   let(:player) { MUD::Game.player }
 
   before do
-    swallow_console_spam
     switch_logging_to_temp_file
     allow(player.current_room).to receive(:connected_rooms) { connected_rooms }
   end

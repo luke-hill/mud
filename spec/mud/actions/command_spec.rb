@@ -5,8 +5,6 @@ RSpec.describe MUD::Actions::Command do
 
   let(:player) { MUD::Game.player }
 
-  before { swallow_console_spam }
-
   describe '#process' do
     context 'when command input is an empty string' do
       let(:command_input) { '' }

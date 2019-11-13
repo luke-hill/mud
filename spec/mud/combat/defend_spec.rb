@@ -38,7 +38,6 @@ RSpec.describe MUD::Combat::Defend do
     end
 
     before do
-      swallow_console_spam
       allow(hero).to receive(:weapon).and_return(weapon_id)
       allow(defend_instance).to receive(:damage_taken).and_return(damage_taken)
       allow(defend_instance).to receive(:missed?).and_return(missed?)

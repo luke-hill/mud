@@ -13,8 +13,6 @@ RSpec.describe MUD::Classes::Fighter do
   let(:max_inventory_size) { subject.max_inventory_size }
   let(:mp) { subject.mp }
 
-  before { swallow_console_spam }
-
   describe 'initial starting stats' do
     it 'has a name' do
       expect(name).to eq('Test Player')

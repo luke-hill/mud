@@ -13,7 +13,6 @@ RSpec.describe MUD::Actions::Buy do
 
     before do
       allow(buy_instance).to receive(:cost).and_return(item_cost)
-      swallow_console_spam
     end
 
     context "when the item_id isn't recognised as being for sale" do

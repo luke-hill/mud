@@ -8,7 +8,7 @@ SimpleCov.start do
   add_group 'App', 'app'
   add_group 'Spec', 'spec'
 
-  minimum_coverage 80
+  minimum_coverage 85
 end
 
 require 'rspec'
@@ -32,4 +32,8 @@ RSpec.configure do |config|
   config.include SpecSupport::Room
 
   config.add_formatter :documentation
+
+  config.before do
+    swallow_console_spam
+  end
 end
