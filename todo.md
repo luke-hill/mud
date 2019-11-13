@@ -16,6 +16,8 @@
   - Interpolate value defined in `use_message`
   - Add message if you're fully healed: `"'You feel yourself regain full strength!'"`
 9) Add quest to be able to buy draz-ghun fleece from newtown
+10) Bugfix, only let people equip weapons/armors that they own
+11) Bugfix, if someone doesn't own a weapon/armor, say they can't equip that weapon/armor
 12) v0.1 of adventures of avaLancHe ended when you killed the Orc. Lets try re-achieve this (We never did)
 13) Re-check specs again and add missing specs
 14) Reduce rubocop offenses below 50
