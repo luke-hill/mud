@@ -54,18 +54,40 @@ module AdminPanel
     end
 
     def yaml_locations
+      equipment_yamls
+        .merge(enemy_yamls)
+        .merge(room_yamls)
+        .merge(item_yamls)
+    end
+
+    def equipment_yamls
       {
         armor: "#{Dir.pwd}/data/items/armor.yml",
+        weapon: "#{Dir.pwd}/data/items/weapon.yml"
+      }
+    end
+
+    def enemy_yamls
+      {
         boss: "#{Dir.pwd}/data/enemies/boss.yml",
+        enemy: "#{Dir.pwd}/data/enemies/enemy.yml"
+      }
+    end
+
+    def room_yamls
+      {
         description: "#{Dir.pwd}/data/rooms/description.yml",
         direction: "#{Dir.pwd}/data/rooms/direction.yml",
-        enemy: "#{Dir.pwd}/data/enemies/enemy.yml",
+        location: "#{Dir.pwd}/data/rooms/location.yml"
+      }
+    end
+
+    def item_yamls
+      {
         healing_potion: "#{Dir.pwd}/data/items/potions/healing.yml",
         hp_bonus_potion: "#{Dir.pwd}/data/items/potions/hp_bonus.yml",
         key: "#{Dir.pwd}/data/items/key.yml",
-        location: "#{Dir.pwd}/data/rooms/location.yml",
-        mana_potion: "#{Dir.pwd}/data/items/potions/mana.yml",
-        weapon: "#{Dir.pwd}/data/items/weapon.yml"
+        mana_potion: "#{Dir.pwd}/data/items/potions/mana.yml"
       }
     end
 

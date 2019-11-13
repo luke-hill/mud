@@ -16,18 +16,46 @@ module MUD
       private
 
       def starting_attributes
+        name
+          .merge(experience)
+          .merge(hp_mp)
+          .merge(stats)
+          .merge(items)
+      end
+
+      def name
         {
-          name: 'Test Player',
+          name: 'Test Player'
+        }
+      end
+
+      def experience
+        {
+          level: 1,
+          experience: 0
+        }
+      end
+
+      def hp_mp
+        {
           max_hp: 25,
           hp: 25,
+          mp: 0
+        }
+      end
+
+      def stats
+        {
           stamina: 1,
-          level: 1,
-          experience: 0,
+          accuracy: 0.7
+        }
+      end
+
+      def items
+        {
           gold: 200,
           inventory: [],
-          accuracy: 0.7,
-          max_inventory_size: 10,
-          mp: 0
+          max_inventory_size: 10
         }
       end
     end
