@@ -19,10 +19,12 @@ module MUD
         MUD::Logger.debug("Enemy #{enemy.inspect}")
       end
 
-      # This provides a single public method +#buy+
-      # This will make a series of checks which will determine if you are allowed to buy the +item_id+
-      # that is passed in on initialization of the class. If all checks pass. It will deduct the cost
-      # of the item from your gold, and then add a copy to your inventory
+      # @return [String, NilClass]
+      # This will make a single hero on enemy attack using the heroes weapon
+      # if the attack misses or deals 0 damage, then a missed message is output. Otherwise the attack
+      # succeeds and outputs a message indicating the damage and then deducts that amount from the enemies hp.
+      #
+      # If the attack kills the enemy. The enemy is deleted from the room.
       def attack
         return missed_message if no_damage?
 
