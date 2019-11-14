@@ -3,7 +3,6 @@
 - game class
 - room model
 - screen utility
-5) Add logic for enemies to be ktp (ktp logic exists in codebase currently as a param)
 7) Logic for enemies talking to you
   - Add new params into seeders called `phrase1` `phrase2` e.t.c.
   - Cycle randomly through these with % chance for each to trigger (Also no trigger)

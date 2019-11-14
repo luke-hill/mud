@@ -15,7 +15,7 @@ module MUD
     end
 
     def play
-      Actions::Command.new(user_input)
+      Actions::Command.new(user_input).process
       if player.alive?
         play
       else

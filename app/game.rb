@@ -27,14 +27,8 @@ module MUD
       private
 
       def display_welcome_message
-        return if development?
-
         output_diagnostic_info
         output_intro_to_game_info
-      end
-
-      def development?
-        true
       end
 
       def output_diagnostic_info
