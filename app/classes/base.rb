@@ -83,6 +83,11 @@ module MUD
         MUD::Actions::Use.new(self, item_id).use
       end
 
+      def capped?
+        # For now this is false - Until we get the full seeded model introduced
+        false
+      end
+
       private
 
       def starting_room

@@ -58,6 +58,7 @@ module AdminPanel
         .merge(enemy_yamls)
         .merge(room_yamls)
         .merge(item_yamls)
+        .merge(player_yamls)
     end
 
     def equipment_yamls
@@ -88,6 +89,12 @@ module AdminPanel
         hp_bonus_potion: "#{Dir.pwd}/data/items/potions/hp_bonus.yml",
         key: "#{Dir.pwd}/data/items/key.yml",
         mana_potion: "#{Dir.pwd}/data/items/potions/mana.yml"
+      }
+    end
+
+    def player_yamls
+      {
+        xp: "#{Dir.pwd}/data/players/xp.yml"
       }
     end
 
