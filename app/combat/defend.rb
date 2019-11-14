@@ -14,11 +14,6 @@ module MUD
         @enemy = enemy
       end
 
-      def debug
-        MUD::Logger.debug("Hero #{hero.inspect}")
-        MUD::Logger.debug("Enemy #{enemy.inspect}")
-      end
-
       # @return [String, StandardError]
       # This will make a single enemy on hero attack using the enemies weapon
       # if the attack misses or deals 0 damage, then a missed message is output.
@@ -82,7 +77,15 @@ module MUD
       end
 
       def defense_value
+        initial_defense_value + defense_modifiers
+      end
+
+      def initial_defense_value
         rand(0..(armor.defense))
+      end
+
+      def defense_modifiers
+        (hero.strength / 3).floor + (hero.level / 2).floor
       end
 
       def armor
