@@ -18,6 +18,7 @@ module MUD
       # maximum traceability
       include MUD::Helpers::AttributeAccessors
       include Helpers::Item
+      include Helpers::Data
 
       def initialize
         @current_room = starting_room
@@ -85,7 +86,9 @@ module MUD
 
       def capped?
         # For now this is false - Until we get the full seeded model introduced
-        false
+        return false
+
+        xp >= xp_for_next_level['cap']
       end
 
       private
@@ -111,6 +114,10 @@ module MUD
 
       def attribute_names
         MUD::Helpers::AttributeAccessors.attribute_names
+      end
+
+      def xp_for_next_level
+        xp_yml[level]
       end
     end
   end

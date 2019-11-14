@@ -53,6 +53,10 @@ module MUD
         load_yml('data/items/key.yml')
       end
 
+      def xp_yml
+        load_yml('data/players/xp.yml')
+      end
+
       def load_yml(file_subdir)
         YAML.load_file("#{Dir.pwd}/#{file_subdir}")
       end
