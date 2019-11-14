@@ -25,7 +25,9 @@ module MUD
         return missed_message if no_damage?
 
         attack_message
+        XP.new(hero, enemy, damage_dealt).increase
         reduce_hp
+
         return MUD::Screen.output("DEBUG --> ENEMY HP:#{enemy.hp}hp.") unless enemy_killed?
 
         @enemy = nil

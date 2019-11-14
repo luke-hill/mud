@@ -3,10 +3,6 @@
 - game class
 - room model
 - screen utility
-7) Logic for enemies talking to you
-  - Add new params into seeders called `phrase1` `phrase2` e.t.c.
-  - Cycle randomly through these with % chance for each to trigger (Also no trigger)
-  - Add seeds during v2 at some point, with the consumption at v3
 10) Bugfix, only let people equip weapons/armors that they own
 11) Bugfix, if someone doesn't own a weapon/armor, say they can't equip that weapon/armor
 12) v0.1 of adventures of avaLancHe ended when you killed the Orc. Lets try re-achieve this (We never did)
@@ -16,7 +12,7 @@
 19) Open Question, do we need an `attr_writer` for gold for enemies? Do we ever need to reduce their gold? (Maybe if we create a thief class?)
 20) Quest idea that `They are known for their metallurgy` be applied to the Sylvanian Ingots?
 21) Add 4 stats, Str, Agility, Constitution, (Alias for Wisdom)
-22) Consume the `use_message` property on Barracks Key (`v2.0`)
+22) Consume the `use_message` property on Barracks Key (`v2.1`)
 30) move missing barracks key into some form of data lookup
 33) Add integration tests (Not sure if we can we feature test this using cucumber?)
 34) Reduce rubocop offenses below 25
