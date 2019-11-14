@@ -14,6 +14,14 @@ module MUD
         @logger ||= create_logger
       end
 
+      def_delegators :logger,
+                     :debug,
+                     :info,
+                     :warn,
+                     :error,
+                     :fatal,
+                     :unknown
+
       private
 
       def create_logger
@@ -40,8 +48,6 @@ module MUD
       def log_level
         ENV.fetch('LOG_LEVEL', 'debug')
       end
-
-      def_delegators :logger, :debug, :info, :warn, :error, :fatal, :unknown
     end
   end
 end
