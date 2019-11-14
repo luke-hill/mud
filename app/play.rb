@@ -16,14 +16,19 @@ module MUD
 
     def play
       Actions::Command.new(user_input).process
+
+      continue_or_die
+    end
+
+    private
+
+    def continue_or_die
       if player.alive?
         play
       else
         die
       end
     end
-
-    private
 
     def user_input
       $stdin.gets.chomp.split.first.to_s.downcase
