@@ -105,7 +105,7 @@ module MUD
       end
 
       def attribute_names
-        %i[name max_hp hp level stamina experience gold inventory accuracy]
+        MUD::Helpers::AttributeAccessors.attribute_names
       end
     end
   end
