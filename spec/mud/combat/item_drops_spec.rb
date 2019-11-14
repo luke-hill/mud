@@ -44,6 +44,8 @@ RSpec.describe MUD::Combat::ItemDrops do
       switch_logging_to_temp_file
     end
 
+    after { remove_test_screen_logs }
+
     context 'when dropping a potion' do
       let(:dropped_potion_chance) { 1 }
 

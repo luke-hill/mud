@@ -9,7 +9,20 @@ module MUD
       # @return [Array => Symbol]
       # The individual statistic names that comprise a characters class
       def self.attribute_names
-        %i[name max_hp hp level stamina experience gold inventory accuracy max_inventory_size mp]
+        %i[
+          name
+          max_hp
+          hp
+          level
+          stamina
+          experience
+          gold
+          inventory
+          accuracy
+          max_inventory_size
+          mp
+          strength
+        ]
       end
 
       attribute_names.each do |name|

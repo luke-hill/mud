@@ -23,7 +23,6 @@
 16) Allow gold to be dropped and picked up (Currently just traded from hand) - Low Priority!
 17) Add movement logic which requires a key to go in a certain direction (And will use the key up during this)
 18) Begin to remove the remaining items from shit_to_sort_out folder
-19) Cleanup temporary log files created during test run
 25) Open Question, do we need an `attr_writer` for gold for enemies? Do we ever need to reduce their gold? (Maybe if we create a thief class?)
 26) Quest idea that `They are known for their metallurgy` be applied to the Sylvanian Ingots?
 27) Add 4 stats, Str, Agility, Constitution, (Alias for Wisdom)

@@ -47,7 +47,8 @@ module MUD
       def player_attributes
         {
           stamina: 1,
-          accuracy: 0.7
+          accuracy: 0.7,
+          strength: 10
         }
       end
 
