@@ -62,7 +62,7 @@ module MUD
       end
 
       def prevent_overflow_mp
-        self.mp = 0
+        self.mp = max_mp if mp > max_mp
       end
 
       def equip(item_id)

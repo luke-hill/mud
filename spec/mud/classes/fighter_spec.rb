@@ -12,12 +12,13 @@ RSpec.describe MUD::Classes::Fighter do
   let(:accuracy) { subject.accuracy }
   let(:max_inventory_size) { subject.max_inventory_size }
   let(:mp) { subject.mp }
+  let(:max_mp) { subject.max_mp }
   let(:strength) { subject.strength }
   let(:attributes_quantity) { subject.instance_variable_get(:@attributes).length }
 
   describe 'initial starting stats' do
-    it 'has 12 statistics in total' do
-      expect(attributes_quantity).to eq(12)
+    it 'has 13 statistics in total' do
+      expect(attributes_quantity).to eq(13)
     end
 
     it 'has a name' do
@@ -62,6 +63,10 @@ RSpec.describe MUD::Classes::Fighter do
 
     it 'has 0 mp' do
       expect(mp).to eq(0)
+    end
+
+    it 'has 0 max mp' do
+      expect(max_mp).to eq(0)
     end
 
     it 'has 10 strength' do

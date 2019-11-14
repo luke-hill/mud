@@ -40,6 +40,7 @@ module MUD
         {
           max_hp: 25,
           hp: 25,
+          max_mp: 0,
           mp: 0
         }
       end

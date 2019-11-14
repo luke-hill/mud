@@ -20,6 +20,7 @@ module MUD
           inventory
           accuracy
           max_inventory_size
+          max_mp
           mp
           strength
         ]
