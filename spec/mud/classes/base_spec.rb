@@ -36,7 +36,7 @@ RSpec.describe MUD::Classes::Base do
     it 'logs the relevant attribute information to the game console' do
       player.view_attributes
 
-      expect(log_lines.length).to be >= 8
+      expect(log_lines.length).to eq(11)
     end
   end
 
