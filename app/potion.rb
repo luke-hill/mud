@@ -50,11 +50,19 @@ module MUD
 
     def dynamic_used_message
       case type
-      when :healing;  then "#{use_message} #{value}hp".yellow
-      when :mana;     then "#{use_message} #{value}mp".blue
-      when :hp_bonus; then "#{use_message} #{value}hp".blink
+      when :healing;  then "#{use_message} #{value}hp. #{full_hp_restored_message}".yellow
+      when :mana;     then "#{use_message} #{value}mp. #{full_hp_restored_message}".blue
+      when :hp_bonus; then "#{use_message} #{value}hp.".blink
       else            raise 'Unreachable code. Potion Type should already have been defined!'
       end
+    end
+
+    def full_hp_restored_message
+      "You feel yourself regain full strength." if player.hp == player.max_hp
+    end
+
+    def full_mp_restored_message
+      "You feel yourself regain full magic power." if player.mp == player.max_mp
     end
 
     def determine_type

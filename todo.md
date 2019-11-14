@@ -7,9 +7,6 @@
   - Add new params into seeders called `phrase1` `phrase2` e.t.c.
   - Cycle randomly through these with % chance for each to trigger (Also no trigger)
   - Add seeds during v2 at some point, with the consumption at v3
-8) Add in logic for potion information when using them (This needs adding in the Combat / Player command mechanics)
-  - Interpolate value defined in `use_message`
-  - Add message if you're fully healed: `"'You feel yourself regain full strength!'"`
 9) Add quest to be able to buy draz-ghun fleece from newtown
 10) Bugfix, only let people equip weapons/armors that they own
 11) Bugfix, if someone doesn't own a weapon/armor, say they can't equip that weapon/armor
