@@ -88,7 +88,7 @@ module MUD
         # For now this is false - Until we get the full seeded model introduced
         return false
 
-        xp >= xp_for_next_level['cap']
+        experience >= xp_for_next_level['cap']
       end
 
       private

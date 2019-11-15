@@ -43,7 +43,7 @@ module MUD
       end
 
       def increase_hero_xp
-        hero.xp += total_xp_gain
+        hero.experience += total_xp_gain
       end
 
       def total_xp_gain
