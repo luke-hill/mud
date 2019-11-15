@@ -18,13 +18,15 @@ RSpec.describe MUD::Classes::Base do
       max_mp: 0,
       mp: 0,
       stamina: 1,
-      level: 1,
+      level: level,
       experience: 0,
       gold: 200,
-      inventory: []
+      inventory: [],
+      agility: 10
     }
   end
   let(:player) { described_class.new }
+  let(:level) { 1 }
 
   describe '#look_around' do
     it 'shows you the advanced description of the area' do
@@ -173,6 +175,24 @@ RSpec.describe MUD::Classes::Base do
   describe '#rooms_visited=' do
     it 'can update the rooms you have visited' do
       expect(player).to respond_to(:rooms_visited=)
+    end
+  end
+
+  describe '#accuracy' do
+    subject { player.accuracy.round(2) }
+
+    it { is_expected.to eq(0.22) }
+
+    context 'at level 5' do
+      let(:level) { 5 }
+
+      it { is_expected.to eq(0.62) }
+    end
+
+    context 'at level 10' do
+      let(:level) { 10 }
+
+      it { is_expected.to eq(0.76) }
     end
   end
 end

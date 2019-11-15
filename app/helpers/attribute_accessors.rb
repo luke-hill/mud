@@ -18,11 +18,11 @@ module MUD
           experience
           gold
           inventory
-          accuracy
           max_inventory_size
           max_mp
           mp
           strength
+          agility
         ]
       end
 

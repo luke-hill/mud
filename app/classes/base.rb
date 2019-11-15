@@ -91,6 +91,30 @@ module MUD
         experience >= xp_for_next_level['cap']
       end
 
+      # @return [Float]
+      # Hero accuracy rating - this equates to ...
+      #
+      # 5 - Worst agility (Magic users)
+      # Level 1 - 22%
+      # Level 5 - 38%
+      # Level 10 - 49%
+      # Level 11 - 51%
+      #
+      # 7 - Medium agility (Physical attackers)
+      # Level 1 - 22%
+      # Level 5 - 46%
+      # Level 10 - 58%
+      # Level 11 - 60%
+      #
+      # 10 - Max agility (Nimble attackers)
+      # Level 1 - 22%
+      # Level 5 - 62%
+      # Level 10 - 76%
+      # Level 11 - 78%
+      def accuracy
+        base_accuracy + accuracy_level_bonus + agility_accuracy_bonus
+      end
+
       private
 
       def starting_room
@@ -118,6 +142,22 @@ module MUD
 
       def xp_for_next_level
         xp_yml[level]
+      end
+
+      def base_accuracy
+        0.2
+      end
+
+      def accuracy_level_bonus
+        0.02 * level
+      end
+
+      def agility_accuracy_bonus
+        (agility * 0.02 * decrementing_agility_multiplier)
+      end
+
+      def decrementing_agility_multiplier
+        (agility.to_f * (level - 1)) / (5 * level.to_f)
       end
     end
   end
