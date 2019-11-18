@@ -1,22 +1,24 @@
-3) Check all specs of each file / folder recursively and begin to fix them up (Or delay them until later)
+1) Check all specs of each file / folder recursively and begin to fix them up (Or delay them until later)
 - helpers folder
 - game class
 - room model
 - screen utility
-10) Bugfix, only let people equip weapons/armors that they own
-11) Bugfix, if someone doesn't own a weapon/armor, say they can't equip that weapon/armor
-12) v0.1 of adventures of avaLancHe ended when you killed the Orc. Lets try re-achieve this (We never did)
-13) Re-check specs again and add missing specs
+2) Bugfix, only let people equip weapons/armors that they own
+3) Bugfix, if someone doesn't own a weapon/armor, say they can't equip that weapon/armor
+4) v0.1 of adventures of avaLancHe ended when you killed the Orc. Lets try re-achieve this (We never did)
+5) Re-check specs again and add missing specs
 17) Add movement logic which requires a key to go in a certain direction (And will use the key up during this)
 18) Begin to remove the remaining items from shit_to_sort_out folder
 19) Open Question, do we need an `attr_writer` for gold for enemies? Do we ever need to reduce their gold? (Maybe if we create a thief class?)
 20) Quest idea that `They are known for their metallurgy` be applied to the Sylvanian Ingots?
 21) Add 4 stats, Str, Agility, Constitution, (Alias for Wisdom)
 22) Consume the `use_message` property on Barracks Key (`v2.1`)
+23) Get yard documentation rate up to 80%
 30) move missing barracks key into some form of data lookup
 33) Add integration tests (Not sure if we can we feature test this using cucumber?)
 34) Reduce rubocop offenses below 25
 35) Consume the `use_message` property on Aurel Bark Key (`v3.0` - Requires Lone Ranger)
+36) Get yard documentation rate up to 85%
 37) Work out for v3 who would or should drop endurance potion (It also could be crafted?)
 38) When items have been dropped. Auto-add them to players inventory if available
 39) Update Simplecov to pass 95%
