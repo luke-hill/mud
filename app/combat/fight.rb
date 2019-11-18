@@ -2,6 +2,8 @@
 
 module MUD
   module Combat
+    # This provides a single public method +#fight+
+    # This is the public interface to killing enemies. And is the only method which is public.
     class Fight
       attr_reader :hero, :enemy
 
@@ -10,6 +12,13 @@ module MUD
         @enemy = enemy
       end
 
+      # @return [String]
+      # Attempt to fight an enemy. A series of checks are made and then attacks are made
+      # in a sequential order (Hero always first).
+      #
+      # Once these checks pass / attacks are made. The +MUD::Screen.output+ method is called on
+      # each invocation and result/s are outputted to the screen about what happened during the
+      # iteration of +fight+
       def fight(times)
         if times == 1
           fight_once

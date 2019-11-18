@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-# V0.1 Newtown and first Dungeon
+# V2.1 First batch of XP charts. That will in theory level people up to level 11.
+# Currently there are no Guilds. And the basic one which will be reintroduced soon will only be
+# able to level users from 1 -> 4
 
 ap = AdminPanel::Seeder.new(:xp)
 

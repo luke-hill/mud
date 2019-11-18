@@ -3,7 +3,7 @@
 module MUD
   module Combat
     # This provides methods which determine how much experience the hero should gain in a
-    # single +#attack+ call
+    # single +#MUD::Combat::Attack.attack+ call
     # This is entirely api private but it will be called by using +MUD::Combat::Fight.fight+
     # This will perform the act of the hero earning experience, and dependent on current xp
     # or amount earned, possibly capping their experience and preventing more being accumulated.
