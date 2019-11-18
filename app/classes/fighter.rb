@@ -49,7 +49,9 @@ module MUD
         {
           stamina: 1,
           strength: 10,
-          agility: 7
+          agility: 7,
+          resilience: 8,
+          conjuring: 5
         }
       end
 

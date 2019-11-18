@@ -58,11 +58,11 @@ module MUD
     end
 
     def full_hp_restored_message
-      "You feel yourself regain full strength." if player.hp == player.max_hp
+      'You feel yourself regain full strength.' if player.hp == player.max_hp
     end
 
     def full_mp_restored_message
-      "You feel yourself regain full magic power." if player.mp == player.max_mp
+      'You feel yourself regain full magic power.' if player.mp == player.max_mp
     end
 
     def determine_type

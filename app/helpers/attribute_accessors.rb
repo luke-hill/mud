@@ -23,6 +23,8 @@ module MUD
           mp
           strength
           agility
+          resilience
+          conjuring
         ]
       end
 

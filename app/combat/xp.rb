@@ -34,7 +34,7 @@ module MUD
 
       def xp_capped_message
         MUD::Screen.output(
-          "You feel strong enough to reach the next level. Seek out a Guild.".yellow.blink
+          'You feel strong enough to reach the next level. Seek out a Guild.'.yellow.blink
         )
       end
 

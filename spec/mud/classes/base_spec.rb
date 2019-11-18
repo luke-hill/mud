@@ -40,7 +40,7 @@ RSpec.describe MUD::Classes::Base do
     it 'logs the relevant attribute information to the game console' do
       player.view_attributes
 
-      expect(log_lines.length).to eq(13)
+      expect(log_lines.length).to eq(15)
     end
   end
 
@@ -183,13 +183,13 @@ RSpec.describe MUD::Classes::Base do
 
     it { is_expected.to eq(0.22) }
 
-    context 'at level 5' do
+    context 'when player is level 5' do
       let(:level) { 5 }
 
       it { is_expected.to eq(0.62) }
     end
 
-    context 'at level 10' do
+    context 'when player is level 10' do
       let(:level) { 10 }
 
       it { is_expected.to eq(0.76) }

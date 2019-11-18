@@ -13,11 +13,14 @@ RSpec.describe MUD::Classes::Fighter do
   let(:mp) { subject.mp }
   let(:max_mp) { subject.max_mp }
   let(:strength) { subject.strength }
+  let(:agility) { subject.agility }
+  let(:resilience) { subject.resilience }
+  let(:conjuring) { subject.conjuring }
   let(:attributes_quantity) { subject.instance_variable_get(:@attributes).length }
 
   describe 'initial starting stats' do
-    it 'has 13 statistics in total' do
-      expect(attributes_quantity).to eq(13)
+    it 'has 15 statistics in total' do
+      expect(attributes_quantity).to eq(15)
     end
 
     it 'has a name' do
@@ -66,6 +69,18 @@ RSpec.describe MUD::Classes::Fighter do
 
     it 'has 10 strength' do
       expect(strength).to eq(10)
+    end
+
+    it 'has 7 agility' do
+      expect(agility).to eq(7)
+    end
+
+    it 'has 8 resilience' do
+      expect(resilience).to eq(8)
+    end
+
+    it 'has 5 conjuring' do
+      expect(conjuring).to eq(5)
     end
   end
 end
