@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Actions::Command do
-  subject(:command) { described_class.new(command_input) }
-
+  let(:command) { described_class.new(command_input) }
   let(:player) { MUD::Game.player }
+
+  before { switch_logging_to_temp_file }
 
   describe '#process' do
     context 'when command input is an empty string' do
@@ -20,17 +21,22 @@ RSpec.describe MUD::Actions::Command do
       let(:command_input) { 'debug' }
 
       it 'returns a debug dump of all the diagnostic info on the game' do
-        expect(command).to receive(:output_diagnostic_info)
-
         command.process
+
+        expect(log_lines.length).to be > 20
       end
     end
 
     context 'when command input is "quit"' do
       let(:command_input) { 'quit' }
 
+      before do
+        allow(command).to receive(:sleep)
+        allow(command).to receive(:exit)
+      end
+
       it 'kills the player and quits the game' do
-        expect(command).to receive(:die)
+        expect(command).to receive(:exit)
 
         command.process
       end
