@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# First calls must be puts as the +MUD::Screen.output+ class method doesn't exist yet!
+# First calls must be +puts+ as the +MUD::Screen.output+ class method doesn't exist yet!
 puts 'Beginning autoloading'
 require_relative 'autoloader'
 puts 'Autoloading complete'
@@ -58,8 +58,6 @@ module MUD
           'You are in Newtown, and as avaLancHe ... our intrepid explorer, you have spawned '\
 'in our village to kill Several Monsters and then the boss - The Orc!'
         )
-        sleep 0.5
-        MUD::Screen.output('............................................')
       end
     end
   end

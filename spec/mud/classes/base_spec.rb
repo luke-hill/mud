@@ -5,7 +5,6 @@ RSpec.describe MUD::Classes::Base do
     allow(player).to receive(:attributes).and_return(starting_attributes)
     allow(player).to receive(:weapon_ids).and_return(%w[fists knife])
     allow(player).to receive(:armor_ids).and_return(%w[unarmored vest])
-    swallow_console_spam
     switch_logging_to_temp_file
   end
 

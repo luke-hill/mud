@@ -7,7 +7,6 @@ RSpec.describe MUD::Play do
   let(:user_input) { 'some_command' }
 
   before do
-    swallow_console_spam
     allow($stdin).to receive(:gets).and_return(user_input)
     allow(Kernel).to receive(:exit)
     allow(MUD::Actions::Command).to receive(:new).with(user_input) { player.hp = 0 }

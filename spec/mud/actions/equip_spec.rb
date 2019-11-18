@@ -7,7 +7,6 @@ RSpec.describe MUD::Actions::Equip do
   let(:item_id) { 'vest' }
 
   before do
-    swallow_console_spam
     hero.inventory << item_id
   end
 

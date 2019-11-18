@@ -1,6 +1,4 @@
-2) Begin to remove the remaining items from shit_to_sort_out folder
 3) Check all specs of each file / folder recursively and begin to fix them up (Or delay them until later)
-- [ ] combat folder
 - [ ] helpers folder
 - game class
 - logger utility
@@ -16,12 +14,16 @@
   - Interpolate value defined in `use_message`
   - Add message if you're fully healed: `"'You feel yourself regain full strength!'"`
 9) Add quest to be able to buy draz-ghun fleece from newtown
+10) Bugfix, only let people equip weapons/armors that they own
+11) Bugfix, if someone doesn't own a weapon/armor, say they can't equip that weapon/armor
 12) v0.1 of adventures of avaLancHe ended when you killed the Orc. Lets try re-achieve this (We never did)
 13) Re-check specs again and add missing specs
 14) Reduce rubocop offenses below 50
 15) Add `use_message` seed property to keys (`v2.x`)
 16) Allow gold to be dropped and picked up (Currently just traded from hand) - Low Priority!
 17) Add movement logic which requires a key to go in a certain direction (And will use the key up during this)
+18) Begin to remove the remaining items from shit_to_sort_out folder
+19) Cleanup temporary log files created during test run
 25) Open Question, do we need an `attr_writer` for gold for enemies? Do we ever need to reduce their gold? (Maybe if we create a thief class?)
 26) Quest idea that `They are known for their metallurgy` be applied to the Sylvanian Ingots?
 27) Add 4 stats, Str, Agility, Constitution, (Alias for Wisdom)
@@ -37,3 +39,4 @@
 43) Add the first 2-4 places on the map where up and down exist
 44) Add a second usable key to the codebase, and validate both key usages work (This is likely to be tricky)
 45) Refactor out `Timeout.timeout` from play spec
+46) `Actions#equip` delegates to private method refactor and fix
