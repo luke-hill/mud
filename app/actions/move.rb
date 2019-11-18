@@ -69,85 +69,73 @@ module MUD
       end
 
       def north
-        if north_room_id
-          MUD::Screen.output('You went north')
-          move_to(north_room_id)
-        else
-          MUD::Screen.output('You cannot go north'.red)
-        end
+        return MUD::Screen.output('You cannot go north'.red) unless north_room_id
+
+        MUD::Screen.output('You went north')
+        move_to(north_room_id)
       end
       alias n north
 
       def south
-        if south_room_id
-          MUD::Screen.output('You went south')
-          move_to(south_room_id)
-        else
-          MUD::Screen.output('You cannot go south'.red)
-        end
+        return MUD::Screen.output('You cannot go south'.red) unless south_room_id
+
+        MUD::Screen.output('You went south')
+        move_to(south_room_id)
       end
       alias s south
 
       def east
-        if east_room_id
-          MUD::Screen.output('You went east')
-          move_to(east_room_id)
-        else
-          MUD::Screen.output('You cannot go east'.red)
-        end
+        return MUD::Screen.output('You cannot go east'.red) unless east_room_id
+
+        MUD::Screen.output('You went east')
+        move_to(east_room_id)
       end
       alias e east
 
       def west
-        if west_room_id
-          MUD::Screen.output('You went west')
-          move_to(west_room_id)
-        else
-          MUD::Screen.output('You cannot go west'.red)
-        end
+        return MUD::Screen.output('You cannot go west'.red) unless west_room_id
+
+        MUD::Screen.output('You went west')
+        move_to(west_room_id)
       end
       alias w west
 
       def up
-        if up_room_id
-          MUD::Screen.output('You went up')
-          move_to(up_room_id)
-        else
-          MUD::Screen.output('You cannot go up'.red)
-        end
+        return MUD::Screen.output('You cannot go up'.red) unless up_room_id
+
+        MUD::Screen.output('You went up')
+        move_to(up_room_id)
       end
 
       def down
-        if down_room_id
-          MUD::Screen.output('You went down')
-          move_to(down_room_id)
-        else
-          MUD::Screen.output('You cannot go down'.red)
-        end
+        return MUD::Screen.output('You cannot go down'.red) unless down_room_id
+
+        MUD::Screen.output('You went down')
+        move_to(down_room_id)
       end
 
       def north_room_id
-        connected_rooms['north']
+        @north_room_id ||= connected_rooms['north']
       end
 
       def south_room_id
-        connected_rooms['south']
+        @south_room_id ||= connected_rooms['south']
       end
 
       def east_room_id
-        connected_rooms['east']
+        @east_room_id ||= connected_rooms['east']
       end
 
       def west_room_id
-        connected_rooms['west']
+        @west_room_id ||= connected_rooms['west']
       end
 
       def up_room_id
-        connected_rooms['up']
+        @up_room_id ||= connected_rooms['up']
       end
 
       def down_room_id
-        connected_rooms['down']
+        @down_room_id ||= connected_rooms['down']
       end
 
       def connected_rooms
@@ -162,11 +150,9 @@ module MUD
       end
 
       def fetch_or_create_room(room_id)
-        if room_already_visited?(room_id)
-          fetch_room_from_cache(room_id)
-        else
-          create_room(room_id)
-        end
+        return fetch_room_from_cache(room_id) if room_already_visited?(room_id)
+
+        create_room(room_id)
       end
 
       def room_already_visited?(room_id)
@@ -178,11 +164,9 @@ module MUD
       end
 
       def create_room(room_id)
-        if shop?(room_id)
-          MUD::Shop.new(room_id)
-        else
-          MUD::Room.new(room_id)
-        end
+        return MUD::Shop.new(room_id) if shop?(room_id)
+
+        MUD::Room.new(room_id)
       end
 
       def shop?(room_id)
