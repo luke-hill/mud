@@ -8,7 +8,7 @@ SimpleCov.start do
   add_group 'App', 'app'
   add_group 'Spec', 'spec'
 
-  minimum_coverage 85
+  minimum_coverage 91
 end
 
 require 'rspec'
@@ -17,13 +17,7 @@ require 'delegate_matcher'
 require_relative '../app/game'
 require_relative '../app/play'
 
-require_relative 'support/console'
-require_relative 'support/factory'
-require_relative 'support/file'
-require_relative 'support/room'
-
-require_relative 'support/shared_examples/command_movement'
-require_relative 'support/shared_examples/movement'
+Dir[File.absolute_path('./spec/support/**/*.rb')].each(&method(:require))
 
 RSpec.configure do |config|
   config.include SpecSupport::Console
