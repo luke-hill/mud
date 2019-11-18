@@ -15,14 +15,18 @@ RSpec.describe MUD::Classes::Base do
       name: 'Test Player',
       max_hp: 25,
       hp: 25,
+      max_mp: 0,
+      mp: 0,
       stamina: 1,
-      level: 1,
+      level: level,
       experience: 0,
       gold: 200,
-      inventory: []
+      inventory: [],
+      agility: 10
     }
   end
   let(:player) { described_class.new }
+  let(:level) { 1 }
 
   describe '#look_around' do
     it 'shows you the advanced description of the area' do
@@ -36,7 +40,7 @@ RSpec.describe MUD::Classes::Base do
     it 'logs the relevant attribute information to the game console' do
       player.view_attributes
 
-      expect(log_lines.length).to be >= 8
+      expect(log_lines.length).to eq(15)
     end
   end
 
@@ -81,6 +85,30 @@ RSpec.describe MUD::Classes::Base do
       player.hp = -3
       player.prevent_negative_hp
       expect(player.hp).to eq(0)
+    end
+  end
+
+  describe '#prevent_overflow_hp' do
+    it 'prevents your hp from going over your max amount' do
+      player.hp = 26
+      player.prevent_overflow_hp
+      expect(player.hp).to eq(25)
+    end
+  end
+
+  describe '#prevent_negative_mp' do
+    it 'prevents your hp from going negative' do
+      player.mp = -3
+      player.prevent_negative_mp
+      expect(player.mp).to eq(0)
+    end
+  end
+
+  describe '#prevent_overflow_hp' do
+    it 'prevents your mp from going over your max amount' do
+      player.mp = 26
+      player.prevent_overflow_mp
+      expect(player.mp).to eq(0)
     end
   end
 
@@ -147,6 +175,24 @@ RSpec.describe MUD::Classes::Base do
   describe '#rooms_visited=' do
     it 'can update the rooms you have visited' do
       expect(player).to respond_to(:rooms_visited=)
+    end
+  end
+
+  describe '#accuracy' do
+    subject { player.accuracy.round(2) }
+
+    it { is_expected.to eq(0.22) }
+
+    context 'when player is level 5' do
+      let(:level) { 5 }
+
+      it { is_expected.to eq(0.62) }
+    end
+
+    context 'when player is level 10' do
+      let(:level) { 10 }
+
+      it { is_expected.to eq(0.76) }
     end
   end
 end

@@ -9,7 +9,10 @@ RSpec.describe MUD::Actions::Move do
     allow(player.current_room).to receive(:connected_rooms) { connected_rooms }
   end
 
-  after { reset_room }
+  after do
+    reset_room
+    remove_test_screen_logs
+  end
 
   describe '#north' do
     let(:direction) { 'north' }

@@ -28,7 +28,7 @@ RSpec.describe MUD::Potion do
       before { allow(potion).to receive(:type).and_return(:mana) }
 
       it 'will recover some mp for the player' do
-        expect(player).to receive(:mp=).twice
+        expect(player).to receive(:mp=).once
 
         potion.use
       end

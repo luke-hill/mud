@@ -14,11 +14,6 @@ module MUD
         @enemy = enemy
       end
 
-      def debug
-        MUD::Logger.debug("Hero #{hero.inspect}")
-        MUD::Logger.debug("Enemy #{enemy.inspect}")
-      end
-
       # @return [String, NilClass]
       # This will make a single hero on enemy attack using the heroes weapon
       # if the attack misses or deals 0 damage, then a missed message is output.
@@ -30,7 +25,9 @@ module MUD
         return missed_message if no_damage?
 
         attack_message
+        XP.new(hero, enemy, damage_dealt).increase
         reduce_hp
+
         return MUD::Screen.output("DEBUG --> ENEMY HP:#{enemy.hp}hp.") unless enemy_killed?
 
         @enemy = nil
@@ -73,7 +70,15 @@ module MUD
       end
 
       def attack_value
+        initial_attack_value + attack_modifiers
+      end
+
+      def initial_attack_value
         rand((weapon.min_power)..(weapon.max_power))
+      end
+
+      def attack_modifiers
+        (hero.strength / 2).floor + hero.level
       end
 
       def weapon

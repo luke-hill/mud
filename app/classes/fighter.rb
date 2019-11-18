@@ -40,6 +40,7 @@ module MUD
         {
           max_hp: 25,
           hp: 25,
+          max_mp: 0,
           mp: 0
         }
       end
@@ -47,7 +48,10 @@ module MUD
       def player_attributes
         {
           stamina: 1,
-          accuracy: 0.7
+          strength: 10,
+          agility: 7,
+          resilience: 8,
+          conjuring: 5
         }
       end
 

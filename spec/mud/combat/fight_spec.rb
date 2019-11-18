@@ -74,6 +74,7 @@ RSpec.describe MUD::Combat::Fight do
 
     after do
       fight_attempt
+      remove_test_screen_logs
     end
 
     it 'creates a new `MUD::Combat::Attack` instance' do

@@ -44,6 +44,8 @@ RSpec.describe MUD::Combat::Attack do
       switch_logging_to_temp_file
     end
 
+    after { remove_test_screen_logs }
+
     context "when the hero's attack misses" do
       let(:missed?) { true }
 
