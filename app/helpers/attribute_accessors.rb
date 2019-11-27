@@ -17,6 +17,8 @@ module MUD
             item_attributes
         end
 
+        private
+
         def name_attributes
           %i[
             name
