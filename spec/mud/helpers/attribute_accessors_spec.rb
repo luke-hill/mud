@@ -28,8 +28,8 @@ RSpec.describe MUD::Helpers::AttributeAccessors do
   end
 
   describe 'delegated methods' do
-
     subject(:player) { MUD::Classes::Fighter.new }
+
     let(:attributes) { player.instance_variable_get(:@attributes) }
 
     context 'reader methods' do
