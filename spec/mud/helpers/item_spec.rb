@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Helpers::Item do
-  subject(:item_helper) { klass.new }
+  let(:item_helper) { klass.new }
 
   let(:klass) do
     Class.new do
@@ -47,7 +47,7 @@ RSpec.describe MUD::Helpers::Item do
     end
 
     it 'outputs a list of the ids of all weapons that exist' do
-      expect(item_helper.weapon_ids).to eq(['weapon_one', 'weapon_two'])
+      expect(item_helper.weapon_ids).to eq(%w[weapon_one weapon_two])
     end
   end
 
@@ -57,16 +57,16 @@ RSpec.describe MUD::Helpers::Item do
     end
 
     it 'outputs a list of the ids of all armors that exist' do
-      expect(item_helper.armor_ids).to eq(['armor_one', 'armor_two'])
+      expect(item_helper.armor_ids).to eq(%w[armor_one armor_two])
     end
   end
 
   describe '#barracks_key?' do
+    subject { item_helper.barracks_key? }
+
     before do
       allow(item_helper).to receive(:inventory).and_return(inventory)
     end
-
-    subject { item_helper.barracks_key? }
 
     context 'with a barracks key in your inventory' do
       let(:inventory) { ['barracks_key'] }
