@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Potion do
-  subject(:potion) { create(:potion, potion_data) }
-
+  let(:potion) { create(:potion, potion_data) }
   let(:potion_data) do
     {
       name: 'Dummy Potion',
@@ -11,9 +10,10 @@ RSpec.describe MUD::Potion do
       value: 3
     }
   end
-  let(:player) { MUD::Game.player }
 
   describe '#use' do
+    let(:player) { MUD::Game.player }
+
     context 'when the potion is a "healing" potion' do
       before { allow(potion).to receive(:type).and_return(:healing) }
 
@@ -46,6 +46,8 @@ RSpec.describe MUD::Potion do
   end
 
   describe 'delegated methods' do
+    subject { potion }
+
     it { is_expected.to delegate(:name).to(:potion) }
     it { is_expected.to delegate(:use_message).to(:potion) }
     it { is_expected.to delegate(:description).to(:potion) }

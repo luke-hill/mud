@@ -4,8 +4,20 @@ require 'yaml'
 require 'active_support/all'
 
 module AdminPanel
+  # Seed the Database using input from either an individual file or from a rake invocation
+  #
+  # Usage is:
+  # 1) Call rake to +seed_all_versions+
+  # 2)i) Rake in turn will call individual folders which represent a version of the game
+  # 2)ii) Each folder will then recursively require each file
+  # 2)iii) Each file will seed a small amount of data to the database
+  # 3) Once Rake has seeded an entire file, and then an entire folder, it moves on to the next one
+  # 4) Once Rake has seeded every folder, the procedure is finished
   class Seeder
     class << self
+      # @return [String]
+      # Seed all versions that exist in /updates directory
+      # Returns updates after each seed iteration
       def seed_all_versions
         current_seed_files.each(&method(:require))
       end
@@ -24,6 +36,9 @@ module AdminPanel
       @type = type
     end
 
+    # @return [String]
+    # Seed an individual data point into a specific folder based on +type+ input
+    # Returns the old/new data-points as an update during seed process
     def seed(options)
       clear_id
       self.options = options

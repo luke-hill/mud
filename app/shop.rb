@@ -2,6 +2,11 @@
 
 module MUD
   class Shop < Room
+    def initialize(*args)
+      super(*args)
+      validate_enemy_not_present
+    end
+
     def buy(item_id)
       Actions::Buy.new(player, item_id).buy
     end
@@ -15,18 +20,13 @@ module MUD
       MUD::Screen.output('-------------------------------------------------')
     end
 
-    def enemy
-      super
-      return if no_enemy?
+    private
+
+    def validate_enemy_not_present
+      return unless enemy?
 
       MUD::Logger.debug("Enemy found: #{enemy.inspect}")
       raise "There shouldn't be any enemies in shops!"
-    end
-
-    private
-
-    def no_enemy?
-      enemy.id.nil? || enemy.id == 'no_enemy'
     end
   end
 end

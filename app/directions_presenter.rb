@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 module MUD
+  # The Presentational Layer for showing Directions to the User
+  #
+  # This essentially will make a series of checks on the current room and its properties.
+  # Based on the results of this, it will concatenate all directions and then present
+  # them to the user after the initial `description` or `advanced_description` string has
+  # been outputted.
   class DirectionsPresenter
     include Helpers::Data
 
@@ -10,6 +16,10 @@ module MUD
       @room_id = room_id
     end
 
+    # @return [String]
+    # The visible directions the user can see that they can travel
+    #
+    # NB: Sometimes directions are hidden, but the user can still travel in those directions
     def string
       case visible_directions.length
       when 0; then 'You cannot move in any direction'
