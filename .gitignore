@@ -17,3 +17,4 @@
 # Ignore all yard documentation files
 .yardoc
 doc/*
+.yard_status
