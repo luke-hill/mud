@@ -47,7 +47,7 @@ module MUD
     attr_writer :gold
 
     def alive?
-      hp.positive?
+      id != 'no_enemy' && hp.positive?
     end
 
     def dead?
