@@ -15,7 +15,7 @@ module MUD
         player
       end
 
-      def reset!
+      def reset
         instance_variables.each { |var| remove_instance_variable(var) }
         setup
       end
