@@ -128,22 +128,22 @@ module MUD
       # Hero accuracy rating - this equates to ...
       #
       # 5 - Worst agility (Magic users)
-      # Level 1 - 22%
-      # Level 5 - 38%
-      # Level 10 - 49%
-      # Level 11 - 51%
+      # Level 1 - 27%
+      # Level 5 - 43%
+      # Level 10 - 54%
+      # Level 11 - 56%
       #
       # 7 - Medium agility (Physical attackers)
-      # Level 1 - 22%
-      # Level 5 - 46%
-      # Level 10 - 58%
-      # Level 11 - 60%
+      # Level 1 - 27%
+      # Level 5 - 51%
+      # Level 10 - 63%
+      # Level 11 - 65%
       #
       # 10 - Max agility (Nimble attackers)
-      # Level 1 - 22%
-      # Level 5 - 62%
-      # Level 10 - 76%
-      # Level 11 - 78%
+      # Level 1 - 27%
+      # Level 5 - 67%
+      # Level 10 - 81%
+      # Level 11 - 83%
       def accuracy
         base_accuracy + accuracy_level_bonus + agility_accuracy_bonus
       end
@@ -178,7 +178,7 @@ module MUD
       end
 
       def base_accuracy
-        0.2
+        0.25
       end
 
       def accuracy_level_bonus
