@@ -1,8 +1,1 @@
-1) Pressing enter on game load crashes
-```
-`advanced_description': undefined method `dig' for nil:NilClass (NoMethodError)
-
-        "#{description_yml.dig(room_id, 'advanced_description').blue}\\n#{directions_string.yellow}"
-                          ^^^^
-
-```
+1) If no data files are present, game crashes. Validate data files during load

@@ -1,5 +1,3 @@
-2) Bugfix, only let people equip weapons/armors that they own
-3) Bugfix, if someone doesn't own a weapon/armor, say they can't equip that weapon/armor
 4) v0.1 of adventures of avaLancHe ended when you killed the Orc. Lets try re-achieve this (We never did)
 5) Re-check specs again and add missing specs
 6) Add movement logic which requires a key to go in a certain direction (And will use the key up during this)
@@ -31,3 +29,4 @@ unit/feature tests
 31) Fix up dependabot
 32) Fix up GHA
 33) Improve gem versions
+34) After game load, prompt user to press enter

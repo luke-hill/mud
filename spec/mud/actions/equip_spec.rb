@@ -4,13 +4,21 @@ RSpec.describe MUD::Actions::Equip do
   subject(:equip_instance) { described_class.new(hero, item_id) }
 
   let(:hero) { MUD::Classes::Fighter.new }
-  let(:item_id) { 'vest' }
 
-  before do
-    hero.inventory << item_id
-  end
+  before { hero.inventory << item_id }
 
   describe '#equip' do
+    context 'when the item_id is not in the inventory' do
+      let(:item_id) { 'knife' }
+      before { hero.inventory = [] }
+
+      it 'cannot equip a missing item' do
+        expect { equip_instance.equip }
+          .to raise_error(ArgumentError)
+          .with_message("You do not have a #{item_id} in your inventory.")
+      end
+    end
+
     context 'when the item_id is an armor' do
       let(:item_id) { 'vest' }
 
@@ -19,7 +27,7 @@ RSpec.describe MUD::Actions::Equip do
       end
     end
 
-    context 'when the item_id is an armor' do
+    context 'when the item_id is a weapon' do
       let(:item_id) { 'knife' }
 
       it 'can equip a weapon' do
@@ -32,7 +40,7 @@ RSpec.describe MUD::Actions::Equip do
 
       it 'cannot equip an invalid item' do
         expect { equip_instance.equip }
-          .to raise_error(RuntimeError)
+          .to raise_error(ArgumentError)
           .with_message("Cannot classify #{item_id}.")
       end
     end
