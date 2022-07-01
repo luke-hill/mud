@@ -34,9 +34,9 @@ Metrics/ClassLength:
 Metrics/MethodLength:
   Max: 16
 
-# Offense count: 6
-RSpec/NestedGroups:
-  Max: 4
+## Offense count: 6
+#RSpec/NestedGroups:
+#  Max: 4
 
 # Offense count: 5
 Style/Documentation:
