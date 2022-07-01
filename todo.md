@@ -29,3 +29,4 @@ unit/feature tests
 31) Fix up dependabot
 32) Fix up GHA
 33) Improve gem versions
+34) After game load, prompt user to press enter
