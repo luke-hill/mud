@@ -4,6 +4,13 @@ require:
 
 inherit_from: .rubocop_todo.yml
 
+AllCops:
+  # Display all verbose info on failures to help people triage how to fix
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  # Enable all NewCops by default (Even new 1.x cops)
+  NewCops: enable
+
 # Better syntax for validating that a message should be received
 # We use lots of delegation classes so this is better
 RSpec/MessageSpies:
