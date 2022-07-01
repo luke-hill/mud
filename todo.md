@@ -1,7 +1,3 @@
-1) Check all specs of each file / folder recursively and begin to fix them up (Or delay them until later)
-- game class
-- room model
-- screen utility
 2) Bugfix, only let people equip weapons/armors that they own
 3) Bugfix, if someone doesn't own a weapon/armor, say they can't equip that weapon/armor
 4) v0.1 of adventures of avaLancHe ended when you killed the Orc. Lets try re-achieve this (We never did)
