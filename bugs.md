@@ -8,3 +8,4 @@
 ```
 2) First ktp goblin isn't ktp
 3) Killing an enemy crashes the game
+4) Can attack "No Enemy"
