@@ -4,10 +4,6 @@ require:
 
 inherit_from: .rubocop_todo.yml
 
-## Better LineLength for more up to date screens
-#Metrics/LineLength:
-#  Max: 100
-
 # Better syntax for validating that a message should be received
 # We use lots of delegation classes so this is better
 RSpec/MessageSpies:
