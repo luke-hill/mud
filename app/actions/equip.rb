@@ -23,6 +23,7 @@ module MUD
       # equipped, the existing item is switched with the item in their inventory.
       # The player is then informed via the playing console of the switch of items.
       def equip
+        validate_presence
         MUD::Logger.debug("Looking for #{item_id}.")
         equip_weapon if weapon?
         equip_armor if armor?
@@ -91,12 +92,23 @@ module MUD
         item_type == :armor
       end
 
+      def in_inventory?
+        inventory.include?(item_id)
+      end
+
+      def validate_presence
+        unless in_inventory?
+          MUD::Logger.error("An error has occurred trying to find #{item_id} in inventory")
+          raise(ArgumentError, "Cannot find #{item_id} in inventory.")
+        end
+      end
+
       def item_type
         return :weapon if weapon_ids.include?(item_id)
         return :armor if armor_ids.include?(item_id)
 
         MUD::Logger.error("An error has occurred trying to classify the type of #{item_id}")
-        raise "Cannot classify #{item_id}."
+        raise(ArgumentError, "Cannot classify #{item_id}.")
       end
     end
   end
