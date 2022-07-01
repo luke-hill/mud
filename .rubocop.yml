@@ -1,6 +1,6 @@
-#require:
-#  - rubocop-rspec
-#  - rubocop-performance
+require:
+  - rubocop-rspec
+  - rubocop-performance
 
 inherit_from: .rubocop_todo.yml
 
@@ -8,10 +8,10 @@ inherit_from: .rubocop_todo.yml
 #Metrics/LineLength:
 #  Max: 100
 
-## Better syntax for validating that a message should be received
-## We use lots of delegation classes so this is better
-#RSpec/MessageSpies:
-#  EnforcedStyle: receive
+# Better syntax for validating that a message should be received
+# We use lots of delegation classes so this is better
+RSpec/MessageSpies:
+  EnforcedStyle: receive
 
 # All spec files are huge blocks, should just ignore them
 Metrics/BlockLength:
