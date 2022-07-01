@@ -23,50 +23,62 @@ module MUD
       # armor_id  --> If the enemy has a +dropped_armor_id+ property
       # gold      --> This will always drop an amount of gold between the min/max values
       def process
-        drop_potion
-        drop_weapon
-        drop_armor
+        drop_potion if potion?
+        drop_weapon if weapon?
+        drop_armor if armor?
         give_hero_gold
       end
 
       private
 
+      def potion?
+        !enemy.dropped_potion_id.nil?
+      end
+
       def drop_potion
-        return unless potion_drop?
+        return unless drop_potion?
 
         floor << enemy.dropped_potion_id
         MUD::Screen.output(enemy.dropped_potion_message.yellow)
       end
 
-      def potion_drop?
+      def drop_potion?
         chance = rand
         MUD::Logger.debug("Random chance to drop potion #{chance}")
         MUD::Logger.debug("Chance needed #{enemy.dropped_potion_chance}")
         chance < enemy.dropped_potion_chance
       end
 
+      def weapon?
+        !enemy.dropped_weapon_id.nil?
+      end
+
       def drop_weapon
-        return unless weapon_drop?
+        return unless drop_weapon?
 
         floor << enemy.dropped_weapon_id
         MUD::Screen.output(enemy.dropped_weapon_message.yellow)
       end
 
-      def weapon_drop?
+      def drop_weapon?
         chance = rand
         MUD::Logger.debug("Random chance to drop weapon #{chance}")
         MUD::Logger.debug("Chance needed #{enemy.dropped_weapon_chance}")
         chance < enemy.dropped_weapon_chance
       end
 
+      def armor?
+        !enemy.dropped_armor_id.nil?
+      end
+
       def drop_armor
-        return unless armor_drop?
+        return unless drop_armor?
 
         floor << enemy.dropped_armor_id
         MUD::Screen.output(enemy.dropped_armor_message.yellow)
       end
 
-      def armor_drop?
+      def drop_armor?
         chance = rand
         MUD::Logger.debug("Random chance to drop armor #{chance}")
         MUD::Logger.debug("Chance needed #{enemy.dropped_armor_chance}")

@@ -6,3 +6,5 @@
                           ^^^^
 
 ```
+2) First ktp goblin isn't ktp
+3) Killing an enemy crashes the game
