@@ -15,7 +15,7 @@ RSpec.describe MUD::Actions::Equip do
       it 'cannot equip a missing item' do
         expect { equip_instance.equip }
           .to raise_error(ArgumentError)
-          .with_message("Cannot find #{item_id} in inventory.")
+          .with_message("You do not have a #{item_id} in your inventory.")
       end
     end
 
