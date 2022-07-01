@@ -23,17 +23,13 @@ module MUD
       # armor_id  --> If the enemy has a +dropped_armor_id+ property
       # gold      --> This will always drop an amount of gold between the min/max values
       def process
-        drop_potion if potion?
-        drop_weapon if weapon?
-        drop_armor if armor?
+        drop_potion if enemy.potion?
+        drop_weapon if enemy.weapon?
+        drop_armor if enemy.armor?
         give_hero_gold
       end
 
       private
-
-      def potion?
-        !enemy.dropped_potion_id.nil?
-      end
 
       def drop_potion
         return unless drop_potion?
@@ -49,10 +45,6 @@ module MUD
         chance < enemy.dropped_potion_chance
       end
 
-      def weapon?
-        !enemy.dropped_weapon_id.nil?
-      end
-
       def drop_weapon
         return unless drop_weapon?
 
@@ -65,10 +57,6 @@ module MUD
         MUD::Logger.debug("Random chance to drop weapon #{chance}")
         MUD::Logger.debug("Chance needed #{enemy.dropped_weapon_chance}")
         chance < enemy.dropped_weapon_chance
-      end
-
-      def armor?
-        !enemy.dropped_armor_id.nil?
       end
 
       def drop_armor
