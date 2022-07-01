@@ -109,6 +109,12 @@ module MUD
         MUD::Actions::Use.new(self, item_id).use
       end
 
+      # @return [Unsure]
+      # The wrapper method call that makes a 1/many attacks against the enemy
+      def fight(times = 1)
+        MUD::Combat::Fight.new(self, current_room.enemy).fight(times)
+      end
+
       # @return [Boolean]
       # The current capped status of the player (Whether they are able to earn any more experience)
       def capped?

@@ -24,6 +24,7 @@ module MUD
       # Return a "Input not yet recognised as a valid command"
       def process
         MUD::Logger.debug("Raw input received from user: '#{command_input}'")
+        return process_attack if attack?
         return process_miscellaneous if miscellaneous?
         return process_north_south_east_west if compass_direction?
         return process_up_down if up_or_down?
@@ -32,6 +33,17 @@ module MUD
       end
 
       private
+
+      def process_attack
+        case command_input
+        when 'a', 'attack'; then player.fight
+        else                raise "Unreachable code - Command Input: #{command_input}"
+        end
+      end
+
+      def attack?
+        ['a', 'attack'].include?(command_input)
+      end
 
       def process_miscellaneous
         case command_input
