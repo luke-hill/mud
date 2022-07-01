@@ -90,6 +90,7 @@ module MUD
 
         MUD::Screen.output("You found #{gold_amount} on the corpse of the #{enemy.name}")
         hero.gold += enemy.gold
+        enemy.gold = 0
       end
 
       def gold_amount
