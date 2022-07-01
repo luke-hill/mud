@@ -9,7 +9,6 @@ module MUD
     # Actions Classes allowing all Heroes to Move or Equip items.
     class Base
       attr_reader :attributes, :equipment
-      private :attributes, :equipment
 
       attr_accessor :current_room, :rooms_visited
 

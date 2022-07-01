@@ -92,7 +92,7 @@ DEPENDENCIES
   colorize
   delegate_matcher
   rake
-  rspec
+  rspec (~> 3.11.0)
   rubocop (~> 1.22.0)
   rubocop-performance (~> 1.5.0)
   rubocop-rspec (~> 2.0.0)
