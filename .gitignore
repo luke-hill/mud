@@ -18,3 +18,6 @@
 .yardoc
 doc/*
 .yard_status
+
+# Ignore all data files
+*.yml
