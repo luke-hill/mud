@@ -94,7 +94,8 @@ module AdminPanel
       {
         description: "#{Dir.pwd}/data/rooms/description.yml",
         direction: "#{Dir.pwd}/data/rooms/direction.yml",
-        location: "#{Dir.pwd}/data/rooms/location.yml"
+        location: "#{Dir.pwd}/data/rooms/location.yml",
+        shop: "#{Dir.pwd}/data/rooms/shop.yml"
       }
     end
 
