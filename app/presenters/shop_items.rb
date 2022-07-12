@@ -32,7 +32,11 @@ module MUD
       end
 
       def price(item_id)
-        initial_room_data.dig(room_id, item_id, 'price')
+        listed_item_keys.dig(item_id, 'price')
+      end
+
+      def listed_item_keys
+        initial_room_data[room_id]
       end
 
       def initial_room_data
