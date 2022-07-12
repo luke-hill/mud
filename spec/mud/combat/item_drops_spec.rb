@@ -3,6 +3,10 @@
 RSpec.describe MUD::Combat::ItemDrops do
   subject(:item_drops_instance) { described_class.new(hero, enemy) }
 
+  before do
+    allow(enemy).to receive(:enemy_data).and_return(enemy_data)
+  end
+
   let(:hero) { MUD::Classes::Fighter.new }
   let(:enemy) { create(:enemy, enemy_data) }
   let(:enemy_name) { 'Enemy' }
@@ -29,7 +33,7 @@ RSpec.describe MUD::Combat::ItemDrops do
   end
 
   describe '#process' do
-    subject(:dropped_items) { item_drops_instance.process }
+    subject(:drop_items) { item_drops_instance.process }
 
     let(:dropped_potion_chance) { 0 }
     let(:dropped_weapon_chance) { 0 }
@@ -50,13 +54,13 @@ RSpec.describe MUD::Combat::ItemDrops do
       let(:dropped_potion_chance) { 1 }
 
       it 'drops a potion to the floor of the current room' do
-        dropped_items
+        drop_items
 
         expect(hero.current_room.floor).to include(potion_drop_data[:dropped_potion_id])
       end
 
       it 'informs the user that the potion dropped' do
-        dropped_items
+        drop_items
 
         expect(log_lines).to include(/#{enemy.dropped_potion_message}/)
       end
@@ -66,13 +70,13 @@ RSpec.describe MUD::Combat::ItemDrops do
       let(:dropped_weapon_chance) { 1 }
 
       it 'drops a weapon to the floor of the current room' do
-        dropped_items
+        drop_items
 
         expect(hero.current_room.floor).to include(weapon_drop_data[:dropped_weapon_id])
       end
 
       it 'informs the user that the weapon dropped' do
-        dropped_items
+        drop_items
 
         expect(log_lines).to include(/#{enemy.dropped_weapon_message}/)
       end
@@ -82,13 +86,13 @@ RSpec.describe MUD::Combat::ItemDrops do
       let(:dropped_armor_chance) { 1 }
 
       it 'drops an armor to the floor of the current room' do
-        dropped_items
+        drop_items
 
         expect(hero.current_room.floor).to include(armor_drop_data[:dropped_armor_id])
       end
 
       it 'informs the user that the armor dropped' do
-        dropped_items
+        drop_items
 
         expect(log_lines).to include(/#{enemy.dropped_armor_message}/)
       end
@@ -98,11 +102,11 @@ RSpec.describe MUD::Combat::ItemDrops do
       let(:dropped_gold) { 1 }
 
       it 'increases the heroes gold by the amount dropped' do
-        expect { dropped_items }.to change(hero, :gold).by(dropped_gold)
+        expect { drop_items }.to change(hero, :gold).by(dropped_gold)
       end
 
       it 'informs the user that the weapon dropped' do
-        dropped_items
+        drop_items
 
         expect(log_lines).to include(/You found 1 gold coin on the corpse of the #{enemy_name}/)
       end
