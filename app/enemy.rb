@@ -62,6 +62,18 @@ module MUD
       Armor.new(armor_id).defense
     end
 
+    def potion?
+      enemy_data.key?(:dropped_potion_id)
+    end
+
+    def weapon?
+      enemy_data.key?(:dropped_weapon_id)
+    end
+
+    def armor?
+      enemy_data.key?(:dropped_armor_id)
+    end
+
     private
 
     def enemy

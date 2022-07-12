@@ -54,12 +54,16 @@ module MUD
       end
 
       def missed?
-        rand > hero.accuracy
+        (rand > hero.accuracy).tap do |result|
+          MUD::Logger.debug("Missed check - #{result}")
+        end
       end
 
       def damage_dealt
         @damage_dealt ||= begin
-          dmg = attack_value - defense_value
+          dmg = (attack_value - defense_value).tap do |result|
+            MUD::Logger.debug("Initial damage check - #{result}")
+          end
 
           if dmg.negative?
             0
