@@ -32,3 +32,4 @@ unit/feature tests
 32) Fix up GHA
 33) Improve gem versions
 34) Look around should show enemies
+35) Check goblins accuracy rating
