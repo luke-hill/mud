@@ -113,6 +113,10 @@ RSpec.describe MUD::Classes::Base do
   end
 
   describe '#equip' do
+    before do
+      player.inventory << 'knife'
+    end
+
     it 'delegates to the `Actions::Equip` class' do
       expect(MUD::Actions::Equip).to receive(:new).with(player, 'knife').and_call_original
 
@@ -122,11 +126,9 @@ RSpec.describe MUD::Classes::Base do
 
   describe '#weapon' do
     before do
-      player.inventory << item_to_equip
-      player.equip(item_to_equip)
+      player.inventory << 'knife'
+      player.equip('knife')
     end
-
-    let(:item_to_equip) { 'knife' }
 
     it 'shows the id of the currently equipped weapon' do
       expect(player.weapon).to eq('knife')
