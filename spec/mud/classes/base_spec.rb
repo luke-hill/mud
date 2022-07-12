@@ -181,18 +181,18 @@ RSpec.describe MUD::Classes::Base do
   describe '#accuracy' do
     subject { player.accuracy.round(2) }
 
-    it { is_expected.to eq(0.22) }
+    it { is_expected.to eq(0.27) }
 
     context 'when player is level 5' do
       let(:level) { 5 }
 
-      it { is_expected.to eq(0.62) }
+      it { is_expected.to eq(0.67) }
     end
 
     context 'when player is level 10' do
       let(:level) { 10 }
 
-      it { is_expected.to eq(0.76) }
+      it { is_expected.to eq(0.81) }
     end
   end
 end
