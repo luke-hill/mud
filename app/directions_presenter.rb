@@ -31,16 +31,16 @@ module MUD
 
     private
 
+    def visible_directions_as_string
+      visible_directions.to_sentence(last_word_connector: ' and ')
+    end
+
     def visible_directions
       directions - hidden_directions
     end
 
     def directions
       initial_room_data.keys.select { |key| direction_types.include?(key) }
-    end
-
-    def initial_room_data
-      direction_yml[room_id]
     end
 
     def direction_types
@@ -58,8 +58,8 @@ module MUD
         .compact
     end
 
-    def visible_directions_as_string
-      visible_directions.to_sentence(last_word_connector: ' and ')
+    def initial_room_data
+      direction_yml[room_id]
     end
   end
 end

@@ -21,6 +21,10 @@ module MUD
         load_yml('data/rooms/direction.yml')
       end
 
+      def shop_yml
+        load_yml('data/rooms/shop.yml')
+      end
+
       def enemy_yml
         load_yml('data/enemies/enemy.yml')
       end
