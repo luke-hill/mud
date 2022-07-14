@@ -22,13 +22,11 @@ module MUD
     end
 
     def description
-      @description ||=
-        "#{description_yml.dig(room_id, 'description').blue}\n#{directions_string.yellow}"
+      @description ||= "#{description_yml.dig(room_id, 'description').blue}\n#{directions_string.yellow}"
     end
 
     def advanced_description
-      @advanced_description ||=
-        "#{description_yml.dig(room_id, 'advanced_description').blue}\n#{directions_string.yellow}"
+      @advanced_description ||= "#{description_yml.dig(room_id, 'advanced_description').blue}\n#{directions_string.yellow}"
     end
 
     def visit
@@ -46,7 +44,7 @@ module MUD
     end
 
     def enemy?
-      enemy.alive?
+      enemy&.alive?
     end
 
     def enemy
@@ -70,7 +68,7 @@ module MUD
     private
 
     def directions_string
-      @directions_string ||= DirectionsPresenter.new(room_id).string
+      @directions_string ||= Presenters::Directions.new(room_id).string
     end
 
     def visible_directions

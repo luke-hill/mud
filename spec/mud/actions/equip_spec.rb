@@ -4,12 +4,12 @@ RSpec.describe MUD::Actions::Equip do
   subject(:equip_instance) { described_class.new(hero, item_id) }
 
   let(:hero) { MUD::Classes::Fighter.new }
+  let(:item_id) { 'knife' }
 
   before { hero.inventory << item_id }
 
   describe '#equip' do
     context 'when the item_id is not in the inventory' do
-      let(:item_id) { 'knife' }
       before { hero.inventory = [] }
 
       it 'cannot equip a missing item' do

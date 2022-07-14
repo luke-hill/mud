@@ -16,7 +16,7 @@ module MUD
         @enemy = enemy
       end
 
-      # @return [String]
+      # @return [String || Integer || NilClass]
       # This will drop 1 of each of the following ...
       # potion_id --> If the enemy has a +dropped_potion_id+ property
       # weapon_id --> If the enemy has a +dropped_weapon_id+ property
