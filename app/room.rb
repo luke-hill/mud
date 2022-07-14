@@ -68,7 +68,7 @@ module MUD
     private
 
     def directions_string
-      @directions_string ||= DirectionsPresenter.new(room_id).string
+      @directions_string ||= Presenters::Directions.new(room_id).string
     end
 
     def visible_directions
