@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe MUD::DirectionsPresenter do
+RSpec.describe MUD::Presenters::Directions do
   let(:presenter) { described_class.new(double) }
   let(:visible_directions) { directions - hidden_directions }
 
