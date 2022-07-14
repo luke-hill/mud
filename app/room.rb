@@ -51,16 +51,6 @@ module MUD
       @enemy ||= Enemy.new(description_yml.dig(room_id, 'enemy_id'))
     end
 
-    def find_on_floor(item_id)
-      floor.detect do |floor_item_id|
-        floor_item_id == item_id
-      end
-    end
-
-    def no_barracks_key_on_floor?
-      find_on_floor('barracks_key').nil?
-    end
-
     def exitable?
       !(ktp? && enemy?)
     end
