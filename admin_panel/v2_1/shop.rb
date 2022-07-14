@@ -7,7 +7,7 @@ ap = AdminPanel::Seeder.new(:shop)
 
 ap.seed(
   id: 3,
-  items: [
+  potions: [
     { id: 'lesser_healing_potion', cost: 25, resell: 10 },
     { id: 'endurance_potion', resell: 200 }
   ]

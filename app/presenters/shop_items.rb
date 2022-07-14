@@ -32,11 +32,27 @@ module MUD
       end
 
       def price(item_id)
-        listed_item_keys.dig(item_id, 'price')
+        potion_data.dig(item_id, 'price')
       end
 
-      def listed_item_keys
-        initial_room_data[room_id]
+      def individual_item_string(name)
+        if for_sale?(name)
+          "| #{name}#{name_padding(name)} | #{cost_padding(price(name))} #{price(name)} gold |"
+        else
+          "| #{name}#{name_padding(name)} | #{cost_padding(price(name))} (OUT OF STOCK) |"
+        end
+      end
+
+      def name_padding(_name)
+        " " * 10 # For now
+      end
+
+      def cost_padding(_cost)
+        " " * 4 # For now
+      end
+
+      def potion_data
+        initial_room_data['potions']
       end
 
       def initial_room_data
