@@ -109,51 +109,6 @@ RSpec.describe MUD::Room do
     end
   end
 
-  describe '#find_on_floor' do
-    subject(:find_item) { room.find_on_floor(item_wanted) }
-
-    before do
-      allow(room).to receive(:floor).and_return(items)
-    end
-
-    let(:item_wanted) { 'item_wanted' }
-    let(:item_not_wanted) { 'item_not_wanted' }
-
-    context 'when the floor contains the item requested' do
-      let(:items) { [item_wanted] }
-
-      it 'returns the item' do
-        expect(find_item).to eq(item_wanted)
-      end
-    end
-
-    context 'when the floor does not contain the item requested' do
-      let(:items) { [item_not_wanted] }
-
-      it { is_expected.to be nil }
-    end
-  end
-
-  describe '#no_barracks_key_on_floor?' do
-    subject(:find_barracks_key) { room.no_barracks_key_on_floor? }
-
-    before do
-      allow(room).to receive(:floor).and_return(items)
-    end
-
-    context 'when the floor contains a barracks key' do
-      let(:items) { ['barracks_key'] }
-
-      it { is_expected.to be false }
-    end
-
-    context 'when the floor does not contain a barracks key' do
-      let(:items) { [] }
-
-      it { is_expected.to be true }
-    end
-  end
-
   describe '#exitable?' do
     subject { room.exitable? }
 
