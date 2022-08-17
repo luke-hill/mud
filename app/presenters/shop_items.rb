@@ -29,12 +29,16 @@ module MUD
         end
       end
 
+      def array
+        potion_names.map { |name| individual_item_string(name) }
+      end
+
       private
 
       def simple_shop_menu
         [
           dashed_string,
-          shop_menu_array,
+          array,
           dashed_string
         ]
       end
@@ -42,13 +46,9 @@ module MUD
       def complex_shop_menu
         [
           dashed_string,
-          shop_menu_array.join("\n#{dashed_string}\n"),
+          array.join("\n#{dashed_string}\n"),
           dashed_string
         ].join("\n")
-      end
-
-      def shop_menu_array
-        potion_names.map { |name| individual_item_string(name) }
       end
 
       def dashed_string
