@@ -12,19 +12,15 @@ module MUD
     end
 
     def items_for_sale
-      # This needs altering as well to be more variant and read from the DB
-      MUD::Screen.output('-------------------------------------------------')
-      MUD::Screen.output('|       Lesser Healing Potion        |  25 gold |')
-      MUD::Screen.output('-------------------------------------------------')
-      MUD::Screen.output('|   Endurance Potion (OUT OF STOCK)  | 200 gold |')
-      MUD::Screen.output('-------------------------------------------------')
+      MUD::Logger.debug("Displaying Shop Data for Room-ID: #{room_id}")
+      MUD::Screen.output(shop_items_string)
     end
+
+    private
 
     def shop_items_string
       @shop_items_string ||= Presenters::ShopItems.new(room_id).string
     end
-
-    private
 
     def validate_enemy_not_present
       return unless enemy?
