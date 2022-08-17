@@ -8,7 +8,7 @@ module MUD
     end
 
     def buy(item_id)
-      Actions::Buy.new(player, item_id).buy
+      Actions::Buy.new(player, item_id, self).buy
     end
 
     def items_for_sale

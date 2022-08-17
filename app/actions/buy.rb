@@ -12,9 +12,10 @@ module MUD
       include Helpers::Item
       extend Forwardable
 
-      def initialize(hero, item_id)
+      def initialize(hero, item_id, room)
         @hero = hero
         @item_id = item_id
+        @room = room
       end
 
       def_delegators \
