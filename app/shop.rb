@@ -20,6 +20,10 @@ module MUD
       MUD::Screen.output('-------------------------------------------------')
     end
 
+    def shop_items_string
+      @shop_items_string ||= Presenters::ShopItems.new(room_id).string
+    end
+
     private
 
     def validate_enemy_not_present
