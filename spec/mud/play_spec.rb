@@ -18,7 +18,7 @@ RSpec.describe MUD::Play do
     context 'when alive' do
       before do
         allow(player).to receive(:alive?).and_return(true, false)
-        allow(play_instance).to receive(:continue_or_die)
+        allow(Kernel).to receive(:exit)
       end
 
       it 'delegates input commands to the `MUD::Actions::Command` class' do

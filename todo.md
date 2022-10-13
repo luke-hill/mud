@@ -1,4 +1,3 @@
-2) Add missing spec for app/play.rb - Currently at < 75%
 3) Add movement logic which requires a key to go in a certain direction (And will use the key up during this)
 4) Do we need an `attr_writer` for gold for enemies? Do we ever need to reduce gold? (Maybe if we have a thief?)
 5) Get yard documentation rate up to 80%
