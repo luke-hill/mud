@@ -36,4 +36,10 @@ RSpec.describe MUD::Shop do
       shop.items_for_sale
     end
   end
+
+  it 'cannot have enemies in a shop' do
+    allow(MUD::Enemy).to receive(:new).and_return(MUD::Enemy.new('goblin'))
+
+    expect { shop }.to raise_error(RuntimeError).with_message("There shouldn't be any enemies in shops!")
+  end
 end
