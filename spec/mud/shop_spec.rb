@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Shop do
-  let(:shop) { described_class.new(room_id) }
+  subject(:shop) { described_class.new(room_id) }
+
+  let(:item_id) { 'knife' }
+  let(:player) { MUD::Game.player }
+  let(:room_id) { 1 }
   let(:shop_items_string) do
     <<~ITEMS
       --------------------
@@ -9,16 +13,17 @@ RSpec.describe MUD::Shop do
       --------------------
     ITEMS
   end
-  let(:room_id) { 1 }
-  let(:item_id) { 'knife' }
+
+  let(:presenter_instance) { instance_double(MUD::Presenters::ShopItems) }
 
   before do
-    allow(shop).to receive(:shop_items_string).and_return(shop_items_string)
+    allow(MUD::Presenters::ShopItems).to receive(:new).with(room_id).and_return(presenter_instance)
+    allow(presenter_instance).to receive(:string).and_return(shop_items_string)
   end
 
   describe '#buy' do
     it 'attempts to buy by delegating to the buy class' do
-      expect(MUD::Actions::Buy).to receive(:new).with(player, item_id).and_call_original
+      expect(MUD::Actions::Buy).to receive(:new).with(player, item_id, shop).and_call_original
 
       shop.buy(item_id)
     end
