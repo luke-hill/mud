@@ -12,13 +12,44 @@ RSpec.describe MUD::Play do
     allow($stdin).to receive(:gets).and_return(user_input)
     allow(MUD::Game).to receive(:display_welcome_message)
     allow(MUD::Actions::Command).to receive(:new).with(user_input).and_return(command_instance)
-    allow(command_instance).to receive(:process)
-    allow(play_instance).to receive(:continue_or_die)
   end
 
-  it 'delegates input commands to the `MUD::Actions::Command` class' do
-    expect(MUD::Actions::Command).to receive(:new).with(user_input)
+  describe '#play' do
+    context 'when alive' do
+      before do
+        allow(player).to receive(:alive?).and_return(true, false)
+        allow(Kernel).to receive(:exit)
+      end
 
-    play_game
+      it 'delegates input commands to the `MUD::Actions::Command` class' do
+        expect(command_instance).to receive(:process).at_least(:once)
+
+        play_game
+      end
+
+      it 'will continue to play the game' do
+        expect(play_instance).to receive(:play).at_least(:once)
+
+        play_game
+      end
+    end
+
+    context 'when dead' do
+      before do
+        allow(player).to receive(:alive?).and_return(false)
+      end
+
+      it 'will cease to continue the game' do
+        expect(play_instance).to receive(:play).once
+
+        play_game
+      end
+
+      it 'will exit the game' do
+        expect(Kernel).to receive(:exit)
+
+        play_game
+      end
+    end
   end
 end

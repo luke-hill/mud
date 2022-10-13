@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Actions::Buy do
-  subject(:buy_instance) { described_class.new(hero, item_id) }
+  subject(:buy_instance) { described_class.new(hero, item_id, hero.current_room) }
 
   let(:hero) { MUD::Classes::Fighter.new }
   let(:item_id) { 'knife' }

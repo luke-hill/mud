@@ -4,6 +4,10 @@ require:
 
 inherit_from: .rubocop_todo.yml
 
+inherit_mode:
+  merge:
+    - Exclude
+
 AllCops:
   # Display all verbose info on failures to help people triage how to fix
   DisplayCopNames: true
@@ -17,6 +21,7 @@ RSpec/MessageSpies:
   EnforcedStyle: receive
 
 # All spec files are huge blocks, should just ignore them
+# Fixed in rubocop-rspec 2.11.0 (2022-05-18)
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
