@@ -4,6 +4,10 @@ require:
 
 inherit_from: .rubocop_todo.yml
 
+inherit_mode:
+  merge:
+    - Exclude
+
 AllCops:
   # Display all verbose info on failures to help people triage how to fix
   DisplayCopNames: true
