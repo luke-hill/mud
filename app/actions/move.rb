@@ -20,21 +20,14 @@ module MUD
       # This method will move in the relevant direction (If they pass the checks). Once you have
       # moved, a string representation of the movement is sent to the playing console.
       def move
-        if player.current_room.exitable?
-          if required_key
-            if player.barracks_key?
-              player.use('barracks_key')
-              send(direction)
-            else
-              MUD::Screen.output(MUD::Key.new('barracks_key').missing_message.red)
-            end
-          else
-            send(direction)
-          end
+        return MUD::Screen.output(ktp_warning_message) unless player.current_room.exitable?
+        return send(direction) unless key_required?
+
+        if player.barracks_key?
+          player.use('barracks_key')
+          send(direction)
         else
-          MUD::Screen.output(
-            "You must kill the #{player.current_room.enemy.name} before leaving the room!".red
-          )
+          MUD::Screen.output(MUD::Key.new('barracks_key').missing_message.red)
         end
       end
 
@@ -64,8 +57,16 @@ module MUD
 
       private
 
+      def ktp_warning_message
+        "You must kill the #{player.current_room.enemy.name} before leaving the room!".red
+      end
+
+      def key_required?
+        !required_key.nil?
+      end
+
       def required_key
-        direction_yml.dig(player.current_room.room_id, "#{direction}_key_id")
+        @required_key ||= direction_yml.dig(player.current_room.room_id, "#{direction}_key_id")
       end
 
       def north
