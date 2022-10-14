@@ -10,16 +10,23 @@ module MUD
     class << self
       attr_accessor :rooms_visited
 
+      # @return Classes::Fighter
+      # The game will be initiated displaying the introduction message/s, then providing the class to be used ingame
       def setup
         display_welcome_message
         player
       end
 
+      # @return Classes::Fighter
+      # The game will be completely reset, with all progress deleted.
+      # The game will then be re-setup to provide the class to be used ingame
       def reset
         instance_variables.each { |var| remove_instance_variable(var) }
         setup
       end
 
+      # @return Classes::Fighter
+      # The player class being used ingame
       def player
         @player ||= Classes::Fighter.new
       end
