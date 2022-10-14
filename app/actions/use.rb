@@ -36,7 +36,7 @@ module MUD
           dump_hp_mp_stats
           potion.use
         else
-          MUD::Screen.output('You hear a click as you turn the key. The door slowly opens'.yellow)
+          MUD::Screen.output(barracks_key.use_message.yellow)
         end
 
         remove_one_copy_from_inventory
