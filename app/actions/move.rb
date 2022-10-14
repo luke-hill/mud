@@ -43,18 +43,6 @@ module MUD
         MUD::Screen.output('Not in active use'.red)
       end
 
-      # @return [String]
-      # This is an unused API method currently and will be removed
-      def pickup_gold
-        MUD::Screen.output('Not in active use'.red)
-      end
-
-      # @return [String]
-      # This is an unused API method currently and will be removed
-      def drop_gold
-        MUD::Screen.output('Not in active use'.red)
-      end
-
       private
 
       def ktp_warning_message
