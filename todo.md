@@ -1,4 +1,3 @@
-2) Get yard documentation rate up to 80%
 3) Consume the `use_message` property on Barracks Key (`v2.1`)
 4) Get yard documentation rate up to 85%
 5) Quest idea that `They are known for their metallurgy` be applied to the Sylvanian Ingots?
