@@ -16,8 +16,9 @@ module MUD
       # us to read and write to them whilst also logging our requests for
       # maximum traceability
       include MUD::Helpers::AttributeAccessors
-      include Helpers::Item
       include Helpers::Data
+      include Helpers::Item
+      include Helpers::Unnabbreviater
 
       def initialize
         @current_room = starting_room
@@ -55,8 +56,8 @@ module MUD
       # @return [String]
       # The wrapper method call that attempts to move in the direction provided
       def move(direction)
-        Logger.debug("Attempting to move #{direction}")
-        MUD::Actions::Move.new(self, direction).move
+        Logger.debug("Attempting to move #{unnabbreviate(direction, type: :movement)}")
+        MUD::Actions::Move.new(self, unnabbreviate(direction, type: :movement)).move
       end
 
       # @return [Integer, Nil]
