@@ -8,6 +8,8 @@ SimpleCov.start do
   add_group 'App', 'app'
   add_group 'Spec', 'spec'
 
+  add_filter "/spec/"
+
   minimum_coverage 91
 end
 
