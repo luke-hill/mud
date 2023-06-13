@@ -13,3 +13,4 @@
 6) When you are killed the game crashes
 7) Require barracks key to get into orc room
 1) If no data files are present, game crashes. Validate data files during load
+2) RSpec currently doesn't pass 100% of the time
