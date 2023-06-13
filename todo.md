@@ -27,3 +27,5 @@ unit/feature tests
 28) Check goblins accuracy rating
 29) After game load, prompt user to press enter
 30) Check movement logic for consuming barracks key
+31) Remove hero argument from initializer for all actions
+32) Standardise hero/player names across app
