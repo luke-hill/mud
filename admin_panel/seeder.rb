@@ -19,7 +19,7 @@ module AdminPanel
       # Seed all versions that exist in /updates directory
       # Returns updates after each seed iteration
       def seed_all_versions
-        current_seed_files.each(&method(:require))
+        current_seed_files.each { |file| require file }
       end
 
       private
