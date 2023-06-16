@@ -18,6 +18,7 @@ module MUD
 
     def_delegators :key,
                    :name,
+                   :use_message,
                    :description,
                    :missing_message
 
