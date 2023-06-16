@@ -30,24 +30,22 @@ module MUD
       # to the playing console.
       def use
         return MUD::Screen.output("You do not have a #{item_id}".red) unless in_inventory?
-        return MUD::Screen.output('You cannot use this item!'.red) unless usable?
+
+        MUD::Logger.debug("Ascertaining whether the '#{item_id}' item can be used")
 
         if potion?
           dump_hp_mp_stats
           potion.use
+        elsif key?
+          MUD::Screen.output(key.use_message.yellow)
         else
-          MUD::Screen.output(barracks_key.use_message.yellow)
+          return MUD::Screen.output('You cannot use this item!'.red)
         end
 
         remove_one_copy_from_inventory
       end
 
       private
-
-      def usable?
-        MUD::Logger.debug("Ascertaining whether the '#{item_id}' item can be used")
-        potion? || barracks_key
-      end
 
       def potion?
         potion.type != :unknown
@@ -61,8 +59,14 @@ module MUD
         MUD::Logger.debug("Previous hp #{@hero.hp}. Previous mp #{@hero.mp}")
       end
 
-      def barracks_key
-        @barracks_key ||= MUD::Key.new(item_id)
+      def key?
+        !key.name.nil?
+      rescue RuntimeError
+        false
+      end
+
+      def key
+        @key ||= MUD::Key.new(item_id)
       end
 
       def in_inventory?
