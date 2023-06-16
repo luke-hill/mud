@@ -5,10 +5,7 @@ require 'simplecov'
 SimpleCov.start do
   coverage_dir 'tmp/coverage'
 
-  add_group 'App', 'app'
-  add_group 'Spec', 'spec'
-
-  add_filter '/spec/'
+  add_filter '/spec'
 
   minimum_coverage 91
 end
