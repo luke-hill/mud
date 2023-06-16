@@ -55,8 +55,7 @@ module MUD
 
       def hidden_directions
         initial_room_data
-          .map { |key, value| key.split('_').last if key.start_with?('hide') && value == true }
-          .compact
+          .filter_map { |key, value| key.split('_').last if key.start_with?('hide') && value == true }
       end
 
       def initial_room_data
