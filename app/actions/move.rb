@@ -23,11 +23,11 @@ module MUD
         return MUD::Screen.output(ktp_warning_message) unless player.current_room.exitable?
         return send(direction) unless key_required?
 
-        if player.barracks_key?
-          player.use('barracks_key')
+        if required_key?
+          player.use(required_key)
           send(direction)
         else
-          MUD::Screen.output(MUD::Key.new('barracks_key').missing_message.red)
+          MUD::Screen.output(MUD::Key.new(required_key).missing_message.red)
         end
       end
 
@@ -55,6 +55,14 @@ module MUD
 
       def required_key
         @required_key ||= direction_yml.dig(player.current_room.room_id, "#{direction}_key_id")
+      end
+
+      def required_key?
+        key_required? && required_key_in_inventory?
+      end
+
+      def required_key_in_inventory?
+        player.inventory.include?(required_key)
       end
 
       def north

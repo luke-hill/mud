@@ -2,7 +2,6 @@
 4) Get yard documentation rate up to 85%
 5) Quest idea that `They are known for their metallurgy` be applied to the Sylvanian Ingots?
 6) move missing barracks key into some form of data lookup
-7) Add integration tests (Not sure if we can we feature test this using cucumber?)
 8) Work out for v3 who would or should drop endurance potion
 9) When items have been dropped. Auto-add them to players inventory if available
 10) Have rspec seed a "test" dummy set of data files. These can be then "trusted" in the terms of

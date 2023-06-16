@@ -52,10 +52,10 @@ RSpec.describe MUD::Actions::Use do
       end
     end
 
-    context 'when the item_id is `barracks_key`' do
+    context 'when the item_id is a valid key' do
       let(:item_id) { 'barracks_key' }
 
-      it 'uses up the barracks key in the heroes inventory' do
+      it 'uses up the key in the heroes inventory' do
         expect { use_attempt }.to change(hero, :inventory).from([item_id]).to([])
       end
     end
