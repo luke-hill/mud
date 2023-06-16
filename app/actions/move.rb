@@ -8,6 +8,7 @@ module MUD
     # direction. Then the relevant room variables will be updated.
     class Move
       include MUD::Helpers::Data
+      include MUD::Helpers::Unnabbreviater
 
       attr_reader :player, :direction
 
@@ -54,7 +55,7 @@ module MUD
       end
 
       def required_key
-        @required_key ||= direction_yml.dig(player.current_room.room_id, "#{direction}_key_id")
+        @required_key ||= direction_yml.dig(player.current_room.room_id, "#{unnabbreviate(direction, type: :movement)}_key_id")
       end
 
       def required_key?
