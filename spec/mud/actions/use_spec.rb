@@ -5,7 +5,6 @@ RSpec.describe MUD::Actions::Use do
 
   let(:hero) { MUD::Classes::Fighter.new }
   let(:item_id) { 'lesser_healing_potion' }
-  let(:not_a_weapon) { 'unknown' }
 
   before do
     hero.inventory << item_id
@@ -16,9 +15,9 @@ RSpec.describe MUD::Actions::Use do
     subject(:use_attempt) { use_instance.use }
 
     context "when the item_id isn't recognised as being usable" do
-      before { allow(use_instance).to receive(:usable?).and_return(false) }
+      let(:item_id) { 'unknown_item' }
 
-      it "informs the player that the item isn't for sale" do
+      it "informs the player that the item isn't usable" do
         expect(use_attempt).to eq('You cannot use this item!'.red)
       end
 
