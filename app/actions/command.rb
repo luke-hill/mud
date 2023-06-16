@@ -59,10 +59,7 @@ module MUD
       end
 
       def process_north_south_east_west
-        case command_input[0]
-        when 'n', 's', 'e', 'w'; then player.move(command_input[0])
-        else                     raise "Unreachable code - Command Input: #{command_input}"
-        end
+        player.move(command_input)
       end
 
       def compass_direction?

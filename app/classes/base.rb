@@ -57,7 +57,7 @@ module MUD
       # The wrapper method call that attempts to move in the direction provided
       def move(direction)
         Logger.debug("Attempting to move #{unnabbreviate(direction, type: :movement)}")
-        MUD::Actions::Move.new(self, unnabbreviate(direction, type: :movement)).move
+        MUD::Actions::Move.new(self, direction).move
       end
 
       # @return [Integer, Nil]
