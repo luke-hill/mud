@@ -61,26 +61,6 @@ RSpec.describe MUD::Helpers::Item do
     end
   end
 
-  describe '#barracks_key?' do
-    subject { item_helper.barracks_key? }
-
-    before do
-      allow(item_helper).to receive(:inventory).and_return(inventory)
-    end
-
-    context 'with a barracks key in your inventory' do
-      let(:inventory) { ['barracks_key'] }
-
-      it { is_expected.to be true }
-    end
-
-    context 'without a barracks key in your inventory' do
-      let(:inventory) { [] }
-
-      it { is_expected.to be false }
-    end
-  end
-
   describe '#gold_description' do
     it 'outputs the description of gold' do
       expect(item_helper.gold_description)
