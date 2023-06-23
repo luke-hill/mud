@@ -2,6 +2,8 @@
 
 source 'https://rubygems.org'
 
+ruby '3.1.3'
+
 gem 'activesupport', '~> 7.0'
 gem 'colorize'
 gem 'delegate_matcher'
