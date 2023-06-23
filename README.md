@@ -1,4 +1,4 @@
-# README
+# mud
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
@@ -6,19 +6,16 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
-Ruby 2.6.6
+  * Ruby 3.1.1
 * System dependencies
-Anything that can bundle the game
+  * Anything that can bundle the game
 * Configuration
-N/A
+  * N/A
 * Database creation
-Seed from admin panel
+  * Seed from admin panel
 * Database initialization
-  Seed from admin panel
+  * There is no DB, this is a YML backed DB
 * How to run the test suite
-bundle exec rake spec
+  * bundle exec rake spec
 * Services (job queues, cache servers, search engines, etc.)
-N/A
-* Deployment instructions
-N/A
-* ...
+  * Caching only exists on the YML data

@@ -40,7 +40,7 @@ module MUD
           dashed_string,
           array,
           dashed_string
-        ]
+        ].join("\n")
       end
 
       def complex_shop_menu

@@ -21,7 +21,16 @@ module MUD
                    :description,
                    :missing_message
 
+    def use_message
+      key.use_message || fallback_message
+    end
+
     private
+
+    def fallback_message
+      Logger.error("ERROR: Missing use_message on key. key_id: #{id}")
+      'ERROR: Unknown Key - Will use up and continue.'
+    end
 
     def key
       @key ||= OpenStruct.new(key_data)

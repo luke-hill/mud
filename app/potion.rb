@@ -14,7 +14,6 @@ module MUD
 
     def_delegators :potion,
                    :name,
-                   :use_message,
                    :description,
                    :value
 
@@ -29,7 +28,16 @@ module MUD
       @type ||= determine_type
     end
 
+    def use_message
+      potion.use_message || fallback_message
+    end
+
     private
+
+    def fallback_message
+      Logger.error("ERROR: Missing use_message on potion. potion_id: #{id}")
+      'ERROR: Unknown Potion - Will use up and continue.'
+    end
 
     def potion
       @potion ||= OpenStruct.new(potion_data)

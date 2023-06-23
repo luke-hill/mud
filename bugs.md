@@ -1,4 +1,6 @@
-1) Pressing enter on game load crashes
+1) When attacking an enemy that is dead, it then flashes the "you killed" message -> Re-killing it
+2) When you are killed the game crashes - deliberately
+3) If no data files are present - and you press enter, game crashes. Validate data files during load
 ```
 `advanced_description': undefined method `dig' for nil:NilClass (NoMethodError)
 
@@ -6,10 +8,3 @@
                           ^^^^
 
 ```
-2) First ktp goblin isn't ktp
-3) Killing an enemy crashes the game -> Now this doesn't crash the game
-4) Can attack "No Enemy"
-5) When attacking an enemy that is dead, it then flashes the "you killed" message -> Re-killing it
-6) When you are killed the game crashes
-7) Require barracks key to get into orc room
-1) If no data files are present, game crashes. Validate data files during load

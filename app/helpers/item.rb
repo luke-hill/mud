@@ -19,12 +19,6 @@ module MUD
         armor_yml.keys
       end
 
-      # @return [Boolean]
-      # Whether you have a barracks key in your inventory
-      def barracks_key?
-        !inventory.detect { |item| item == 'barracks_key' }.nil?
-      end
-
       # @return [String]
       # The description of gold coins, this needs placing somewhere relevant or removing
       def gold_description

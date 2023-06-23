@@ -1,13 +1,10 @@
 3) Consume the `use_message` property on Barracks Key (`v2.1`)
 4) Get yard documentation rate up to 85%
 5) Quest idea that `They are known for their metallurgy` be applied to the Sylvanian Ingots?
-6) move missing barracks key into some form of data lookup
-7) Add integration tests (Not sure if we can we feature test this using cucumber?)
 8) Work out for v3 who would or should drop endurance potion
 9) When items have been dropped. Auto-add them to players inventory if available
 10) Have rspec seed a "test" dummy set of data files. These can be then "trusted" in the terms of
 unit/feature tests
-11) Playthrough attempt #1 - Kill all the goblins
 12) Completely rework Buy class and remove all comments about stuff that is hard-coded!
 13) Add the first 2-4 places on the map where up and down exist
 14) Add a second usable key to the codebase, and validate both key usages work (This is likely to be tricky)
@@ -26,4 +23,6 @@ unit/feature tests
 27) Look around should show enemies
 28) Check goblins accuracy rating
 29) After game load, prompt user to press enter
-30) Check movement logic for consuming barracks key
+31) Remove hero argument from initializer for all actions
+32) Standardise hero/player names across app
+33) Basic / Adv description should feature the name of where you are in bold - using `location.yml`
