@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# V2.0 Missing Weapon items
+# V2.0 New Weapons
 
 ap = AdminPanel::Seeder.new(:weapon)
 

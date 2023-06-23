@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# V1.1 Enemy Creations
+# V1.1 Forest Path Enemies
 
 ap = AdminPanel::Seeder.new(:enemy)
 

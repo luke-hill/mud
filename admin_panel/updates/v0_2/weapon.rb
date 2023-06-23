@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# V0.1 Basic Weapon items
+# V0.1 Orc weapon drop
 
 ap = AdminPanel::Seeder.new(:weapon)
 

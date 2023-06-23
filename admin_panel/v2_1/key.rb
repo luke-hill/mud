@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# V2.1 Initial Use Messages for some keys
+# V2.1 Initial Use Messages for keys
 # New Refined Sylvanian Ingot, without a use (Yet)
 
 ap = AdminPanel::Seeder.new(:key)

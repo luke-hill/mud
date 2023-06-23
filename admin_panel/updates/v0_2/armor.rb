@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# V0.2 Basic Armor items
+# V0.2 Initial Armors
 
 ap = AdminPanel::Seeder.new(:armor)
 

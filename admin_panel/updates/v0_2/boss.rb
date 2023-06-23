@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# V0.2 Boss Enemy Creations
+# V0.2 Boss Enemy #1 - Orc
 
 ap = AdminPanel::Seeder.new(:boss)
 

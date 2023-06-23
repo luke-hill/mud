@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# V2.1 Initial Phrase Messages from Bosses
+# V2.1 Initial Phrases for Orc
 
 ap = AdminPanel::Seeder.new(:boss)
 
