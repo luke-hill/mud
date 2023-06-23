@@ -1,6 +1,18 @@
 # frozen_string_literal: true
 
 module MUD
+  # MUD::Potion is the way in which all potions are represented ingame
+  #
+  # They are initialized with an id
+  # As soon as any action is taken (using), them, we delegate to the @potion iVar which loads up an OStruct reference
+  # of their statistics from the yml database
+  #
+  # Each potion will be classified as one of 3 types
+  #   :healing -> Restore HP to the hero (Up to their maximum HP)
+  #   :mana -> Restore MP to the hero (Up to their maximum MP)
+  #   :hp_bonus -> Increase their maximum HP above their current maximum (NB: This won't restore any HP)
+  #
+  # Should the potion fail to be classified, a RuntimeError will be thrown and the game will crash
   class Potion
     include Helpers::Data
     extend Forwardable
