@@ -1,5 +1,3 @@
-3) Consume the `use_message` property on Barracks Key (`v2.1`)
-5) Quest idea that `They are known for their metallurgy` be applied to the Sylvanian Ingots?
 8) Work out for v3 who would or should drop endurance potion
 9) When items have been dropped. Auto-add them to players inventory if available
 10) Have rspec seed a "test" dummy set of data files. These can be then "trusted" in the terms of
@@ -28,3 +26,4 @@ unit/feature tests
 32) Standardise hero/player names across app
 33) Basic / Adv description should feature the name of where you are in bold - using `location.yml`
 4) Get yard documentation rate up to 100%
+5) Permit items to have different use messages for different NPC's (Sylvanian Ingot will be used in 2 diff ways)
