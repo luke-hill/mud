@@ -42,7 +42,7 @@ module MUD
       end
 
       def attack?
-        ['a', 'attack'].include?(command_input)
+        %w[a attack].include?(command_input)
       end
 
       def process_miscellaneous
