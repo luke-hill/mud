@@ -24,15 +24,17 @@ module MUD
         return MUD::Screen.output(ktp_warning_message) unless player.current_room.exitable?
         return send(direction) unless key_required?
 
-        if required_key?
-          player.use(required_key)
-          send(direction)
-        else
-          MUD::Screen.output(MUD::Key.new(required_key).missing_message.red)
-        end
+        move_through_locked_door
       end
 
       private
+
+      def move_through_locked_door
+        return MUD::Screen.output(MUD::Key.new(required_key).missing_message.red) unless required_key?
+
+        player.use(required_key)
+        send(direction)
+      end
 
       def ktp_warning_message
         "You must kill the #{player.current_room.enemy.name} before leaving the room!".red

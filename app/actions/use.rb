@@ -31,18 +31,23 @@ module MUD
       def use
         return MUD::Screen.output("You do not have a #{item_id}".red) unless in_inventory?
         return MUD::Screen.output('You cannot use this item!'.red) unless potion? || key?
+        return drink_potion if potion?
 
-        if potion?
-          dump_hp_mp_stats
-          potion.use
-        else
-          MUD::Screen.output(key.use_message.yellow)
-        end
-
-        remove_one_copy_from_inventory
+        use_key
       end
 
       private
+
+      def drink_potion
+        dump_hp_mp_stats
+        potion.use
+        remove_one_copy_from_inventory
+      end
+
+      def use_key
+        MUD::Screen.output(key.use_message.yellow)
+        remove_one_copy_from_inventory
+      end
 
       def potion?
         potion.type != :unknown
