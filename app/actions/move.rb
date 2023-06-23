@@ -32,18 +32,6 @@ module MUD
         end
       end
 
-      # @return [String]
-      # This is an unused API method currently and will be removed
-      def pickup_item
-        MUD::Screen.output('Not in active use'.red)
-      end
-
-      # @return [String]
-      # This is an unused API method currently and will be removed
-      def drop_item
-        MUD::Screen.output('Not in active use'.red)
-      end
-
       private
 
       def ktp_warning_message

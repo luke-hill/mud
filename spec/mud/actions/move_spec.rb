@@ -49,16 +49,4 @@ RSpec.describe MUD::Actions::Move do
 
     include_examples 'Movement examples'
   end
-
-  describe '#pickup_item' do
-    it 'does not work' do
-      expect(described_class.new(player, double).pickup_item).to eq('Not in active use'.red)
-    end
-  end
-
-  describe '#drop_item' do
-    it 'does not work' do
-      expect(described_class.new(player, double).drop_item).to eq('Not in active use'.red)
-    end
-  end
 end
