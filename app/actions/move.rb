@@ -9,6 +9,7 @@ module MUD
     class Move
       include MUD::Helpers::Data
       include MUD::Helpers::Unnabbreviater
+      include MUD::Helpers::Room
 
       attr_reader :player, :direction
 
@@ -150,17 +151,10 @@ module MUD
       end
 
       def create_room(room_id)
-        return MUD::Shop.new(room_id) if shop?(room_id)
+        room = MUD::Room.new(room_id)
+        return MUD::Shop.new(room_id) if room.shop?
 
         MUD::Room.new(room_id)
-      end
-
-      def shop?(room_id)
-        type(room_id).end_with?('Shop')
-      end
-
-      def type(room_id)
-        description_yml.dig(room_id, 'type')
       end
     end
   end

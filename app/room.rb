@@ -56,6 +56,14 @@ module MUD
       !(ktp? && enemy?)
     end
 
+    def shop?
+      type.end_with?('Shop')
+    end
+
+    def type
+      description_yml.dig(room_id, 'type')
+    end
+
     private
 
     def directions_string
