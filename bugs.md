@@ -1,4 +1,6 @@
-1) Pressing enter on game load crashes
+1) When attacking an enemy that is dead, it then flashes the "you killed" message -> Re-killing it
+2) When you are killed the game crashes - deliberately
+3) If no data files are present - and you press enter, game crashes. Validate data files during load
 ```
 `advanced_description': undefined method `dig' for nil:NilClass (NoMethodError)
 
@@ -6,6 +8,3 @@
                           ^^^^
 
 ```
-2) When attacking an enemy that is dead, it then flashes the "you killed" message -> Re-killing it
-3) When you are killed the game crashes
-4) If no data files are present, game crashes. Validate data files during load
