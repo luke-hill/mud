@@ -35,10 +35,10 @@ Metrics/AbcSize:
 Metrics/ClassLength:
   Max: 105
 
-## Offense count: 40
-## Configuration parameters: AllowSubject.
-#RSpec/MultipleMemoizedHelpers:
-#  Max: 16
+# Offense count: 40
+# Configuration parameters: AllowSubject.
+RSpec/MultipleMemoizedHelpers:
+  Max: 16
 
 # Offense count: 6
 RSpec/NestedGroups:
