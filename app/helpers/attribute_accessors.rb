@@ -65,9 +65,7 @@ module MUD
           MUD::Logger.debug("Call made to read attribute: #{name}")
           attributes[name]
         end
-      end
 
-      attribute_names.each do |name|
         define_method("#{name}=") do |value|
           MUD::Logger.debug("Call made to set attributes: #{attributes}")
           attributes[name] = value

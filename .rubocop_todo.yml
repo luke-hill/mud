@@ -82,10 +82,10 @@ RSpec/SubjectStub:
 #  Exclude:
 #    - 'app/enemy.rb'
 
-# Offense count: 1
-Style/CombinableLoops:
-  Exclude:
-    - 'app/helpers/attribute_accessors.rb'
+## Offense count: 1
+#Style/CombinableLoops:
+#  Exclude:
+#    - 'app/helpers/attribute_accessors.rb'
 
 # Offense count: 4
 # Configuration parameters: AllowedConstants.
