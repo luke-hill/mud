@@ -1,12 +1,12 @@
-8) Work out for v3 who would or should drop endurance potion
-9) When items have been dropped. Auto-add them to players inventory if available
-10) Have rspec seed a "test" dummy set of data files. These can be then "trusted" in the terms of
+1) Work out for v3 who would or should drop endurance potion
+2) When items have been dropped. Auto-add them to players inventory if available
+3) Have rspec seed a "test" dummy set of data files. These can be then "trusted" in the terms of
 unit/feature tests
-12) Completely rework Buy class and remove all comments about stuff that is hard-coded!
-13) Add the first 2-4 places on the map where up and down exist
-14) Add a second usable key to the codebase, and validate both key usages work (This is likely to be tricky)
-15) Playthrough attempt #2 - Attempt to move to 2nd town
-16) Allow gold to be dropped and picked up (Currently just traded from hand) - Low Priority!
+4) Completely rework Buy class and remove all comments about stuff that is hard-coded!
+5) Add the first 2-4 places on the map where up and down exist
+6) Add a second usable key to the codebase, and validate both key usages work (This is likely to be tricky)
+7) Playthrough attempt #2 - Attempt to move to 2nd town
+8) Allow gold to be dropped and picked up (Currently just traded from hand) - Low Priority!
 17) Add quest to be able to obtain draz-ghun's fleece from newtown - Obtain a few materials
 18) Begin consuming phrases that have been saved by enemies (v4)
 19) Reduce rubocop offenses below 10
