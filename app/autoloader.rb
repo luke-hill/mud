@@ -22,7 +22,7 @@ require_relative 'shop'
 require_relative 'version'
 require_relative 'weapon'
 
-require_relative 'actions/all'
+require_relative 'actions'
 require_relative 'classes/all'
 require_relative 'combat/all'
 require_relative 'presenters/all'
