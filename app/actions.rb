@@ -2,6 +2,7 @@
 
 module MUD
   # MUD::Actions are a list of all actions that can be used by the hero
+  #
   # Typically most actions class have a single public method which is similarly named to the class
   module Actions
   end
