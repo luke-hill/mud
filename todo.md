@@ -25,3 +25,4 @@ unit/feature tests
 29) After game load, prompt user to press enter
 31) Remove hero argument from initializer for all actions
 32) Standardise hero/player names across app
+33) Basic / Adv description should feature the name of where you are in bold - using `location.yml`
