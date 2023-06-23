@@ -96,11 +96,11 @@ Style/Documentation:
     - 'app/potion.rb'
     - 'app/shop.rb'
 
-# Offense count: 1
-# Configuration parameters: MinBodyLength.
-Style/GuardClause:
-  Exclude:
-    - 'app/actions/equip.rb'
+## Offense count: 1
+## Configuration parameters: MinBodyLength.
+#Style/GuardClause:
+#  Exclude:
+#    - 'app/actions/equip.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
