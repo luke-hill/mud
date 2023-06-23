@@ -9,7 +9,7 @@ require 'colorize'
 require 'ostruct'
 
 # To prevent errors with classes that rely on these Helpers
-require_relative 'helpers/all'
+require_relative 'helpers'
 
 require_relative 'armor'
 require_relative 'enemy'
