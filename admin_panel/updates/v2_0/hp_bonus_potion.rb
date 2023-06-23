@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# V2.0 Missing (First), Potion items
+# V2.0 Missing (First), Potions
 
 ap = AdminPanel::Seeder.new(:hp_bonus_potion)
 

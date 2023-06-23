@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# V0.2 Newtown district directions
+# V0.2 Newtown Residential District directions
 
 ap = AdminPanel::Seeder.new(:direction)
 

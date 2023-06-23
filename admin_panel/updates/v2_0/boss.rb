@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# V2.0 Dropped Items for first few enemies
+# V2.0 Dropped Items table for Boss
 
 ap = AdminPanel::Seeder.new(:boss)
 
