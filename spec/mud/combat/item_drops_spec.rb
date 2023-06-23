@@ -9,9 +9,8 @@ RSpec.describe MUD::Combat::ItemDrops do
 
   let(:hero) { MUD::Classes::Fighter.new }
   let(:enemy) { create(:enemy, enemy_data) }
-  let(:enemy_name) { 'Enemy' }
   let(:enemy_data) do
-    { name: enemy_name }.merge(potion_drop_data).merge(weapon_drop_data).merge(armor_drop_data)
+    { name: 'Enemy' }.merge(potion_drop_data).merge(weapon_drop_data).merge(armor_drop_data)
   end
   let(:potion_drop_data) do
     {
@@ -102,13 +101,13 @@ RSpec.describe MUD::Combat::ItemDrops do
       let(:dropped_gold) { 1 }
 
       it 'increases the heroes gold by the amount dropped' do
-        expect { drop_items }.to change(hero, :gold).by(dropped_gold)
+        expect { drop_items }.to change(hero, :gold).by(1)
       end
 
       it 'informs the user that the weapon dropped' do
         drop_items
 
-        expect(log_lines).to include(/You found 1 gold coin on the corpse of the #{enemy_name}/)
+        expect(log_lines).to include(/You found 1 gold coin on the corpse of the Enemy/)
       end
     end
   end

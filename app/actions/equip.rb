@@ -97,10 +97,10 @@ module MUD
       end
 
       def validate_presence
-        unless in_inventory?
-          MUD::Logger.error("An error has occurred trying to find #{item_id} in inventory")
-          raise(ArgumentError, "You do not have a #{item_id} in your inventory.")
-        end
+        return if in_inventory?
+
+        MUD::Logger.error("An error has occurred trying to find #{item_id} in inventory")
+        raise(ArgumentError, "You do not have a #{item_id} in your inventory.")
       end
 
       def item_type

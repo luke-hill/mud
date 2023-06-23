@@ -23,7 +23,7 @@ RSpec.shared_examples 'Movement examples' do
     let(:connected_rooms) { {} }
 
     it 'does not move to the room' do
-      expect { move_attempt }.not_to change { current_room_id }
+      expect { move_attempt }.not_to(change { current_room_id })
     end
   end
 end

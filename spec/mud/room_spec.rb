@@ -4,25 +4,22 @@ RSpec.describe MUD::Room do
   let(:room) { described_class.new(room_id) }
   let(:description_yml) do
     {
-      1 => {
-        'description' => description_data,
-        'advanced_description' => advanced_description_data
+      room_id => {
+        'description' => 'Description HERE',
+        'advanced_description' => 'Advanced Description HERE'
       }
     }
   end
   let(:direction_yml) do
     {
-      1 => {
+      room_id => {
         'north' => 2,
         'south' => 3,
         'east' => 4
       }
     }
   end
-  let(:description_data) { 'Desc' }
-  let(:advanced_description_data) { 'Adv Desc' }
   let(:directions_string) { 'You can go north, south and east' }
-  let(:player) { MUD::Game.player }
   let(:room_id) { 1 }
 
   before do
@@ -32,28 +29,22 @@ RSpec.describe MUD::Room do
   end
 
   describe '#description' do
-    let(:description) { room.description.split("\n").first }
-    let(:directions) { room.description.split("\n").last }
-
     it 'returns the description of the room first' do
-      expect(description).to eq(description_data.blue)
+      expect(room.description).to start_with('Description HERE'.blue)
     end
 
     it 'returns the directions after the description' do
-      expect(directions).to eq(directions_string.yellow)
+      expect(room.description).to end_with(directions_string.yellow)
     end
   end
 
   describe '#advanced_description' do
-    let(:description) { room.advanced_description.split("\n").first }
-    let(:directions) { room.advanced_description.split("\n").last }
-
     it 'returns the advanced description of the room first' do
-      expect(description).to eq(advanced_description_data.blue)
+      expect(room.advanced_description).to start_with('Advanced Description HERE'.blue)
     end
 
     it 'returns the directions after the advanced description' do
-      expect(directions).to eq(directions_string.yellow)
+      expect(room.advanced_description).to end_with(directions_string.yellow)
     end
   end
 
@@ -71,7 +62,7 @@ RSpec.describe MUD::Room do
 
   describe '#leave' do
     it 'updates the global `rooms_visited`' do
-      expect { room.leave }.to change(player, :rooms_visited)
+      expect { room.leave }.to change(MUD::Game.player, :rooms_visited)
     end
   end
 

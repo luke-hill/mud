@@ -24,27 +24,17 @@ module MUD
         return MUD::Screen.output(ktp_warning_message) unless player.current_room.exitable?
         return send(direction) unless key_required?
 
-        if required_key?
-          player.use(required_key)
-          send(direction)
-        else
-          MUD::Screen.output(MUD::Key.new(required_key).missing_message.red)
-        end
-      end
-
-      # @return [String]
-      # This is an unused API method currently and will be removed
-      def pickup_item
-        MUD::Screen.output('Not in active use'.red)
-      end
-
-      # @return [String]
-      # This is an unused API method currently and will be removed
-      def drop_item
-        MUD::Screen.output('Not in active use'.red)
+        move_through_locked_door
       end
 
       private
+
+      def move_through_locked_door
+        return MUD::Screen.output(MUD::Key.new(required_key).missing_message.red) unless required_key?
+
+        player.use(required_key)
+        send(direction)
+      end
 
       def ktp_warning_message
         "You must kill the #{player.current_room.enemy.name} before leaving the room!".red
@@ -69,47 +59,41 @@ module MUD
       def north
         return MUD::Screen.output('You cannot go north'.red) unless north_room_id
 
-        MUD::Screen.output('You went north')
-        move_to(north_room_id)
+        move_to('north', north_room_id)
       end
       alias n north
 
       def south
         return MUD::Screen.output('You cannot go south'.red) unless south_room_id
 
-        MUD::Screen.output('You went south')
-        move_to(south_room_id)
+        move_to('south', south_room_id)
       end
       alias s south
 
       def east
         return MUD::Screen.output('You cannot go east'.red) unless east_room_id
 
-        MUD::Screen.output('You went east')
-        move_to(east_room_id)
+        move_to('east', east_room_id)
       end
       alias e east
 
       def west
         return MUD::Screen.output('You cannot go west'.red) unless west_room_id
 
-        MUD::Screen.output('You went west')
-        move_to(west_room_id)
+        move_to('west', west_room_id)
       end
       alias w west
 
       def up
         return MUD::Screen.output('You cannot go up'.red) unless up_room_id
 
-        MUD::Screen.output('You went up')
-        move_to(up_room_id)
+        move_to('up', up_room_id)
       end
 
       def down
         return MUD::Screen.output('You cannot go down'.red) unless down_room_id
 
-        MUD::Screen.output('You went down')
-        move_to(down_room_id)
+        move_to('down', down_room_id)
       end
 
       def north_room_id
@@ -140,8 +124,9 @@ module MUD
         player.current_room.connected_rooms
       end
 
-      def move_to(room_id)
+      def move_to(direction, room_id)
         MUD::Logger.info("Moving to Room-ID: #{room_id}")
+        MUD::Screen.output("You went #{direction}")
         player.current_room.leave
         player.current_room = fetch_or_create_room(room_id)
         player.current_room.visit
@@ -162,17 +147,9 @@ module MUD
       end
 
       def create_room(room_id)
-        return MUD::Shop.new(room_id) if shop?(room_id)
-
-        MUD::Room.new(room_id)
-      end
-
-      def shop?(room_id)
-        type(room_id).end_with?('Shop')
-      end
-
-      def type(room_id)
-        description_yml.dig(room_id, 'type')
+        MUD::Room.new(room_id).tap do |room|
+          break MUD::Shop.new(room_id) if room.shop?
+        end
       end
     end
   end
