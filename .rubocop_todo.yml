@@ -20,17 +20,17 @@
 Layout/LineEndStringConcatenationIndentation:
   Enabled: false
 
-# Offense count: 1
-# Configuration parameters: IgnoredMethods.
-Lint/AmbiguousBlockAssociation:
-  Exclude:
-    - 'spec/support/shared_examples/movement.rb'
+## Offense count: 1
+## Configuration parameters: IgnoredMethods.
+#Lint/AmbiguousBlockAssociation:
+#  Exclude:
+#    - 'spec/support/shared_examples/movement.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Lint/RedundantDirGlobSort:
-  Exclude:
-    - 'admin_panel/seeder.rb'
+## Offense count: 1
+## Cop supports --auto-correct.
+#Lint/RedundantDirGlobSort:
+#  Exclude:
+#    - 'admin_panel/seeder.rb'
 
 # Offense count: 1
 Lint/UnreachableCode:
@@ -74,13 +74,13 @@ RSpec/SubjectStub:
     - 'spec/mud/combat/attack_spec.rb'
     - 'spec/mud/combat/defend_spec.rb'
 
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: separated, grouped
-Style/AccessorGrouping:
-  Exclude:
-    - 'app/enemy.rb'
+## Offense count: 2
+## Cop supports --auto-correct.
+## Configuration parameters: EnforcedStyle.
+## SupportedStyles: separated, grouped
+#Style/AccessorGrouping:
+#  Exclude:
+#    - 'app/enemy.rb'
 
 # Offense count: 1
 Style/CombinableLoops:
@@ -116,9 +116,9 @@ Style/WordArray:
   EnforcedStyle: percent
   MinSize: 3
 
-# Offense count: 1
+# Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https
 Layout/LineLength:
-  Max: 127
+  Max: 130

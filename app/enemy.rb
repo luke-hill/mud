@@ -51,7 +51,7 @@ module MUD
       @hp ||= rand(lower_hp_limit..upper_hp_limit)
     end
 
-    attr_writer :hp
+    attr_writer :hp, :gold
 
     # @return Integer
     # This will generate (and cache), the enemies gold
@@ -60,8 +60,6 @@ module MUD
     def gold
       @gold ||= rand(lower_gold_limit..upper_gold_limit)
     end
-
-    attr_writer :gold
 
     def alive?
       id != 'no_enemy' && hp.positive?
