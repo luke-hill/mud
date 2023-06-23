@@ -9,7 +9,7 @@ module SpecSupport
     end
 
     def log_lines
-      read_test_screen_logs.split("\n")[1..-1]
+      read_test_screen_logs.split("\n")[1..]
     end
 
     def switch_logging_to_temp_file
