@@ -151,10 +151,9 @@ module MUD
       end
 
       def create_room(room_id)
-        room = MUD::Room.new(room_id)
-        return MUD::Shop.new(room_id) if room.shop?
-
-        MUD::Room.new(room_id)
+        MUD::Room.new(room_id).tap do |room|
+          break MUD::Shop.new(room_id) if room.shop?
+        end
       end
     end
   end
