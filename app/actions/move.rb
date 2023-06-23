@@ -9,7 +9,6 @@ module MUD
     class Move
       include MUD::Helpers::Data
       include MUD::Helpers::Unnabbreviater
-      include MUD::Helpers::Room
 
       attr_reader :player, :direction
 
