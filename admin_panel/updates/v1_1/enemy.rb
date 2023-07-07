@@ -7,9 +7,8 @@ ap = AdminPanel::Seeder.new(:enemy)
 ap.seed(
   id: 'bandit',
   name: 'Bandit',
-  description: 'The Bandit is a typical ruffian. Skulking in the shadows, he preys on targets '\
-               'like you that roam outside the safety of any town gates, ready to plunder whatever '\
-               'you may be carrying.',
+  description: 'The Bandit is a typical ruffian. Skulking in the shadows, he preys on targets like you that roam outside '\
+               'the safety of any town gates, ready to plunder whatever you may be carrying.',
   weapon_id: 'ivory_dagger',
   armor_id: 'bandit_leathers',
   lower_hp_limit: 28,
