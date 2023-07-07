@@ -50,8 +50,7 @@ ap.seed(
 [10, 11].each do |id_number|
   ap.seed(
     id: id_number,
-    description: 'This secluded area is notorious for being prime looting territory '\
-                 'for local Bandits.',
+    description: 'This secluded area is notorious for being prime looting territory for local Bandits.',
     advanced_description: 'The path is covered in a thin layer of leaves and shavings of '\
                           'Aurel Bark, an oft harvested ingredient by workers that used to be sold in Newtown.',
     type: 'Out of Town',
@@ -73,9 +72,8 @@ ap.seed(
 ap.seed(
   id: 13,
   description: "The Barracks are dimly lit and the room you're in is very cold.",
-  advanced_description: 'As you look around, you see the light casting a shadow down the '\
-                        "tunnel from the path you've just entered from. The walls have various weapons hung up, but "\
-                        'all are broken beyond use.',
+  advanced_description: 'As you look around, you see the light casting a shadow down the tunnel from the path '\
+                        "you've just entered from. The walls have various weapons hung up, but all are broken beyond use.",
   type: 'Dungeon',
   location_id: 'barracks'
 )
@@ -84,9 +82,8 @@ ap.seed(
   ap.seed(
     id: id_number,
     description: "The Barracks are dimly lit and the room you're in is very cold.",
-    advanced_description: 'Looking around, you can tell that no traveller has ventured into '\
-                          "these abandoned Barracks for a long time. There are some stains on the walls, but they're "\
-                          'too dark to be blood, it almost looks ... inhuman.',
+    advanced_description: 'Looking around, you can tell that no traveller has ventured into these abandoned Barracks for a long time. '\
+                          "There are some stains on the walls, but they're too dark to be blood, it almost looks ... inhuman.",
     type: 'Dungeon',
     location_id: 'barracks',
     ktp: true
@@ -95,8 +92,7 @@ end
 
 ap.seed(
   id: 19,
-  description: "The Barracks are dimly lit and the room you're in is very cold... "\
-               'But you can feel some heat radiating from the door.',
+  description: "The Barracks are dimly lit and the room you're in is very cold... But you can feel some heat radiating from the door.",
   advanced_description: 'You notice that the style of the area is all the same, except for '\
                         'the fact there is a door to the east, what looks like some sort of Office. The door is locked '\
                         'and has not been opened in some time, judging by the rust that has built up.',
