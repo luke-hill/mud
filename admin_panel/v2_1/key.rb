@@ -18,14 +18,14 @@ ap.seed(
 
 ap.seed(
   id: 'sylvanian_ingot',
-  use_message: "You hand the Ranger the Sylvanian Ingot.... But he steps back aghast.... \"I've not seen"\
+  use_message: "You hand the Ranger the Sylvanian Ingot.... But he steps back aghast.... \"I've not seen "\
                "this in decades! - I wouldn't know where to start... Maybe try the Smiths in Sovereign City.\""
 )
 
 ap.seed(
   id: 'refined_sylvanian_ingot',
   name: 'Refined Sylvanian Ingot',
-  description: 'This is a smaller, slightly purer form of Sylvanian Steel. This definitely looks closer to the blades '\
-               'that could have been used in their armies long ago!. Given they were known for their metallurgy, it is unsurprising that the '\
+  description: 'This is a smaller, slightly purer form of Sylvanian Steel. This definitely looks closer to the blades that '\
+               'could have been used in their armies long ago!. Given they were known for their metallurgy, it is unsurprising that the '\
                'sheen coming off it dazzles in the moonlight, glistening with a brilliant silver hue.'
 )

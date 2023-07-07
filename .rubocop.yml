@@ -26,3 +26,6 @@ RSpec/MessageSpies:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
+
+Layout/LineLength:
+  Max: 140

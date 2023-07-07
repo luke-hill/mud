@@ -64,9 +64,9 @@ Style/Documentation:
     - 'app/game.rb'
     - 'app/shop.rb'
 
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
-# URISchemes: http, https
-Layout/LineLength:
-  Max: 128
+## Offense count: 2
+## Cop supports --auto-correct.
+## Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
+## URISchemes: http, https
+#Layout/LineLength:
+#  Max: 128
