@@ -8,7 +8,7 @@ ap.seed(
   id: 'orc',
   name: 'Orc',
   description: 'The Orc stands at over 8 feet tall. His Dagger that he is wielding is '\
-'dripping with blood from its latest victim',
+               'dripping with blood from its latest victim',
   weapon_id: 'orc_dagger',
   armor_id: 'orc_shield',
   lower_hp_limit: 100,

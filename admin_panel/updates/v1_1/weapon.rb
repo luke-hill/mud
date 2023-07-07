@@ -8,7 +8,7 @@ ap.seed(
   id: 'sharp_fangs',
   name: 'Sharp Fangs',
   description: 'The sharp fangs of the Forest Path Wolves. They glisten with blood '\
-'from their latest victim.',
+               'from their latest victim.',
   min_power: 11,
   max_power: 17
 )

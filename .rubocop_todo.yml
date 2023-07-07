@@ -13,12 +13,12 @@
 # 140 OFFENSES - 14th OCT 2022 ##
 # 141 OFFENSES - 23th JUN 2023 ##
 
-# Offense count: 78
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, IndentationWidth.
-# SupportedStyles: aligned, indented
-Layout/LineEndStringConcatenationIndentation:
-  Enabled: false
+## Offense count: 78
+## Cop supports --auto-correct.
+## Configuration parameters: EnforcedStyle, IndentationWidth.
+## SupportedStyles: aligned, indented
+#Layout/LineEndStringConcatenationIndentation:
+#  Enabled: false
 
 # Offense count: 1
 Lint/UnreachableCode:

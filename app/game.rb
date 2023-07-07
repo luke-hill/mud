@@ -57,7 +57,7 @@ module MUD
         sleep 0.5
         MUD::Screen.output(
           'You are in Newtown, and as avaLancHe ... our intrepid explorer, you have spawned '\
-'in our village to kill Several Monsters and then the boss - The Orc!'
+          'in our village to kill Several Monsters and then the boss - The Orc!'
         )
       end
     end

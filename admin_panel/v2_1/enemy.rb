@@ -26,7 +26,7 @@ ap.seed(
   phrase1_message: 'GlugggggggGGG. Hurry up, the Taverns got more ale for me today.',
   phrase2_chance: 0.1,
   phrase2_message: 'Row, row, row your boat, gently down the stream. If you see a Drunk '\
-"Brawler don't forget to scream."
+                   "Brawler don't forget to scream."
 )
 
 ap.seed(
@@ -41,7 +41,7 @@ ap.seed(
   id: 'bandit',
   phrase1_chance: 0.3,
   phrase1_message: 'Do you like my Leathers. I fashioned them out of the last fool who dared '\
-"to try steal from meeee! You'll be next.",
+                   "to try steal from meeee! You'll be next.",
   phrase2_chance: 0.1,
   phrase2_message: 'Soooo you want to find out where we have our harvesting operation....'
 )

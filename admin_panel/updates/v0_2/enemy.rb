@@ -24,7 +24,7 @@ ap.seed(
   id: 'goblin',
   name: 'Goblin',
   description: 'A Hideous creature, borne out of pure evil! Luckily this one is just an '\
-"infant, so shouldn't pose much threat",
+               "infant, so shouldn't pose much threat",
   weapon_id: 'goblin_axe',
   armor_id: 'unarmored',
   lower_hp_limit: 5,
@@ -41,8 +41,8 @@ ap.seed(
   id: 'brawler',
   name: 'Brawler',
   description: "This Brawler is one of the many test 'subjects' that have come to the arena "\
-'to earn their weekly ale money. He staggers at you with a half rusted sword, and gargles '\
-'something in-between swigs from his ale bottle.',
+               'to earn their weekly ale money. He staggers at you with a half rusted sword, and gargles '\
+               'something in-between swigs from his ale bottle.',
   weapon_id: 'rusty_sword',
   armor_id: 'vest',
   lower_hp_limit: 7,
