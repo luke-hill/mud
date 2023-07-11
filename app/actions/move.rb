@@ -97,31 +97,31 @@ module MUD
       end
 
       def north_room_id
-        @north_room_id ||= connected_rooms['north']
+        connected_rooms['north']
       end
 
       def south_room_id
-        @south_room_id ||= connected_rooms['south']
+        connected_rooms['south']
       end
 
       def east_room_id
-        @east_room_id ||= connected_rooms['east']
+        connected_rooms['east']
       end
 
       def west_room_id
-        @west_room_id ||= connected_rooms['west']
+        connected_rooms['west']
       end
 
       def up_room_id
-        @up_room_id ||= connected_rooms['up']
+        connected_rooms['up']
       end
 
       def down_room_id
-        @down_room_id ||= connected_rooms['down']
+        connected_rooms['down']
       end
 
       def connected_rooms
-        player.current_room.connected_rooms
+        @connected_rooms ||= player.current_room.connected_rooms
       end
 
       def move_to(direction, room_id)
