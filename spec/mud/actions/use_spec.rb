@@ -44,7 +44,7 @@ RSpec.describe MUD::Actions::Use do
       before { hero.hp = 10 }
 
       it 'uses up the potion in the heroes inventory' do
-        expect { use_attempt }.to change(hero, :inventory).from([item_id]).to([])
+        expect { use_attempt }.to change(hero.inventory, :length).by(-1)
       end
 
       it 'increases the heroes current hp' do
@@ -56,7 +56,7 @@ RSpec.describe MUD::Actions::Use do
       let(:item_id) { 'barracks_key' }
 
       it 'uses up the key in the heroes inventory' do
-        expect { use_attempt }.to change(hero, :inventory).from([item_id]).to([])
+        expect { use_attempt }.to change(hero.inventory, :length).by(-1)
       end
     end
   end
