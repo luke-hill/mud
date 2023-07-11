@@ -104,7 +104,7 @@ RSpec.describe MUD::Classes::Base do
     end
   end
 
-  describe '#prevent_overflow_hp' do
+  describe '#prevent_overflow_mp' do
     it 'prevents your mp from going over your max amount' do
       player.mp = 26
       player.prevent_overflow_mp
