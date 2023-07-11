@@ -43,14 +43,14 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
     rspec-support (3.12.1)
-    rubocop (1.31.2)
+    rubocop (1.37.1)
       json (~> 2.3)
       parallel (~> 1.10)
-      parser (>= 3.1.0.0)
+      parser (>= 3.1.2.1)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 1.8, < 3.0)
       rexml (>= 3.2.5, < 4.0)
-      rubocop-ast (>= 1.18.0, < 2.0)
+      rubocop-ast (>= 1.23.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.29.0)
@@ -60,8 +60,8 @@ GEM
       rubocop-ast (>= 0.4.0)
     rubocop-rake (0.6.0)
       rubocop (~> 1.0)
-    rubocop-rspec (2.10.0)
-      rubocop (~> 1.19)
+    rubocop-rspec (2.14.2)
+      rubocop (~> 1.33)
     ruby-progressbar (1.13.0)
     ruby2ruby (2.5.0)
       ruby_parser (~> 3.1)
@@ -97,10 +97,10 @@ DEPENDENCIES
   delegate_matcher
   rake
   rspec (~> 3.12.0)
-  rubocop (~> 1.31.0)
+  rubocop (~> 1.37.0)
   rubocop-performance (~> 1.18.0)
   rubocop-rake (~> 0.6.0)
-  rubocop-rspec (~> 2.10.0)
+  rubocop-rspec (~> 2.14.0)
   simplecov
   yard
 
