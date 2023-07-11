@@ -34,7 +34,7 @@ end
   ap.seed(
     id: id_number,
     description: "This secluded area is notorious for being prime looting territory for local Bandits. You've happened on one of " \
-                 "the inevitable dead-ends. Usually used to ambush travellers, you prepare for the worst.",
+                 'the inevitable dead-ends. Usually used to ambush travellers, you prepare for the worst.',
     advanced_description: 'This area seems to be covered in rags, as if the Bandits wanted ' \
                           'to keep the path clean, to lure even more un-suspecting travellers into it.',
     location_id: 'forest_path',

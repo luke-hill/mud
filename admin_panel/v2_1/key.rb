@@ -13,7 +13,7 @@ ap.seed(
 ap.seed(
   id: 'aurel_bark',
   use_message: "You hand the Ranger the Aurel Bark. He takes one look at it and remarks that it's not enough, for him to work with. " \
-               "He needs more ..... a lot more."
+               'He needs more ..... a lot more.'
 )
 
 ap.seed(

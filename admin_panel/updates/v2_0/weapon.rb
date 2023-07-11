@@ -24,7 +24,7 @@ ap.seed(
 ap.seed(
   id: 'rusty_sword',
   name: 'Rusty Sword',
-  description: "A silver sword. Though basic by design, it looks as though it has rusted up due to lack of use",
+  description: 'A silver sword. Though basic by design, it looks as though it has rusted up due to lack of use',
   min_power: 2,
   max_power: 4
 )
