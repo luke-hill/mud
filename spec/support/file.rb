@@ -15,7 +15,7 @@ module SpecSupport
     def switch_logging_to_temp_file
       MUD::Screen.output('BLANK')
       ENV['TEST_LOG_NAME'] = SecureRandom.uuid
-      MUD::Screen.instance_variable_get(:@logger).reopen("log/#{ENV['TEST_LOG_NAME']}.log")
+      MUD::Screen.instance_variable_get(:@logger).reopen("log/#{log_name}.log")
     end
 
     def remove_test_screen_logs
@@ -27,7 +27,7 @@ module SpecSupport
     end
 
     def log_name
-      ENV['TEST_LOG_NAME'] || 'rspec_tests'
+      ENV.fetch('TEST_LOG_NAME', 'rspec_tests')
     end
   end
 end
