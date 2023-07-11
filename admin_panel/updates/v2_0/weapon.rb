@@ -7,7 +7,7 @@ ap = AdminPanel::Seeder.new(:weapon)
 ap.seed(
   id: 'ivory_dagger',
   name: 'Ivory Dagger',
-  description: 'The flecks of gold engraved into the hilt disguise the fact that this weapon is the favoured amongst the '\
+  description: 'The flecks of gold engraved into the hilt disguise the fact that this weapon is the favoured amongst the ' \
                'Bandits of the Forest Path. The Ivory in this weapon came from the Woolly Mammoths of Avradia',
   min_power: 5,
   max_power: 8

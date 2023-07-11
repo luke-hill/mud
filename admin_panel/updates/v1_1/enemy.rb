@@ -7,7 +7,7 @@ ap = AdminPanel::Seeder.new(:enemy)
 ap.seed(
   id: 'bandit',
   name: 'Bandit',
-  description: 'The Bandit is a typical ruffian. Skulking in the shadows, he preys on targets like you that roam outside '\
+  description: 'The Bandit is a typical ruffian. Skulking in the shadows, he preys on targets like you that roam outside ' \
                'the safety of any town gates, ready to plunder whatever you may be carrying.',
   weapon_id: 'ivory_dagger',
   armor_id: 'bandit_leathers',
@@ -24,7 +24,7 @@ ap.seed(
 ap.seed(
   id: 'wolf',
   name: 'Wolf',
-  description: 'This Wolf is unlike the normal Rabid Wolves you see floating around. Its fangs '\
+  description: 'This Wolf is unlike the normal Rabid Wolves you see floating around. Its fangs ' \
                "are dripping with blood, and it eyes you up... Like you're its next meal!",
   weapon_id: 'sharp_fangs',
   armor_id: 'wolf_hide',

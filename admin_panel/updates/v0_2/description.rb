@@ -8,7 +8,7 @@ ap = AdminPanel::Seeder.new(:description)
   ap.seed(
     id: id_number,
     description: 'The rocky street here looks unfinished, you notice a cable on the floor next to the main road.',
-    advanced_description: 'Once destined to be the worlds first eco-friendly housing estate, The Newtown Residential District '\
+    advanced_description: 'Once destined to be the worlds first eco-friendly housing estate, The Newtown Residential District ' \
                           'lingers unfinished, with construction equipment strewn everywhere.',
     location_id: 'newtown_residential_district',
     type: 'Town',
@@ -18,9 +18,9 @@ end
 
 ap.seed(
   id: 23,
-  description: 'The rocky street here looks unfinished, you notice a cable on the floor next to '\
+  description: 'The rocky street here looks unfinished, you notice a cable on the floor next to ' \
                'the main road. There is a well to the east, next to a Small Bank for the Villagers.',
-  advanced_description: 'Once destined to be the worlds first eco-friendly housing estate, The Newtown Residential District '\
+  advanced_description: 'Once destined to be the worlds first eco-friendly housing estate, The Newtown Residential District ' \
                         'lingers unfinished. The sign for the bank looks rusty and dated as it flaps about in the wind.',
   location_id: 'newtown_residential_district',
   type: 'Town',
@@ -31,7 +31,7 @@ ap.seed(
   ap.seed(
     id: id_number,
     description: 'The rocky street here looks unfinished, you see signs that this used to be a regular hive of activity.',
-    advanced_description: 'This area of the Newtown Residential District houses office buildings and even a long disbanded'\
+    advanced_description: 'This area of the Newtown Residential District houses office buildings and even a long disbanded' \
                           "children's playground. Not that any parent would want their child playing next to the machinery!",
     location_id: 'newtown_residential_district_crossroads',
     type: 'Town',
@@ -52,10 +52,10 @@ end
 
 ap.seed(
   id: 34,
-  description: 'The Newtown bank is served by a single Teller. He sits behind the bars guarding '\
+  description: 'The Newtown bank is served by a single Teller. He sits behind the bars guarding ' \
                'a small storage room, presumably the sole vault on the premises.',
-  advanced_description: "As you'd expect from a small bank, there is little extravagance... "\
-                        'or security it seems. Posters lie on the walls offering rewards for information on the '\
+  advanced_description: "As you'd expect from a small bank, there is little extravagance... " \
+                        'or security it seems. Posters lie on the walls offering rewards for information on the ' \
                         'whereabouts of the local Bandits that are hiding out and stealing from the patrons of the Bank.',
   location_id: 'newtown_bank',
   type: 'Town',
