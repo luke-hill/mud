@@ -1,13 +1,13 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (7.0.5)
+    activesupport (7.0.6)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
     ast (2.4.2)
-    colorize (1.0.5)
+    colorize (1.1.0)
     concurrent-ruby (1.2.2)
     delegate_matcher (0.4.3)
       proc_extensions (~> 0.2)
@@ -42,7 +42,7 @@ GEM
     rspec-mocks (3.12.5)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
-    rspec-support (3.12.0)
+    rspec-support (3.12.1)
     rubocop (1.31.2)
       json (~> 2.3)
       parallel (~> 1.10)
