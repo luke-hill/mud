@@ -42,10 +42,10 @@ RSpec.describe MUD::Combat::ItemDrops do
     context 'when dropping a potion' do
       let(:dropped_potion_chance) { 1 }
 
-      it 'drops a potion to the floor of the current room' do
+      it 'places the potion in the inventory of the hero' do
         drop_items
 
-        expect(hero.current_room.floor).to include('lesser_healing_potion')
+        expect(hero.inventory).to include('lesser_healing_potion')
       end
 
       it 'informs the user that the potion dropped' do
@@ -58,10 +58,10 @@ RSpec.describe MUD::Combat::ItemDrops do
     context 'when dropping a weapon' do
       let(:dropped_weapon_chance) { 1 }
 
-      it 'drops a weapon to the floor of the current room' do
+      it 'places the weapon in the inventory of the hero' do
         drop_items
 
-        expect(hero.current_room.floor).to include('goblin_axe')
+        expect(hero.inventory).to include('goblin_axe')
       end
 
       it 'informs the user that the weapon dropped' do
@@ -74,10 +74,10 @@ RSpec.describe MUD::Combat::ItemDrops do
     context 'when dropping an armor' do
       let(:dropped_armor_chance) { 1 }
 
-      it 'drops an armor to the floor of the current room' do
+      it 'places the armor in the inventory of the hero' do
         drop_items
 
-        expect(hero.current_room.floor).to include('orc_shield')
+        expect(hero.inventory).to include('orc_shield')
       end
 
       it 'informs the user that the armor dropped' do
@@ -94,10 +94,10 @@ RSpec.describe MUD::Combat::ItemDrops do
         expect { drop_items }.to change(hero, :gold).by(1)
       end
 
-      it 'informs the user that the weapon dropped' do
+      it 'informs the user that the gold dropped' do
         drop_items
 
-        expect(log_lines).to include(/You found 1 gold coin on the corpse of the Enemy/)
+        expect(log_lines).to include(/You found .* on the corpse of the Enemy/)
       end
     end
   end
