@@ -116,9 +116,6 @@ module MUD
       # @return [Boolean]
       # The current capped status of the player (Whether they are able to earn any more experience)
       def capped?
-        # For now this is false - Until we get the full seeded model introduced
-        return false
-
         experience >= xp_for_next_level['cap']
       end
 

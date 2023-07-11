@@ -23,7 +23,7 @@ module MUD
       # If the user is originally capped then the entire method is skipped and a
       # message is sent to notify the hero that they should level up.
       def increase
-        return xp_capped_message if capped?
+        return xp_capped_message if hero.capped?
 
         increase_hero_xp
         MUD::Logger.debug("Hero xp increased by #{total_xp_gain}")
@@ -33,13 +33,7 @@ module MUD
       private
 
       def xp_capped_message
-        MUD::Screen.output(
-          'You feel strong enough to reach the next level. Seek out a Guild.'.yellow.blink
-        )
-      end
-
-      def capped?
-        hero.capped?
+        MUD::Screen.output('You feel strong enough to reach the next level. Seek out a Guild.'.yellow.blink)
       end
 
       def increase_hero_xp
