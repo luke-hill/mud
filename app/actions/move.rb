@@ -57,67 +57,43 @@ module MUD
       end
 
       def north
-        return MUD::Screen.output('You cannot go north'.red) unless north_room_id
+        return MUD::Screen.output('You cannot go north'.red) unless connected_rooms['north']
 
-        move_to('north', north_room_id)
+        move_to('north', connected_rooms['north'])
       end
       alias n north
 
       def south
-        return MUD::Screen.output('You cannot go south'.red) unless south_room_id
+        return MUD::Screen.output('You cannot go south'.red) unless connected_rooms['south']
 
-        move_to('south', south_room_id)
+        move_to('south', connected_rooms['south'])
       end
       alias s south
 
       def east
-        return MUD::Screen.output('You cannot go east'.red) unless east_room_id
+        return MUD::Screen.output('You cannot go east'.red) unless connected_rooms['east']
 
-        move_to('east', east_room_id)
+        move_to('east', connected_rooms['east'])
       end
       alias e east
 
       def west
-        return MUD::Screen.output('You cannot go west'.red) unless west_room_id
+        return MUD::Screen.output('You cannot go west'.red) unless connected_rooms['west']
 
-        move_to('west', west_room_id)
+        move_to('west', connected_rooms['west'])
       end
       alias w west
 
       def up
-        return MUD::Screen.output('You cannot go up'.red) unless up_room_id
+        return MUD::Screen.output('You cannot go up'.red) unless connected_rooms['up']
 
-        move_to('up', up_room_id)
+        move_to('up', connected_rooms['up'])
       end
 
       def down
-        return MUD::Screen.output('You cannot go down'.red) unless down_room_id
+        return MUD::Screen.output('You cannot go down'.red) unless connected_rooms['down']
 
-        move_to('down', down_room_id)
-      end
-
-      def north_room_id
-        connected_rooms['north']
-      end
-
-      def south_room_id
-        connected_rooms['south']
-      end
-
-      def east_room_id
-        connected_rooms['east']
-      end
-
-      def west_room_id
-        connected_rooms['west']
-      end
-
-      def up_room_id
-        connected_rooms['up']
-      end
-
-      def down_room_id
-        connected_rooms['down']
+        move_to('down', connected_rooms['down'])
       end
 
       def connected_rooms
