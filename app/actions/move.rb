@@ -59,48 +59,48 @@ module MUD
       def north
         return MUD::Screen.output('You cannot go north'.red) unless connected_rooms['north']
 
-        move_to('north', connected_rooms['north'])
+        travel('north')
       end
       alias n north
 
       def south
         return MUD::Screen.output('You cannot go south'.red) unless connected_rooms['south']
 
-        move_to('south', connected_rooms['south'])
+        travel('south')
       end
       alias s south
 
       def east
         return MUD::Screen.output('You cannot go east'.red) unless connected_rooms['east']
 
-        move_to('east', connected_rooms['east'])
+        travel('east')
       end
       alias e east
 
       def west
         return MUD::Screen.output('You cannot go west'.red) unless connected_rooms['west']
 
-        move_to('west', connected_rooms['west'])
+        travel('west')
       end
       alias w west
 
       def up
         return MUD::Screen.output('You cannot go up'.red) unless connected_rooms['up']
 
-        move_to('up', connected_rooms['up'])
+        travel('up')
       end
 
       def down
         return MUD::Screen.output('You cannot go down'.red) unless connected_rooms['down']
 
-        move_to('down', connected_rooms['down'])
+        travel('down')
       end
 
       def connected_rooms
         @connected_rooms ||= player.current_room.connected_rooms
       end
 
-      def move_to(direction, _unused_id)
+      def travel(direction)
         connected_rooms[direction].tap do |room_id|
           MUD::Logger.info("Moving to Room-ID: #{room_id}")
           MUD::Screen.output("You went #{direction}")
