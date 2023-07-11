@@ -5,23 +5,24 @@ RSpec.describe MUD::Combat::Fight do
 
   let(:fight_instance) { described_class.new(hero, enemy) }
   let(:hero) { MUD::Classes::Fighter.new }
-  let(:weapon_name) { MUD::Weapon.new('knife').name }
-  let(:enemy) { create(:enemy, enemy_data) }
-  let(:enemy_data) do
-    {
-      name: 'Enemy',
-      description: 'A Description',
-      weapon_id: 'fists',
-      armor_id: 'unarmored',
-      lower_hp_limit: 5,
-      upper_hp_limit: 13,
-      accuracy: 0.7,
-      lower_gold_limit: 0,
-      upper_gold_limit: 3,
-      xp: 2,
-      xp_killshot: 10,
-      stamina: 1
-    }
+  let(:enemy) do
+    create(
+      :enemy,
+      {
+        name: 'Enemy',
+        description: 'A Description',
+        weapon_id: 'fists',
+        armor_id: 'unarmored',
+        lower_hp_limit: 5,
+        upper_hp_limit: 13,
+        accuracy: 0.7,
+        lower_gold_limit: 0,
+        upper_gold_limit: 3,
+        xp: 2,
+        xp_killshot: 10,
+        stamina: 1
+      }
+    )
   end
 
   describe '#fight' do
@@ -48,15 +49,9 @@ RSpec.describe MUD::Combat::Fight do
 
   describe '#fight_once' do
     let(:times) { 1 }
-    let(:item_drops_instance) do
-      MUD::Combat::ItemDrops.new(hero, enemy)
-    end
-    let(:attack_instance) do
-      MUD::Combat::Attack.new(hero, enemy)
-    end
-    let(:defend_instance) do
-      MUD::Combat::Defend.new(hero, enemy)
-    end
+    let(:item_drops_instance) { MUD::Combat::ItemDrops.new(hero, enemy) }
+    let(:attack_instance) { MUD::Combat::Attack.new(hero, enemy) }
+    let(:defend_instance) { MUD::Combat::Defend.new(hero, enemy) }
     let(:enemy_killed?) { true }
 
     before do
