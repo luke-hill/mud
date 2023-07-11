@@ -1,4 +1,4 @@
-1) Work out for v3 who would or should drop endurance potion
+1) Work out for v3 who would or should drop endurance potion - DEFERRED TO V4
 2) When items have been dropped. Auto-add them to players inventory if available
 3) Have rspec seed a "test" dummy set of data files. These can be then "trusted" in the terms of
 unit/feature tests
