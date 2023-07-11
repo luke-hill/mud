@@ -100,11 +100,13 @@ module MUD
         @connected_rooms ||= player.current_room.connected_rooms
       end
 
-      def move_to(direction, room_id)
-        MUD::Logger.info("Moving to Room-ID: #{room_id}")
-        MUD::Screen.output("You went #{direction}")
-        player.current_room.leave
-        player.current_room = fetch_or_create_room(room_id)
+      def move_to(direction, _unused_id)
+        connected_rooms[direction].tap do |room_id|
+          MUD::Logger.info("Moving to Room-ID: #{room_id}")
+          MUD::Screen.output("You went #{direction}")
+          player.current_room.leave
+          player.current_room = fetch_or_create_room(room_id)
+        end
         player.current_room.visit
       end
 
