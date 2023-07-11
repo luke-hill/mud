@@ -64,7 +64,7 @@ module MUD
 
       def find_item
         floor.detect do |item|
-          item[:id] == item_id
+          item == item_id
         end
       end
     end

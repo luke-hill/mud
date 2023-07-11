@@ -23,36 +23,36 @@ module MUD
       # armor_id  --> If the enemy has a +dropped_armor_id+ property
       # gold      --> This will always drop an amount of gold between the min/max values
       def process
-        drop_potion if enemy.potion?
-        drop_weapon if enemy.weapon?
+        yield_potion if enemy.potion?
+        yield_weapon if enemy.weapon?
         drop_armor if enemy.armor?
-        give_hero_gold
+        yield_gold
       end
 
       private
 
-      def drop_potion
-        return unless drop_potion?
+      def yield_potion
+        return MUD::Logger.debug("Enemy didn't drop potion") unless yield_potion?
 
-        floor << enemy.dropped_potion_id
+        drop_location << enemy.dropped_potion_id
         MUD::Screen.output(enemy.dropped_potion_message.yellow)
       end
 
-      def drop_potion?
+      def yield_potion?
         chance = rand
         MUD::Logger.debug("Random chance to drop potion #{chance}")
         MUD::Logger.debug("Chance needed #{enemy.dropped_potion_chance}")
         chance < enemy.dropped_potion_chance
       end
 
-      def drop_weapon
-        return unless drop_weapon?
+      def yield_weapon
+        return MUD::Logger.debug("Enemy didn't drop weapon") unless yield_weapon?
 
-        floor << enemy.dropped_weapon_id
+        drop_location << enemy.dropped_weapon_id
         MUD::Screen.output(enemy.dropped_weapon_message.yellow)
       end
 
-      def drop_weapon?
+      def yield_weapon?
         chance = rand
         MUD::Logger.debug("Random chance to drop weapon #{chance}")
         MUD::Logger.debug("Chance needed #{enemy.dropped_weapon_chance}")
@@ -60,9 +60,9 @@ module MUD
       end
 
       def drop_armor
-        return unless drop_armor?
+        return MUD::Logger.debug("Enemy didn't drop armor") unless drop_armor?
 
-        floor << enemy.dropped_armor_id
+        drop_location << enemy.dropped_armor_id
         MUD::Screen.output(enemy.dropped_armor_message.yellow)
       end
 
@@ -73,16 +73,28 @@ module MUD
         chance < enemy.dropped_armor_chance
       end
 
-      def give_hero_gold
-        return unless enemy.gold.positive?
+      def yield_gold
+        return MUD::Logger.debug("Enemy didn't have any gold") unless enemy.gold.positive?
 
-        MUD::Screen.output("You found #{gold_amount} on the corpse of the #{enemy.name}")
+        MUD::Screen.output("You found #{gold_amount.yellow} on the corpse of the #{enemy.name}")
         hero.gold += enemy.gold
         enemy.gold = 0
       end
 
       def gold_amount
         "#{enemy.gold} #{'gold coin'.pluralize(enemy.gold)}"
+      end
+
+      def drop_location
+        if inventory_space_available?
+          hero.inventory
+        else
+          floor
+        end
+      end
+
+      def inventory_space_available?
+        hero.inventory.length < hero.max_inventory_size
       end
 
       def floor

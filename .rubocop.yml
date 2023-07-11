@@ -10,6 +10,8 @@ inherit_mode:
     - Exclude
 
 AllCops:
+  # Match minimum target version in .ruby-version
+  TargetRubyVersion: 3.1
   # Display all verbose info on failures to help people triage how to fix
   DisplayCopNames: true
   DisplayStyleGuide: true
@@ -18,12 +20,6 @@ AllCops:
 
 Layout/LineLength:
   Max: 140
-
-# All spec files are huge blocks, should just ignore them
-# Fixed in rubocop-rspec 2.11.0 (2022-05-18)
-Metrics/BlockLength:
-  Exclude:
-    - 'spec/**/*.rb'
 
 # Better syntax for validating that a message should be received
 # We use lots of delegation classes so this is better
