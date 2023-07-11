@@ -36,9 +36,9 @@ module AdminPanel
       @type = type
     end
 
-    # @return [String]
+    # @return [Integer]
     # Seed an individual data point into a specific folder based on +type+ input
-    # Returns the old/new data-points as an update during seed process
+    # Outputs the old/new data-points as an update during seed process
     def seed(options)
       clear_id
       self.options = options
