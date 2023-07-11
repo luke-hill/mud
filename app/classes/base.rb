@@ -23,7 +23,7 @@ module MUD
       def initialize
         @current_room = starting_room
         @equipment = starting_equipment
-        @rooms_visited = starting_rooms_visited
+        @rooms_visited = {}
       end
 
       # @return [String]
@@ -32,10 +32,10 @@ module MUD
         MUD::Screen.output(current_room.advanced_description)
       end
 
-      # @return [String]
+      # @return [Array]
       # This returns a newline delimited string which outputs each attribute and its current value
       def view_attributes
-        attribute_names.each do |attribute|
+        MUD::Helpers::AttributeAccessors.attribute_names.each do |attribute|
           MUD::Logger.debug('Call made to view attributes')
           MUD::Screen.output("#{attribute}: #{attributes[attribute]}".yellow)
         end
@@ -56,7 +56,6 @@ module MUD
       # @return [String]
       # The wrapper method call that attempts to move in the direction provided
       def move(direction)
-        Logger.debug("Attempting to move #{unnabbreviate(direction, type: :movement)}")
         MUD::Actions::Move.new(self, direction).move
       end
 
@@ -87,7 +86,6 @@ module MUD
       # @return [String]
       # The wrapper method call that attempts to equip the item_id provided
       def equip(item_id)
-        Logger.debug("Attempting to equip #{item_id}")
         MUD::Actions::Equip.new(self, item_id).equip
       end
 
@@ -106,7 +104,6 @@ module MUD
       # @return [String]
       # The wrapper method call that attempts to use the item_id provided
       def use(item_id)
-        Logger.debug("Attempting to use key/potion '#{item_id}'")
         MUD::Actions::Use.new(self, item_id).use
       end
 
@@ -119,9 +116,6 @@ module MUD
       # @return [Boolean]
       # The current capped status of the player (Whether they are able to earn any more experience)
       def capped?
-        # For now this is false - Until we get the full seeded model introduced
-        return false
-
         experience >= xp_for_next_level['cap']
       end
 
@@ -152,11 +146,7 @@ module MUD
       private
 
       def starting_room
-        MUD::Room.new(starting_room_id)
-      end
-
-      def starting_room_id
-        1
+        MUD::Room.new(1)
       end
 
       def starting_equipment
@@ -164,14 +154,6 @@ module MUD
           weapon: 'fists',
           armor: 'unarmored'
         }
-      end
-
-      def starting_rooms_visited
-        {}
-      end
-
-      def attribute_names
-        MUD::Helpers::AttributeAccessors.attribute_names
       end
 
       def xp_for_next_level

@@ -10,22 +10,12 @@ RSpec.describe MUD::Combat::ItemDrops do
   let(:hero) { MUD::Classes::Fighter.new }
   let(:enemy) { create(:enemy, enemy_data) }
   let(:enemy_data) do
-    { name: 'Enemy' }.merge(potion_drop_data).merge(weapon_drop_data).merge(armor_drop_data)
-  end
-  let(:potion_drop_data) do
     {
+      name: 'Enemy',
       dropped_potion_id: 'lesser_healing_potion',
-      dropped_potion_message: 'Drop potion message'
-    }
-  end
-  let(:weapon_drop_data) do
-    {
+      dropped_potion_message: 'Drop potion message',
       dropped_weapon_id: 'goblin_axe',
-      dropped_weapon_message: 'I drop a weapon!!'
-    }
-  end
-  let(:armor_drop_data) do
-    {
+      dropped_weapon_message: 'I drop a weapon!!',
       dropped_armor_id: 'orc_shield',
       dropped_armor_message: 'This be a shield!'
     }
@@ -55,7 +45,7 @@ RSpec.describe MUD::Combat::ItemDrops do
       it 'drops a potion to the floor of the current room' do
         drop_items
 
-        expect(hero.current_room.floor).to include(potion_drop_data[:dropped_potion_id])
+        expect(hero.current_room.floor).to include('lesser_healing_potion')
       end
 
       it 'informs the user that the potion dropped' do
@@ -71,7 +61,7 @@ RSpec.describe MUD::Combat::ItemDrops do
       it 'drops a weapon to the floor of the current room' do
         drop_items
 
-        expect(hero.current_room.floor).to include(weapon_drop_data[:dropped_weapon_id])
+        expect(hero.current_room.floor).to include('goblin_axe')
       end
 
       it 'informs the user that the weapon dropped' do
@@ -87,7 +77,7 @@ RSpec.describe MUD::Combat::ItemDrops do
       it 'drops an armor to the floor of the current room' do
         drop_items
 
-        expect(hero.current_room.floor).to include(armor_drop_data[:dropped_armor_id])
+        expect(hero.current_room.floor).to include('orc_shield')
       end
 
       it 'informs the user that the armor dropped' do

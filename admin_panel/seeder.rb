@@ -36,9 +36,9 @@ module AdminPanel
       @type = type
     end
 
-    # @return [String]
+    # @return [Integer]
     # Seed an individual data point into a specific folder based on +type+ input
-    # Returns the old/new data-points as an update during seed process
+    # Outputs the old/new data-points as an update during seed process
     def seed(options)
       clear_id
       self.options = options
@@ -122,7 +122,7 @@ module AdminPanel
       YAML.load_file(yml_file_location)
     rescue Errno::ENOENT
       puts "File does not exist @ #{yml_file_location}. Creating new blank YML file."
-      File.open(yml_file_location, 'w+') { |f| f.write({}) }
+      File.write(yml_file_location, {})
       YAML.load_file(yml_file_location)
     end
 

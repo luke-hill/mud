@@ -4,25 +4,26 @@ RSpec.describe MUD::Combat::Attack do
   subject(:attack_instance) { described_class.new(hero, enemy) }
 
   let(:hero) { MUD::Classes::Fighter.new }
-  let(:weapon_name) { MUD::Weapon.new(weapon_id).name }
-  let(:weapon_id) { 'knife' }
-  let(:enemy) { create(:enemy, enemy_data) }
+  let(:weapon_name) { MUD::Weapon.new('knife').name }
   let(:enemy_name) { 'Enemy' }
-  let(:enemy_data) do
-    {
-      name: enemy_name,
-      description: 'A Description',
-      weapon_id: 'fists',
-      armor_id: 'unarmored',
-      lower_hp_limit: 5,
-      upper_hp_limit: 13,
-      accuracy: 0.7,
-      lower_gold_limit: 0,
-      upper_gold_limit: 3,
-      xp: 2,
-      xp_killshot: 10,
-      stamina: 1
-    }
+  let(:enemy) do
+    create(
+      :enemy,
+      {
+        name: enemy_name,
+        description: 'A Description',
+        weapon_id: 'fists',
+        armor_id: 'unarmored',
+        lower_hp_limit: 5,
+        upper_hp_limit: 13,
+        accuracy: 0.7,
+        lower_gold_limit: 0,
+        upper_gold_limit: 3,
+        xp: 2,
+        xp_killshot: 10,
+        stamina: 1
+      }
+    )
   end
 
   describe '#attack' do
@@ -38,7 +39,7 @@ RSpec.describe MUD::Combat::Attack do
     end
 
     before do
-      allow(hero).to receive(:weapon).and_return(weapon_id)
+      allow(hero).to receive(:weapon).and_return('knife')
       allow(attack_instance).to receive(:damage_dealt).and_return(damage_dealt)
       allow(attack_instance).to receive(:missed?).and_return(missed?)
       switch_logging_to_temp_file

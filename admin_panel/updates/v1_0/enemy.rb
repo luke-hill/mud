@@ -7,8 +7,7 @@ ap = AdminPanel::Seeder.new(:enemy)
 ap.seed(
   id: 'goblin_archer',
   name: 'Goblin Archer',
-  description: 'Concealing himself in the distance, the Goblin Archer uses his metronomic '\
-'eyes to aid his accuracy',
+  description: 'Concealing himself in the distance, the Goblin Archer uses his metronomic eyes to aid his accuracy',
   weapon_id: 'small_bow',
   armor_id: 'unarmored',
   lower_hp_limit: 35,

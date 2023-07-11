@@ -16,13 +16,16 @@ AllCops:
   # Enable all NewCops by default (Even new 1.x cops)
   NewCops: enable
 
-# Better syntax for validating that a message should be received
-# We use lots of delegation classes so this is better
-RSpec/MessageSpies:
-  EnforcedStyle: receive
+Layout/LineLength:
+  Max: 140
 
 # All spec files are huge blocks, should just ignore them
 # Fixed in rubocop-rspec 2.11.0 (2022-05-18)
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
+
+# Better syntax for validating that a message should be received
+# We use lots of delegation classes so this is better
+RSpec/MessageSpies:
+  EnforcedStyle: receive

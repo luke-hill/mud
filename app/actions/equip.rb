@@ -23,6 +23,7 @@ module MUD
       # equipped, the existing item is switched with the item in their inventory.
       # The player is then informed via the playing console of the switch of items.
       def equip
+        Logger.debug("Attempting to equip #{item_id}")
         validate_presence
         MUD::Logger.debug("Looking for #{item_id}.")
         equip_weapon if weapon?

@@ -6,6 +6,11 @@ require_relative 'autoloader'
 puts 'Autoloading complete'
 
 module MUD
+  # MUD::Game
+  #
+  # The actual gameplay is setup here.
+  # - Initially we make a call to MUD::Game.setup to generate a player instance
+  # - Throughout the game, we can query publically both the player object as well as reset the entire game (If needed)
   class Game
     class << self
       attr_accessor :rooms_visited
@@ -56,8 +61,8 @@ module MUD
         )
         sleep 0.5
         MUD::Screen.output(
-          'You are in Newtown, and as avaLancHe ... our intrepid explorer, you have spawned '\
-'in our village to kill Several Monsters and then the boss - The Orc!'
+          'You are in Newtown, and as avaLancHe ... our intrepid explorer, you have spawned ' \
+          'in our village to kill Several Monsters and then the boss - The Orc!'
         )
       end
     end
