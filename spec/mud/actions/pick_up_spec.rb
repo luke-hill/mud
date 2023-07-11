@@ -33,7 +33,7 @@ RSpec.describe MUD::Actions::PickUp do
         allow(hero).to receive(:max_inventory_size).and_return(0)
       end
 
-      it "informs the player that they cannot pick up the item" do
+      it 'informs the player that they cannot pick up the item' do
         expect(pick_up_attempt).to eq('You do not have enough space for that.'.red)
       end
 
@@ -42,7 +42,7 @@ RSpec.describe MUD::Actions::PickUp do
       end
     end
 
-    context "when the item is on the floor" do
+    context 'when the item is on the floor' do
       it 'adds the item to the heroes inventory' do
         expect { pick_up_attempt }.to change(hero.inventory, :length).by(1)
       end

@@ -84,7 +84,7 @@ module MUD
       def gold_amount
         "#{enemy.gold} #{'gold coin'.pluralize(enemy.gold)}"
       end
-      
+
       def drop_location
         if inventory_space_available?
           hero.inventory
