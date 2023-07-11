@@ -21,6 +21,7 @@ module MUD
       # This method will move in the relevant direction (If they pass the checks). Once you have
       # moved, a string representation of the movement is sent to the playing console.
       def move
+        Logger.debug("Attempting to move #{unnabbreviate(direction, type: :movement)}")
         return MUD::Screen.output(ktp_warning_message) unless player.current_room.exitable?
         return send(direction) unless key_required?
 

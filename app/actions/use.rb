@@ -29,6 +29,7 @@ module MUD
       # Once the item has been used, a string representation of the usage is sent
       # to the playing console.
       def use
+        Logger.debug("Attempting to use key/potion '#{item_id}'")
         return MUD::Screen.output("You do not have a #{item_id}".red) unless in_inventory?
         return MUD::Screen.output('You cannot use this item!'.red) unless potion? || key?
         return drink_potion if potion?
