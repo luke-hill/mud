@@ -12,7 +12,7 @@ RSpec.describe MUD::Combat::Defend do
     {
       name: enemy_name,
       description: 'A Description',
-      weapon_id: weapon_id,
+      weapon_id:,
       armor_id: 'unarmored',
       lower_hp_limit: 5,
       upper_hp_limit: 13,

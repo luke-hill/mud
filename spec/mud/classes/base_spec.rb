@@ -18,7 +18,7 @@ RSpec.describe MUD::Classes::Base do
       max_mp: 0,
       mp: 0,
       stamina: 1,
-      level: level,
+      level:,
       experience: 0,
       gold: 200,
       inventory: [],
