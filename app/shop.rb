@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 module MUD
+  # The top level Shop Class
+  # This acts a bit like ActiveRecord, and will load the room into Memory for usage
+  # It uses the ID of the item (Which is a snake_cased string), and then create a Struct
+  # which can access all of the properties through the delegated struct.
+  # All Data is stored in the games data yml files, which are seeded.
+  #
+  # This inherits from the Room class, with some additional validations in place to ensure the "Shop" behaviour is
+  # available for the player. Alongside this, the traditional Room properties/booleans are also available
   class Shop < Room
     def initialize(*args)
       super(*args)
