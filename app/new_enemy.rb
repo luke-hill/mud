@@ -12,6 +12,8 @@ module MUD
   # Should a boss not be found in the boss db, a RuntimeError will be thrown and the game will crash
   class NewEnemy
     include Helpers::Data
+
+    attr_writer :gold, :hp
     
     def self.properties
       %i[
@@ -49,8 +51,12 @@ module MUD
       end
     end
 
-    def id
-      'unknown'
+    # @return Integer
+    # This will generate (and cache), the enemies gold
+    #
+    # The hp will fall between the lower and upper limits
+    def gold
+      @gold ||= rand(lower_gold_limit..upper_gold_limit)
     end
 
     # @return Integer
@@ -59,16 +65,6 @@ module MUD
     # The hp will fall between the lower and upper limits
     def hp
       @hp ||= rand(lower_hp_limit..upper_hp_limit)
-    end
-
-    attr_writer :hp, :gold
-
-    # @return Integer
-    # This will generate (and cache), the enemies gold
-    #
-    # The hp will fall between the lower and upper limits
-    def gold
-      @gold ||= rand(lower_gold_limit..upper_gold_limit)
     end
 
     def alive?
@@ -106,6 +102,8 @@ module MUD
     private
 
     def enemy_data
+      raise('No ID set - Enemy defined incorrectly') unless defined?(id)
+      
       @enemy_data ||= enemy_yml[id] || boss_yml[id] || raise("Enemy/Boss not found with ID: #{id}")
     end
   end
