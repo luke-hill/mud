@@ -20,8 +20,8 @@ module MUD
     end
 
     def items_for_sale
-      MUD::Logger.debug("Displaying Shop Data for Room-ID: #{room_id}")
-      MUD::Screen.output(shop_items_string)
+      Logger.debug("Displaying Shop Data for Room-ID: #{room_id}")
+      Screen.output(shop_items_string)
     end
 
     private
@@ -33,7 +33,7 @@ module MUD
     def validate_enemy_not_present
       return unless enemy?
 
-      MUD::Logger.debug("Enemy found: #{enemy.inspect}")
+      Logger.debug("Enemy found: #{enemy.inspect}")
       raise "There shouldn't be any enemies in shops!"
     end
   end

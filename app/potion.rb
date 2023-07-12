@@ -33,7 +33,7 @@ module MUD
       effect
       player.prevent_overflow_hp
       player.prevent_overflow_mp
-      MUD::Screen.output(dynamic_used_message)
+      Screen.output(dynamic_used_message)
     end
 
     def type

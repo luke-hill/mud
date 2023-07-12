@@ -28,7 +28,7 @@ module MUD
         XP.new(hero, enemy, damage_dealt).increase
         reduce_hp
 
-        return MUD::Screen.output("DEBUG --> ENEMY HP:#{enemy.hp}hp.") unless enemy_killed?
+        return Screen.output("DEBUG --> ENEMY HP:#{enemy.hp}hp.") unless enemy_killed?
 
         @enemy = nil
       end
@@ -36,9 +36,7 @@ module MUD
       private
 
       def missed_message
-        MUD::Screen.output(
-          "You tried to attack the #{enemy_name} with your #{weapon_name}... but missed.".yellow
-        )
+        Screen.output("You tried to attack the #{enemy_name} with your #{weapon_name}... but missed.".yellow)
       end
 
       def enemy_name
@@ -55,14 +53,14 @@ module MUD
 
       def missed?
         (rand > hero.accuracy).tap do |result|
-          MUD::Logger.debug("Missed check - #{result}")
+          Logger.debug("Missed check - #{result}")
         end
       end
 
       def damage_dealt
         @damage_dealt ||= begin
           dmg = (attack_value - defense_value).tap do |result|
-            MUD::Logger.debug("Initial damage check - #{result}")
+            Logger.debug("Initial damage check - #{result}")
           end
 
           if dmg.negative?
@@ -86,7 +84,7 @@ module MUD
       end
 
       def weapon
-        MUD::Weapon.new(hero.weapon)
+        Weapon.new(hero.weapon)
       end
 
       def defense_value
@@ -94,9 +92,7 @@ module MUD
       end
 
       def attack_message
-        MUD::Screen.output(
-          "You hit the #{enemy_name} with your #{weapon_name} for #{damage_dealt} damage."
-        )
+        Screen.output("You hit the #{enemy_name} with your #{weapon_name} for #{damage_dealt} damage.")
       end
 
       def reduce_hp

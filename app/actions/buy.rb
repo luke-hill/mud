@@ -29,9 +29,9 @@ module MUD
       # This method will buy the relevant item (If they pass the checks). Once the item has been
       # bought, a string representation of the transaction is sent to the playing console.
       def buy
-        return MUD::Screen.output("I'm sorry we dont have that item for sale".red) unless for_sale?
-        return MUD::Screen.output('You do not have enough gold for that.'.red) unless enough_money?
-        return MUD::Screen.output('You do not have enough space for that.'.red) unless enough_space?
+        return Screen.output("I'm sorry we dont have that item for sale".red) unless for_sale?
+        return Screen.output('You do not have enough gold for that.'.red) unless enough_money?
+        return Screen.output('You do not have enough space for that.'.red) unless enough_space?
 
         buy_item
       end
@@ -45,7 +45,7 @@ module MUD
       end
 
       def enough_money?
-        MUD::Logger.debug("Current gold amount #{gold}")
+        Logger.debug("Current gold amount #{gold}")
         gold >= cost
       end
 
@@ -62,7 +62,7 @@ module MUD
       def buy_item
         self.gold -= cost
         inventory << item_id
-        MUD::Screen.output("You bought a #{item_id.blue} for #{cost.to_s.yellow} gold.")
+        Screen.output("You bought a #{item_id.blue} for #{cost.to_s.yellow} gold.")
       end
     end
   end

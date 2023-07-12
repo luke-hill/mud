@@ -29,15 +29,15 @@ module MUD
       # @return [String]
       # This looks around and returns the advanced description of the current room
       def look_around
-        MUD::Screen.output(current_room.advanced_description)
+        Screen.output(current_room.advanced_description)
       end
 
       # @return [Array]
       # This returns a newline delimited string which outputs each attribute and its current value
       def view_attributes
         MUD::Helpers::AttributeAccessors.attribute_names.each do |attribute|
-          MUD::Logger.debug('Call made to view attributes')
-          MUD::Screen.output("#{attribute}: #{attributes[attribute]}".yellow)
+          Logger.debug('Call made to view attributes')
+          Screen.output("#{attribute}: #{attributes[attribute]}".yellow)
         end
       end
 

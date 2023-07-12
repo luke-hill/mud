@@ -32,51 +32,51 @@ module MUD
       private
 
       def yield_potion
-        return MUD::Logger.debug("Enemy didn't drop potion") unless yield_potion?
+        return Logger.debug("Enemy didn't drop potion") unless yield_potion?
 
         drop_location << enemy.dropped_potion_id
-        MUD::Screen.output(enemy.dropped_potion_message.yellow)
+        Screen.output(enemy.dropped_potion_message.yellow)
       end
 
       def yield_potion?
         chance = rand
-        MUD::Logger.debug("Random chance to drop potion #{chance}")
-        MUD::Logger.debug("Chance needed #{enemy.dropped_potion_chance}")
+        Logger.debug("Random chance to drop potion #{chance}")
+        Logger.debug("Chance needed #{enemy.dropped_potion_chance}")
         chance < enemy.dropped_potion_chance
       end
 
       def yield_weapon
-        return MUD::Logger.debug("Enemy didn't drop weapon") unless yield_weapon?
+        return Logger.debug("Enemy didn't drop weapon") unless yield_weapon?
 
         drop_location << enemy.dropped_weapon_id
-        MUD::Screen.output(enemy.dropped_weapon_message.yellow)
+        Screen.output(enemy.dropped_weapon_message.yellow)
       end
 
       def yield_weapon?
         chance = rand
-        MUD::Logger.debug("Random chance to drop weapon #{chance}")
-        MUD::Logger.debug("Chance needed #{enemy.dropped_weapon_chance}")
+        Logger.debug("Random chance to drop weapon #{chance}")
+        Logger.debug("Chance needed #{enemy.dropped_weapon_chance}")
         chance < enemy.dropped_weapon_chance
       end
 
       def yield_armor
-        return MUD::Logger.debug("Enemy didn't drop armor") unless yield_armor?
+        return Logger.debug("Enemy didn't drop armor") unless yield_armor?
 
         drop_location << enemy.dropped_armor_id
-        MUD::Screen.output(enemy.dropped_armor_message.yellow)
+        Screen.output(enemy.dropped_armor_message.yellow)
       end
 
       def yield_armor?
         chance = rand
-        MUD::Logger.debug("Random chance to drop armor #{chance}")
-        MUD::Logger.debug("Chance needed #{enemy.dropped_armor_chance}")
+        Logger.debug("Random chance to drop armor #{chance}")
+        Logger.debug("Chance needed #{enemy.dropped_armor_chance}")
         chance < enemy.dropped_armor_chance
       end
 
       def yield_gold
-        return MUD::Logger.debug("Enemy didn't have any gold") unless enemy.gold.positive?
+        return Logger.debug("Enemy didn't have any gold") unless enemy.gold.positive?
 
-        MUD::Screen.output("You found #{gold_amount.yellow} on the corpse of the #{enemy.name}")
+        Screen.output("You found #{gold_amount.yellow} on the corpse of the #{enemy.name}")
         hero.gold += enemy.gold
         enemy.gold = 0
       end

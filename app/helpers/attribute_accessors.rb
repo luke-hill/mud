@@ -62,15 +62,15 @@ module MUD
 
       attribute_names.each do |name|
         define_method(name) do
-          MUD::Logger.debug("Call made to read attribute: #{name}")
+          Logger.debug("Call made to read attribute: #{name}")
           attributes[name]
         end
 
         define_method("#{name}=") do |value|
-          MUD::Logger.debug("Call made to set attributes: #{attributes}")
+          Logger.debug("Call made to set attributes: #{attributes}")
           attributes[name] = value
-          MUD::Logger.debug("Your #{name} was updated")
-          MUD::Logger.info("New Value --> #{name}: #{attributes[name]}")
+          Logger.debug("Your #{name} was updated")
+          Logger.info("New Value --> #{name}: #{attributes[name]}")
         end
       end
     end
