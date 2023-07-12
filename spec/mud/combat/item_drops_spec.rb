@@ -58,7 +58,7 @@ RSpec.describe MUD::Combat::ItemDrops do
 
     context 'when dropping gold' do
       it 'increases the heroes gold by the amount dropped' do
-        expect { drop_items }.to change(hero, :gold).by(1)
+        expect { drop_items }.to change(hero, :gold).by(5)
       end
 
       it 'informs the user that the gold dropped' do
