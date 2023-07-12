@@ -14,7 +14,7 @@ module MUD
     include Helpers::Data
 
     attr_writer :gold, :hp
-    
+
     def self.properties
       %i[
         name
@@ -103,7 +103,7 @@ module MUD
 
     def enemy_data
       raise('No ID set - Enemy defined incorrectly') unless defined?(id)
-      
+
       @enemy_data ||= enemy_yml[id] || boss_yml[id] || raise("Enemy/Boss not found with ID: #{id}")
     end
   end

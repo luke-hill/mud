@@ -21,6 +21,9 @@ AllCops:
 Layout/LineLength:
   Max: 140
 
+Metrics/MethodLength:
+  CountAsOne: ['array', 'hash']
+
 # Better syntax for validating that a message should be received
 # We use lots of delegation classes so this is better
 RSpec/MessageSpies:
