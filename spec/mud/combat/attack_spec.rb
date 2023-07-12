@@ -5,26 +5,8 @@ RSpec.describe MUD::Combat::Attack do
 
   let(:hero) { MUD::Classes::Fighter.new }
   let(:weapon_name) { MUD::Weapon.new('knife').name }
-  let(:enemy_name) { 'Enemy' }
-  let(:enemy) do
-    create(
-      :enemy,
-      {
-        name: enemy_name,
-        description: 'A Description',
-        weapon_id: 'fists',
-        armor_id: 'unarmored',
-        lower_hp_limit: 5,
-        upper_hp_limit: 13,
-        accuracy: 0.7,
-        lower_gold_limit: 0,
-        upper_gold_limit: 3,
-        xp: 2,
-        xp_killshot: 10,
-        stamina: 1
-      }
-    )
-  end
+  let(:enemy_name) { 'TEST - Null Enemy' }
+  let(:enemy) { create_null_enemy }
 
   describe '#attack' do
     subject(:attack_attempt) { attack_instance.attack }
