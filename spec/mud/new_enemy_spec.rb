@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe MUD::Enemy do
+RSpec.describe MUD::NewEnemy do
   subject(:enemy) { create_null_enemy }
 
   let(:dead_enemy) { create_dead_enemy }

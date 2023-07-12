@@ -45,7 +45,6 @@ RSpec/SubjectStub:
 Style/OpenStructUse:
   Exclude:
     - 'app/armor.rb'
-    - 'app/enemy.rb'
     - 'app/key.rb'
     - 'app/potion.rb'
     - 'app/weapon.rb'

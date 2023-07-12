@@ -12,7 +12,6 @@ require 'ostruct'
 require_relative 'helpers'
 
 require_relative 'armor'
-require_relative 'enemy'
 require_relative 'new_enemy'
 require_relative 'key'
 require_relative 'logger'
