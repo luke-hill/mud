@@ -9,11 +9,11 @@ module SpecSupport
     end
 
     def create_null_enemy
-      SpecSupport::Enemy.new('null')
+      SpecSupport::Enemy.of_type('null')
     end
 
     def create_dead_enemy
-      SpecSupport::Enemy.new('fully_equipped_dead')
+      SpecSupport::Enemy.of_type('fully_equipped_dead')
     end
 
     private
