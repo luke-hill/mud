@@ -11,6 +11,13 @@ module MUD
     include Helpers::Data
 
     attr_writer :gold, :hp
+    attr_accessor :id
+
+    def self.of_type(type)
+      new.tap do |enemy|
+        enemy.id = type
+      end
+    end
 
     def self.properties
       %i[
@@ -104,8 +111,4 @@ module MUD
       @enemy_data ||= enemy_yml[id] || boss_yml[id] || raise("Enemy/Boss not found with ID: #{id}")
     end
   end
-end
-
-MUD::Enemy::Goblin = Class.new(MUD::NewEnemy) do
-  def id = 'goblin'
 end
