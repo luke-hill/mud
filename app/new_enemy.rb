@@ -15,7 +15,6 @@ module MUD
     
     def self.properties
       %i[
-        enemy
         name
         description
         weapon_id
@@ -37,6 +36,10 @@ module MUD
         dropped_armor_id
         dropped_armor_chance
         dropped_armor_message
+        phrase1_chance
+        phrase1_message
+        phrase2_chance
+        phrase2_message
       ]
     end
 
