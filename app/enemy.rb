@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 module MUD
-  # MUD::NewEnemy is the NEW way in which all enemies are represented ingame
+  # MUD::Enemy is the way in which all enemies are represented ingame
   #
   # They are created as bespoke individual classes with a hard-coded id
   # At creation time we have a direct reference to their statistics from the yml database
   # Should an enemy not be found in the regular enemy db it will then look in the boss db
   # Should a boss not be found in the boss db, a RuntimeError will be thrown and the game will crash
-  class NewEnemy
+  class Enemy
     include Helpers::Data
 
     attr_writer :gold, :hp

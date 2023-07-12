@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module SpecSupport
-  class Enemy < MUD::NewEnemy
+  class Enemy < MUD::Enemy
     attr_reader :id
 
     def initialize(id)

@@ -49,7 +49,7 @@ module MUD
     end
 
     def enemy
-      @enemy ||= NewEnemy.of_type(description_yml.dig(room_id, 'enemy_id'))
+      @enemy ||= Enemy.of_type(description_yml.dig(room_id, 'enemy_id'))
     end
 
     def exitable?
