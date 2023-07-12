@@ -26,3 +26,5 @@
 4) Completely rework Buy class and remove all comments about stuff that is hard-coded!
 5) Add the first 2-4 places on the map where up and down exist
 6) Add a second usable key to the codebase, and validate both key usages work (This is likely to be tricky)
+7) Symbolize keys in data lookups
+8) 

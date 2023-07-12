@@ -3,12 +3,9 @@
 module MUD
   # MUD::NewEnemy is the NEW way in which all enemies are represented ingame
   #
-  # They are created as bespoke individal classes with a hard-coded id
-  #
+  # They are created as bespoke individual classes with a hard-coded id
   # At creation time we have a direct reference to their statistics from the yml database
-  #
   # Should an enemy not be found in the regular enemy db it will then look in the boss db
-  #
   # Should a boss not be found in the boss db, a RuntimeError will be thrown and the game will crash
   class NewEnemy
     include Helpers::Data

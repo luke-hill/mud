@@ -62,7 +62,7 @@ module MUD
       end
 
       def load_yml(file_subdir)
-        YAML.load_file("#{Dir.pwd}/#{file_subdir}")
+        YAML.load_file("#{Dir.pwd}/#{file_subdir}", symbolize_names: false)
       end
     end
   end
