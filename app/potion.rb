@@ -40,6 +40,9 @@ module MUD
       @type ||= determine_type
     end
 
+    # @return [String]
+    # This method will return either the standard message for using the potion correctly
+    # If a use_message cannot be found, it will return a fallback message that indicates we need to code something
     def use_message
       potion.use_message || fallback_message
     end
