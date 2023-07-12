@@ -5,25 +5,7 @@ RSpec.describe MUD::Combat::Fight do
 
   let(:fight_instance) { described_class.new(hero, enemy) }
   let(:hero) { MUD::Classes::Fighter.new }
-  let(:enemy) do
-    create(
-      :enemy,
-      {
-        name: 'Enemy',
-        description: 'A Description',
-        weapon_id: 'fists',
-        armor_id: 'unarmored',
-        lower_hp_limit: 5,
-        upper_hp_limit: 13,
-        accuracy: 0.7,
-        lower_gold_limit: 0,
-        upper_gold_limit: 3,
-        xp: 2,
-        xp_killshot: 10,
-        stamina: 1
-      }
-    )
-  end
+  let(:enemy) { create_null_enemy }
 
   describe '#fight' do
     context 'when times parameter is 1' do
@@ -86,7 +68,7 @@ RSpec.describe MUD::Combat::Fight do
       it 'outputs that the enemy has been killed' do
         fight_attempt
 
-        expect(log_lines).to include(/You killed the Enemy/)
+        expect(log_lines).to include(/You killed the \w+/)
       end
 
       it 'creates a new `MUD::Combat::ItemDrops` instance' do
