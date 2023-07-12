@@ -3,8 +3,9 @@
 module MUD
   # MUD::Enemy is the way in which all enemies are represented ingame
   #
-  # They are created as bespoke individual classes with a hard-coded id
-  # At creation time we have a direct reference to their statistics from the yml database
+  # They are created as instances of this Enemy class with a representative id that will then be used to lookup their
+  # statistics from the yml db
+  #
   # Should an enemy not be found in the regular enemy db it will then look in the boss db
   # Should a boss not be found in the boss db, a RuntimeError will be thrown and the game will crash
   class Enemy
