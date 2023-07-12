@@ -16,7 +16,7 @@ module MUD
         @enemy = enemy
       end
 
-      # @return [String || Integer || NilClass]
+      # @return [Integer || NilClass]
       # This will drop 1 of each of the following ...
       # potion_id --> If the enemy has a +dropped_potion_id+ property
       # weapon_id --> If the enemy has a +dropped_weapon_id+ property
@@ -25,7 +25,7 @@ module MUD
       def process
         yield_potion if enemy.potion?
         yield_weapon if enemy.weapon?
-        drop_armor if enemy.armor?
+        yield_armor if enemy.armor?
         yield_gold
       end
 
@@ -59,14 +59,14 @@ module MUD
         chance < enemy.dropped_weapon_chance
       end
 
-      def drop_armor
-        return MUD::Logger.debug("Enemy didn't drop armor") unless drop_armor?
+      def yield_armor
+        return MUD::Logger.debug("Enemy didn't drop armor") unless yield_armor?
 
         drop_location << enemy.dropped_armor_id
         MUD::Screen.output(enemy.dropped_armor_message.yellow)
       end
 
-      def drop_armor?
+      def yield_armor?
         chance = rand
         MUD::Logger.debug("Random chance to drop armor #{chance}")
         MUD::Logger.debug("Chance needed #{enemy.dropped_armor_chance}")
