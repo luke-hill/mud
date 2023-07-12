@@ -12,6 +12,10 @@ module SpecSupport
       SpecSupport::Enemy.new('null_enemy')
     end
 
+    def create_dead_enemy
+      SpecSupport::Enemy.new('fully_equipped_dead_enemy')
+    end
+
     private
 
     def find_class(type)

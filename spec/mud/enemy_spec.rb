@@ -3,9 +3,7 @@
 RSpec.describe MUD::Enemy do
   subject(:enemy) { create_null_enemy }
 
-  let(:dead_enemy) do
-    enemy.tap { |enemy| enemy.hp = 0 }
-  end
+  let(:dead_enemy) { create_dead_enemy }
 
   describe 'Gold' do
     describe '#gold' do
