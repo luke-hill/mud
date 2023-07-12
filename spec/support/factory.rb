@@ -8,6 +8,10 @@ module SpecSupport
       end
     end
 
+    def create_null_enemy
+      SpecSupport::Enemy.new('null_enemy')
+    end
+
     private
 
     def find_class(type)
