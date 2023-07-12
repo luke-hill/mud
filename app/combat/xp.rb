@@ -26,7 +26,7 @@ module MUD
         return xp_capped_message if hero.capped?
 
         increase_hero_xp
-        Screen.debug("Hero xp increased by #{total_xp_gain}")
+        Logger.debug("Hero xp increased by #{total_xp_gain}")
         nil
       end
 
