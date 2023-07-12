@@ -104,3 +104,24 @@ module MUD
     end
   end
 end
+
+MUD::Enemy::Base = Class.new do
+  def name = enemy_data['name']
+  def description = enemy_data['description']
+
+  def enemy_data
+    enemy_yml[id]
+  end
+
+  def enemy_yml
+    load_yml('data/enemies/enemy.yml')
+  end
+
+  def load_yml(file_subdir)
+    YAML.load_file("#{Dir.pwd}/#{file_subdir}")
+  end
+end
+
+MUD::Enemy::Goblin = Class.new(MUD::Enemy::Base) do
+  def id = 'goblin'
+end
