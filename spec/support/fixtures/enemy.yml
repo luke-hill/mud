@@ -1,5 +1,5 @@
 ---
-null:
+"null":
   name: TEST - Null Enemy
   description: This enemy will always miss
   weapon_id: fists
