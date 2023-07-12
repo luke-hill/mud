@@ -21,6 +21,10 @@ module MUD
                    :description,
                    :missing_message
 
+
+    # @return [String]
+    # This method will return either the standard message for using the key correctly
+    # If a use_message cannot be found, it will return a fallback message that indicates we need to code something
     def use_message
       key.use_message || fallback_message
     end
