@@ -69,7 +69,7 @@ module MUD
       end
 
       def key
-        @key ||= Key.new(item_id)
+        @key ||= Key.of_type(item_id)
       end
 
       def in_inventory?

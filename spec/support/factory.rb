@@ -16,6 +16,10 @@ module SpecSupport
       SpecSupport::Enemy.of_type('fully_equipped_dead')
     end
 
+    def create_dummy_key
+      SpecSupport::Key.of_type('dummy')
+    end
+
     private
 
     def find_class(type)
