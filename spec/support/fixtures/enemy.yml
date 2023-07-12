@@ -1,5 +1,5 @@
 ---
-null_enemy:
+null:
   name: TEST - Null Enemy
   description: This enemy will always miss
   weapon_id: fists
@@ -12,7 +12,7 @@ null_enemy:
   xp: 1
   xp_killshot: 10
   stamina: 1
-fully_equipped_dead_enemy:
+fully_equipped_dead:
   name: TEST - Equipped DEAD Enemy
   description: This enemy is always dead
   weapon_id: fists
