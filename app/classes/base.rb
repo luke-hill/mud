@@ -89,14 +89,14 @@ module MUD
         MUD::Actions::Equip.new(self, item_id).equip
       end
 
-      # @return [String]
-      # The current equipped weapon_id
+      # @return [MUD::Weapon]
+      # The current equipped weapon
       def weapon
         equipment[:weapon]
       end
 
-      # @return [String]
-      # The current equipped armor_id
+      # @return [MUD::Armor]
+      # The current equipped armor
       def armor
         equipment[:armor]
       end

@@ -44,7 +44,7 @@ module MUD
       end
 
       def weapon_name
-        weapon.name
+        hero.weapon.name
       end
 
       def no_damage?
@@ -81,10 +81,6 @@ module MUD
 
       def attack_modifiers
         (hero.strength / 2).floor + hero.level
-      end
-
-      def weapon
-        Weapon.of_type(hero.weapon)
       end
 
       def defense_value
