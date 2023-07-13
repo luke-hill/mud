@@ -11,6 +11,7 @@ tmp/*
 .yardoc
 doc/*
 
-# Ignore all data files
+# Ignore all data files (But not test / GitHub files)
 *.yml
+!.github/**
 !/spec/**/**/*.yml
