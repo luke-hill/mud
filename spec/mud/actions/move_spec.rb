@@ -6,7 +6,6 @@ RSpec.describe MUD::Actions::Move do
   before do
     switch_logging_to_temp_file
     reset_room
-    allow(player.current_room).to receive(:connected_rooms) { connected_rooms }
   end
 
   after do

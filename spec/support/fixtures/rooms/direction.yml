@@ -9,3 +9,5 @@ filled_room:
   east: blank_room
   south: blank_room
   west: blank_room
+trapped_room: {}
+  # No directions available

@@ -3,13 +3,15 @@
 RSpec.shared_examples 'Movement examples' do
   subject(:move_attempt) { described_class.new(player, direction).move }
 
-  let(:new_room_id) { 2 }
+  let(:new_room_id) { 'blank_room' }
 
   context 'with an available room' do
-    let(:connected_rooms) { { direction => new_room_id } }
+    before do
+      player.current_room = MUD::Room.new('blank_room')
+    end
 
     it 'moves to the room' do
-      expect { move_attempt }.to change { current_room_id }.to(new_room_id)
+      expect { move_attempt }.to change { current_room_id }.to('filled_room')
     end
 
     it 'informs the user they changed rooms' do
@@ -20,7 +22,9 @@ RSpec.shared_examples 'Movement examples' do
   end
 
   context 'without an available room' do
-    let(:connected_rooms) { {} }
+    before do
+      player.current_room = MUD::Room.new('trapped_room')
+    end
 
     it 'does not move to the room' do
       expect { move_attempt }.not_to(change { current_room_id })
