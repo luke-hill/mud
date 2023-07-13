@@ -4,7 +4,7 @@ RSpec.describe MUD::Actions::Use do
   subject(:use_instance) { described_class.new(hero, item_id) }
 
   let(:hero) { MUD::Classes::Fighter.new }
-  let(:item_id) { 'lesser_healing_potion' }
+  let(:item_id) { 'demo_healing' }
 
   before do
     hero.inventory << item_id
@@ -39,7 +39,7 @@ RSpec.describe MUD::Actions::Use do
     end
 
     context 'when the item_id is a valid healing potion' do
-      let(:item_id) { 'lesser_healing_potion' }
+      let(:item_id) { 'demo_healing' }
 
       before { hero.hp = 10 }
 
@@ -53,7 +53,7 @@ RSpec.describe MUD::Actions::Use do
     end
 
     context 'when the item_id is a valid key' do
-      let(:item_id) { 'barracks_key' }
+      let(:item_id) { 'dummy' }
 
       it 'uses up the key in the heroes inventory' do
         expect { use_attempt }.to change(hero.inventory, :length).by(-1)

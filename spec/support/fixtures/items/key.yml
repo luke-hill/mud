@@ -2,4 +2,5 @@
 dummy:
   name: Dummy Key
   description: A description
+  use_message: I g0t used
   missing_message: Oh dear, no key!

@@ -21,6 +21,7 @@ module MUD
       %i[
         name
         description
+        use_message
         missing_message
       ]
     end
