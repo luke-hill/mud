@@ -27,7 +27,7 @@ RSpec.describe MUD::Actions::Use do
     end
 
     context "when the hero doesn't have the item_id in his inventory" do
-      before { allow(use_instance).to receive(:in_inventory?).and_return(false) }
+      before { hero.inventory = [] }
 
       it "informs the player that they don't have enough gold" do
         expect(use_attempt).to eq("You do not have a #{item_id}".red)
