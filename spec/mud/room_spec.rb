@@ -4,8 +4,6 @@ RSpec.describe MUD::Room do
   let(:filled_room) { create_room('filled_room') }
   let(:blank_room) { create_room('blank_room') }
   let(:trashed_room) { create_room('trashed_room') }
-  let(:directions_string) { 'You can go north, east, south and west' }
-  let(:room_id) { 'filled_room' }
 
   describe '#description' do
     it 'returns the description of the room first' do
@@ -13,7 +11,7 @@ RSpec.describe MUD::Room do
     end
 
     it 'returns the directions after the description' do
-      expect(filled_room.description).to end_with(directions_string.yellow)
+      expect(filled_room.description).to end_with('You can go north, east, south and west'.yellow)
     end
   end
 
@@ -23,7 +21,7 @@ RSpec.describe MUD::Room do
     end
 
     it 'returns the directions after the advanced description' do
-      expect(filled_room.advanced_description).to end_with(directions_string.yellow)
+      expect(filled_room.advanced_description).to end_with('You can go north, east, south and west'.yellow)
     end
   end
 
