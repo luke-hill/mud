@@ -4,7 +4,8 @@ RSpec.describe MUD::Combat::Defend do
   subject(:defend_instance) { described_class.new(hero, enemy) }
 
   let(:hero) { MUD::Classes::Fighter.new }
-  let(:weapon_name) { MUD::Weapon.of_type('fists').name }
+  let(:weapon) { MUD::Weapon.of_type('zero') }
+  let(:weapon_name) { weapon.name }
   let(:enemy_name) { 'TEST - Null Enemy' }
   let(:enemy) { create_null_enemy }
 
