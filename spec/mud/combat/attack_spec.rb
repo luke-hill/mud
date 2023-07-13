@@ -4,7 +4,8 @@ RSpec.describe MUD::Combat::Attack do
   subject(:attack_instance) { described_class.new(hero, enemy) }
 
   let(:hero) { MUD::Classes::Fighter.new }
-  let(:weapon_name) { MUD::Weapon.of_type('knife').name }
+  let(:weapon) { MUD::Weapon.of_type('zero') }
+  let(:weapon_name) { weapon.name }
   let(:enemy_name) { 'TEST - Null Enemy' }
   let(:enemy) { create_null_enemy }
 
@@ -21,7 +22,7 @@ RSpec.describe MUD::Combat::Attack do
     end
 
     before do
-      allow(hero).to receive(:weapon).and_return('knife')
+      allow(hero).to receive(:weapon).and_return(weapon)
       allow(attack_instance).to receive(:damage_dealt).and_return(damage_dealt)
       allow(attack_instance).to receive(:missed?).and_return(missed?)
       switch_logging_to_temp_file
