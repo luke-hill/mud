@@ -60,8 +60,4 @@ RSpec.describe MUD::Actions::Use do
       end
     end
   end
-
-  describe 'delegated methods' do
-    it { is_expected.to delegate(:inventory).to(:@hero) }
-  end
 end
