@@ -24,8 +24,12 @@ module SpecSupport
       SpecSupport::Armor.of_type('zero')
     end
 
-    def create_room(type)
-      SpecSupport::Room.of_type(type)
+    def create_room(room_id)
+      SpecSupport::Room.new(room_id)
+    end
+
+    def create_shop(room_id)
+      SpecSupport::Shop.new(room_id)
     end
 
     private

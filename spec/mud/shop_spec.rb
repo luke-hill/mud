@@ -3,8 +3,8 @@
 RSpec.describe MUD::Shop do
   subject(:shop) { described_class.new(room_id) }
 
-  let(:valid_shop) { create_room('valid_shop') }
-  let(:invalid_shop) { create_room('invalid_shop') }
+  let(:valid_shop) { create_shop('valid_shop') }
+  let(:invalid_shop) { create_shop('invalid_shop') }
 
   let(:item_id) { 'knife' }
   let(:player) { MUD::Game.player }
