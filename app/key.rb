@@ -12,8 +12,8 @@ module MUD
     attr_accessor :id
 
     def self.of_type(type)
-      new.tap do |enemy|
-        enemy.id = type
+      new.tap do |key|
+        key.id = type
       end
     end
 
