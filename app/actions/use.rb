@@ -46,7 +46,7 @@ module MUD
       end
 
       def use_key
-        Screen.output(key.use_message.yellow)
+        key.use
         remove_one_copy_from_inventory
       end
 
@@ -55,7 +55,7 @@ module MUD
       end
 
       def potion
-        @potion ||= Potion.new(item_id)
+        @potion ||= Potion.of_type(item_id)
       end
 
       def dump_hp_mp_stats

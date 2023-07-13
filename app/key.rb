@@ -31,11 +31,15 @@ module MUD
       end
     end
 
-    def use_message
-      use_message || fallback_message
+    def use
+      Screen.output(message.yellow)
     end
 
     private
+
+    def message
+      use_message || fallback_message
+    end
 
     def fallback_message
       Logger.error("ERROR: Missing use_message on key. key_id: #{id}")
