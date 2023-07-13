@@ -31,7 +31,7 @@ module MUD
       private
 
       def move_through_locked_door
-        return Screen.output(Key.new(required_key).missing_message.red) unless required_key?
+        return Screen.output(Key.of_type(required_key).missing_message.red) unless required_key?
 
         player.use(required_key)
         send(direction)
