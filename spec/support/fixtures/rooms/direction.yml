@@ -1,13 +1,11 @@
 ---
-1:
-  north: 2
-  east: 4
-2:
-  east: 3
-  south: 1
-3:
-  west: 2
-  south: 4
-4:
-  north: 3
-  west: 1
+blank_room:
+  north: filled_room
+  east: filled_room
+  south: filled_room
+  west: filled_room
+filled_room:
+  north: blank_room
+  east: blank_room
+  south: blank_room
+  west: blank_room

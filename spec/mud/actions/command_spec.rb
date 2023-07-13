@@ -4,7 +4,10 @@ RSpec.describe MUD::Actions::Command do
   let(:command) { described_class.new(command_input) }
   let(:player) { MUD::Game.player }
 
-  before { switch_logging_to_temp_file }
+  before do
+    switch_logging_to_temp_file
+    allow(player).to receive(:current_room).and_return(MUD::Room.new('blank_room'))
+  end
 
   describe '#process' do
     context 'when command input is an empty string' do
