@@ -84,7 +84,7 @@ module MUD
       end
 
       def weapon
-        Weapon.new(hero.weapon)
+        Weapon.of_type(hero.weapon)
       end
 
       def defense_value

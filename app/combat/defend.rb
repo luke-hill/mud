@@ -71,7 +71,7 @@ module MUD
       end
 
       def weapon
-        Weapon.new(enemy.weapon_id)
+        Weapon.of_type(enemy.weapon_id)
       end
 
       def defense_value
