@@ -24,6 +24,10 @@ module SpecSupport
       MUD::Armor.of_type('zero')
     end
 
+    def create_weapon(type = 'zero')
+      MUD::Armor.of_type(type)
+    end
+
     def create_room(room_id)
       MUD::Room.new(room_id)
     end
