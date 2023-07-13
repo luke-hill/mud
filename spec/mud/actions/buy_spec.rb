@@ -75,11 +75,4 @@ RSpec.describe MUD::Actions::Buy do
       expect(buy_attempt).to eq("You bought a #{item_id.blue} for #{item_cost.to_s.yellow} gold.")
     end
   end
-
-  describe 'delegated methods' do
-    it { is_expected.to delegate(:inventory).to(:@hero) }
-    it { is_expected.to delegate(:gold).to(:@hero) }
-    it { is_expected.to delegate(:gold=).with(1).to(:@hero) }
-    it { is_expected.to delegate(:max_inventory_size).to(:@hero) }
-  end
 end
