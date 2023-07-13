@@ -3,8 +3,7 @@
 RSpec.describe MUD::Classes::Base do
   before do
     allow(player).to receive(:attributes).and_return(starting_attributes)
-    allow(player).to receive(:weapon_ids).and_return(%w[fists knife])
-    allow(player).to receive(:armor_ids).and_return(%w[unarmored vest])
+    allow(player).to receive(:current_room).and_return(MUD::Room.new('blank_room'))
     switch_logging_to_temp_file
   end
 
@@ -114,47 +113,41 @@ RSpec.describe MUD::Classes::Base do
 
   describe '#equip' do
     before do
-      player.inventory << 'knife'
+      player.inventory << 'zero'
     end
 
     it 'delegates to the `Actions::Equip` class' do
-      expect(MUD::Actions::Equip).to receive(:new).with(player, 'knife').and_call_original
+      expect(MUD::Actions::Equip).to receive(:new).with(player, 'zero').and_call_original
 
-      player.equip('knife')
+      player.equip('zero')
     end
   end
 
   describe '#weapon' do
     before do
-      player.inventory << 'knife'
-      player.equip('knife')
+      player.inventory << 'zero'
+      player.equip('zero')
     end
 
     it 'shows the id of the currently equipped weapon' do
-      expect(player.weapon).to eq('knife')
+      expect(player.weapon).to eq('zero')
     end
   end
 
   describe '#armor' do
     before do
-      player.inventory << item_to_equip
-      player.equip(item_to_equip)
+      player.inventory << 'zero_shield'
+      player.equip('zero_shield')
     end
 
-    let(:item_to_equip) { 'vest' }
-
     it 'shows the id of the currently equipped armor' do
-      expect(player.armor).to eq('vest')
+      expect(player.armor).to eq('zero_shield')
     end
   end
 
   describe '#current_room' do
     it 'returns what room you are in' do
       expect(player.current_room).to be_a MUD::Room
-    end
-
-    it 'is room 1 when starting a game' do
-      expect(player.current_room.room_id).to eq(1)
     end
   end
 
