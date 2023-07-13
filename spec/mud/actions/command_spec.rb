@@ -6,7 +6,7 @@ RSpec.describe MUD::Actions::Command do
 
   before do
     switch_logging_to_temp_file
-    allow(player).to receive(:current_room).and_return(MUD::Room.new('blank_room'))
+    player.current_room = MUD::Room.new('blank_room')
   end
 
   describe '#process' do
