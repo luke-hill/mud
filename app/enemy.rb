@@ -89,7 +89,7 @@ module MUD
     # @return Integer
     # The overall defense stat of the enemy
     def defense
-      Armor.new(armor_id).defense
+      Armor.of_type(armor_id).defense
     end
 
     def potion?

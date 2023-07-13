@@ -27,7 +27,7 @@ module MUD
 
     properties.each do |property|
       define_method(property) do
-        key_data[property.to_s]
+        armor_data[property.to_s]
       end
     end
 
