@@ -14,6 +14,8 @@ RSpec.describe MUD::Play do
     allow(MUD::Actions::Command).to receive(:new).with(user_input).and_return(command_instance)
   end
 
+  after { ENV['DATA_SOURCE'] = 'spec/support/fixtures' }
+
   describe '#play' do
     context 'when alive' do
       before do
