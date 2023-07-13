@@ -3,7 +3,6 @@
 RSpec.describe MUD::Shop do
   let(:valid_shop) { create_shop('valid_shop') }
   let(:invalid_shop) { create_shop('invalid_shop') }
-  let(:item_id) { 'knife' }
   let(:player) { MUD::Game.player }
   let(:shop_items_string) do
     <<~ITEMS
@@ -22,9 +21,9 @@ RSpec.describe MUD::Shop do
 
   describe '#buy' do
     it 'attempts to buy by delegating to the buy class' do
-      expect(MUD::Actions::Buy).to receive(:new).with(player, item_id, valid_shop).and_call_original
+      expect(MUD::Actions::Buy).to receive(:new).with(player, 'knife', valid_shop).and_call_original
 
-      valid_shop.buy(item_id)
+      valid_shop.buy('knife')
     end
   end
 
