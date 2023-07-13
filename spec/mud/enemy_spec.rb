@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Enemy do
-  subject(:enemy) { create('enemy', 'bad') }
+  subject(:enemy) { create(:enemy, 'bad') }
 
-  let(:dead_enemy) { create('enemy', 'dead') }
+  let(:dead_enemy) { create(:enemy, 'dead') }
 
   describe 'Gold' do
     describe '#gold' do

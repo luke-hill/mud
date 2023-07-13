@@ -7,7 +7,7 @@ RSpec.describe MUD::Combat::Attack do
   let(:weapon) { MUD::Weapon.of_type('zero') }
   let(:weapon_name) { weapon.name }
   let(:enemy_name) { 'TEST - Bad Enemy' }
-  let(:enemy) { create('enemy', 'bad') }
+  let(:enemy) { create(:enemy, 'bad') }
 
   describe '#attack' do
     subject(:attack_attempt) { attack_instance.attack }
