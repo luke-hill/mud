@@ -4,28 +4,10 @@ RSpec.describe MUD::Combat::Defend do
   subject(:defend_instance) { described_class.new(hero, enemy) }
 
   let(:hero) { MUD::Classes::Fighter.new }
-  let(:weapon_name) { MUD::Weapon.new(weapon_id).name }
-  let(:weapon_id) { 'knife' }
-  let(:enemy_name) { 'Enemy' }
-  let(:enemy) do
-    create(
-      :enemy,
-      {
-        name: enemy_name,
-        description: 'A Description',
-        weapon_id:,
-        armor_id: 'unarmored',
-        lower_hp_limit: 5,
-        upper_hp_limit: 13,
-        accuracy: 0.7,
-        lower_gold_limit: 0,
-        upper_gold_limit: 3,
-        xp: 2,
-        xp_killshot: 10,
-        stamina: 1
-      }
-    )
-  end
+  let(:weapon) { MUD::Weapon.of_type('zero') }
+  let(:weapon_name) { weapon.name }
+  let(:enemy_name) { 'TEST - Bad Enemy' }
+  let(:enemy) { create(:enemy, 'bad') }
 
   describe '#defend' do
     subject(:defend_attempt) { defend_instance.defend }
@@ -40,7 +22,6 @@ RSpec.describe MUD::Combat::Defend do
     end
 
     before do
-      allow(hero).to receive(:weapon).and_return(weapon_id)
       allow(defend_instance).to receive(:damage_taken).and_return(damage_taken)
       allow(defend_instance).to receive(:missed?).and_return(missed?)
       switch_logging_to_temp_file

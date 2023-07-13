@@ -23,13 +23,13 @@ module MUD
       # Perform the command (and return the output)
       # Return a "Input not yet recognised as a valid command"
       def process
-        MUD::Logger.debug("Raw input received from user: '#{command_input}'")
+        Logger.debug("Raw input received from user: '#{command_input}'")
         return process_attack if attack?
         return process_miscellaneous if miscellaneous?
         return process_north_south_east_west if compass_direction?
         return process_up_down if up_or_down?
 
-        MUD::Screen.output('Input not yet recognised as a valid command')
+        Screen.output('Input not yet recognised as a valid command')
       end
 
       private
@@ -78,28 +78,28 @@ module MUD
       end
 
       def output_diagnostic_info
-        MUD::Logger.debug('... DEBUG DIAGNOSTIC DUMP...')
+        Logger.debug('... DEBUG DIAGNOSTIC DUMP...')
         output_room_data
         output_player_data
-        MUD::Screen.output("Current Enemy in Room: #{player.current_room.enemy.inspect}")
-        MUD::Logger.debug('... END DEBUG DIAGNOSTIC DUMP...')
+        Screen.output("Current Enemy in Room: #{player.current_room.enemy.inspect}")
+        Logger.debug('... END DEBUG DIAGNOSTIC DUMP...')
       end
 
       def output_room_data
-        MUD::Screen.output("Description is: #{player.current_room.description}")
-        MUD::Screen.output("Advanced Description is: #{player.current_room.advanced_description}")
-        MUD::Screen.output("Connected rooms #{player.current_room.connected_rooms}")
+        Screen.output("Description is: #{player.current_room.description}")
+        Screen.output("Advanced Description is: #{player.current_room.advanced_description}")
+        Screen.output("Connected rooms #{player.current_room.connected_rooms}")
       end
 
       def output_player_data
-        MUD::Screen.output("Inventory: #{player.inventory}")
-        MUD::Screen.output("Weapon: #{player.weapon.green}")
-        MUD::Screen.output("Armor: #{player.armor.green}")
+        Screen.output("Inventory: #{player.inventory}")
+        Screen.output("Weapon: #{player.weapon.green}")
+        Screen.output("Armor: #{player.armor.green}")
         player.view_attributes
       end
 
       def die
-        MUD::Screen.output('You died'.red)
+        Screen.output('You died'.red)
         sleep 2
         exit
       end

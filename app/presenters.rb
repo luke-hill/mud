@@ -2,7 +2,7 @@
 
 module MUD
   # MUD::Presenters are a list of classes that convert data into nice text-based format/s
-  module Classes
+  module Presenters
   end
 end
 

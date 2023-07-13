@@ -30,8 +30,8 @@ module MUD
       # to the playing console.
       def use
         Logger.debug("Attempting to use key/potion '#{item_id}'")
-        return MUD::Screen.output("You do not have a #{item_id}".red) unless in_inventory?
-        return MUD::Screen.output('You cannot use this item!'.red) unless potion? || key?
+        return Screen.output("You do not have a #{item_id}".red) unless in_inventory?
+        return Screen.output('You cannot use this item!'.red) unless potion? || key?
         return drink_potion if potion?
 
         use_key
@@ -46,7 +46,7 @@ module MUD
       end
 
       def use_key
-        MUD::Screen.output(key.use_message.yellow)
+        key.use
         remove_one_copy_from_inventory
       end
 
@@ -55,11 +55,11 @@ module MUD
       end
 
       def potion
-        @potion ||= MUD::Potion.new(item_id)
+        @potion ||= Potion.of_type(item_id)
       end
 
       def dump_hp_mp_stats
-        MUD::Logger.debug("Previous hp #{@hero.hp}. Previous mp #{@hero.mp}")
+        Logger.debug("Previous hp #{@hero.hp}. Previous mp #{@hero.mp}")
       end
 
       def key?
@@ -69,7 +69,7 @@ module MUD
       end
 
       def key
-        @key ||= MUD::Key.new(item_id)
+        @key ||= Key.of_type(item_id)
       end
 
       def in_inventory?

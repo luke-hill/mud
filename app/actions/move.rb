@@ -22,7 +22,7 @@ module MUD
       # moved, a string representation of the movement is sent to the playing console.
       def move
         Logger.debug("Attempting to move #{unnabbreviate(direction, type: :movement)}")
-        return MUD::Screen.output(ktp_warning_message) unless player.current_room.exitable?
+        return Screen.output(ktp_warning_message) unless player.current_room.exitable?
         return send(direction) unless key_required?
 
         move_through_locked_door
@@ -31,7 +31,7 @@ module MUD
       private
 
       def move_through_locked_door
-        return MUD::Screen.output(MUD::Key.new(required_key).missing_message.red) unless required_key?
+        return Screen.output(Key.of_type(required_key).missing_message.red) unless required_key?
 
         player.use(required_key)
         send(direction)
@@ -58,41 +58,41 @@ module MUD
       end
 
       def north
-        return MUD::Screen.output('You cannot go north'.red) unless connected_rooms['north']
+        return Screen.output('You cannot go north'.red) unless connected_rooms['north']
 
         travel('north')
       end
       alias n north
 
       def south
-        return MUD::Screen.output('You cannot go south'.red) unless connected_rooms['south']
+        return Screen.output('You cannot go south'.red) unless connected_rooms['south']
 
         travel('south')
       end
       alias s south
 
       def east
-        return MUD::Screen.output('You cannot go east'.red) unless connected_rooms['east']
+        return Screen.output('You cannot go east'.red) unless connected_rooms['east']
 
         travel('east')
       end
       alias e east
 
       def west
-        return MUD::Screen.output('You cannot go west'.red) unless connected_rooms['west']
+        return Screen.output('You cannot go west'.red) unless connected_rooms['west']
 
         travel('west')
       end
       alias w west
 
       def up
-        return MUD::Screen.output('You cannot go up'.red) unless connected_rooms['up']
+        return Screen.output('You cannot go up'.red) unless connected_rooms['up']
 
         travel('up')
       end
 
       def down
-        return MUD::Screen.output('You cannot go down'.red) unless connected_rooms['down']
+        return Screen.output('You cannot go down'.red) unless connected_rooms['down']
 
         travel('down')
       end
@@ -103,8 +103,8 @@ module MUD
 
       def travel(direction)
         connected_rooms[direction].tap do |room_id|
-          MUD::Logger.info("Moving to Room-ID: #{room_id}")
-          MUD::Screen.output("You went #{direction}")
+          Logger.info("Moving to Room-ID: #{room_id}")
+          Screen.output("You went #{direction}")
           player.current_room.leave
           player.current_room = fetch_or_create_room(room_id)
         end
@@ -126,8 +126,8 @@ module MUD
       end
 
       def create_room(room_id)
-        MUD::Room.new(room_id).tap do |room|
-          break MUD::Shop.new(room_id) if room.shop?
+        Room.new(room_id).tap do |room|
+          break Shop.new(room_id) if room.shop?
         end
       end
     end

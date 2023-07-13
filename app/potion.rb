@@ -3,9 +3,9 @@
 module MUD
   # MUD::Potion is the way in which all potions are represented ingame
   #
-  # They are initialized with an id
-  # As soon as any action is taken (using), them, we delegate to the @potion iVar which loads up an OStruct reference
-  # of their statistics from the yml database
+  # This acts a bit like ActiveRecord, and will load the item into Memory for usage
+  # It uses the ID of the item (Which is a snake_cased string), and then create a Struct
+  # which can access all of the properties through the delegated struct
   #
   # Each potion will be classified as one of 3 types
   #   :healing -> Restore HP to the hero (Up to their maximum HP)
@@ -15,25 +15,36 @@ module MUD
   # Should the potion fail to be classified, a RuntimeError will be thrown and the game will crash
   class Potion
     include Helpers::Data
-    extend Forwardable
 
     attr_writer :type
-    attr_reader :id
+    attr_accessor :id
 
-    def initialize(id)
-      @id = id
+    def self.of_type(type)
+      new.tap do |potion|
+        potion.id = type
+      end
     end
 
-    def_delegators :potion,
-                   :name,
-                   :description,
-                   :value
+    def self.properties
+      %i[
+        name
+        use_message
+        description
+        value
+      ]
+    end
+
+    properties.each do |property|
+      define_method(property) do
+        potion_data[property.to_s]
+      end
+    end
 
     def use
       effect
       player.prevent_overflow_hp
       player.prevent_overflow_mp
-      MUD::Screen.output(dynamic_used_message)
+      Screen.output(dynamic_used_message)
     end
 
     def type
@@ -43,8 +54,8 @@ module MUD
     # @return [String]
     # This method will return either the standard message for using the potion correctly
     # If a use_message cannot be found, it will return a fallback message that indicates we need to code something
-    def use_message
-      potion.use_message || fallback_message
+    def message
+      use_message || fallback_message
     end
 
     private
@@ -52,10 +63,6 @@ module MUD
     def fallback_message
       Logger.error("ERROR: Missing use_message on potion. potion_id: #{id}")
       'ERROR: Unknown Potion - Will use up and continue.'
-    end
-
-    def potion
-      @potion ||= OpenStruct.new(potion_data)
     end
 
     def potion_data
@@ -73,9 +80,9 @@ module MUD
 
     def dynamic_used_message
       case type
-      when :healing;  then "#{use_message} #{value}hp. #{full_hp_restored_message}".yellow
-      when :mana;     then "#{use_message} #{value}mp. #{full_hp_restored_message}".blue
-      when :hp_bonus; then "#{use_message} #{value}hp.".blink
+      when :healing;  then "#{message} #{value}hp. #{full_hp_restored_message}".yellow
+      when :mana;     then "#{message} #{value}mp. #{full_hp_restored_message}".blue
+      when :hp_bonus; then "#{message} #{value}hp.".blink
       else            raise 'Unreachable code. Potion Type should already have been defined!'
       end
     end

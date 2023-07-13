@@ -26,14 +26,14 @@ module MUD
         return xp_capped_message if hero.capped?
 
         increase_hero_xp
-        MUD::Logger.debug("Hero xp increased by #{total_xp_gain}")
+        Logger.debug("Hero xp increased by #{total_xp_gain}")
         nil
       end
 
       private
 
       def xp_capped_message
-        MUD::Screen.output('You feel strong enough to reach the next level. Seek out a Guild.'.yellow.blink)
+        Screen.output('You feel strong enough to reach the next level. Seek out a Guild.'.yellow.blink)
       end
 
       def increase_hero_xp

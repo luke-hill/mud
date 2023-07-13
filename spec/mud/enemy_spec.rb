@@ -1,26 +1,26 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Enemy do
-  subject(:enemy) { create(:enemy, enemy_data) }
+  subject(:enemy) { create(:enemy, 'bad') }
 
-  let(:dead_enemy) do
-    enemy.tap { |enemy| enemy.hp = 0 }
-  end
-  let(:enemy_data) do
-    {
-      name: 'Enemy',
-      description: 'A Description',
-      weapon_id: 'fists',
-      armor_id: 'unarmored',
-      lower_hp_limit: 5,
-      upper_hp_limit: 13,
-      accuracy: 0.7,
-      lower_gold_limit: 0,
-      upper_gold_limit: 3,
-      xp: 2,
-      xp_killshot: 10,
-      stamina: 1
-    }
+  let(:dead_enemy) { create(:enemy, 'dead') }
+
+  describe 'Gold' do
+    describe '#gold' do
+      it 'spawns with an amount of gold inside the permitted values' do
+        expect(enemy.gold).to be_between(enemy.lower_gold_limit, enemy.upper_gold_limit)
+      end
+    end
+
+    describe '#gold=' do
+      it 'Updates the enemies gold' do
+        initial_gold = enemy.gold
+        enemy.gold -= 1
+        updated_gold = enemy.gold
+
+        expect(initial_gold).not_to eq(updated_gold)
+      end
+    end
   end
 
   describe 'Hit Points' do
@@ -41,21 +41,13 @@ RSpec.describe MUD::Enemy do
     end
   end
 
-  describe 'Gold' do
-    describe '#gold' do
-      it 'spawns with an amount of gold inside the permitted values' do
-        expect(enemy.gold).to be_between(enemy.lower_gold_limit, enemy.upper_gold_limit)
-      end
+  describe '#alive?' do
+    it 'returns true if the enemy is alive' do
+      expect(enemy.alive?).to be true
     end
 
-    describe '#gold=' do
-      it 'Updates the enemies gold' do
-        initial_gold = enemy.gold
-        enemy.gold -= 1
-        updated_gold = enemy.gold
-
-        expect(initial_gold).not_to eq(updated_gold)
-      end
+    it 'returns false if the enemy is dead' do
+      expect(dead_enemy.alive?).to be false
     end
   end
 
@@ -66,16 +58,6 @@ RSpec.describe MUD::Enemy do
 
     it 'returns false if the enemy is alive' do
       expect(enemy.dead?).to be false
-    end
-  end
-
-  describe '#alive?' do
-    it 'returns true if the enemy is alive' do
-      expect(enemy.alive?).to be true
-    end
-
-    it 'returns false if the enemy is dead' do
-      expect(dead_enemy.alive?).to be false
     end
   end
 
@@ -111,34 +93,6 @@ RSpec.describe MUD::Enemy do
   describe '#defense' do
     it 'returns the integer value of the defense value of the equipped armor' do
       expect(enemy.defense).to eq(0)
-    end
-  end
-
-  describe 'delegated methods' do
-    %i[
-      name
-      description
-      weapon_id
-      armor_id
-      lower_hp_limit
-      upper_hp_limit
-      accuracy
-      upper_gold_limit
-      lower_gold_limit
-      xp
-      xp_killshot
-      stamina
-      dropped_potion_id
-      dropped_potion_chance
-      dropped_potion_message
-      dropped_weapon_id
-      dropped_weapon_chance
-      dropped_weapon_message
-      dropped_armor_id
-      dropped_armor_chance
-      dropped_armor_message
-    ].each do |method|
-      it { is_expected.to delegate(method).to(:enemy) }
     end
   end
 end

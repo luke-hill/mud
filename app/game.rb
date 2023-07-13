@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# First calls must be +puts+ as the +MUD::Screen.output+ class method doesn't exist yet!
+# First calls must be +puts+ as the +Screen.output+ class method doesn't exist yet!
 puts 'Beginning autoloading'
 require_relative 'autoloader'
 puts 'Autoloading complete'
@@ -45,22 +45,20 @@ module MUD
 
       def output_diagnostic_info
         sleep 0.25
-        MUD::Screen.output('............................................')
+        Screen.output('............................................')
         sleep 0.25
-        MUD::Screen.output('Hello and Welcome to Adventures of avaLancHe - Working title I know!!')
+        Screen.output('Hello and Welcome to Adventures of avaLancHe - Working title I know!!')
         sleep 0.5
-        MUD::Screen.output("Current Version #{VERSION}")
+        Screen.output("Current Version #{VERSION}")
         sleep 0.5
-        MUD::Screen.output('For now you are a Fighter, with 25HP.').blink
+        Screen.output('For now you are a Fighter, with 25HP.').blink
       end
 
       def output_intro_to_game_info
         sleep 0.5
-        MUD::Screen.output(
-          "Whilst you're here, let me give you the down-low. You're about to begin your quest"
-        )
+        Screen.output("Whilst you're here, let me give you the down-low. You're about to begin your quest")
         sleep 0.5
-        MUD::Screen.output(
+        Screen.output(
           'You are in Newtown, and as avaLancHe ... our intrepid explorer, you have spawned ' \
           'in our village to kill Several Monsters and then the boss - The Orc!'
         )

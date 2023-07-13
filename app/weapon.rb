@@ -7,26 +7,32 @@ module MUD
   # which can access all of the properties through the delegated struct.
   # All Data is stored in the games data yml files, which are seeded.
   class Weapon
-    attr_reader :id
-
     include Helpers::Data
-    extend Forwardable
 
-    def initialize(id)
-      @id = id
+    attr_accessor :id
+
+    def self.of_type(type)
+      new.tap do |weapon|
+        weapon.id = type
+      end
     end
 
-    def_delegators :weapon,
-                   :name,
-                   :description,
-                   :min_power,
-                   :max_power
+    def self.properties
+      %i[
+        name
+        description
+        min_power
+        max_power
+      ]
+    end
+
+    properties.each do |property|
+      define_method(property) do
+        weapon_data[property.to_s]
+      end
+    end
 
     private
-
-    def weapon
-      @weapon ||= OpenStruct.new(weapon_data)
-    end
 
     def weapon_data
       weapon_yml[id] || raise("Weapon not found with ID: #{id}")

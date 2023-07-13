@@ -9,7 +9,7 @@ module MUD
   class Screen
     class << self
       def output(msg)
-        MUD::Logger.debug("SCREEN - #{msg}")
+        Logger.debug("SCREEN - #{msg}")
         logger.info(msg)
         puts msg
         msg

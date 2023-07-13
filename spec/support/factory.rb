@@ -2,10 +2,16 @@
 
 module SpecSupport
   module Factory
-    def create(type, data)
-      find_class(type).new(:no_op).tap do |model|
-        model.instance_variable_set("@#{type}", OpenStruct.new(data))
-      end
+    def create(thing, type)
+      find_class(thing).of_type(type)
+    end
+
+    def create_room(room_id)
+      MUD::Room.new(room_id)
+    end
+
+    def create_shop(room_id)
+      MUD::Shop.new(room_id)
     end
 
     private

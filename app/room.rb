@@ -31,8 +31,8 @@ module MUD
     end
 
     def visit
-      MUD::Logger.debug("Visiting Room-ID: #{room_id} Description: #{description}")
-      MUD::Screen.output(description)
+      Logger.debug("Visiting Room-ID: #{room_id} Description: #{description}")
+      Screen.output(description)
       self.times_visited += 1
     end
 
@@ -49,7 +49,7 @@ module MUD
     end
 
     def enemy
-      @enemy ||= Enemy.new(description_yml.dig(room_id, 'enemy_id'))
+      @enemy ||= Enemy.of_type(description_yml.dig(room_id, 'enemy_id'))
     end
 
     def exitable?
@@ -68,14 +68,6 @@ module MUD
 
     def directions_string
       @directions_string ||= Presenters::Directions.new(room_id).string
-    end
-
-    def visible_directions
-      connected_rooms.keys
-    end
-
-    def visible_directions_as_string
-      visible_directions.to_sentence(last_word_connector: ' and ')
     end
 
     def ktp?

@@ -16,7 +16,7 @@ module MUD
       # Attempt to fight an enemy. A series of checks are made and then attacks are made
       # in a sequential order (Hero always first).
       #
-      # Once these checks pass / attacks are made. The +MUD::Screen.output+ method is called on
+      # Once these checks pass / attacks are made. The +Screen.output+ method is called on
       # each invocation and result/s are outputted to the screen about what happened during the
       # iteration of +fight+
       def fight(times)
@@ -30,7 +30,7 @@ module MUD
       private
 
       def fight_once
-        return MUD::Screen.output('There is no enemy present'.red) if enemy.nil?
+        return Screen.output('There is no enemy present'.red) if enemy.nil?
 
         attack
 
@@ -51,7 +51,7 @@ module MUD
       end
 
       def notify_enemy_killed
-        MUD::Screen.output("You killed the #{enemy.name}.".blue.blink)
+        Screen.output("You killed the #{enemy.name}.".blue.blink)
       end
 
       def process_item_drops

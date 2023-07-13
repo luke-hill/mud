@@ -27,8 +27,8 @@ module MUD
       # This method will pick up the relevant item (If they pass the checks). Once the item has been
       # picked up, a string representation of the action is sent to the playing console.
       def pick_up
-        return MUD::Screen.output("I'm sorry that item isn't on the floor".red) unless on_floor?
-        return MUD::Screen.output('You do not have enough space for that.'.red) unless enough_space?
+        return Screen.output("I'm sorry that item isn't on the floor".red) unless on_floor?
+        return Screen.output('You do not have enough space for that.'.red) unless enough_space?
 
         pick_up_item
       end
@@ -50,16 +50,16 @@ module MUD
       def pick_up_item
         inventory << item_id
         remove_item_from_floor
-        MUD::Screen.output("You picked up a #{item_id.blue}.")
+        Screen.output("You picked up a #{item_id.blue}.")
       end
 
       def remove_item_from_floor
-        MUD::Logger.debug("Looking for #{item_id}.")
+        Logger.debug("Looking for #{item_id}.")
         item = find_item
-        return MUD::Screen.output('You do not have this item to remove.') unless item
+        return Screen.output('You do not have this item to remove.') unless item
 
         removed_item = floor.delete_at(floor.index(item))
-        MUD::Logger.info("Removed #{removed_item} from floor.")
+        Logger.info("Removed #{removed_item} from floor.")
       end
 
       def find_item

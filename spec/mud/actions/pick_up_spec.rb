@@ -1,14 +1,13 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Actions::PickUp do
-  subject(:pick_up_instance) { described_class.new(hero, item_id) }
+  subject(:pick_up_instance) { described_class.new(hero, 'demo_healing') }
 
   let(:hero) { MUD::Classes::Fighter.new }
-  let(:item_id) { 'lesser_healing_potion' }
 
   before do
     allow(MUD::Game).to receive(:player).and_return(hero)
-    allow(hero.current_room).to receive(:floor).and_return(['lesser_healing_potion'])
+    allow(hero.current_room).to receive(:floor).and_return(['demo_healing'])
   end
 
   describe '#pick_up' do

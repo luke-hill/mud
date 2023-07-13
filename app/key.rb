@@ -7,37 +7,47 @@ module MUD
   #
   # All Data is stored in the games data yml files, which are seeded
   class Key
-    attr_reader :id
-
     include Helpers::Data
-    extend Forwardable
 
-    def initialize(id)
-      @id = id
+    attr_accessor :id
+
+    def self.of_type(type)
+      new.tap do |key|
+        key.id = type
+      end
     end
 
-    def_delegators :key,
-                   :name,
-                   :description,
-                   :missing_message
+    def self.properties
+      %i[
+        name
+        description
+        use_message
+        missing_message
+      ]
+    end
 
+    properties.each do |property|
+      define_method(property) do
+        key_data[property.to_s]
+      end
+    end
 
     # @return [String]
     # This method will return either the standard message for using the key correctly
     # If a use_message cannot be found, it will return a fallback message that indicates we need to code something
-    def use_message
-      key.use_message || fallback_message
+    def use
+      Screen.output(message.yellow)
     end
 
     private
 
+    def message
+      use_message || fallback_message
+    end
+
     def fallback_message
       Logger.error("ERROR: Missing use_message on key. key_id: #{id}")
       'ERROR: Unknown Key - Will use up and continue.'
-    end
-
-    def key
-      @key ||= OpenStruct.new(key_data)
     end
 
     def key_data

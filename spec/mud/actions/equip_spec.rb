@@ -20,7 +20,7 @@ RSpec.describe MUD::Actions::Equip do
     end
 
     context 'when the item_id is an armor' do
-      let(:item_id) { 'vest' }
+      let(:item_id) { 'zero_shield' }
 
       it 'can equip an armor' do
         expect { equip_instance.equip }.to change(hero, :armor).to(item_id)

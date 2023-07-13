@@ -3,55 +3,58 @@
 module MUD
   # MUD::Enemy is the way in which all enemies are represented ingame
   #
-  # They are initialized with an id
-  # As soon as any action is taken against them, we delegate to the @enemy iVar which loads up an OStruct reference
-  # of their statistics from the yml database
+  # They are created as instances of this Enemy class with a representative id that will then be used to lookup their
+  # statistics from the yml db
   #
   # Should an enemy not be found in the regular enemy db it will then look in the boss db
-  #
   # Should a boss not be found in the boss db, a RuntimeError will be thrown and the game will crash
   class Enemy
-    attr_reader :id
-
     include Helpers::Data
-    extend Forwardable
 
-    def initialize(id)
-      @id = id
+    attr_writer :gold, :hp
+    attr_accessor :id
+
+    def self.of_type(type)
+      new.tap do |enemy|
+        enemy.id = type
+      end
     end
 
-    def_delegators :enemy,
-                   :name,
-                   :description,
-                   :weapon_id,
-                   :armor_id,
-                   :lower_hp_limit,
-                   :upper_hp_limit,
-                   :accuracy,
-                   :lower_gold_limit,
-                   :upper_gold_limit,
-                   :xp,
-                   :xp_killshot,
-                   :stamina,
-                   :dropped_potion_id,
-                   :dropped_potion_chance,
-                   :dropped_potion_message,
-                   :dropped_weapon_id,
-                   :dropped_weapon_chance,
-                   :dropped_weapon_message,
-                   :dropped_armor_id,
-                   :dropped_armor_chance,
-                   :dropped_armor_message
-
-    # @return Integer
-    # This will generate (and cache), the enemies hp
-    #
-    # The hp will fall between the lower and upper limits
-    def hp
-      @hp ||= rand(lower_hp_limit..upper_hp_limit)
+    def self.properties
+      %i[
+        name
+        description
+        weapon_id
+        armor_id
+        lower_hp_limit
+        upper_hp_limit
+        accuracy
+        lower_gold_limit
+        upper_gold_limit
+        xp
+        xp_killshot
+        stamina
+        dropped_potion_id
+        dropped_potion_chance
+        dropped_potion_message
+        dropped_weapon_id
+        dropped_weapon_chance
+        dropped_weapon_message
+        dropped_armor_id
+        dropped_armor_chance
+        dropped_armor_message
+        phrase1_chance
+        phrase1_message
+        phrase2_chance
+        phrase2_message
+      ]
     end
 
-    attr_writer :hp, :gold
+    properties.each do |property|
+      define_method(property) do
+        enemy_data[property.to_s]
+      end
+    end
 
     # @return Integer
     # This will generate (and cache), the enemies gold
@@ -59,6 +62,14 @@ module MUD
     # The hp will fall between the lower and upper limits
     def gold
       @gold ||= rand(lower_gold_limit..upper_gold_limit)
+    end
+
+    # @return Integer
+    # This will generate (and cache), the enemies hp
+    #
+    # The hp will fall between the lower and upper limits
+    def hp
+      @hp ||= rand(lower_hp_limit..upper_hp_limit)
     end
 
     def alive?
@@ -78,29 +89,27 @@ module MUD
     # @return Integer
     # The overall defense stat of the enemy
     def defense
-      Armor.new(armor_id).defense
+      Armor.of_type(armor_id).defense
     end
 
     def potion?
-      enemy_data.key?(:dropped_potion_id)
+      !dropped_potion_id.nil?
     end
 
     def weapon?
-      enemy_data.key?(:dropped_weapon_id)
+      !dropped_weapon_id.nil?
     end
 
     def armor?
-      enemy_data.key?(:dropped_armor_id)
+      !dropped_armor_id.nil?
     end
 
     private
 
-    def enemy
-      @enemy ||= OpenStruct.new(enemy_data)
-    end
-
     def enemy_data
-      enemy_yml[id] || boss_yml[id] || raise("Enemy/Boss not found with ID: #{id}")
+      raise('No ID set - Enemy defined incorrectly') unless defined?(id)
+
+      @enemy_data ||= enemy_yml[id] || boss_yml[id] || raise("Enemy/Boss not found with ID: #{id}")
     end
   end
 end

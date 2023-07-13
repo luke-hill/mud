@@ -1,0 +1,17 @@
+---
+blank_room:
+  north: filled_room
+  east: filled_room
+  south: filled_room
+  west: filled_room
+  up: filled_room
+  down: filled_room
+filled_room:
+  north: blank_room
+  east: blank_room
+  south: blank_room
+  west: blank_room
+  up: blank_room
+  down: blank_room
+trapped_room: {}
+  # No directions available

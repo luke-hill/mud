@@ -1,0 +1,5 @@
+---
+zero_shield:
+  name: Zero Shield
+  description: A description for the shield
+  defense: 0

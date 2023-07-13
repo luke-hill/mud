@@ -16,6 +16,8 @@ require 'delegate_matcher'
 require_relative '../app/game'
 require_relative '../app/play'
 
+ENV['DATA_SOURCE'] = 'spec/support/fixtures'
+
 Dir[File.absolute_path('./spec/support/**/*.rb')].each { |file| require file }
 
 RSpec.configure do |config|

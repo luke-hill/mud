@@ -35,6 +35,7 @@ module MUD
     end
 
     def setup
+      ENV['DATA_SOURCE'] = 'data'
       Game.setup
     end
 

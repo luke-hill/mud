@@ -25,10 +25,10 @@ module MUD
       def equip
         Logger.debug("Attempting to equip #{item_id}")
         validate_presence
-        MUD::Logger.debug("Looking for #{item_id}.")
+        Logger.debug("Looking for #{item_id}.")
         equip_weapon if weapon?
         equip_armor if armor?
-        MUD::Screen.output("#{item_id} equipped.")
+        Screen.output("#{item_id} equipped.")
       end
 
       def_delegators \
@@ -40,7 +40,7 @@ module MUD
 
       def equip_weapon
         new_weapon_id = find(item_id, %w[weapon])
-        return MUD::Screen.output('You do not have this weapon to equip.') unless new_weapon_id
+        return Screen.output('You do not have this weapon to equip.') unless new_weapon_id
 
         current_weapon_id = equipment[:weapon]
         inventory << current_weapon_id
@@ -50,7 +50,7 @@ module MUD
 
       def equip_armor
         new_armor_id = find(item_id, %w[armor])
-        return MUD::Screen.output('You do not have this armor to equip.') unless new_armor_id
+        return Screen.output('You do not have this armor to equip.') unless new_armor_id
 
         current_armor_id = equipment[:armor]
         inventory << current_armor_id
@@ -59,12 +59,12 @@ module MUD
       end
 
       def remove_from_inventory(item_id)
-        MUD::Logger.debug("Looking for #{item_id}.")
+        Logger.debug("Looking for #{item_id}.")
         item = find(item_id)
-        return MUD::Screen.output('You do not have this item to remove.') unless item
+        return Screen.output('You do not have this item to remove.') unless item
 
         removed_item = inventory.delete_at(inventory.index(item))
-        MUD::Screen.output("Removed #{removed_item}")
+        Screen.output("Removed #{removed_item}")
       end
 
       def find(item_id, types = [])
@@ -100,7 +100,7 @@ module MUD
       def validate_presence
         return if in_inventory?
 
-        MUD::Logger.error("An error has occurred trying to find #{item_id} in inventory")
+        Logger.error("An error has occurred trying to find #{item_id} in inventory")
         raise(ArgumentError, "You do not have a #{item_id} in your inventory.")
       end
 
@@ -108,7 +108,7 @@ module MUD
         return :weapon if weapon_ids.include?(item_id)
         return :armor if armor_ids.include?(item_id)
 
-        MUD::Logger.error("An error has occurred trying to classify the type of #{item_id}")
+        Logger.error("An error has occurred trying to classify the type of #{item_id}")
         raise(ArgumentError, "Cannot classify #{item_id}.")
       end
     end
