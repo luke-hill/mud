@@ -3,6 +3,9 @@
 RSpec.describe MUD::Shop do
   subject(:shop) { described_class.new(room_id) }
 
+  let(:valid_shop) { create_room('valid_shop') }
+  let(:invalid_shop) { create_room('invalid_shop') }
+
   let(:item_id) { 'knife' }
   let(:player) { MUD::Game.player }
   let(:room_id) { 1 }
@@ -38,8 +41,6 @@ RSpec.describe MUD::Shop do
   end
 
   it 'cannot have enemies in a shop' do
-    allow(shop).to receive(:enemy?).and_return(true)
-
-    expect { shop }.to raise_error(RuntimeError).with_message("There shouldn't be any enemies in shops!")
+    expect { invalid_shop }.to raise_error(RuntimeError).with_message("There shouldn't be any enemies in shops!")
   end
 end

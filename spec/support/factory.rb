@@ -24,6 +24,10 @@ module SpecSupport
       SpecSupport::Armor.of_type('zero')
     end
 
+    def create_room(type)
+      SpecSupport::Room.of_type(type)
+    end
+
     private
 
     def find_class(type)
