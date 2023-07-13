@@ -1,0 +1,13 @@
+---
+1:
+  north: 2
+  east: 4
+2:
+  east: 3
+  south: 1
+3:
+  west: 2
+  south: 4
+4:
+  north: 3
+  west: 1
