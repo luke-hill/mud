@@ -9,11 +9,5 @@ module SpecSupport
     def reset_room
       MUD::Game.player.current_room = MUD::Room.new(1)
     end
-
-    private
-
-    def description_yml
-      load_yml('spec/support/fixtures/description.yml')
-    end
   end
 end
