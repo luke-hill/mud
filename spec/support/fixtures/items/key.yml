@@ -1,0 +1,5 @@
+---
+dummy:
+  name: Dummy Key
+  description: A description
+  missing_message: Oh dear, no key!

@@ -1,0 +1,19 @@
+---
+blank_room:
+  description: This is a blank room description
+  advanced_description: This really is a blank room!
+  location_id: irrelevant
+  enemy_id: no_enemy
+filled_room:
+  description: This is a busy room outside town
+  advanced_description: This is dangerous!
+  location_id: irrelevant
+  enemy_id: 'null'
+valid_shop:
+  description: This is a shop that has no enemy
+  enemy_id: no_enemy
+  type: Potion Shop
+invalid_shop:
+  description: This is a shop that has no enemy
+  enemy_id: 'null'
+  type: Potion Shop

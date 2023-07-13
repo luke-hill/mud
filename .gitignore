@@ -13,4 +13,4 @@ doc/*
 
 # Ignore all data files
 *.yml
-!/spec/support/fixtures/*.yml
+!/spec/**/**/*.yml
