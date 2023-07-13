@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Combat::Defend do
-  subject(:defend_instance) { described_class.new(hero, enemy) }
-
-  let(:hero) { MUD::Classes::Fighter.new }
-  let(:weapon) { MUD::Weapon.of_type('zero') }
-  let(:weapon_name) { weapon.name }
+  let(:defend_instance) { described_class.new(hero, enemy) }
   let(:enemy_name) { 'TEST - Bad Enemy' }
   let(:enemy) { create(:enemy, 'bad') }
+  let(:hero) { MUD::Classes::Fighter.new }
+  let(:weapon_name) { MUD::Weapon.of_type('zero').name }
 
   describe '#defend' do
     subject(:defend_attempt) { defend_instance.defend }
