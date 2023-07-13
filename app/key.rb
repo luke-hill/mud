@@ -19,7 +19,6 @@ module MUD
 
     def self.properties
       %i[
-        key
         name
         description
         missing_message
@@ -33,7 +32,7 @@ module MUD
     end
 
     def use_message
-      key&.use_message || fallback_message
+      use_message || fallback_message
     end
 
     private

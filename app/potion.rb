@@ -3,9 +3,9 @@
 module MUD
   # MUD::Potion is the way in which all potions are represented ingame
   #
-  # They are initialized with an id
-  # As soon as any action is taken (using), them, we delegate to the @potion iVar which loads up an OStruct reference
-  # of their statistics from the yml database
+  # This acts a bit like ActiveRecord, and will load the item into Memory for usage
+  # It uses the ID of the item (Which is a snake_cased string), and then create a Struct
+  # which can access all of the properties through the delegated struct
   #
   # Each potion will be classified as one of 3 types
   #   :healing -> Restore HP to the hero (Up to their maximum HP)
@@ -15,19 +15,24 @@ module MUD
   # Should the potion fail to be classified, a RuntimeError will be thrown and the game will crash
   class Potion
     include Helpers::Data
-    extend Forwardable
 
     attr_writer :type
-    attr_reader :id
+    attr_accessor :id
 
-    def initialize(id)
-      @id = id
+    def self.of_type(type)
+      new.tap do |potion|
+        potion.id = type
+      end
     end
 
-    def_delegators :potion,
-                   :name,
-                   :description,
-                   :value
+    def self.properties
+      %i[
+        name
+        use_message
+        description
+        value
+      ]
+    end
 
     def use
       effect
@@ -41,7 +46,7 @@ module MUD
     end
 
     def use_message
-      potion.use_message || fallback_message
+      use_message || fallback_message
     end
 
     private
@@ -49,10 +54,6 @@ module MUD
     def fallback_message
       Logger.error("ERROR: Missing use_message on potion. potion_id: #{id}")
       'ERROR: Unknown Potion - Will use up and continue.'
-    end
-
-    def potion
-      @potion ||= OpenStruct.new(potion_data)
     end
 
     def potion_data
