@@ -1,0 +1,6 @@
+---
+demo_endurance:
+  name: Demo Endurance Potion
+  use_message: This is a demo consumption
+  description: Demo Endurance Potion Description
+  value: 1

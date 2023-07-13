@@ -1,0 +1,6 @@
+---
+demo_healing:
+  name: Demo Healing Potion
+  use_message: This is a demo consumption
+  description: Demo Healing Potion Description
+  value: 10
