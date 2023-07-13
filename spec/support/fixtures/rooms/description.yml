@@ -15,7 +15,7 @@ trashed_room:
   description: This is a room containing a dead enemy
   advanced_description: The enemy has just died
   location_id: irrelevant
-  enemy_id: fully_equipped_dead
+  enemy_id: dead
   type: Town
 valid_shop:
   description: This is a shop that has no enemy
