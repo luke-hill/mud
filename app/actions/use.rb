@@ -7,22 +7,14 @@ module MUD
     # be used, an error is thrown. If it can be used, the +use_effect+ from the Model
     # will be passed as a proc and then applied, then it is deleted from your inventory.
     class Use
-      attr_reader :item_id
+      attr_reader :hero, :item_id
 
       include Helpers::Item
-      extend Forwardable
 
       def initialize(hero, item_id)
         @hero = hero
         @item_id = item_id
       end
-
-      def_delegators \
-        :@hero,
-        :inventory,
-        :hp=,
-        :mp=,
-        :max_hp=
 
       # @return [String]
       # This method will use the relevant item (If the item is usable)
@@ -73,15 +65,15 @@ module MUD
       end
 
       def in_inventory?
-        inventory.include?(item_id)
+        hero.inventory.include?(item_id)
       end
 
       def remove_one_copy_from_inventory
-        inventory.delete_at(index_of_first_copy)
+        hero.inventory.delete_at(index_of_first_copy)
       end
 
       def index_of_first_copy
-        inventory.index(item_id)
+        hero.inventory.index(item_id)
       end
     end
   end

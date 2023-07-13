@@ -7,23 +7,15 @@ module MUD
     # that is passed in on initialization of the class. If all checks pass. It will deduct the cost
     # of the item from your gold, and then add a copy to your inventory
     class Buy
-      attr_reader :item_id
+      attr_reader :hero, :item_id
 
       include Helpers::Item
-      extend Forwardable
 
       def initialize(hero, item_id, room)
         @hero = hero
         @item_id = item_id
         @room = room
       end
-
-      def_delegators \
-        :@hero,
-        :inventory,
-        :gold,
-        :gold=,
-        :max_inventory_size
 
       # @return [String]
       # This method will buy the relevant item (If they pass the checks). Once the item has been
@@ -45,12 +37,12 @@ module MUD
       end
 
       def enough_money?
-        Logger.debug("Current gold amount #{gold}")
-        gold >= cost
+        Logger.debug("Current gold amount #{hero.gold}")
+        hero.gold >= cost
       end
 
       def enough_space?
-        inventory.compact.length < max_inventory_size
+        hero.inventory.compact.length < hero.max_inventory_size
       end
 
       def for_sale?
@@ -60,8 +52,8 @@ module MUD
       end
 
       def buy_item
-        self.gold -= cost
-        inventory << item_id
+        hero.gold -= cost
+        hero.inventory << item_id
         Screen.output("You bought a #{item_id.blue} for #{cost.to_s.yellow} gold.")
       end
     end

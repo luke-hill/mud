@@ -5,14 +5,12 @@ RSpec.describe MUD::Actions::Buy do
 
   let(:hero) { MUD::Classes::Fighter.new }
   let(:item_id) { 'knife' }
-  let(:item_cost) { 1 }
-  let(:initial_gold) { hero.gold }
 
   describe '#buy' do
     subject(:buy_attempt) { buy_instance.buy }
 
     before do
-      allow(buy_instance).to receive(:cost).and_return(item_cost)
+      allow(buy_instance).to receive(:cost).and_return(1)
     end
 
     context "when the item_id isn't recognised as being for sale" do
@@ -32,7 +30,7 @@ RSpec.describe MUD::Actions::Buy do
     end
 
     context "when the hero doesn't have enough gold for the item_id" do
-      before { allow(buy_instance).to receive(:enough_money?).and_return(false) }
+      before { hero.gold = 0 }
 
       it "informs the player that they don't have enough gold" do
         expect(buy_attempt).to eq('You do not have enough gold for that.'.red)
@@ -48,7 +46,7 @@ RSpec.describe MUD::Actions::Buy do
     end
 
     context "when the hero doesn't have enough space for the item_id" do
-      before { allow(buy_instance).to receive(:enough_space?).and_return(false) }
+      before { hero.max_inventory_size = 0 }
 
       it "informs the player that they don't have enough space" do
         expect(buy_attempt).to eq('You do not have enough space for that.'.red)
@@ -64,22 +62,15 @@ RSpec.describe MUD::Actions::Buy do
     end
 
     it "reduces the hero's gold by the item_ids cost" do
-      expect { buy_attempt }.to change(hero, :gold).from(initial_gold).to(initial_gold - item_cost)
+      expect { buy_attempt }.to change(hero, :gold).by(-1)
     end
 
     it "adds the item_id to the hero's inventory" do
-      expect { buy_attempt }.to change(hero, :inventory).from([]).to([item_id])
+      expect { buy_attempt }.to change(hero.inventory, :length).by(1)
     end
 
     it 'informs the player the hero bought the item' do
-      expect(buy_attempt).to eq("You bought a #{item_id.blue} for #{item_cost.to_s.yellow} gold.")
+      expect(buy_attempt).to eq("You bought a #{item_id.blue} for #{1.to_s.yellow} gold.")
     end
-  end
-
-  describe 'delegated methods' do
-    it { is_expected.to delegate(:inventory).to(:@hero) }
-    it { is_expected.to delegate(:gold).to(:@hero) }
-    it { is_expected.to delegate(:gold=).with(1).to(:@hero) }
-    it { is_expected.to delegate(:max_inventory_size).to(:@hero) }
   end
 end
