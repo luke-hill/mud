@@ -3,7 +3,7 @@
   name: TEST - Null Enemy
   description: This enemy will always miss
   weapon_id: zero
-  armor_id: zero
+  armor_id: zero_shield
   lower_hp_limit: 5
   upper_hp_limit: 5
   accuracy: 0
