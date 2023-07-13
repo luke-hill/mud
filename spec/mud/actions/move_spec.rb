@@ -5,11 +5,9 @@ RSpec.describe MUD::Actions::Move do
 
   before do
     switch_logging_to_temp_file
-    reset_room
   end
 
   after do
-    reset_room
     remove_test_screen_logs
   end
 
