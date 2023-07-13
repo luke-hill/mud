@@ -9,27 +9,27 @@ module SpecSupport
     end
 
     def create_null_enemy
-      SpecSupport::Enemy.of_type('null')
+      MUD::Enemy.of_type('null')
     end
 
     def create_dead_enemy
-      SpecSupport::Enemy.of_type('fully_equipped_dead')
+      MUD::Enemy.of_type('fully_equipped_dead')
     end
 
     def create_dummy_key
-      SpecSupport::Key.of_type('dummy')
+      MUD::Key.of_type('dummy')
     end
 
     def create_zero_armor
-      SpecSupport::Armor.of_type('zero')
+      MUD::Armor.of_type('zero')
     end
 
     def create_room(room_id)
-      SpecSupport::Room.new(room_id)
+      MUD::Room.new(room_id)
     end
 
     def create_shop(room_id)
-      SpecSupport::Shop.new(room_id)
+      MUD::Shop.new(room_id)
     end
 
     private
