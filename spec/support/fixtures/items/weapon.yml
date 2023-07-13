@@ -1,0 +1,11 @@
+---
+zero:
+  name: Zero
+  description: This weapon always does 0 damage
+  min_power: 0
+  max_power: 0
+knife:
+  name: Testing Knife
+  description: This will always attempt to deal 1 damage
+  min_power: 1
+  max_power: 1
