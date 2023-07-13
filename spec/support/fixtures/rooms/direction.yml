@@ -15,3 +15,5 @@ filled_room:
   down: blank_room
 trapped_room: {}
   # No directions available
+corridor:
+  north: corridor
