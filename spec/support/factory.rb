@@ -6,14 +6,6 @@ module SpecSupport
       find_class(thing).of_type(type)
     end
 
-    def create_dummy_key
-      MUD::Key.of_type('dummy')
-    end
-
-    def create_zero_armor
-      MUD::Armor.of_type('zero')
-    end
-
     def create_weapon(type = 'zero')
       MUD::Armor.of_type(type)
     end
