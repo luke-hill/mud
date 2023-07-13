@@ -20,6 +20,10 @@ module SpecSupport
       SpecSupport::Key.of_type('dummy')
     end
 
+    def create_zero_armor
+      SpecSupport::Armor.of_type('zero')
+    end
+
     private
 
     def find_class(type)
