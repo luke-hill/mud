@@ -5,7 +5,7 @@ RSpec.describe MUD::Potion do
 
   describe '#use' do
     context 'when the potion is a "healing" potion' do
-      let(:potion) { create_potion('healing') }
+      let(:potion) { create_potion('demo_healing') }
 
       it 'will recover some hp for the player' do
         expect(player).to receive(:hp=).once
@@ -15,7 +15,7 @@ RSpec.describe MUD::Potion do
     end
 
     context 'when the potion is a "mana" potion' do
-      let(:potion) { create_potion('mana') }
+      let(:potion) { create_potion('demo_mana') }
 
       it 'will recover some mp for the player' do
         expect(player).to receive(:mp=).once
@@ -25,7 +25,7 @@ RSpec.describe MUD::Potion do
     end
 
     context 'when the potion is a "hp bonus" potion' do
-      let(:potion) { create_potion('hp_bonus') }
+      let(:potion) { create_potion('demo_endurance') }
 
       it 'will increase the players `max_hp`' do
         expect(player).to receive(:max_hp=).once

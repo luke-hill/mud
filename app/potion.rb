@@ -34,6 +34,12 @@ module MUD
       ]
     end
 
+    properties.each do |property|
+      define_method(property) do
+        potion_data[property.to_s]
+      end
+    end
+
     def use
       effect
       player.prevent_overflow_hp
