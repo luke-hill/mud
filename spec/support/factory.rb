@@ -2,8 +2,8 @@
 
 module SpecSupport
   module Factory
-    def create_null_enemy
-      MUD::Enemy.of_type('null')
+    def create_bad_enemy
+      MUD::Enemy.of_type('bad')
     end
 
     def create_dead_enemy

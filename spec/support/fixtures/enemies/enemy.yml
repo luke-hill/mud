@@ -1,6 +1,6 @@
 ---
-"null":
-  name: TEST - Null Enemy
+bad:
+  name: TEST - Bad Enemy
   description: This enemy will always miss
   weapon_id: zero
   armor_id: zero_shield

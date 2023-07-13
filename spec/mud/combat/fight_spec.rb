@@ -5,7 +5,7 @@ RSpec.describe MUD::Combat::Fight do
 
   let(:fight_instance) { described_class.new(hero, enemy) }
   let(:hero) { MUD::Classes::Fighter.new }
-  let(:enemy) { create_null_enemy }
+  let(:enemy) { create_bad_enemy }
 
   describe '#fight' do
     context 'when times parameter is 1' do

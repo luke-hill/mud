@@ -9,7 +9,7 @@ filled_room:
   description: This is a busy room outside town
   advanced_description: This is dangerous!
   location_id: irrelevant
-  enemy_id: 'null'
+  enemy_id: bad
   type: Town
 trashed_room:
   description: This is a room containing a dead enemy
@@ -23,5 +23,5 @@ valid_shop:
   type: Potion Shop
 invalid_shop:
   description: This is a shop that has no enemy
-  enemy_id: 'null'
+  enemy_id: bad
   type: Potion Shop
