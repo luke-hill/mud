@@ -2,12 +2,8 @@
 
 module SpecSupport
   module Factory
-    def create_bad_enemy
-      MUD::Enemy.of_type('bad')
-    end
-
-    def create_dead_enemy
-      MUD::Enemy.of_type('fully_equipped_dead')
+    def create(thing, type)
+      find_class(thing).of_type(type)
     end
 
     def create_dummy_key

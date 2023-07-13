@@ -3,7 +3,7 @@
 RSpec.describe MUD::Combat::ItemDrops do
   let(:item_drops_instance) { described_class.new(hero, enemy) }
   let(:hero) { MUD::Classes::Fighter.new }
-  let(:enemy) { create_dead_enemy }
+  let(:enemy) { create('enemy', 'dead') }
 
   describe '#process' do
     subject(:drop_items) { item_drops_instance.process }

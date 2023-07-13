@@ -12,7 +12,7 @@ bad:
   xp: 1
   xp_killshot: 10
   stamina: 1
-fully_equipped_dead:
+dead:
   name: TEST - Equipped DEAD Enemy
   description: This enemy is always dead
   weapon_id: zero
