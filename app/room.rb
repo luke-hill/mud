@@ -70,14 +70,6 @@ module MUD
       @directions_string ||= Presenters::Directions.new(room_id).string
     end
 
-    def visible_directions
-      connected_rooms.keys
-    end
-
-    def visible_directions_as_string
-      visible_directions.to_sentence(last_word_connector: ' and ')
-    end
-
     def ktp?
       description_yml.dig(room_id, 'ktp')
     end
