@@ -14,9 +14,7 @@ RSpec.describe MUD::Combat::Attack do
 
     let(:damage_dealt) { 2 }
     let(:missed?) { false }
-    let(:missed_message) do
-      "You tried to attack the #{enemy_name} with your #{weapon_name}... but missed.".yellow
-    end
+    let(:missed_message) { "You tried to attack the #{enemy_name} with your #{weapon_name}... but missed.".yellow }
     let(:attack_message_regex) do
       /You hit the #{enemy_name} with your #{weapon_name} for #{damage_dealt} damage./
     end
@@ -34,7 +32,7 @@ RSpec.describe MUD::Combat::Attack do
       let(:missed?) { true }
 
       it 'informs the player that the attack attempt missed' do
-        expect(attack_attempt).to eq(missed_message)
+        expect(attack_attempt).to match("You tried to attack the #{enemy_name} with your #{weapon_name}... but missed.".yellow)
       end
     end
 
