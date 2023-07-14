@@ -15,7 +15,7 @@ module MUD
     attr_accessor :id
 
     # @return [MUD::Enemy]
-    # Return an instance of enemy class with correct id set
+    # Return an instance of the enemy class with correct id set
     def self.of_type(type)
       new.tap do |enemy|
         enemy.id = type
@@ -23,7 +23,7 @@ module MUD
     end
 
     # @return [Array]
-    # All properties of enemy that will be set as methods
+    # All properties of the enemy that will be set as methods
     def self.properties
       %i[
         name

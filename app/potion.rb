@@ -20,7 +20,7 @@ module MUD
     attr_accessor :id
 
     # @return [MUD::Potion]
-    # Return an instance of potion class with correct id set
+    # Return an instance of the potion class with correct id set
     def self.of_type(type)
       new.tap do |potion|
         potion.id = type
@@ -28,7 +28,7 @@ module MUD
     end
 
     # @return [Array]
-    # All properties of potion that will be set as methods
+    # All properties of the potion that will be set as methods
     def self.properties
       %i[
         name

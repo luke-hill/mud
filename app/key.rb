@@ -12,7 +12,7 @@ module MUD
     attr_accessor :id
 
     # @return [MUD::Key]
-    # Return an instance of key class with correct id set
+    # Return an instance of the key class with correct id set
     def self.of_type(type)
       new.tap do |key|
         key.id = type
@@ -20,7 +20,7 @@ module MUD
     end
 
     # @return [Array]
-    # All properties of key that will be set as methods
+    # All properties of the key that will be set as methods
     def self.properties
       %i[
         name

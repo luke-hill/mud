@@ -84,7 +84,7 @@ module MUD
       end
 
       # @return [String]
-      # The wrapper method call that attempts to equip the item_id provided
+      # This delegates to the Equip class and performs the #equip action
       def equip(item_id)
         MUD::Actions::Equip.new(self, item_id).equip
       end
@@ -102,13 +102,13 @@ module MUD
       end
 
       # @return [String]
-      # The wrapper method call that attempts to use the item_id provided
+      # This delegates to the Use class and performs the #use action
       def use(item_id)
         MUD::Actions::Use.new(self, item_id).use
       end
 
-      # @return [Unsure]
-      # The wrapper method call that makes a 1/many attacks against the enemy
+      # @return [String]
+      # This delegates to the Fight class and performs the #fight action
       def fight(times = 1)
         MUD::Combat::Fight.new(self, current_room.enemy).fight(times)
       end

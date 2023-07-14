@@ -12,7 +12,7 @@ module MUD
     attr_accessor :id
 
     # @return [MUD::Armor]
-    # Return an instance of armor class with correct id set
+    # Return an instance of the armor class with correct id set
     def self.of_type(type)
       new.tap do |armor|
         armor.id = type
@@ -20,7 +20,7 @@ module MUD
     end
 
     # @return [Array]
-    # All properties of armor that will be set as methods
+    # All properties of the armor that will be set as methods
     def self.properties
       %i[
         name
