@@ -4,11 +4,8 @@
 4) Begin consuming phrases that have been saved by enemies (v4)
 6) Update Simplecov to pass 98%
 7) Consume the `use_message` property on Aurel Bark Key (`v3.0` - Requires Lone Ranger)
-8) Get yard documentation rate up to 90%
 9) Add in simplecov coverage up 100%
 10) Playthrough attempt #3 - Attempt to buy an item, equip it, and see the difference in attack/defense
-11) Fix up dependabot
-12) Fix up GHA
 14) Look around should show enemies
 16) After game load, prompt user to press enter
 17) Remove hero argument from initializer for all actions
