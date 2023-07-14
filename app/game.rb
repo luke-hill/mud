@@ -63,7 +63,7 @@ module MUD
           'in our village to kill Several Monsters and then the boss - The Orc!'
         )
         Screen.output('Press any button to continue')
-        gets.chomp
+        $stdin.gets
         Screen.output('Happy gaming!')
       end
     end
