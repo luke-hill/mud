@@ -26,7 +26,7 @@ module MUD
 
         attack_message
         XP.new(hero, enemy, damage_dealt).increase
-        reduce_hp
+        reduce_enemy_hp
 
         return Screen.output("DEBUG --> ENEMY HP:#{enemy.hp}hp.") unless enemy_killed?
 
@@ -91,7 +91,7 @@ module MUD
         Screen.output("You hit the #{enemy_name} with your #{weapon_name} for #{damage_dealt} damage.")
       end
 
-      def reduce_hp
+      def reduce_enemy_hp
         enemy.hp -= damage_dealt
         enemy.prevent_negative_hp
       end

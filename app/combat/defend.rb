@@ -25,7 +25,7 @@ module MUD
         return missed_message if no_damage?
 
         attack_message
-        reduce_hp
+        reduce_hero_hp
 
         return Screen.output("DEBUG --> YOUR HP:#{hero.hp}hp.") unless hero_killed?
 
@@ -79,22 +79,18 @@ module MUD
       end
 
       def initial_defense_value
-        rand(0..(armor.defense))
+        rand(0..(hero.armor.defense))
       end
 
       def defense_modifiers
         (hero.strength / 3).floor + (hero.level / 2).floor
       end
 
-      def armor
-        Armor.new(hero.armor)
-      end
-
       def attack_message
         Screen.output("The #{enemy_name} hit you with its #{weapon_name} for #{damage_taken} damage.")
       end
 
-      def reduce_hp
+      def reduce_hero_hp
         hero.hp -= damage_taken
         hero.prevent_negative_hp
       end
