@@ -20,9 +20,11 @@ module MUD
       # @return [String]
       # The enemy name formatted appropriately
       def string
+        return 'The room is clear of enemies.' if enemy.id == 'no_enemy'
+
         case enemy.type
-        when :enemy; then "A #{enemy.name} is here with you."
-        when :boss;  then "The #{enemy.name} is here with you.".bold
+        when :enemy; then "A #{enemy.name} is here with you.".blue
+        when :boss;  then "The #{enemy.name} is here with you.".blue.bold
         else raise "This room (Room-ID: #{room_id}), is incorrectly configured"
         end
       end
