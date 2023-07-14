@@ -114,12 +114,28 @@ module MUD
       !dropped_armor_id.nil?
     end
 
+    # @return [String || Nil]
+    # The phrase the enemy was due to speak if triggered
+    def speak
+      Screen.output("#{name.blue}: #{phrase.yellow}") if phrase
+    end
+
     private
 
     def enemy_data
       raise('No ID set - Enemy defined incorrectly') unless defined?(id)
 
       @enemy_data ||= enemy_yml[id] || boss_yml[id] || raise("Enemy/Boss not found with ID: #{id}")
+    end
+
+    def phrase
+      if rand > phrase1_chance
+        phrase1_message
+      elsif rand > phrase2_chance
+        phrase2_message
+      else
+        Logger.debug('Neither message triggered. No message output from enemy')
+      end
     end
   end
 end

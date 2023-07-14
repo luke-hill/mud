@@ -38,6 +38,7 @@ module MUD
           notify_enemy_killed
           process_item_drops
         else
+          enemy.speak
           defend
         end
       end
