@@ -11,12 +11,16 @@ module MUD
 
     attr_accessor :id
 
+    # @return [MUD::Weapon]
+    # Return an instance of the weapon class with correct id set
     def self.of_type(type)
       new.tap do |weapon|
         weapon.id = type
       end
     end
 
+    # @return [Array]
+    # All properties of the weapon that will be set as methods
     def self.properties
       %i[
         name

@@ -25,6 +25,7 @@ RSpec.configure do |config|
   config.include SpecSupport::Factory
   config.include SpecSupport::File
   config.include SpecSupport::Room
+  config.include MUD::Helpers::Unnabbreviater
 
   config.add_formatter :documentation
 

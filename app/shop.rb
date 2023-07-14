@@ -15,10 +15,15 @@ module MUD
       validate_enemy_not_present
     end
 
+    # @return [String]
+    # This delegates to the Buy class and performs the #buy action
     def buy(item_id)
       Actions::Buy.new(player, item_id, self).buy
     end
 
+    # @return [String]
+    # A list of all items for sale
+    # This uses the Shopitems presenter so it should be formatted neatly
     def items_for_sale
       Logger.debug("Displaying Shop Data for Room-ID: #{room_id}")
       Screen.output(shop_items_string)

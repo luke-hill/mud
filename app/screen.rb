@@ -8,6 +8,13 @@ module MUD
   # copied into the main game log file, so the traceability is maximised.
   class Screen
     class << self
+      # @return [String]
+      # This is the global view of what is happening in the game
+      # Each command that is output to the screen will be ....
+      #
+      # 1 - Logged into the separate game logger, with a note it is designed for Screen output
+      # 2 - Output to the screen logger at info level
+      # 3 - Output to $stdout
       def output(msg)
         Logger.debug("SCREEN - #{msg}")
         logger.info(msg)

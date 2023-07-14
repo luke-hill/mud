@@ -8,7 +8,6 @@ module MUD
     # direction. Then the relevant room variables will be updated.
     class Move
       include MUD::Helpers::Data
-      include MUD::Helpers::Unnabbreviater
 
       attr_reader :player, :direction
 
@@ -21,7 +20,7 @@ module MUD
       # This method will move in the relevant direction (If they pass the checks). Once you have
       # moved, a string representation of the movement is sent to the playing console.
       def move
-        Logger.debug("Attempting to move #{unnabbreviate(direction, type: :movement)}")
+        Logger.debug("Attempting to move #{direction}")
         return Screen.output(ktp_warning_message) unless player.current_room.exitable?
         return send(direction) unless key_required?
 
@@ -46,7 +45,7 @@ module MUD
       end
 
       def required_key
-        @required_key ||= direction_yml.dig(player.current_room.room_id, "#{unnabbreviate(direction, type: :movement)}_key_id")
+        @required_key ||= direction_yml.dig(player.current_room.room_id, "#{direction}_key_id")
       end
 
       def required_key?
@@ -62,28 +61,24 @@ module MUD
 
         travel('north')
       end
-      alias n north
 
       def south
         return Screen.output('You cannot go south'.red) unless connected_rooms['south']
 
         travel('south')
       end
-      alias s south
 
       def east
         return Screen.output('You cannot go east'.red) unless connected_rooms['east']
 
         travel('east')
       end
-      alias e east
 
       def west
         return Screen.output('You cannot go west'.red) unless connected_rooms['west']
 
         travel('west')
       end
-      alias w west
 
       def up
         return Screen.output('You cannot go up'.red) unless connected_rooms['up']

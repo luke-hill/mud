@@ -38,12 +38,17 @@ module MUD
           notify_enemy_killed
           process_item_drops
         else
-          Defend.new(hero, enemy).defend
+          enemy.speak
+          defend
         end
       end
 
       def attack
         Attack.new(hero, enemy).attack
+      end
+
+      def defend
+        Defend.new(hero, enemy).defend
       end
 
       def enemy_killed?

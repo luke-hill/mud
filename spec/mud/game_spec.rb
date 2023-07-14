@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Game do
-  subject(:game) { described_class }
-
   before do
     allow(described_class).to receive(:sleep)
+    allow($stdin).to receive(:gets)
   end
 
   describe '.setup' do

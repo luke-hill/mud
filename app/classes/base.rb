@@ -12,9 +12,8 @@ module MUD
 
       attr_accessor :current_room, :rooms_visited
 
-      # These are all the accessors for the individual attributes which allow
-      # us to read and write to them whilst also logging our requests for
-      # maximum traceability
+      # These are all the accessors for the individual attributes which allow us to read and write to them
+      # whilst also logging all our requests for maximum traceability
       include MUD::Helpers::AttributeAccessors
       include Helpers::Data
       include Helpers::Item
@@ -84,31 +83,31 @@ module MUD
       end
 
       # @return [String]
-      # The wrapper method call that attempts to equip the item_id provided
+      # This delegates to the Equip class and performs the #equip action
       def equip(item_id)
         MUD::Actions::Equip.new(self, item_id).equip
       end
 
-      # @return [String]
-      # The current equipped weapon_id
+      # @return [MUD::Weapon]
+      # The currently equipped weapon
       def weapon
         equipment[:weapon]
       end
 
-      # @return [String]
-      # The current equipped armor_id
+      # @return [MUD::Armor]
+      # The currently equipped armor
       def armor
         equipment[:armor]
       end
 
       # @return [String]
-      # The wrapper method call that attempts to use the item_id provided
+      # This delegates to the Use class and performs the #use action
       def use(item_id)
         MUD::Actions::Use.new(self, item_id).use
       end
 
-      # @return [Unsure]
-      # The wrapper method call that makes a 1/many attacks against the enemy
+      # @return [String]
+      # This delegates to the Fight class and performs the #fight action
       def fight(times = 1)
         MUD::Combat::Fight.new(self, current_room.enemy).fight(times)
       end
@@ -151,8 +150,8 @@ module MUD
 
       def starting_equipment
         {
-          weapon: 'fists',
-          armor: 'unarmored'
+          weapon: Weapon.of_type('fists'),
+          armor: Armor.of_type('unarmored')
         }
       end
 

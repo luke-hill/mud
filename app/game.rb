@@ -39,11 +39,11 @@ module MUD
       private
 
       def display_welcome_message
-        output_diagnostic_info
-        output_intro_to_game_info
+        display_diagnostic_info
+        display_introduction_to_game
       end
 
-      def output_diagnostic_info
+      def display_diagnostic_info
         sleep 0.25
         Screen.output('............................................')
         sleep 0.25
@@ -54,7 +54,7 @@ module MUD
         Screen.output('For now you are a Fighter, with 25HP.').blink
       end
 
-      def output_intro_to_game_info
+      def display_introduction_to_game
         sleep 0.5
         Screen.output("Whilst you're here, let me give you the down-low. You're about to begin your quest")
         sleep 0.5
@@ -62,6 +62,9 @@ module MUD
           'You are in Newtown, and as avaLancHe ... our intrepid explorer, you have spawned ' \
           'in our village to kill Several Monsters and then the boss - The Orc!'
         )
+        Screen.output('Press any button to continue')
+        $stdin.gets
+        Screen.output('Happy gaming!')
       end
     end
   end

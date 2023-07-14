@@ -13,6 +13,7 @@ module MUD
       attr_reader :command_input
 
       include Helpers::Data
+      include MUD::Helpers::Unnabbreviater
 
       def initialize(command_input)
         @command_input = command_input
@@ -59,7 +60,7 @@ module MUD
       end
 
       def process_north_south_east_west
-        player.move(command_input)
+        player.move(unnabbreviate(command_input, type: :movement))
       end
 
       def compass_direction?
@@ -92,9 +93,9 @@ module MUD
       end
 
       def output_player_data
-        Screen.output("Inventory: #{player.inventory}")
-        Screen.output("Weapon: #{player.weapon.green}")
-        Screen.output("Armor: #{player.armor.green}")
+        Screen.output("Inventory: #{player.inventory.to_s.green}")
+        Screen.output("Weapon: #{player.weapon.name.green}")
+        Screen.output("Armor: #{player.armor.name.green}")
         player.view_attributes
       end
 

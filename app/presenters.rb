@@ -7,4 +7,5 @@ module MUD
 end
 
 require_relative 'presenters/directions'
+require_relative 'presenters/enemy'
 require_relative 'presenters/shop_items'

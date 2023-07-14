@@ -16,15 +16,18 @@ module MUD
   class Potion
     include Helpers::Data
 
-    attr_writer :type
     attr_accessor :id
 
+    # @return [MUD::Potion]
+    # Return an instance of the potion class with correct id set
     def self.of_type(type)
       new.tap do |potion|
         potion.id = type
       end
     end
 
+    # @return [Array]
+    # All properties of the potion that will be set as methods
     def self.properties
       %i[
         name
@@ -40,6 +43,8 @@ module MUD
       end
     end
 
+    # @return [String]
+    # Use the potion, ensuring that both hp/mp don't overflow
     def use
       effect
       player.prevent_overflow_hp
@@ -47,6 +52,8 @@ module MUD
       Screen.output(dynamic_used_message)
     end
 
+    # @return [Symbol]
+    # The type of potion (healing/mana/hp_bonus)
     def type
       @type ||= determine_type
     end
@@ -66,7 +73,13 @@ module MUD
     end
 
     def potion_data
-      assign_potion_data
+      @potion_data ||=
+        case type
+        when :healing;  then healing_potion_yml[id]
+        when :mana;     then mana_potion_yml[id]
+        when :hp_bonus; then hp_bonus_potion_yml[id]
+        else            raise "Potion not found with ID: #{id}"
+        end
     end
 
     def effect
@@ -96,11 +109,11 @@ module MUD
     end
 
     def determine_type
-      return self.type = :healing if healing_potion?
-      return self.type = :mana if mana_potion?
-      return self.type = :hp_bonus if hp_bonus_potion?
+      return :healing if healing_potion?
+      return :mana if mana_potion?
+      return :hp_bonus if hp_bonus_potion?
 
-      self.type = :unknown
+      :unknown
     end
 
     def healing_potion?
@@ -113,15 +126,6 @@ module MUD
 
     def hp_bonus_potion?
       !hp_bonus_potion_yml[id].nil?
-    end
-
-    def assign_potion_data
-      case type
-      when :healing;  then healing_potion_yml[id]
-      when :mana;     then mana_potion_yml[id]
-      when :hp_bonus; then hp_bonus_potion_yml[id]
-      else            raise "Potion not found with ID: #{id}"
-      end
     end
   end
 end

@@ -21,13 +21,18 @@ module MUD
       @floor = []
     end
 
+    # @return [String]
+    # The standard description of the room
+    # This description will be comprised of a message, followed by an indication of all visible directions in yellow
     def description
-      @description ||= "#{description_yml.dig(room_id, 'description').blue}\n#{directions_string.yellow}"
+      @description ||= "#{description_yml.dig(room_id, 'description').blue}\n#{enemy_string}\n#{directions_string.yellow}"
     end
 
+    # @return [String]
+    # The advanced description of the room
+    # This description will be comprised of a message, followed by an indication of all visible directions in yellow
     def advanced_description
-      @advanced_description ||=
-        "#{description_yml.dig(room_id, 'advanced_description').blue}\n#{directions_string.yellow}"
+      @advanced_description ||= "#{description_yml.dig(room_id, 'advanced_description')}\n#{enemy_string.blue}\n#{directions_string.yellow}"
     end
 
     def visit
@@ -44,22 +49,32 @@ module MUD
       direction_yml[room_id]
     end
 
+    # @return [Boolean]
+    # Whether there is an alive enemy? (See MUD::Enemy for implementation details)
     def enemy?
       enemy&.alive?
     end
 
+    # @return [MUD::Enemy]
+    # The enemy that is defined to be in the room
     def enemy
       @enemy ||= Enemy.of_type(description_yml.dig(room_id, 'enemy_id'))
     end
 
+    # @return [Boolean]
+    # Whether the hero can exit the room by moving (Requires there not to be a ktp enemy)
     def exitable?
       !(ktp? && enemy?)
     end
 
+    # @return [Boolean]
+    # Whether the room we are in is classed as a shop (NB: This should create a MUD::Shop instance when this is the case)
     def shop?
       type.end_with?('Shop')
     end
 
+    # @return [String]
+    # The type of room you are in
     def type
       description_yml.dig(room_id, 'type')
     end
@@ -68,6 +83,10 @@ module MUD
 
     def directions_string
       @directions_string ||= Presenters::Directions.new(room_id).string
+    end
+
+    def enemy_string
+      @enemy_string ||= Presenters::Enemy.new(enemy).string
     end
 
     def ktp?
