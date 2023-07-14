@@ -13,6 +13,7 @@ module MUD
       attr_reader :command_input
 
       include Helpers::Data
+      include MUD::Helpers::Unnabbreviater
 
       def initialize(command_input)
         @command_input = command_input
@@ -93,8 +94,8 @@ module MUD
 
       def output_player_data
         Screen.output("Inventory: #{player.inventory}")
-        Screen.output("Weapon: #{player.weapon.green}")
-        Screen.output("Armor: #{player.armor.green}")
+        Screen.output("Weapon: #{player.weapon.name.green}")
+        Screen.output("Armor: #{player.armor.name.green}")
         player.view_attributes
       end
 
