@@ -117,7 +117,7 @@ module MUD
     # @return [String || Nil]
     # The phrase the enemy was due to speak if triggered
     def speak
-      Screen.output("#{name.blue}: #{phrase.yellow}") if phrase
+      Screen.output("#{name.blue}: #{phrase.green}") if phrase
     end
 
     private
@@ -135,6 +135,7 @@ module MUD
         phrase2_message
       else
         Logger.debug('Neither message triggered. No message output from enemy')
+        nil
       end
     end
   end
