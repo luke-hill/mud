@@ -129,9 +129,9 @@ module MUD
     end
 
     def phrase
-      if rand > phrase1_chance
+      if phrase1_chance && rand > phrase1_chance
         phrase1_message
-      elsif rand > phrase2_chance
+      elsif phrase2_chance && rand > phrase2_chance
         phrase2_message
       else
         Logger.debug('Neither message triggered. No message output from enemy')
