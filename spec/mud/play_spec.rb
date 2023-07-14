@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Play do
-  subject(:play_game) { play_instance.play }
+  subject(:play_game) { described_class.play }
 
-  let(:play_instance) { described_class.new }
   let(:player) { MUD::Game.player }
   let(:user_input) { 'some_command' }
   let(:command_instance) { MUD::Actions::Command.new(user_input) }
@@ -30,7 +29,7 @@ RSpec.describe MUD::Play do
       end
 
       it 'will continue to play the game' do
-        expect(play_instance).to receive(:play).at_least(:once)
+        expect(described_class).to receive(:play).at_least(:once)
 
         play_game
       end
@@ -42,7 +41,7 @@ RSpec.describe MUD::Play do
       end
 
       it 'will cease to continue the game' do
-        expect(play_instance).to receive(:play).once
+        expect(described_class).to receive(:play).once
 
         play_game
       end

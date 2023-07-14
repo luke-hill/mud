@@ -2,4 +2,4 @@
 
 require_relative 'app/play'
 
-MUD::Play.new.play
+MUD::Play.play
