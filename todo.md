@@ -6,7 +6,6 @@
 6) Add in simplecov coverage up 100%
 7) Playthrough attempt #3 - Attempt to buy an item, equip it, and see the difference in attack/defense
 8) Look around should show enemies
-9) After game load, prompt user to press enter
 10) Remove hero argument from initializer for all actions
 11) Get yard documentation rate up to 95%
 12) Standardise hero/player names across app

@@ -15,16 +15,15 @@ module MUD
       # If the user is still alive, the game continues
       def play
         setup
-        Actions::Command.new(user_input).process
-
-        continue_or_die
+        continue_if_alive
       end
 
       private
 
-      def continue_or_die
+      def continue_if_alive
         if player.alive?
-          play
+          Actions::Command.new(user_input).process
+          continue_if_alive
         else
           die
         end
