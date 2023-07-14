@@ -6,8 +6,8 @@ module MUD
     #
     # This essentially will make a series of checks on the current room and its properties.
     # Based on the results of this, it will concatenate all items that should be available for
-    # purchase and then present them to the user after the `advanced_description` string has
-    # been outputted.
+    # purchase and then present them to the user after the `advanced_description` string
+    # has been outputted.
     class ShopItems
       include Helpers::Data
 

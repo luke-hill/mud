@@ -12,9 +12,8 @@ module MUD
 
       attr_accessor :current_room, :rooms_visited
 
-      # These are all the accessors for the individual attributes which allow
-      # us to read and write to them whilst also logging our requests for
-      # maximum traceability
+      # These are all the accessors for the individual attributes which allow us to read and write to them
+      # whilst also logging all our requests for maximum traceability
       include MUD::Helpers::AttributeAccessors
       include Helpers::Data
       include Helpers::Item

@@ -6,8 +6,8 @@ module MUD
     #
     # This essentially will make a series of checks on the current room and its properties.
     # Based on the results of this, it will concatenate all directions and then present
-    # them to the user after the initial `description` or `advanced_description` string has
-    # been outputted.
+    # them to the user to be used after the initial `description` or `advanced_description` string
+    # has been outputted.
     class Directions
       include Helpers::Data
 
