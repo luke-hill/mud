@@ -21,7 +21,7 @@ module MUD
       # This method will move in the relevant direction (If they pass the checks). Once you have
       # moved, a string representation of the movement is sent to the playing console.
       def move
-        Logger.debug("Attempting to move #{unnabbreviate(direction, type: :movement)}")
+        Logger.debug("Attempting to move #{direction}")
         return Screen.output(ktp_warning_message) unless player.current_room.exitable?
         return send(direction) unless key_required?
 
@@ -62,28 +62,24 @@ module MUD
 
         travel('north')
       end
-      alias n north
 
       def south
         return Screen.output('You cannot go south'.red) unless connected_rooms['south']
 
         travel('south')
       end
-      alias s south
 
       def east
         return Screen.output('You cannot go east'.red) unless connected_rooms['east']
 
         travel('east')
       end
-      alias e east
 
       def west
         return Screen.output('You cannot go west'.red) unless connected_rooms['west']
 
         travel('west')
       end
-      alias w west
 
       def up
         return Screen.output('You cannot go up'.red) unless connected_rooms['up']

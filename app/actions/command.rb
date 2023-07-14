@@ -59,7 +59,7 @@ module MUD
       end
 
       def process_north_south_east_west
-        player.move(command_input)
+        player.move(unnabbreviate(command_input, type: :movement))
       end
 
       def compass_direction?
