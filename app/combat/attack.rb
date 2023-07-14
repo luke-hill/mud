@@ -76,7 +76,7 @@ module MUD
       end
 
       def initial_attack_value
-        rand((weapon.min_power)..(weapon.max_power))
+        rand((hero.weapon.min_power)..(hero.weapon.max_power))
       end
 
       def attack_modifiers
