@@ -120,12 +120,36 @@ module MUD
       Screen.output("#{name.blue}: #{phrase.green}") if phrase
     end
 
+    # @return [Symbol]
+    # The type of enemy (enemy/boss)
+    def type
+      @type ||= determine_type
+    end
+
     private
 
     def enemy_data
-      raise('No ID set - Enemy defined incorrectly') unless defined?(id)
+      @enemy_data ||=
+        case type
+        when :enemy; then enemy_yml[id]
+        when :boss;  then boss_yml[id]
+        else         raise "Enemy/Boss not found with ID: #{id}"
+        end
+    end
 
-      @enemy_data ||= enemy_yml[id] || boss_yml[id] || raise("Enemy/Boss not found with ID: #{id}")
+    def determine_type
+      return :enemy if enemy?
+      return :boss if boss?
+
+      :unknown
+    end
+
+    def enemy?
+      !enemy_yml[id].nil?
+    end
+
+    def boss?
+      !boss_yml[id].nil?
     end
 
     def phrase
