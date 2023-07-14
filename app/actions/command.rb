@@ -93,7 +93,7 @@ module MUD
       end
 
       def output_player_data
-        Screen.output("Inventory: #{player.inventory}")
+        Screen.output("Inventory: #{player.inventory.to_s.green}")
         Screen.output("Weapon: #{player.weapon.name.green}")
         Screen.output("Armor: #{player.armor.name.green}")
         player.view_attributes

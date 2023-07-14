@@ -117,7 +117,9 @@ module MUD
     # @return [String || Nil]
     # The phrase the enemy was due to speak if triggered
     def speak
-      Screen.output("#{name.blue}: #{phrase.green}") if phrase
+      phrase.tap do |message|
+        Screen.output("#{name.blue}: #{message.green}") if message
+      end
     end
 
     # @return [Symbol]

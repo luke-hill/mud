@@ -20,17 +20,11 @@ module MUD
       # @return [String]
       # The enemy name formatted appropriately
       def string
-        case type
-        when :enemy; then 'ROAR!'.underline
-        when :boss; then "ROAR MORE!".bold
+        case enemy.type
+        when :enemy; then "A #{enemy.name} is here with you.".blue
+        when :boss;  then "The #{enemy.name} is here with you.".bold.blue
         else raise "This room (Room-ID: #{room_id}), is incorrectly configured"
         end
-      end
-
-      private
-
-      def type
-        'MISSING METHOD FROM MODEL'
       end
     end
   end
