@@ -16,7 +16,6 @@ module MUD
   class Potion
     include Helpers::Data
 
-    attr_writer :type
     attr_accessor :id
 
     # @return [MUD::Potion]
@@ -74,7 +73,13 @@ module MUD
     end
 
     def potion_data
-      assign_potion_data
+      @potion_data ||=
+        case type
+        when :healing;  then healing_potion_yml[id]
+        when :mana;     then mana_potion_yml[id]
+        when :hp_bonus; then hp_bonus_potion_yml[id]
+        else            raise "Potion not found with ID: #{id}"
+        end
     end
 
     def effect
@@ -104,11 +109,11 @@ module MUD
     end
 
     def determine_type
-      return self.type = :healing if healing_potion?
-      return self.type = :mana if mana_potion?
-      return self.type = :hp_bonus if hp_bonus_potion?
+      return :healing if healing_potion?
+      return :mana if mana_potion?
+      return :hp_bonus if hp_bonus_potion?
 
-      self.type = :unknown
+      :unknown
     end
 
     def healing_potion?
@@ -121,15 +126,6 @@ module MUD
 
     def hp_bonus_potion?
       !hp_bonus_potion_yml[id].nil?
-    end
-
-    def assign_potion_data
-      case type
-      when :healing;  then healing_potion_yml[id]
-      when :mana;     then mana_potion_yml[id]
-      when :hp_bonus; then hp_bonus_potion_yml[id]
-      else            raise "Potion not found with ID: #{id}"
-      end
     end
   end
 end
