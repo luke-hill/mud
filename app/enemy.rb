@@ -14,12 +14,16 @@ module MUD
     attr_writer :gold, :hp
     attr_accessor :id
 
+    # @return [MUD::Enemy]
+    # Return an instance of enemy class with correct id set
     def self.of_type(type)
       new.tap do |enemy|
         enemy.id = type
       end
     end
 
+    # @return [Array]
+    # All properties of enemy that will be set as methods
     def self.properties
       %i[
         name
@@ -56,26 +60,26 @@ module MUD
       end
     end
 
-    # @return Integer
-    # This will generate (and cache), the enemies gold
-    #
-    # The hp will fall between the lower and upper limits
+    # @return [Integer]
+    # This will generate (and cache), the enemies gold - it will fall between the lower and upper limits
     def gold
       @gold ||= rand(lower_gold_limit..upper_gold_limit)
     end
 
-    # @return Integer
-    # This will generate (and cache), the enemies hp
-    #
-    # The hp will fall between the lower and upper limits
+    # @return [Integer]
+    # This will generate (and cache), the enemies hp - it will fall between the lower and upper limits
     def hp
       @hp ||= rand(lower_hp_limit..upper_hp_limit)
     end
 
+    # @return [Boolean]
+    # Whether there is an enemy and it is alive
     def alive?
       id != 'no_enemy' && hp.positive?
     end
 
+    # @return [Boolean]
+    # Whether there is not an enemy or the enemy is dead
     def dead?
       !alive?
     end
@@ -86,20 +90,26 @@ module MUD
       self.hp = 0 if hp.negative?
     end
 
-    # @return Integer
+    # @return [Integer]
     # The overall defense stat of the enemy
     def defense
       Armor.of_type(armor_id).defense
     end
 
+    # @return [Boolean]
+    # Whether the enemy has a potion set to drop
     def potion?
       !dropped_potion_id.nil?
     end
 
+    # @return [Boolean]
+    # Whether the enemy has a weapon set to drop
     def weapon?
       !dropped_weapon_id.nil?
     end
 
+    # @return [Boolean]
+    # Whether the enemy has an armor set to drop
     def armor?
       !dropped_armor_id.nil?
     end
