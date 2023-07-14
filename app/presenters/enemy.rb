@@ -21,8 +21,8 @@ module MUD
       # The enemy name formatted appropriately
       def string
         case enemy.type
-        when :enemy; then "A #{enemy.name} is here with you.".blue
-        when :boss;  then "The #{enemy.name} is here with you.".bold.blue
+        when :enemy; then "A #{enemy.name} is here with you."
+        when :boss;  then "The #{enemy.name} is here with you.".bold
         else raise "This room (Room-ID: #{room_id}), is incorrectly configured"
         end
       end
