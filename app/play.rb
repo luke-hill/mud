@@ -14,6 +14,8 @@ module MUD
       setup
     end
 
+    # This is the method that will continually scan for whether the user is alive
+    # If the user is still alive, the game continues
     def play
       Actions::Command.new(user_input).process
 

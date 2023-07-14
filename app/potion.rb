@@ -19,12 +19,16 @@ module MUD
     attr_writer :type
     attr_accessor :id
 
+    # @return [MUD::Potion]
+    # Return an instance of potion class with correct id set
     def self.of_type(type)
       new.tap do |potion|
         potion.id = type
       end
     end
 
+    # @return [Array]
+    # All properties of potion that will be set as methods
     def self.properties
       %i[
         name
@@ -40,6 +44,8 @@ module MUD
       end
     end
 
+    # @return [String]
+    # Use the potion, ensuring that both hp/mp don't overflow
     def use
       effect
       player.prevent_overflow_hp
@@ -47,6 +53,8 @@ module MUD
       Screen.output(dynamic_used_message)
     end
 
+    # @return [Symbol]
+    # The type of potion (healing/mana/hp_bonus)
     def type
       @type ||= determine_type
     end
