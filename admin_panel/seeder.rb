@@ -61,7 +61,7 @@ module AdminPanel
     def update
       puts "Data to be seeded: #{options}"
       File.write(yml_file_location, full_values.to_yaml)
-      puts "New UPDATED ID: #{id} Data: #{data}"
+      puts "New UPDATED ID: #{id} --> Data: #{data}"
     end
 
     def yml_file_location
