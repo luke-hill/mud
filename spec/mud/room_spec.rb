@@ -7,7 +7,11 @@ RSpec.describe MUD::Room do
 
   describe '#description' do
     it 'returns the description of the room first' do
-      expect(filled_room.description).to start_with('This is a busy room outside town'.blue)
+      expect(filled_room.description).to start_with('This is a busy room outside town')
+    end
+
+    it 'includes a reference to what enemy is present' do
+      expect(filled_room.description).to include('TEST - Bad Enemy is here with you.')
     end
 
     it 'returns the directions after the description' do
@@ -17,7 +21,11 @@ RSpec.describe MUD::Room do
 
   describe '#advanced_description' do
     it 'returns the advanced description of the room first' do
-      expect(filled_room.advanced_description).to start_with('This is dangerous!'.blue)
+      expect(filled_room.advanced_description).to start_with('This is dangerous!')
+    end
+
+    it 'includes a reference to what enemy is present' do
+      expect(filled_room.advanced_description).to include('TEST - Bad Enemy is here with you.')
     end
 
     it 'returns the directions after the advanced description' do
