@@ -8,3 +8,6 @@
 
 ```
 3) Missing concepts of no_enemy vs missing enemy
+4) Typing `u` or `d` as a command crashes the game. Did you mean up/down?
+5) Bandit in corner of forest path should be ktp!
+6) Wolf in forest path should be ktp!
