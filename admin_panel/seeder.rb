@@ -115,7 +115,7 @@ module AdminPanel
     end
 
     def full_values
-      yml_file.merge(new_values)
+      yml_file.merge(new_record)
     end
 
     def yml_file
@@ -126,8 +126,12 @@ module AdminPanel
       YAML.load_file(yml_file_location)
     end
 
+    def new_record
+      { id => new_values.select { |_key, value| value } }
+    end
+
     def new_values
-      { id => data.merge(options.stringify_keys) }
+      data.merge(options.stringify_keys)
     end
 
     def data
@@ -135,7 +139,7 @@ module AdminPanel
     end
 
     def save
-      File.write(yml_file_location, yml_file.to_yaml)
+      File.write(yml_file_location, full_values.to_yaml)
     end
   end
 end
