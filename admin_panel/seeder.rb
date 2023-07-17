@@ -119,7 +119,7 @@ module AdminPanel
     end
 
     def yml_file
-      YAML.load_file(yml_file_location)
+      YAML.load_file(yml_file_location) || {}
     rescue Errno::ENOENT
       puts "File does not exist @ #{yml_file_location}. Creating new blank YML file."
       File.write(yml_file_location, {})
@@ -135,7 +135,7 @@ module AdminPanel
     end
 
     def data
-      yml_file[id] || {}
+      yml_file.fetch(id, {})
     end
 
     def save
