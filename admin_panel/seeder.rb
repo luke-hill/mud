@@ -45,7 +45,6 @@ module AdminPanel
       raise ArgumentError, 'ID not set' unless id
 
       update
-      save
     end
 
     private
@@ -136,10 +135,6 @@ module AdminPanel
 
     def data
       yml_file.fetch(id, {})
-    end
-
-    def save
-      File.write(yml_file_location, full_values.to_yaml)
     end
   end
 end
