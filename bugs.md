@@ -7,3 +7,4 @@
                           ^^^^
 
 ```
+3) Missing concepts of no_enemy vs missing enemy
