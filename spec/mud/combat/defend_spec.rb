@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Combat::Defend do
-  let(:defend_instance) { described_class.new(hero, enemy) }
+  let(:defend_instance) { described_class.new(enemy) }
   let(:enemy_name) { 'TEST - Bad Enemy' }
   let(:enemy) { create(:enemy, 'bad') }
-  let(:hero) { MUD::Classes::Fighter.new }
+  let(:player) { MUD::Game.player }
   let(:weapon_name) { MUD::Weapon.of_type('zero').name }
 
   describe '#defend' do
@@ -33,7 +33,7 @@ RSpec.describe MUD::Combat::Defend do
       end
     end
 
-    context 'when the hero takes no damage' do
+    context 'when the player takes no damage' do
       let(:damage_taken) { 0 }
 
       it 'informs the player that the enemy attack attempt missed' do
@@ -47,17 +47,17 @@ RSpec.describe MUD::Combat::Defend do
       expect(log_lines).to include(attack_message_regex)
     end
 
-    it 'reduces the heroes hp by the amount of damage dealt' do
-      expect { defend_attempt }.to change(hero, :hp).by(-2)
+    it 'reduces the players hp by the amount of damage dealt' do
+      expect { defend_attempt }.to change(player, :hp).by(-2)
     end
 
-    it 'sends a debug statement with the heroes new hp value' do
+    it 'sends a debug statement with the players new hp value' do
       defend_attempt
 
       expect(log_lines).to include(/DEBUG --> YOUR HP:\d+hp./)
     end
 
-    context 'when the attack kills the hero' do
+    context 'when the attack kills the player' do
       let(:damage_taken) { 25 }
 
       it 'does not send a debug statement with the enemies new hp value' do

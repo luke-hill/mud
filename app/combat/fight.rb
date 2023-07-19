@@ -44,11 +44,11 @@ module MUD
       end
 
       def attack
-        Attack.new(hero, enemy).attack
+        Attack.new(enemy).attack
       end
 
       def defend
-        Defend.new(hero, enemy).defend
+        Defend.new(enemy).defend
       end
 
       def enemy_dead?

@@ -33,7 +33,7 @@ RSpec.describe MUD::Combat::Fight do
     let(:times) { 1 }
     let(:item_drops_instance) { MUD::Combat::ItemDrops.new(hero, enemy) }
     let(:attack_instance) { MUD::Combat::Attack.new(enemy) }
-    let(:defend_instance) { MUD::Combat::Defend.new(hero, enemy) }
+    let(:defend_instance) { MUD::Combat::Defend.new(enemy) }
     let(:damage_dealt) { 100 }
 
     before do
