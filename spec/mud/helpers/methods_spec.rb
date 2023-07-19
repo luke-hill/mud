@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-RSpec.describe MUD::Helpers::Data do
+RSpec.describe MUD::Helpers::Methods do
   describe '#player' do
     subject { klass.new.player }
 
     let(:klass) do
       Class.new do
-        include MUD::Helpers::Data
+        include MUD::Helpers::Methods
       end
     end
 
