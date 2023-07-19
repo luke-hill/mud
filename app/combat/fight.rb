@@ -30,11 +30,11 @@ module MUD
       private
 
       def fight_once
-        return Screen.output('There is no enemy present'.red) if enemy.nil?
+        return Screen.output('There is no enemy present'.red) if enemy.nil? || enemy_dead?
 
         attack
 
-        if enemy_killed?
+        if enemy_dead?
           notify_enemy_killed
           process_item_drops
         else
@@ -51,7 +51,7 @@ module MUD
         Defend.new(hero, enemy).defend
       end
 
-      def enemy_killed?
+      def enemy_dead?
         enemy.dead?
       end
 
@@ -64,7 +64,7 @@ module MUD
       end
 
       def fight_until_death
-        fight_once until hero.dead? || enemy_killed?
+        fight_once until hero.dead? || enemy_dead?
       end
     end
   end
