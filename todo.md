@@ -4,8 +4,6 @@
 5) Consume the `use_message` property on Aurel Bark Key (`v3.0` - Requires Lone Ranger)
 6) Add in simplecov coverage up 100%
 7) Playthrough attempt #3 - Attempt to buy an item, equip it, and see the difference in attack/defense
-8) Remove hero argument from initializer for all actions
-9) Standardise hero/player names across app
 10) Basic / Adv description should feature the name of where you are in bold - using `location.yml`
 11) Get yard documentation rate up to 100%
 12) Permit items to have different use messages for different NPC's (Sylvanian Ingot will be used in 2 diff ways)

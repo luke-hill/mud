@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module MUD
-  # MUD::Classes are a list of all classes that can be undertaken by the hero
+  # MUD::Classes are a list of all classes that can be undertaken by the player
   #
   # All Classes inherit from the Base class
   #

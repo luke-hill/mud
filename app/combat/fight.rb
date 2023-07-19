@@ -15,7 +15,7 @@ module MUD
 
       # @return [String]
       # Attempt to fight an enemy. A series of checks are made and then attacks are made
-      # in a sequential order (Hero always first).
+      # in a sequential order (The player always attacks first).
       #
       # Once these checks pass / attacks are made. The +Screen.output+ method is called on
       # each invocation and result/s are outputted to the screen about what happened during the

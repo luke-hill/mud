@@ -8,8 +8,8 @@ module MUD
   # which can access all of the properties through the delegated struct
   #
   # Each potion will be classified as one of 3 types
-  #   :healing -> Restore HP to the hero (Up to their maximum HP)
-  #   :mana -> Restore MP to the hero (Up to their maximum MP)
+  #   :healing -> Restore HP to the player (Up to their maximum HP)
+  #   :mana -> Restore MP to the player (Up to their maximum MP)
   #   :hp_bonus -> Increase their maximum HP above their current maximum (NB: This won't restore any HP)
   #
   # Should the potion fail to be classified, a RuntimeError will be thrown and the game will crash

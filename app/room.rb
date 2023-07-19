@@ -63,7 +63,7 @@ module MUD
     end
 
     # @return [Boolean]
-    # Whether the hero can exit the room by moving (Requires there not to be a ktp enemy)
+    # Whether the player can exit the room by moving (Requires there not to be a ktp enemy)
     def exitable?
       !(ktp? && enemy?)
     end
