@@ -2,6 +2,7 @@
 
 require_relative 'game'
 
+# MUD is our game namespace
 module MUD
   # This class takes the user input whilst playing the game. And then hands it off to
   # a middleware which processes it and then that in turn hands it off to the models / actions

@@ -6,8 +6,7 @@ module MUD
     #
     # This essentially will make a series of checks on the current room and its properties.
     # Based on the results of this, it will concatenate all items that should be available for
-    # purchase and then present them to the user after the `advanced_description` string
-    # has been outputted.
+    # purchase and then present them to the user
     class ShopItems
       include Helpers::Data
 
@@ -27,10 +26,6 @@ module MUD
         when 2..; then complex_shop_menu
         else raise "This room (Room-ID: #{room_id}), is incorrectly configured"
         end
-      end
-
-      def array
-        potion_names.map { |name| individual_item_string(name) }
       end
 
       private
@@ -64,6 +59,10 @@ module MUD
         # 1 extra char for the fact shortest value is 1
         # 1 for right padding
         '-' * (3 + 1 + longest_potion_name_length + 5 + 1 + 1 + 6 + longest_potion_cost_length + 5 + 1 + 1)
+      end
+
+      def array
+        potion_names.map { |name| individual_item_string(name) }
       end
 
       def for_sale?(item_id)
