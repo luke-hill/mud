@@ -68,10 +68,7 @@ module MUD
       end
 
       def process_up_down
-        case command_input[0]
-        when 'u', 'd'; then player.move(command_input[0])
-        else           raise "Unreachable code - Command Input: #{command_input}"
-        end
+        player.move(unnabbreviate(command_input, type: :movement))
       end
 
       def up_or_down?
