@@ -13,7 +13,8 @@ module MUD
       attr_reader :command_input
 
       include Helpers::Data
-      include MUD::Helpers::Unnabbreviater
+      include Helpers::Methods
+      include Helpers::Unnabbreviater
 
       def initialize(command_input)
         @command_input = command_input
