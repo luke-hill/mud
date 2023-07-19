@@ -12,7 +12,7 @@ module MUD
       include Helpers::Item
       include Helpers::Methods
 
-      def initialize(_player, item_id, room)
+      def initialize(item_id, room)
         @item_id = item_id
         @room = room
       end

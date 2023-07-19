@@ -21,7 +21,7 @@ RSpec.describe MUD::Shop do
 
   describe '#buy' do
     it 'attempts to buy by delegating to the buy class' do
-      expect(MUD::Actions::Buy).to receive(:new).with(player, 'knife', valid_shop).and_call_original
+      expect(MUD::Actions::Buy).to receive(:new).with('knife', valid_shop).and_call_original
 
       valid_shop.buy('knife')
     end

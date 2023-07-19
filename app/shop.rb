@@ -18,7 +18,7 @@ module MUD
     # @return [String]
     # This delegates to the Buy class and performs the #buy action
     def buy(item_id)
-      Actions::Buy.new(player, item_id, self).buy
+      Actions::Buy.new(item_id, self).buy
     end
 
     # @return [String]
