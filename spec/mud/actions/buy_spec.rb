@@ -5,16 +5,18 @@ RSpec.describe MUD::Actions::Buy do
 
   let(:hero) { MUD::Game.player }
   let(:item_id) { 'knife' }
+  let(:for_sale?) { true }
+
+  before do
+    allow(buy_instance).to receive(:cost).and_return(1)
+    allow(buy_instance).to receive(:for_sale?).and_return(for_sale?)
+  end
 
   describe '#buy' do
     subject(:buy_attempt) { buy_instance.buy }
 
-    before do
-      allow(buy_instance).to receive(:cost).and_return(1)
-    end
-
     context "when the item_id isn't recognised as being for sale" do
-      before { allow(buy_instance).to receive(:for_sale?).and_return(false) }
+      let(:for_sale?) { false }
 
       it "informs the player that the item isn't for sale" do
         expect(buy_attempt).to eq("I'm sorry we dont have that item for sale".red)
