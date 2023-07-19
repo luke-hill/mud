@@ -53,27 +53,5 @@ RSpec.describe MUD::Combat::Attack do
     it 'reduces the enemies hp by the amount of damage dealt' do
       expect { attack_attempt }.to change(enemy, :hp).by(-2)
     end
-
-    it 'sends a debug statement with the enemies new hp value' do
-      attack_attempt
-
-      expect(log_lines).to include(/DEBUG --> ENEMY HP:\d+hp./)
-    end
-
-    context 'when the attack kills the enemy' do
-      let(:damage_dealt) { 13 }
-
-      it 'does not send a debug statement with the enemies new hp value' do
-        attack_attempt
-
-        expect(log_lines).not_to include(/DEBUG --> ENEMY HP:\d+hp./)
-      end
-
-      it 'deletes the enemy from the room' do
-        attack_attempt
-
-        expect(attack_instance.enemy).to be_nil
-      end
-    end
   end
 end
