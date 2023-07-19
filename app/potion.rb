@@ -15,6 +15,7 @@ module MUD
   # Should the potion fail to be classified, a RuntimeError will be thrown and the game will crash
   class Potion
     include Helpers::Data
+    include Helpers::Methods
 
     attr_accessor :id
 
