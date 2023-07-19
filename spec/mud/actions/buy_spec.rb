@@ -6,10 +6,14 @@ RSpec.describe MUD::Actions::Buy do
   let(:hero) { MUD::Game.player }
   let(:item_id) { 'knife' }
   let(:for_sale?) { true }
+  let(:enough_money?) { true }
+  let(:enough_space?) { true }
 
   before do
     allow(buy_instance).to receive(:cost).and_return(1)
     allow(buy_instance).to receive(:for_sale?).and_return(for_sale?)
+    allow(buy_instance).to receive(:enough_money?).and_return(enough_money?)
+    allow(buy_instance).to receive(:enough_space?).and_return(enough_space?)
   end
 
   describe '#buy' do
@@ -32,7 +36,7 @@ RSpec.describe MUD::Actions::Buy do
     end
 
     context "when the hero doesn't have enough gold for the item_id" do
-      before { hero.gold = 0 }
+      let(:enough_money?) { false }
 
       it "informs the player that they don't have enough gold" do
         expect(buy_attempt).to eq('You do not have enough gold for that.'.red)
@@ -48,7 +52,7 @@ RSpec.describe MUD::Actions::Buy do
     end
 
     context "when the hero doesn't have enough space for the item_id" do
-      before { hero.max_inventory_size = 0 }
+      let(:enough_space?) { false }
 
       it "informs the player that they don't have enough space" do
         expect(buy_attempt).to eq('You do not have enough space for that.'.red)
