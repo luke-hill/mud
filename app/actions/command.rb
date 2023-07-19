@@ -101,7 +101,6 @@ module MUD
 
       def die
         Screen.output('You died'.red)
-        sleep 2
         exit
       end
     end
