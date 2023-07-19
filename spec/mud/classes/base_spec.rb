@@ -164,7 +164,7 @@ RSpec.describe MUD::Classes::Base do
     end
 
     it 'is blank when starting a game' do
-      expect(player.rooms_visited).to eq({})
+      expect(player.rooms_visited).to be_empty
     end
   end
 

@@ -33,15 +33,15 @@ RSpec.describe MUD::Room do
     end
   end
 
-  describe '#visit' do
-    it 'outputs to the screen that you have visited the room' do
+  describe '#enter' do
+    it 'outputs to the screen that you have entered the room' do
       expect(MUD::Screen).to receive(:output).with(filled_room.description)
 
-      filled_room.visit
+      filled_room.enter
     end
 
     it 'increases the visited count by 1' do
-      expect { filled_room.visit }.to change(filled_room, :times_visited).by(1)
+      expect { filled_room.enter }.to change(filled_room, :times_visited).by(1)
     end
   end
 

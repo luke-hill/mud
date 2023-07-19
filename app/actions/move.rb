@@ -103,7 +103,7 @@ module MUD
           player.current_room.leave
           player.current_room = fetch_or_create_room(room_id)
         end
-        player.current_room.visit
+        player.current_room.enter
       end
 
       def fetch_or_create_room(room_id)

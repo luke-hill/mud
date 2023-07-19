@@ -36,16 +36,25 @@ module MUD
       "#{description_yml.dig(room_id, 'advanced_description')}\n#{enemy_string.blue}\n#{directions_string.yellow}"
     end
 
-    def visit
-      Logger.debug("Visiting Room-ID: #{room_id} Description: #{description}")
+    # @return [Integer]
+    # The method that is called when you first enter a room. It will increase the times_visited count by 1
+    def enter
+      Logger.debug("Entering Room-ID: #{room_id} Description: #{description}")
       Screen.output(description)
       self.times_visited += 1
     end
 
+    # @return [Integer]
+    # The method that is called when you leave a room
+    #
+    # It will overwrite the rooms_visited cache to represent the state the room was in just as you left it - so things
+    # like the floor will remain constant and enemies will remain as they were
     def leave
       player.rooms_visited[room_id] = self
     end
 
+    # @return [Hash]
+    # A list of the connected room ids relevant to the current room
     def connected_rooms
       direction_yml[room_id]
     end
