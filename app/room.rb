@@ -11,6 +11,7 @@ module MUD
   # as helpful booleans and other ease of access methods
   class Room
     include Helpers::Data
+    include Helpers::Methods
 
     attr_reader :room_id
     attr_accessor :times_visited, :floor
