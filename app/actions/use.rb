@@ -7,12 +7,12 @@ module MUD
     # be used, an error is thrown. If it can be used, the +use_effect+ from the Model
     # will be passed as a proc and then applied, then it is deleted from your inventory.
     class Use
-      attr_reader :hero, :item_id
+      attr_reader :item_id
 
       include Helpers::Item
+      include Helpers::Methods
 
-      def initialize(hero, item_id)
-        @hero = hero
+      def initialize(item_id)
         @item_id = item_id
       end
 
@@ -51,7 +51,7 @@ module MUD
       end
 
       def dump_hp_mp_stats
-        Logger.debug("Previous hp #{@hero.hp}. Previous mp #{@hero.mp}")
+        Logger.debug("Previous hp #{player.hp}. Previous mp #{player.mp}")
       end
 
       def key?
@@ -65,15 +65,15 @@ module MUD
       end
 
       def in_inventory?
-        hero.inventory.include?(item_id)
+        player.inventory.include?(item_id)
       end
 
       def remove_one_copy_from_inventory
-        hero.inventory.delete_at(index_of_first_copy)
+        player.inventory.delete_at(index_of_first_copy)
       end
 
       def index_of_first_copy
-        hero.inventory.index(item_id)
+        player.inventory.index(item_id)
       end
     end
   end

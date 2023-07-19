@@ -103,7 +103,7 @@ module MUD
       # @return [String]
       # This delegates to the Use class and performs the #use action
       def use(item_id)
-        MUD::Actions::Use.new(self, item_id).use
+        MUD::Actions::Use.new(item_id).use
       end
 
       # @return [String]
