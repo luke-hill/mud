@@ -32,7 +32,7 @@ RSpec.describe MUD::Combat::Fight do
   describe '#fight_once' do
     let(:times) { 1 }
     let(:item_drops_instance) { MUD::Combat::ItemDrops.new(hero, enemy) }
-    let(:attack_instance) { MUD::Combat::Attack.new(hero, enemy) }
+    let(:attack_instance) { MUD::Combat::Attack.new(enemy) }
     let(:defend_instance) { MUD::Combat::Defend.new(hero, enemy) }
     let(:damage_dealt) { 100 }
 
@@ -47,13 +47,7 @@ RSpec.describe MUD::Combat::Fight do
       remove_test_screen_logs
     end
 
-    it 'creates a new `MUD::Combat::Attack` instance' do
-      expect(MUD::Combat::Attack).to receive(:new).with(hero, enemy)
-
-      fight_attempt
-    end
-
-    it 'delegates off to the attack instance to deal damage' do
+    it 'delegates off to the `MUD::Combat::Attack` instance to deal damage' do
       expect(attack_instance).to receive(:attack)
 
       fight_attempt
@@ -98,19 +92,13 @@ RSpec.describe MUD::Combat::Fight do
         allow(defend_instance).to receive(:defend)
       end
 
-      it 'delegates off to the Enemy to see if it will speak' do
+      it 'delegates off to the `MUD::Enemy` to see if it will speak' do
         expect(enemy).to receive(:speak).once
 
         fight_attempt
       end
 
-      it 'creates a new `MUD::Combat::Defend` instance' do
-        expect(MUD::Combat::Defend).to receive(:new).with(hero, enemy)
-
-        fight_attempt
-      end
-
-      it 'delegates off to the defend instance to receive damage' do
+      it 'delegates off to the `MUD::Combat::Defend` instance to receive damage' do
         expect(defend_instance).to receive(:defend)
 
         fight_attempt
