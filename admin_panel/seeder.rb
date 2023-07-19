@@ -45,7 +45,6 @@ module AdminPanel
       raise ArgumentError, 'ID not set' unless id
 
       update
-      save
     end
 
     private
@@ -61,7 +60,7 @@ module AdminPanel
     def update
       puts "Data to be seeded: #{options}"
       File.write(yml_file_location, full_values.to_yaml)
-      puts "New UPDATED ID: #{id} Data: #{data}"
+      puts "New UPDATED ID: #{id} --> Data: #{data}"
     end
 
     def yml_file_location
@@ -115,27 +114,27 @@ module AdminPanel
     end
 
     def full_values
-      yml_file.merge(new_values)
+      yml_file.merge(new_record)
     end
 
     def yml_file
-      YAML.load_file(yml_file_location)
+      YAML.load_file(yml_file_location) || {}
     rescue Errno::ENOENT
       puts "File does not exist @ #{yml_file_location}. Creating new blank YML file."
       File.write(yml_file_location, {})
       YAML.load_file(yml_file_location)
     end
 
+    def new_record
+      { id => new_values.select { |_key, value| value } }
+    end
+
     def new_values
-      { id => data.merge(options.stringify_keys) }
+      data.merge(options.stringify_keys)
     end
 
     def data
-      yml_file[id] || {}
-    end
-
-    def save
-      File.write(yml_file_location, yml_file.to_yaml)
+      yml_file.fetch(id, {})
     end
   end
 end

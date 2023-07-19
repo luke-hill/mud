@@ -27,10 +27,7 @@ module MUD
         attack_message
         XP.new(hero, enemy, damage_dealt).increase
         reduce_enemy_hp
-
-        return Screen.output("DEBUG --> ENEMY HP:#{enemy.hp}hp.") unless enemy_killed?
-
-        @enemy = nil
+        Logger.debug("Enemy hp:#{enemy.hp}hp.")
       end
 
       private

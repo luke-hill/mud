@@ -34,37 +34,44 @@ RSpec.describe MUD::Combat::Fight do
     let(:item_drops_instance) { MUD::Combat::ItemDrops.new(hero, enemy) }
     let(:attack_instance) { MUD::Combat::Attack.new(hero, enemy) }
     let(:defend_instance) { MUD::Combat::Defend.new(hero, enemy) }
-    let(:enemy_killed?) { true }
+    let(:damage_dealt) { 100 }
 
     before do
       switch_logging_to_temp_file
       allow(MUD::Combat::Attack).to receive(:new).and_return(attack_instance)
       allow(attack_instance).to receive(:attack)
-      allow(fight_instance).to receive(:enemy_killed?).and_return(enemy_killed?)
-      allow(MUD::Combat::Defend).to receive(:new).and_return(defend_instance)
-      allow(defend_instance).to receive(:defend)
-      allow(MUD::Combat::ItemDrops).to receive(:new).and_return(item_drops_instance)
-      allow(item_drops_instance).to receive(:process)
+      allow(attack_instance).to receive(:damage_dealt).and_return(damage_dealt)
     end
 
     after do
-      fight_attempt
       remove_test_screen_logs
     end
 
     it 'creates a new `MUD::Combat::Attack` instance' do
       expect(MUD::Combat::Attack).to receive(:new).with(hero, enemy)
+
+      fight_attempt
     end
 
     it 'delegates off to the attack instance to deal damage' do
       expect(attack_instance).to receive(:attack)
+
+      fight_attempt
     end
 
-    it 'checks to see whether the enemy is killed' do
-      expect(fight_instance).to receive(:enemy_killed?).once
+    it 'checks to see whether the enemy is dead' do
+      expect(fight_instance).to receive(:enemy_dead?).at_least(:twice)
+
+      fight_attempt
     end
 
     context 'when the enemy is killed' do
+      before do
+        allow(fight_instance).to receive(:enemy_dead?).and_return(false, true)
+        allow(MUD::Combat::ItemDrops).to receive(:new).and_return(item_drops_instance)
+        allow(item_drops_instance).to receive(:process)
+      end
+
       it 'outputs that the enemy has been killed' do
         fight_attempt
 
@@ -73,22 +80,40 @@ RSpec.describe MUD::Combat::Fight do
 
       it 'creates a new `MUD::Combat::ItemDrops` instance' do
         expect(MUD::Combat::ItemDrops).to receive(:new).with(hero, enemy)
+
+        fight_attempt
       end
 
       it 'delegates off to the item_drops instance to process dropping any items or gold' do
         expect(item_drops_instance).to receive(:process)
+
+        fight_attempt
       end
     end
 
     context 'when the enemy is not killed' do
-      let(:enemy_killed?) { false }
+      before do
+        allow(fight_instance).to receive(:enemy_dead?).and_return(false)
+        allow(MUD::Combat::Defend).to receive(:new).and_return(defend_instance)
+        allow(defend_instance).to receive(:defend)
+      end
+
+      it 'delegates off to the Enemy to see if it will speak' do
+        expect(enemy).to receive(:speak).once
+
+        fight_attempt
+      end
 
       it 'creates a new `MUD::Combat::Defend` instance' do
         expect(MUD::Combat::Defend).to receive(:new).with(hero, enemy)
+
+        fight_attempt
       end
 
       it 'delegates off to the defend instance to receive damage' do
         expect(defend_instance).to receive(:defend)
+
+        fight_attempt
       end
     end
   end

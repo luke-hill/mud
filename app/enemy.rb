@@ -18,7 +18,7 @@ module MUD
     # Return an instance of the enemy class with correct id set
     def self.of_type(type)
       new.tap do |enemy|
-        enemy.id = type
+        enemy.id = (type || 'no_enemy')
       end
     end
 

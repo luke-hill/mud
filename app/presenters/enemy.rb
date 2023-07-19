@@ -20,7 +20,7 @@ module MUD
       # @return [String]
       # The enemy name formatted appropriately
       def string
-        return 'No enemies are in the room.' if enemy.id == 'no_enemy'
+        return 'No enemies are in the room.' if enemy.id == 'no_enemy' || enemy.dead?
 
         case enemy.type
         when :enemy; then "A #{enemy.name} is here with you."

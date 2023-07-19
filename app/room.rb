@@ -25,14 +25,14 @@ module MUD
     # The standard description of the room
     # This description will be comprised of a message, followed by an indication of all visible directions in yellow
     def description
-      @description ||= "#{description_yml.dig(room_id, 'description')}\n#{enemy_string.blue}\n#{directions_string.yellow}"
+      "#{description_yml.dig(room_id, 'description')}\n#{enemy_string.blue}\n#{directions_string.yellow}"
     end
 
     # @return [String]
     # The advanced description of the room
     # This description will be comprised of a message, followed by an indication of all visible directions in yellow
     def advanced_description
-      @advanced_description ||= "#{description_yml.dig(room_id, 'advanced_description')}\n#{enemy_string.blue}\n#{directions_string.yellow}"
+      "#{description_yml.dig(room_id, 'advanced_description')}\n#{enemy_string.blue}\n#{directions_string.yellow}"
     end
 
     def visit
@@ -86,7 +86,7 @@ module MUD
     end
 
     def enemy_string
-      @enemy_string ||= Presenters::Enemy.new(enemy).string
+      Presenters::Enemy.new(enemy).string
     end
 
     def ktp?
