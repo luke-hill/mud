@@ -18,6 +18,7 @@ module MUD
       # @return Classes::Fighter
       # The game will be initiated displaying the introduction message/s, then providing the class to be used ingame
       def setup
+        ensure_data_files_present
         display_welcome_message
         player
       end
@@ -37,6 +38,12 @@ module MUD
       end
 
       private
+
+      def ensure_data_files_present
+        return unless Dir["#{Dir.pwd}/data/**/*.yml"].count < 10
+
+        raise 'Game has not been seeded correctly! Please run `bundle exec rake seed` before playing.'
+      end
 
       def display_welcome_message
         display_diagnostic_info
