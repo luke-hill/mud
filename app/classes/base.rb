@@ -55,7 +55,7 @@ module MUD
       # @return [String]
       # The wrapper method call that attempts to move in the direction provided
       def move(direction)
-        MUD::Actions::Move.new(self, direction).move
+        MUD::Actions::Move.new(direction).move
       end
 
       # @return [Integer, Nil]

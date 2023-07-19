@@ -72,8 +72,15 @@ RSpec.describe MUD::Classes::Base do
   end
 
   describe '#move' do
+    let(:move_instance) { MUD::Actions::Move.new('south') }
+
+    before do
+      allow(MUD::Actions::Move).to receive(:new).with('south').and_return(move_instance)
+      allow(move_instance).to receive(:player).and_return(player)
+    end
+
     it 'delegates to the `Actions::Move` class' do
-      expect(MUD::Actions::Move).to receive(:new).with(player, 'south').and_call_original
+      expect(MUD::Actions::Move).to receive(:new).with('south')
 
       player.move('south')
     end

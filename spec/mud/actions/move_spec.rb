@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Actions::Move do
-  let(:player) { MUD::Game.player }
-
   before do
     switch_logging_to_temp_file
   end
