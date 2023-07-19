@@ -7,12 +7,12 @@ module MUD
     # that is passed in on initialization of the class. If all checks pass. It will deduct the cost
     # of the item from your gold, and then add a copy to your inventory
     class Buy
-      attr_reader :hero, :item_id
+      attr_reader :item_id
 
       include Helpers::Item
+      include Helpers::Methods
 
-      def initialize(hero, item_id, room)
-        @hero = hero
+      def initialize(_hero, item_id, room)
         @item_id = item_id
         @room = room
       end
@@ -55,6 +55,10 @@ module MUD
         hero.gold -= cost
         hero.inventory << item_id
         Screen.output("You bought a #{item_id.blue} for #{cost.to_s.yellow} gold.")
+      end
+
+      def hero
+        player
       end
     end
   end
