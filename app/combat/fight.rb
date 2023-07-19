@@ -5,10 +5,11 @@ module MUD
     # This provides a single public method +#fight+
     # This is the public interface to killing enemies. And is the only method which is public.
     class Fight
-      attr_reader :hero, :enemy
+      attr_reader :enemy
 
-      def initialize(hero, enemy)
-        @hero = hero
+      include Helpers::Methods
+
+      def initialize(enemy)
         @enemy = enemy
       end
 
@@ -64,7 +65,7 @@ module MUD
       end
 
       def fight_until_death
-        fight_once until hero.dead? || enemy_dead?
+        fight_once until player.dead? || enemy_dead?
       end
     end
   end

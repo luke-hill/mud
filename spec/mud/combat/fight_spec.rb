@@ -3,8 +3,7 @@
 RSpec.describe MUD::Combat::Fight do
   subject(:fight_attempt) { fight_instance.fight(times) }
 
-  let(:fight_instance) { described_class.new(hero, enemy) }
-  let(:hero) { MUD::Classes::Fighter.new }
+  let(:fight_instance) { described_class.new(enemy) }
   let(:enemy) { create(:enemy, 'bad') }
 
   describe '#fight' do
