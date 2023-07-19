@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Combat::ItemDrops do
-  let(:item_drops_instance) { described_class.new(hero, enemy) }
-  let(:hero) { MUD::Classes::Fighter.new }
+  let(:item_drops_instance) { described_class.new(enemy) }
+  let(:player) { MUD::Game.player }
   let(:enemy) { create(:enemy, 'dead') }
 
   describe '#process' do
@@ -15,10 +15,10 @@ RSpec.describe MUD::Combat::ItemDrops do
     context 'when dropping a potion' do
       let(:dropped_potion_chance) { 1 }
 
-      it 'places the potion in the inventory of the hero' do
+      it 'places the potion in the inventory of the player' do
         drop_items
 
-        expect(hero.inventory).to include('lesser_healing_potion')
+        expect(player.inventory).to include('lesser_healing_potion')
       end
 
       it 'informs the user that the potion dropped' do
@@ -29,10 +29,10 @@ RSpec.describe MUD::Combat::ItemDrops do
     end
 
     context 'when dropping a weapon' do
-      it 'places the weapon in the inventory of the hero' do
+      it 'places the weapon in the inventory of the player' do
         drop_items
 
-        expect(hero.inventory).to include('goblin_axe')
+        expect(player.inventory).to include('goblin_axe')
       end
 
       it 'informs the user that the weapon dropped' do
@@ -43,10 +43,10 @@ RSpec.describe MUD::Combat::ItemDrops do
     end
 
     context 'when dropping an armor' do
-      it 'places the armor in the inventory of the hero' do
+      it 'places the armor in the inventory of the player' do
         drop_items
 
-        expect(hero.inventory).to include('bandit_leathers')
+        expect(player.inventory).to include('bandit_leathers')
       end
 
       it 'informs the user that the armor dropped' do
@@ -57,8 +57,8 @@ RSpec.describe MUD::Combat::ItemDrops do
     end
 
     context 'when dropping gold' do
-      it 'increases the heroes gold by the amount dropped' do
-        expect { drop_items }.to change(hero, :gold).by(5)
+      it 'increases the players gold by the amount dropped' do
+        expect { drop_items }.to change(player, :gold).by(5)
       end
 
       it 'informs the user that the gold dropped' do

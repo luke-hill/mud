@@ -60,7 +60,7 @@ module MUD
       end
 
       def process_item_drops
-        ItemDrops.new(hero, enemy).process
+        ItemDrops.new(enemy).process
       end
 
       def fight_until_death

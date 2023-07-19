@@ -9,10 +9,11 @@ module MUD
     # Which items are dropped and in which circumstances are entirely controlled by the enemy data
     # files found in +data/**/*.yml+
     class ItemDrops
-      attr_reader :hero, :enemy
+      attr_reader :enemy
 
-      def initialize(hero, enemy)
-        @hero = hero
+      include Helpers::Methods
+
+      def initialize(enemy)
         @enemy = enemy
       end
 
@@ -77,7 +78,7 @@ module MUD
         return Logger.debug("Enemy didn't have any gold") unless enemy.gold.positive?
 
         Screen.output("You found #{gold_amount.yellow} on the corpse of the #{enemy.name}")
-        hero.gold += enemy.gold
+        player.gold += enemy.gold
         enemy.gold = 0
       end
 
@@ -87,18 +88,18 @@ module MUD
 
       def drop_location
         if inventory_space_available?
-          hero.inventory
+          player.inventory
         else
           floor
         end
       end
 
       def inventory_space_available?
-        hero.inventory.length < hero.max_inventory_size
+        player.inventory.length < player.max_inventory_size
       end
 
       def floor
-        hero.current_room.floor
+        player.current_room.floor
       end
     end
   end

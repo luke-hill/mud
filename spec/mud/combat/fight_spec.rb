@@ -31,7 +31,7 @@ RSpec.describe MUD::Combat::Fight do
 
   describe '#fight_once' do
     let(:times) { 1 }
-    let(:item_drops_instance) { MUD::Combat::ItemDrops.new(hero, enemy) }
+    let(:item_drops_instance) { MUD::Combat::ItemDrops.new(enemy) }
     let(:attack_instance) { MUD::Combat::Attack.new(enemy) }
     let(:defend_instance) { MUD::Combat::Defend.new(enemy) }
     let(:damage_dealt) { 100 }
@@ -73,7 +73,7 @@ RSpec.describe MUD::Combat::Fight do
       end
 
       it 'creates a new `MUD::Combat::ItemDrops` instance' do
-        expect(MUD::Combat::ItemDrops).to receive(:new).with(hero, enemy)
+        expect(MUD::Combat::ItemDrops).to receive(:new).with(enemy)
 
         fight_attempt
       end
