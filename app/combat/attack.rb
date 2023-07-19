@@ -26,7 +26,7 @@ module MUD
         return missed_message if no_damage?
 
         attack_message
-        XP.new(player, enemy, damage_dealt).increase
+        XP.new(enemy, damage_dealt).increase
         reduce_enemy_hp
         Logger.debug("Enemy hp:#{enemy.hp}hp.")
       end
