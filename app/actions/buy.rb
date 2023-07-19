@@ -12,7 +12,7 @@ module MUD
       include Helpers::Item
       include Helpers::Methods
 
-      def initialize(_hero, item_id, room)
+      def initialize(_player, item_id, room)
         @item_id = item_id
         @room = room
       end
@@ -37,12 +37,12 @@ module MUD
       end
 
       def enough_money?
-        Logger.debug("Current gold amount #{hero.gold}")
-        hero.gold >= cost
+        Logger.debug("Current gold amount #{player.gold}")
+        player.gold >= cost
       end
 
       def enough_space?
-        hero.inventory.compact.length < hero.max_inventory_size
+        player.inventory.compact.length < player.max_inventory_size
       end
 
       def for_sale?
@@ -52,13 +52,9 @@ module MUD
       end
 
       def buy_item
-        hero.gold -= cost
-        hero.inventory << item_id
+        player.gold -= cost
+        player.inventory << item_id
         Screen.output("You bought a #{item_id.blue} for #{cost.to_s.yellow} gold.")
-      end
-
-      def hero
-        player
       end
     end
   end
