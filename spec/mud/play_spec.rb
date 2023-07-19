@@ -9,6 +9,7 @@ RSpec.describe MUD::Play do
 
   before do
     allow($stdin).to receive(:gets).and_return(user_input)
+    allow(MUD::Game).to receive(:setup)
     allow(MUD::Game).to receive(:display_welcome_message)
     allow(MUD::Actions::Command).to receive(:new).with(user_input).and_return(command_instance)
   end
@@ -18,6 +19,7 @@ RSpec.describe MUD::Play do
   describe '#play' do
     context 'when alive' do
       before do
+        # This alive->dead switch is so the spec runner doesn't hit an infinite loop
         allow(player).to receive(:alive?).and_return(true, false)
         allow(Kernel).to receive(:exit)
       end
