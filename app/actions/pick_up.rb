@@ -10,15 +10,15 @@ module MUD
       attr_reader :item_id
 
       include Helpers::Item
+      include Helpers::Methods
       extend Forwardable
 
-      def initialize(hero, item_id)
-        @hero = hero
+      def initialize(item_id)
         @item_id = item_id
       end
 
       def_delegators \
-        :@hero,
+        :player,
         :current_room,
         :inventory,
         :max_inventory_size

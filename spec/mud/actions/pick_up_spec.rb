@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Actions::PickUp do
-  subject(:pick_up_instance) { described_class.new(hero, 'demo_healing') }
+  subject(:pick_up_instance) { described_class.new('demo_healing') }
 
-  let(:hero) { MUD::Classes::Fighter.new }
+  let(:player) { MUD::Game.player }
 
   before do
-    allow(MUD::Game).to receive(:player).and_return(hero)
-    allow(hero.current_room).to receive(:floor).and_return(['demo_healing'])
+    allow(player.current_room).to receive(:floor).and_return(['demo_healing'])
   end
 
   describe '#pick_up' do
@@ -15,7 +14,7 @@ RSpec.describe MUD::Actions::PickUp do
 
     context "when the item isn't actually on the floor" do
       before do
-        allow(hero.current_room).to receive(:floor).and_return(['not_a_lesser_healing_potion'])
+        allow(player.current_room).to receive(:floor).and_return(['not_a_lesser_healing_potion'])
       end
 
       it "informs the player that the item isn't actually on the floor" do
@@ -23,13 +22,13 @@ RSpec.describe MUD::Actions::PickUp do
       end
 
       it 'does not pick the item up' do
-        expect { pick_up_attempt }.not_to change(hero, :inventory)
+        expect { pick_up_attempt }.not_to change(player, :inventory)
       end
     end
 
-    context "when the hero doesn't have any more space for the item in his inventory" do
+    context "when the player doesn't have any more space for the item in his inventory" do
       before do
-        allow(hero).to receive(:max_inventory_size).and_return(0)
+        allow(player).to receive(:max_inventory_size).and_return(0)
       end
 
       it 'informs the player that they cannot pick up the item' do
@@ -37,24 +36,24 @@ RSpec.describe MUD::Actions::PickUp do
       end
 
       it 'does not pick the item up' do
-        expect { pick_up_attempt }.not_to change(hero, :inventory)
+        expect { pick_up_attempt }.not_to change(player, :inventory)
       end
     end
 
     context 'when the item is on the floor' do
-      it 'adds the item to the heroes inventory' do
-        expect { pick_up_attempt }.to change(hero.inventory, :length).by(1)
+      it 'adds the item to the playeres inventory' do
+        expect { pick_up_attempt }.to change(player.inventory, :length).by(1)
       end
 
       it 'removes the item from the floor' do
-        expect { pick_up_attempt }.to change(hero.current_room.floor, :length).by(-1)
+        expect { pick_up_attempt }.to change(player.current_room.floor, :length).by(-1)
       end
     end
   end
 
   describe 'delegated methods' do
-    it { is_expected.to delegate(:current_room).to(:@hero) }
-    it { is_expected.to delegate(:inventory).to(:@hero) }
-    it { is_expected.to delegate(:max_inventory_size).to(:@hero) }
+    it { is_expected.to delegate(:current_room).to(:player) }
+    it { is_expected.to delegate(:inventory).to(:player) }
+    it { is_expected.to delegate(:max_inventory_size).to(:player) }
   end
 end
