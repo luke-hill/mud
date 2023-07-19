@@ -27,8 +27,7 @@ module MUD
         Logger.debug("Raw input received from user: '#{command_input}'")
         return process_attack if attack?
         return process_miscellaneous if miscellaneous?
-        return process_north_south_east_west if compass_direction?
-        return process_up_down if up_or_down?
+        return process_compass_direction if compass_direction?
 
         Screen.output('Input not yet recognised as a valid command')
       end
@@ -59,20 +58,12 @@ module MUD
         ['', 'debug', 'quit'].include?(command_input)
       end
 
-      def process_north_south_east_west
+      def process_compass_direction
         player.move(unnabbreviate(command_input, type: :movement))
       end
 
       def compass_direction?
-        %w[n north s south w west e east].include?(command_input)
-      end
-
-      def process_up_down
-        player.move(unnabbreviate(command_input, type: :movement))
-      end
-
-      def up_or_down?
-        %w[u up d down].include?(command_input)
+        %w[n north s south w west e east u up d down].include?(command_input)
       end
 
       def output_diagnostic_info
