@@ -85,7 +85,7 @@ module MUD
       # @return [String]
       # This delegates to the Equip class and performs the #equip action
       def equip(item_id)
-        MUD::Actions::Equip.new(self, item_id).equip
+        MUD::Actions::Equip.new(item_id).equip
       end
 
       # @return [MUD::Weapon]

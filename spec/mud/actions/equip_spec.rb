@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Actions::Equip do
-  subject(:equip_instance) { described_class.new(hero, item_id) }
+  subject(:equip_instance) { described_class.new(item_id) }
 
-  let(:hero) { MUD::Classes::Fighter.new }
+  let(:player) { MUD::Game.player }
   let(:item_id) { 'knife' }
 
-  before { hero.inventory << item_id }
+  before { player.inventory << item_id }
 
   describe '#equip' do
     context 'when the item_id is not in the inventory' do
-      before { hero.inventory = [] }
+      before { player.inventory = [] }
 
       it 'cannot equip a missing item' do
         expect { equip_instance.equip }
@@ -23,7 +23,7 @@ RSpec.describe MUD::Actions::Equip do
       let(:item_id) { 'zero_shield' }
 
       it 'can equip an armor' do
-        expect { equip_instance.equip }.to change(hero, :armor).to(item_id)
+        expect { equip_instance.equip }.to change(player, :armor).to(item_id)
       end
     end
 
@@ -31,7 +31,7 @@ RSpec.describe MUD::Actions::Equip do
       let(:item_id) { 'knife' }
 
       it 'can equip a weapon' do
-        expect { equip_instance.equip }.to change(hero, :weapon).to(item_id)
+        expect { equip_instance.equip }.to change(player, :weapon).to(item_id)
       end
     end
 
@@ -47,7 +47,7 @@ RSpec.describe MUD::Actions::Equip do
   end
 
   describe 'delegated methods' do
-    it { is_expected.to delegate(:inventory).to(:@hero) }
-    it { is_expected.to delegate(:equipment).to(:@hero) }
+    it { is_expected.to delegate(:inventory).to(:player) }
+    it { is_expected.to delegate(:equipment).to(:player) }
   end
 end

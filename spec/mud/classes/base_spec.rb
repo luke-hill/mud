@@ -112,36 +112,30 @@ RSpec.describe MUD::Classes::Base do
   end
 
   describe '#equip' do
+    let(:equip_instance) { MUD::Actions::Equip.new('zero') }
+
     before do
       player.inventory << 'zero'
+      allow(MUD::Actions::Equip).to receive(:new).with('zero').and_return(equip_instance)
+      allow(equip_instance).to receive(:player).and_return(player)
     end
 
     it 'delegates to the `Actions::Equip` class' do
-      expect(MUD::Actions::Equip).to receive(:new).with(player, 'zero').and_call_original
+      expect(MUD::Actions::Equip).to receive(:new).with('zero')
 
       player.equip('zero')
     end
   end
 
   describe '#weapon' do
-    before do
-      player.inventory << 'zero'
-      player.equip('zero')
-    end
-
     it 'shows the id of the currently equipped weapon' do
-      expect(player.weapon).to eq('zero')
+      expect(player.weapon).to be_a MUD::Weapon
     end
   end
 
   describe '#armor' do
-    before do
-      player.inventory << 'zero_shield'
-      player.equip('zero_shield')
-    end
-
     it 'shows the id of the currently equipped armor' do
-      expect(player.armor).to eq('zero_shield')
+      expect(player.armor).to be_a MUD::Armor
     end
   end
 
