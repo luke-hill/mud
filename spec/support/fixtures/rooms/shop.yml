@@ -1,0 +1,16 @@
+---
+valid_shop:
+  potions:
+    - :id: demo_healing
+      :cost: 50
+      :resell: 50
+    - :id: demo_endurance
+      :resell: 5000
+invalid_shop:
+  potions:
+    - :id: demo_healing
+      :cost: 1
+      :resell: 1
+    - :id: demo_endurance
+      :cost: 1
+      :resell: 1
