@@ -4,3 +4,6 @@ dummy:
   description: A description
   use_message: I g0t used
   missing_message: Oh dear, no key!
+half_configured:
+  name: Half configured Key
+  description: A description is all I have
