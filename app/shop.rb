@@ -52,7 +52,7 @@ module MUD
     def shop_items_string
       @shop_items_string ||=
         if room_data.keys.empty?
-          'There is nothing for sale here yet....'.blue
+          'There are no potions for sale here yet.... Maybe wait for weapons?!'.blue
         else
           Presenters::ShopItems.new(self).string
         end

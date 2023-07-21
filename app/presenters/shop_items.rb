@@ -24,7 +24,7 @@ module MUD
         case potion_names.length
         when 1;   then simple_shop_menu
         when 2..; then complex_shop_menu
-        else raise "This shop has no items for sale - so the presenter shouldn't be called."
+        else raise "This shop has no potions for sale - so the presenter shouldn't be called."
         end
       end
 
