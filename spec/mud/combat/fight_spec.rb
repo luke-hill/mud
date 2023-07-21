@@ -104,4 +104,30 @@ RSpec.describe MUD::Combat::Fight do
       end
     end
   end
+
+  describe '#fight_until_death' do
+    let(:times) { 2 }
+    let(:item_drops_instance) { MUD::Combat::ItemDrops.new(enemy) }
+    let(:attack_instance) { MUD::Combat::Attack.new(enemy) }
+    let(:defend_instance) { MUD::Combat::Defend.new(enemy) }
+    let(:damage_dealt) { 100 }
+
+    before do
+      switch_logging_to_temp_file
+      allow(MUD::Combat::Attack).to receive(:new).and_return(attack_instance)
+      allow(attack_instance).to receive(:attack)
+      allow(attack_instance).to receive(:damage_dealt).and_return(damage_dealt)
+      allow(fight_instance).to receive(:enemy_dead?).and_return(false, false, true)
+    end
+
+    after do
+      remove_test_screen_logs
+    end
+
+    it 'keeps calling `#fight_once` until the enemy dies' do
+      expect(fight_instance).to receive(:fight_once).at_least(:once)
+
+      fight_attempt
+    end
+  end
 end
