@@ -50,7 +50,12 @@ module MUD
     private
 
     def shop_items_string
-      @shop_items_string ||= Presenters::ShopItems.new(room_id, self).string
+      @shop_items_string ||=
+        if room_data.keys.empty?
+          'There is nothing for sale here yet....'.blue
+        else
+          Presenters::ShopItems.new(room_id, self).string
+        end
     end
 
     def validate_enemy_not_present

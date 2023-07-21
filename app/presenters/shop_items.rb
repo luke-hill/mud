@@ -10,10 +10,9 @@ module MUD
     class ShopItems
       include Helpers::Data
 
-      attr_reader :room_id, :shop
+      attr_reader :shop
 
       def initialize(room_id, shop)
-        @room_id = room_id
         @shop = shop
       end
 
@@ -25,7 +24,7 @@ module MUD
         case potion_names.length
         when 1;   then simple_shop_menu
         when 2..; then complex_shop_menu
-        else raise "This room (Room-ID: #{room_id}), is incorrectly configured"
+        else raise "This shop has no items for sale - so the presenter shouldn't be called."
         end
       end
 
