@@ -60,7 +60,7 @@ module MUD
       end
 
       def room_data
-        direction_yml[room_id]
+        @room_data ||= direction_yml[room_id]
       end
     end
   end
