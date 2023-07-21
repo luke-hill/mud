@@ -2,11 +2,10 @@
 
 RSpec.describe MUD::Key do
   let(:player) { MUD::Game.player }
+  let(:key) { create(:key, 'dummy') }
 
   describe '#use' do
     context 'when the key has a defined `use_message`' do
-      let(:key) { create(:key, 'dummy') }
-
       it 'will output the keys use_message property' do
         expect(MUD::Screen).to receive(:output).with('I g0t used'.yellow)
 
@@ -23,5 +22,21 @@ RSpec.describe MUD::Key do
         key.use
       end
     end
+  end
+
+  it 'has a name' do
+    expect(key.name).to eq('Dummy Key')
+  end
+
+  it 'has a use_message' do
+    expect(key.use_message).to eq('I g0t used')
+  end
+
+  it 'has a description' do
+    expect(key.description).to eq('A description')
+  end
+
+  it 'has a missing_message' do
+    expect(key.missing_message).to eq('Oh dear, no key!')
   end
 end
