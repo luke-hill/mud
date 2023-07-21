@@ -37,11 +37,11 @@ module MUD
       end
 
       def visible_directions
-        directions - hidden_directions
+        all_directions - hidden_directions
       end
 
-      def directions
-        initial_room_data.keys.select { |key| direction_types.include?(key) }
+      def all_directions
+        room_data.keys & direction_types
       end
 
       def direction_types
@@ -50,15 +50,16 @@ module MUD
           south
           east
           west
+          up
+          down
         ]
       end
 
       def hidden_directions
-        initial_room_data
-          .filter_map { |key, value| key.split('_').last if key.start_with?('hide') && value == true }
+        room_data.filter_map { |key, value| key.split('_').last if key.start_with?('hide') && value == true }
       end
 
-      def initial_room_data
+      def room_data
         direction_yml[room_id]
       end
     end
