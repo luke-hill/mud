@@ -15,10 +15,11 @@ module MUD
     attr_accessor :id
 
     # @return [MUD::Enemy]
-    # Return an instance of the enemy class with correct id set
+    # Return an instance of the enemy class with correct id set and type pre-loaded
     def self.of_type(type)
       new.tap do |enemy|
         enemy.id = (type || 'no_enemy')
+        enemy.type
       end
     end
 
