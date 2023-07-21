@@ -109,7 +109,7 @@ module MUD
       # @return [String]
       # This delegates to the Fight class and performs the #fight action
       def fight(times = 1)
-        MUD::Combat::Fight.new(self, current_room.enemy).fight(times)
+        MUD::Combat::Fight.new(current_room.enemy).fight(times)
       end
 
       # @return [Boolean]
