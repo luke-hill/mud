@@ -5,19 +5,16 @@ RSpec.describe MUD::Shop do
   let(:invalid_shop) { create_shop('invalid_shop') }
   let(:player) { MUD::Game.player }
   let(:shop_items_string) do
-    <<~ITEMS
-      --------------------
-      | Potion | 50 gold |
-      --------------------
+    <<~ITEMS.chomp
+      ----------------------------------------
+      | demo_healing        |        50 gold |
+      ----------------------------------------
+      | demo_endurance      | (OUT OF STOCK) |
+      ----------------------------------------
     ITEMS
   end
 
   let(:presenter_instance) { instance_double(MUD::Presenters::ShopItems) }
-
-  before do
-    allow(MUD::Presenters::ShopItems).to receive(:new).with('valid_shop').and_return(presenter_instance)
-    allow(presenter_instance).to receive(:string).and_return(shop_items_string)
-  end
 
   describe '#buy' do
     it 'attempts to buy by delegating to the buy class' do
