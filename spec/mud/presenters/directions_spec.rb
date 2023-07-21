@@ -40,5 +40,17 @@ RSpec.describe MUD::Presenters::Directions do
         expect(open_room_presenter.string).to eq('You can go east and west')
       end
     end
+
+    context 'with too many directions' do
+      before do
+        allow(trapped_room_presenter).to receive(:visible_directions).and_return(%w[north south east west up down left right])
+      end
+
+      it 'can show no directions' do
+        expect { trapped_room_presenter.string }
+          .to raise_error(RuntimeError)
+          .with_message('This room (Room-ID: trapped_room), is incorrectly configured')
+      end
+    end
   end
 end
