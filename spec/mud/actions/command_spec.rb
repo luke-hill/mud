@@ -119,5 +119,15 @@ RSpec.describe MUD::Actions::Command do
 
       include_examples 'Command movement examples'
     end
+
+    context 'when command input is an unknown command' do
+      let(:command_input) { 'fooBARBaz' }
+
+      it 'informs the user the command is invalid' do
+        expect(MUD::Screen).to receive(:output).with('Input not yet recognised as a valid command'.red.blink)
+
+        command.process
+      end
+    end
   end
 end

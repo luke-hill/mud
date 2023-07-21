@@ -30,7 +30,7 @@ module MUD
         return process_miscellaneous if miscellaneous?
         return process_compass_direction if compass_direction?
 
-        Screen.output('Input not yet recognised as a valid command')
+        Screen.output('Input not yet recognised as a valid command'.red.blink)
       end
 
       private
