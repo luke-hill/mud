@@ -54,7 +54,7 @@ module MUD
         if room_data.keys.empty?
           'There is nothing for sale here yet....'.blue
         else
-          Presenters::ShopItems.new(room_id, self).string
+          Presenters::ShopItems.new(self).string
         end
     end
 

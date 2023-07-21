@@ -12,7 +12,7 @@ module MUD
 
       attr_reader :shop
 
-      def initialize(room_id, shop)
+      def initialize(shop)
         @shop = shop
       end
 
