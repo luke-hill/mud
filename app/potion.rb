@@ -118,15 +118,15 @@ module MUD
     end
 
     def healing_potion?
-      !healing_potion_yml[id].nil?
+      healing_potion_yml.key?(id)
     end
 
     def mana_potion?
-      !mana_potion_yml[id].nil?
+      mana_potion_yml.key?(id)
     end
 
     def hp_bonus_potion?
-      !hp_bonus_potion_yml[id].nil?
+      hp_bonus_potion_yml.key?(id)
     end
   end
 end
