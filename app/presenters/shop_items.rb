@@ -10,10 +10,11 @@ module MUD
     class ShopItems
       include Helpers::Data
 
-      attr_reader :room_id
+      attr_reader :room_id, :shop
 
-      def initialize(room_id)
+      def initialize(room_id, shop)
         @room_id = room_id
+        @shop = shop
       end
 
       # @return [String]
@@ -30,7 +31,7 @@ module MUD
 
       # deprecated
       def for_sale?(item_id)
-        MUD::Shop.new(room_id).for_sale?(item_id)
+        shop.for_sale?(item_id)
       end
 
       private
@@ -105,17 +106,17 @@ module MUD
 
       # deprecated
       def price(item_id)
-        MUD::Shop.new(room_id).send(:price, item_id)
+        shop.send(:price, item_id)
       end
 
       # deprecated
       def potion_names
-        MUD::Shop.new(room_id).send(:potion_names)
+        shop.send(:potion_names)
       end
 
       # deprecated
       def potion_costs
-        MUD::Shop.new(room_id).send(:potion_costs)
+        shop.send(:potion_costs)
       end
     end
   end

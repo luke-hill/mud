@@ -36,7 +36,7 @@ module MUD
     private
 
     def shop_items_string
-      @shop_items_string ||= Presenters::ShopItems.new(room_id).string
+      @shop_items_string ||= Presenters::ShopItems.new(room_id, self).string
     end
 
     def validate_enemy_not_present
