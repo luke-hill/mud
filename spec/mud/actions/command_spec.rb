@@ -12,6 +12,26 @@ RSpec.describe MUD::Actions::Command do
   after { remove_test_screen_logs }
 
   describe '#process' do
+    context 'when command input is "a"' do
+      let(:command_input) { 'a' }
+
+      it 'fights the enemy' do
+        expect(player).to receive(:fight)
+
+        command.process
+      end
+    end
+
+    context 'when command input is "attack"' do
+      let(:command_input) { 'attack' }
+
+      it 'fights the enemy' do
+        expect(player).to receive(:fight)
+
+        command.process
+      end
+    end
+
     context 'when command input is an empty string' do
       let(:command_input) { '' }
 
