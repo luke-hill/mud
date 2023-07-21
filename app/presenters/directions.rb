@@ -11,10 +11,10 @@ module MUD
     class Directions
       include Helpers::Data
 
-      attr_reader :room_id
+      attr_reader :directions
 
-      def initialize(room_id)
-        @room_id = room_id
+      def initialize(directions)
+        @directions = directions
       end
 
       # @return [String]
@@ -25,8 +25,7 @@ module MUD
         case visible_directions.length
         when 0; then 'You cannot move in any direction'
         when 1; then "You can only go #{visible_directions_as_string}"
-        when 2..6; then "You can go #{visible_directions_as_string}"
-        else raise "This room (Room-ID: #{room_id}), is incorrectly configured"
+        else         "You can go #{visible_directions_as_string}"
         end
       end
 
@@ -37,11 +36,11 @@ module MUD
       end
 
       def visible_directions
-        all_directions - hidden_directions
+        valid_directions - hidden_directions
       end
 
-      def all_directions
-        room_data.keys & direction_types
+      def valid_directions
+        directions.keys & direction_types
       end
 
       def direction_types
@@ -56,11 +55,7 @@ module MUD
       end
 
       def hidden_directions
-        room_data.filter_map { |key, value| key.split('_').last if key.start_with?('hide') && value == true }
-      end
-
-      def room_data
-        @room_data ||= direction_yml[room_id]
+        directions.filter_map { |key, value| key.split('_').last if key.start_with?('hide') && value == true }
       end
     end
   end

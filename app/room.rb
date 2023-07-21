@@ -92,7 +92,7 @@ module MUD
     private
 
     def directions_string
-      @directions_string ||= Presenters::Directions.new(room_id).string
+      @directions_string ||= Presenters::Directions.new(direction_yml[room_id]).string
     end
 
     def enemy_string
