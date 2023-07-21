@@ -17,7 +17,7 @@ RSpec.describe MUD::Presenters::Directions do
       end
 
       it 'can show multiple directions when visible' do
-        expect(open_room_presenter.string).to eq('You can go north, east, south and west')
+        expect(open_room_presenter.string).to eq('You can go north, east, south, west, up and down')
       end
     end
 
@@ -37,7 +37,7 @@ RSpec.describe MUD::Presenters::Directions do
       end
 
       it 'shows only visible directions when some directions are invisible' do
-        expect(open_room_presenter.string).to eq('You can go east and west')
+        expect(open_room_presenter.string).to eq('You can go east, west, up and down')
       end
     end
 
