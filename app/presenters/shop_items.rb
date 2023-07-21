@@ -36,7 +36,6 @@ module MUD
 
       private
 
-      # to keep in presenter
       def simple_shop_menu
         [
           dashed_string,
@@ -45,7 +44,6 @@ module MUD
         ].join("\n")
       end
 
-      # to keep in presenter
       def complex_shop_menu
         [
           dashed_string,
@@ -54,7 +52,6 @@ module MUD
         ].join("\n")
       end
 
-      # to keep in presenter
       def dashed_string
         # 3 for starting, middle and ending pipe
         # 1 for left padding
@@ -69,13 +66,11 @@ module MUD
         # 1 for right padding
         '-' * (3 + 1 + longest_potion_name_length + 5 + 1 + 1 + 6 + longest_potion_cost_length + 5 + 1 + 1)
       end
-
-      # 1 - TBC
+      
       def array
         potion_names.map { |name| individual_item_string(name) }
       end
 
-      # to keep in presenter
       def individual_item_string(name)
         if for_sale?(name)
           "| #{name}#{' ' * name_padding(name)} | #{' ' * cost_padding(price(name))} #{price(name)} gold |"
@@ -84,22 +79,18 @@ module MUD
         end
       end
 
-      # to keep in presenter
       def name_padding(name = '')
         5 + longest_potion_name_length - name.length
       end
 
-      # to keep in presenter
       def cost_padding(cost = 0)
         6 + longest_potion_cost_length - cost.digits.length
       end
 
-      # to keep in presenter
       def longest_potion_name_length
         potion_names.map(&:length).max
       end
 
-      # to keep in presenter
       def longest_potion_cost_length
         potion_costs.map { |cost| cost.to_i.digits.length }.max
       end
