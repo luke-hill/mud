@@ -23,10 +23,14 @@ module MUD
 
     # @return [String]
     # A list of all items for sale
-    # This uses the Shopitems presenter so it should be formatted neatly
+    # This uses the ShopItems presenter so it should be formatted neatly
     def items_for_sale
       Logger.debug("Displaying Shop Data for Room-ID: #{room_id}")
       Screen.output(shop_items_string)
+    end
+
+    def for_sale?(item_id)
+      !price(item_id).nil?
     end
 
     private
@@ -40,6 +44,36 @@ module MUD
 
       Logger.debug("Enemy found: #{enemy.inspect}")
       raise "There shouldn't be any enemies in shops!"
+    end
+
+    def price(item_id)
+      raise "Item not understood in shop - Room-ID: #{room_id}" unless present?(item_id)
+
+      find_item(item_id).fetch('cost', nil)
+    end
+
+    def present?(item_id)
+      potion_names.include?(item_id)
+    end
+
+    def find_item(item_id)
+      potion_data.detect { |data| data['id'] == item_id }
+    end
+
+    def potion_names
+      potion_data.map { |data| data['id'] }
+    end
+
+    def potion_costs
+      potion_data.map { |data| data['cost'] }
+    end
+
+    def potion_data
+      room_data['potions']
+    end
+
+    def room_data
+      shop_yml[room_id]
     end
   end
 end

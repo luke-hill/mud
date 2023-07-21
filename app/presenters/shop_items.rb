@@ -28,12 +28,14 @@ module MUD
         end
       end
 
+      # deprecated
       def for_sale?(item_id)
-        !price(item_id).nil?
+        MUD::Shop.new(room_id).for_sale?(item_id)
       end
 
       private
 
+      # to keep in presenter
       def simple_shop_menu
         [
           dashed_string,
@@ -42,6 +44,7 @@ module MUD
         ].join("\n")
       end
 
+      # to keep in presenter
       def complex_shop_menu
         [
           dashed_string,
@@ -50,6 +53,7 @@ module MUD
         ].join("\n")
       end
 
+      # to keep in presenter
       def dashed_string
         # 3 for starting, middle and ending pipe
         # 1 for left padding
@@ -65,14 +69,12 @@ module MUD
         '-' * (3 + 1 + longest_potion_name_length + 5 + 1 + 1 + 6 + longest_potion_cost_length + 5 + 1 + 1)
       end
 
+      # 1 - TBC
       def array
         potion_names.map { |name| individual_item_string(name) }
       end
 
-      def price(item_id)
-        find_item(item_id)&.fetch('cost', nil)
-      end
-
+      # to keep in presenter
       def individual_item_string(name)
         if for_sale?(name)
           "| #{name}#{' ' * name_padding(name)} | #{' ' * cost_padding(price(name))} #{price(name)} gold |"
@@ -81,40 +83,39 @@ module MUD
         end
       end
 
+      # to keep in presenter
       def name_padding(name = '')
         5 + longest_potion_name_length - name.length
       end
 
+      # to keep in presenter
       def cost_padding(cost = 0)
         6 + longest_potion_cost_length - cost.digits.length
       end
 
-      def find_item(item_id)
-        potion_data.detect { |data| data['id'] == item_id }
-      end
-
+      # to keep in presenter
       def longest_potion_name_length
         potion_names.map(&:length).max
       end
 
+      # to keep in presenter
       def longest_potion_cost_length
         potion_costs.map { |cost| cost.to_i.digits.length }.max
       end
 
+      # deprecated
+      def price(item_id)
+        MUD::Shop.new(room_id).send(:price, item_id)
+      end
+
+      # deprecated
       def potion_names
-        potion_data.map { |data| data['id'] }
+        MUD::Shop.new(room_id).send(:potion_names)
       end
 
+      # deprecated
       def potion_costs
-        potion_data.map { |data| data['cost'] }
-      end
-
-      def potion_data
-        initial_room_data['potions']
-      end
-
-      def initial_room_data
-        shop_yml[room_id]
+        MUD::Shop.new(room_id).send(:potion_costs)
       end
     end
   end
