@@ -7,7 +7,7 @@ module MUD
     # that is passed in on initialization of the class. If all checks pass. It will deduct the cost
     # of the item from your gold, and then add a copy to your inventory
     class Buy
-      attr_reader :item_id
+      attr_reader :item_id, :room
 
       include Helpers::Item
       include Helpers::Methods
@@ -46,6 +46,8 @@ module MUD
       end
 
       def for_sale?
+        return false unless room.shop?
+
         # We need the concept of what items are for sale where
         # For now this will be true for the 1 shop
         true

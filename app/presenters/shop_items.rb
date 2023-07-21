@@ -28,6 +28,10 @@ module MUD
         end
       end
 
+      def for_sale?(item_id)
+        !price(item_id).nil?
+      end
+
       private
 
       def simple_shop_menu
@@ -63,10 +67,6 @@ module MUD
 
       def array
         potion_names.map { |name| individual_item_string(name) }
-      end
-
-      def for_sale?(item_id)
-        !price(item_id).nil?
       end
 
       def price(item_id)
