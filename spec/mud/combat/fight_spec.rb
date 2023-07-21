@@ -9,13 +9,9 @@ RSpec.describe MUD::Combat::Fight do
   let(:attack_instance) { MUD::Combat::Attack.new(enemy) }
   let(:defend_instance) { MUD::Combat::Defend.new(enemy) }
 
-  before do
-    switch_logging_to_temp_file
-  end
+  before { switch_logging_to_temp_file }
 
-  after do
-    remove_test_screen_logs
-  end
+  after { remove_test_screen_logs }
 
   describe '#fight' do
     context 'when times parameter is 1' do

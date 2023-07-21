@@ -9,6 +9,8 @@ RSpec.describe MUD::Actions::Command do
     player.current_room = MUD::Room.new('blank_room')
   end
 
+  after { remove_test_screen_logs }
+
   describe '#process' do
     context 'when command input is an empty string' do
       let(:command_input) { '' }

@@ -1,13 +1,9 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Actions::Move do
-  before do
-    switch_logging_to_temp_file
-  end
+  before { switch_logging_to_temp_file }
 
-  after do
-    remove_test_screen_logs
-  end
+  after { remove_test_screen_logs }
 
   describe '#north' do
     let(:direction) { 'north' }
