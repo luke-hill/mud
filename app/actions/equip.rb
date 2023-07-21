@@ -42,9 +42,9 @@ module MUD
         new_weapon_id = find(item_id, %w[weapon])
         return Screen.output('You do not have this weapon to equip.') unless new_weapon_id
 
-        current_weapon_id = equipment[:weapon]
+        current_weapon_id = equipment[:weapon].id
         inventory << current_weapon_id
-        equipment[:weapon] = new_weapon_id
+        equipment[:weapon] = Weapon.of_type(new_weapon_id)
         remove_from_inventory(new_weapon_id)
       end
 
@@ -52,9 +52,9 @@ module MUD
         new_armor_id = find(item_id, %w[armor])
         return Screen.output('You do not have this armor to equip.') unless new_armor_id
 
-        current_armor_id = equipment[:armor]
+        current_armor_id = equipment[:armor].id
         inventory << current_armor_id
-        equipment[:armor] = new_armor_id
+        equipment[:armor] = Armor.of_type(new_armor_id)
         remove_from_inventory(new_armor_id)
       end
 
