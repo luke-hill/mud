@@ -20,8 +20,12 @@ RSpec.describe MUD::Classes::Base do
       level:,
       experience: 0,
       gold: 200,
-      inventory: [],
-      agility: 10
+      inventory: ['zero'],
+      max_inventory_size: 10,
+      strength: 10,
+      agility: 10,
+      resilience: 10,
+      conjuring: 10
     }
   end
   let(:player) { described_class.new }
@@ -122,7 +126,6 @@ RSpec.describe MUD::Classes::Base do
     let(:equip_instance) { MUD::Actions::Equip.new('zero') }
 
     before do
-      player.inventory << 'zero'
       allow(MUD::Actions::Equip).to receive(:new).with('zero').and_return(equip_instance)
       allow(equip_instance).to receive(:player).and_return(player)
     end
@@ -131,6 +134,38 @@ RSpec.describe MUD::Classes::Base do
       expect(MUD::Actions::Equip).to receive(:new).with('zero')
 
       player.equip('zero')
+    end
+  end
+
+  describe '#use' do
+    let(:use_instance) { MUD::Actions::Use.new('demo_healing') }
+
+    before do
+      allow(MUD::Actions::Use).to receive(:new).with('demo_healing').and_return(use_instance)
+      allow(use_instance).to receive(:player).and_return(player)
+    end
+
+    it 'delegates to the `Actions::Use` class' do
+      expect(MUD::Actions::Use).to receive(:new).with('demo_healing')
+
+      player.use('demo_healing')
+    end
+  end
+
+  describe '#fight' do
+    let(:fight_instance) { MUD::Combat::Fight.new(player.current_room.enemy) }
+
+    before do
+      allow(player).to receive(:current_room).and_return(MUD::Room.new('filled_room'))
+      allow(MUD::Combat::Fight).to receive(:new).with(player.current_room.enemy).and_return(fight_instance)
+      allow(MUD::Game).to receive(:player).and_return(player)
+      player.equip('zero')
+    end
+
+    it 'delegates to the `Combat::Fight` class' do
+      expect(MUD::Combat::Fight).to receive(:new).with(player.current_room.enemy)
+
+      player.fight(1)
     end
   end
 
