@@ -29,11 +29,6 @@ module MUD
         end
       end
 
-      # deprecated
-      def for_sale?(item_id)
-        shop.for_sale?(item_id)
-      end
-
       private
 
       def simple_shop_menu
@@ -66,13 +61,13 @@ module MUD
         # 1 for right padding
         '-' * (3 + 1 + longest_potion_name_length + 5 + 1 + 1 + 6 + longest_potion_cost_length + 5 + 1 + 1)
       end
-      
+
       def array
         potion_names.map { |name| individual_item_string(name) }
       end
 
       def individual_item_string(name)
-        if for_sale?(name)
+        if shop.for_sale?(name)
           "| #{name}#{' ' * name_padding(name)} | #{' ' * cost_padding(price(name))} #{price(name)} gold |"
         else
           "| #{name}#{' ' * name_padding(name)} | (OUT OF STOCK) |"
@@ -92,22 +87,15 @@ module MUD
       end
 
       def longest_potion_cost_length
-        potion_costs.map { |cost| cost.to_i.digits.length }.max
+        shop.potion_costs.map { |cost| cost.to_i.digits.length }.max
       end
 
-      # deprecated
       def price(item_id)
-        shop.send(:price, item_id)
+        shop.price(item_id)
       end
 
-      # deprecated
       def potion_names
-        shop.send(:potion_names)
-      end
-
-      # deprecated
-      def potion_costs
-        shop.send(:potion_costs)
+        shop.potion_names
       end
     end
   end

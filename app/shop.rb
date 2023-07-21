@@ -33,6 +33,20 @@ module MUD
       !price(item_id).nil?
     end
 
+    def potion_costs
+      potion_data.map { |data| data['cost'] }
+    end
+
+    def price(item_id)
+      raise "Item not understood in shop - Room-ID: #{room_id}" unless present?(item_id)
+
+      find_item(item_id).fetch('cost', nil)
+    end
+
+    def potion_names
+      potion_data.map { |data| data['id'] }
+    end
+
     private
 
     def shop_items_string
@@ -46,26 +60,12 @@ module MUD
       raise "There shouldn't be any enemies in shops!"
     end
 
-    def price(item_id)
-      raise "Item not understood in shop - Room-ID: #{room_id}" unless present?(item_id)
-
-      find_item(item_id).fetch('cost', nil)
-    end
-
     def present?(item_id)
       potion_names.include?(item_id)
     end
 
     def find_item(item_id)
       potion_data.detect { |data| data['id'] == item_id }
-    end
-
-    def potion_names
-      potion_data.map { |data| data['id'] }
-    end
-
-    def potion_costs
-      potion_data.map { |data| data['cost'] }
     end
 
     def potion_data
