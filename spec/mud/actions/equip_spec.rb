@@ -23,7 +23,7 @@ RSpec.describe MUD::Actions::Equip do
       let(:item_id) { 'zero_shield' }
 
       it 'can equip an armor' do
-        expect { equip_instance.equip }.to change(player, :armor).to(item_id)
+        expect { equip_instance.equip }.to change(player, :armor).to(an_instance_of(MUD::Armor))
       end
     end
 
@@ -31,7 +31,7 @@ RSpec.describe MUD::Actions::Equip do
       let(:item_id) { 'knife' }
 
       it 'can equip a weapon' do
-        expect { equip_instance.equip }.to change(player, :weapon).to(item_id)
+        expect { equip_instance.equip }.to change(player, :weapon).to(an_instance_of(MUD::Weapon))
       end
     end
 
