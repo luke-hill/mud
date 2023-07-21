@@ -20,10 +20,11 @@ module MUD
     attr_accessor :id
 
     # @return [MUD::Potion]
-    # Return an instance of the potion class with correct id set
+    # Return an instance of the potion class with correct id set and type pre-loaded
     def self.of_type(type)
       new.tap do |potion|
         potion.id = type
+        potion.type
       end
     end
 
