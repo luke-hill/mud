@@ -49,10 +49,6 @@ RSpec.describe MUD::Combat::Fight do
       allow(attack_instance).to receive(:damage_dealt).and_return(damage_dealt)
     end
 
-    after do
-      remove_test_screen_logs
-    end
-
     it 'delegates off to the `MUD::Combat::Attack` instance to deal damage' do
       expect(attack_instance).to receive(:attack)
 
@@ -69,7 +65,6 @@ RSpec.describe MUD::Combat::Fight do
       before do
         allow(fight_instance).to receive(:enemy_dead?).and_return(false, true)
         allow(MUD::Combat::ItemDrops).to receive(:new).and_return(item_drops_instance)
-        allow(item_drops_instance).to receive(:process)
       end
 
       it 'outputs that the enemy has been killed' do
@@ -95,7 +90,6 @@ RSpec.describe MUD::Combat::Fight do
       before do
         allow(fight_instance).to receive(:enemy_dead?).and_return(false)
         allow(MUD::Combat::Defend).to receive(:new).and_return(defend_instance)
-        allow(defend_instance).to receive(:defend)
       end
 
       it 'delegates off to the `MUD::Enemy` to see if it will speak' do
@@ -117,9 +111,6 @@ RSpec.describe MUD::Combat::Fight do
     let(:damage_dealt) { 100 }
 
     before do
-      allow(MUD::Combat::Attack).to receive(:new).and_return(attack_instance)
-      allow(attack_instance).to receive(:attack)
-      allow(attack_instance).to receive(:damage_dealt).and_return(damage_dealt)
       allow(fight_instance).to receive(:enemy_dead?).and_return(false, false, true)
     end
 
