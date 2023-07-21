@@ -89,7 +89,7 @@ module MUD
       when :healing;  then player.hp += value
       when :mana;     then player.mp += value
       when :hp_bonus; then player.max_hp += value
-      else            raise 'Unreachable code. Potion Type should already have been defined!'
+      else            raise "Potion not found with ID: #{id}"
       end
     end
 
@@ -97,8 +97,7 @@ module MUD
       case type
       when :healing;  then "#{message} #{value}hp. #{full_hp_restored_message}".yellow
       when :mana;     then "#{message} #{value}mp. #{full_hp_restored_message}".blue
-      when :hp_bonus; then "#{message} #{value}hp.".blink
-      else            raise 'Unreachable code. Potion Type should already have been defined!'
+      else                 "#{message} #{value}hp.".blink
       end
     end
 
