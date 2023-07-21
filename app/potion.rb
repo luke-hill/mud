@@ -8,21 +8,23 @@ module MUD
   # which can access all of the properties through the delegated struct
   #
   # Each potion will be classified as one of 3 types
-  #   :healing -> Restore HP to the hero (Up to their maximum HP)
-  #   :mana -> Restore MP to the hero (Up to their maximum MP)
+  #   :healing -> Restore HP to the player (Up to their maximum HP)
+  #   :mana -> Restore MP to the player (Up to their maximum MP)
   #   :hp_bonus -> Increase their maximum HP above their current maximum (NB: This won't restore any HP)
   #
   # Should the potion fail to be classified, a RuntimeError will be thrown and the game will crash
   class Potion
     include Helpers::Data
+    include Helpers::Methods
 
     attr_accessor :id
 
     # @return [MUD::Potion]
-    # Return an instance of the potion class with correct id set
+    # Return an instance of the potion class with correct id set and type pre-loaded
     def self.of_type(type)
       new.tap do |potion|
         potion.id = type
+        potion.type
       end
     end
 
@@ -87,7 +89,7 @@ module MUD
       when :healing;  then player.hp += value
       when :mana;     then player.mp += value
       when :hp_bonus; then player.max_hp += value
-      else            raise 'Unreachable code. Potion Type should already have been defined!'
+      else            raise "Potion not found with ID: #{id}"
       end
     end
 
@@ -95,8 +97,7 @@ module MUD
       case type
       when :healing;  then "#{message} #{value}hp. #{full_hp_restored_message}".yellow
       when :mana;     then "#{message} #{value}mp. #{full_hp_restored_message}".blue
-      when :hp_bonus; then "#{message} #{value}hp.".blink
-      else            raise 'Unreachable code. Potion Type should already have been defined!'
+      else                 "#{message} #{value}hp.".blink
       end
     end
 
@@ -117,15 +118,15 @@ module MUD
     end
 
     def healing_potion?
-      !healing_potion_yml[id].nil?
+      healing_potion_yml.key?(id)
     end
 
     def mana_potion?
-      !mana_potion_yml[id].nil?
+      mana_potion_yml.key?(id)
     end
 
     def hp_bonus_potion?
-      !hp_bonus_potion_yml[id].nil?
+      hp_bonus_potion_yml.key?(id)
     end
   end
 end

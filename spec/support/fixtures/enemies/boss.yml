@@ -1,0 +1,14 @@
+---
+big_boss:
+  name: TEST - Big Bad Boss
+  description: This boss has lots of hp
+  weapon_id: zero
+  armor_id: zero_shield
+  lower_hp_limit: 100
+  upper_hp_limit: 3000
+  accuracy: 1
+  lower_gold_limit: 50
+  upper_gold_limit: 500
+  xp: 100
+  xp_killshot: 1000
+  stamina: 1

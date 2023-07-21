@@ -40,9 +40,13 @@ module MUD
       private
 
       def ensure_data_files_present
-        return unless ENV['DATA_SOURCE'] == 'data' && Dir["#{Dir.pwd}/data/**/*.yml"].count < 10
+        return unless seed_incorrect?
 
         raise 'Game has not been seeded correctly! Please run `bundle exec rake seed` before playing.'
+      end
+
+      def seed_incorrect?
+        ENV['DATA_SOURCE'] == 'data' && Dir["#{Dir.pwd}/data/**/*.yml"].count < 10
       end
 
       def display_welcome_message

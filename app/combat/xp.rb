@@ -2,31 +2,32 @@
 
 module MUD
   module Combat
-    # This provides methods which determine how much experience the hero should gain in a
+    # This provides methods which determine how much experience the player should gain in a
     # single +#MUD::Combat::Attack.attack+ call
     # This is entirely api private but it will be called by using +MUD::Combat::Fight.fight+
-    # This will perform the act of the hero earning experience, and dependent on current xp
+    # This will perform the act of the player earning experience, and dependent on current xp
     # or amount earned, possibly capping their experience and preventing more being accumulated.
     class XP
-      attr_reader :hero, :enemy, :damage_dealt
+      attr_reader :enemy, :damage_dealt
 
-      def initialize(hero, enemy, damage_dealt)
-        @hero = hero
+      include Helpers::Methods
+
+      def initialize(enemy, damage_dealt)
         @enemy = enemy
         @damage_dealt = damage_dealt
       end
 
       # @return [Nil]
-      # This will increase the heroes experience and Log it accordingly.
-      # Nothing is returned to the playing console as this is all hidden.
+      # This will increase the players experience and log it accordingly
+      # Nothing is returned to the playing console as this is all hidden
       #
       # If the user is originally capped then the entire method is skipped and a
-      # message is sent to notify the hero that they should level up.
+      # message is sent to notify the player that they should level up.
       def increase
-        return xp_capped_message if hero.capped?
+        return xp_capped_message if player.capped?
 
-        increase_hero_xp
-        Logger.debug("Hero xp increased by #{total_xp_gain}")
+        increase_player_xp
+        Logger.debug("Player experience points increased by #{total_xp_gain}")
         nil
       end
 
@@ -36,8 +37,8 @@ module MUD
         Screen.output('You feel strong enough to reach the next level. Seek out a Guild.'.yellow.blink)
       end
 
-      def increase_hero_xp
-        hero.experience += total_xp_gain
+      def increase_player_xp
+        player.experience += total_xp_gain
       end
 
       def total_xp_gain

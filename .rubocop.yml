@@ -22,6 +22,10 @@ Layout/LineLength:
   Max: 140
 
 # Better legibility and code-style
+Metrics/ClassLength:
+  CountAsOne: ['array', 'hash', 'heredoc']
+
+# Better legibility and code-style
 Metrics/MethodLength:
   CountAsOne: ['array', 'hash']
 

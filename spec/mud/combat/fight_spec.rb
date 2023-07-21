@@ -3,9 +3,15 @@
 RSpec.describe MUD::Combat::Fight do
   subject(:fight_attempt) { fight_instance.fight(times) }
 
-  let(:fight_instance) { described_class.new(hero, enemy) }
-  let(:hero) { MUD::Classes::Fighter.new }
+  let(:fight_instance) { described_class.new(enemy) }
   let(:enemy) { create(:enemy, 'bad') }
+  let(:item_drops_instance) { MUD::Combat::ItemDrops.new(enemy) }
+  let(:attack_instance) { MUD::Combat::Attack.new(enemy) }
+  let(:defend_instance) { MUD::Combat::Defend.new(enemy) }
+
+  before { switch_logging_to_temp_file }
+
+  after { remove_test_screen_logs }
 
   describe '#fight' do
     context 'when times parameter is 1' do
@@ -31,29 +37,15 @@ RSpec.describe MUD::Combat::Fight do
 
   describe '#fight_once' do
     let(:times) { 1 }
-    let(:item_drops_instance) { MUD::Combat::ItemDrops.new(hero, enemy) }
-    let(:attack_instance) { MUD::Combat::Attack.new(hero, enemy) }
-    let(:defend_instance) { MUD::Combat::Defend.new(hero, enemy) }
     let(:damage_dealt) { 100 }
 
     before do
-      switch_logging_to_temp_file
       allow(MUD::Combat::Attack).to receive(:new).and_return(attack_instance)
       allow(attack_instance).to receive(:attack)
       allow(attack_instance).to receive(:damage_dealt).and_return(damage_dealt)
     end
 
-    after do
-      remove_test_screen_logs
-    end
-
-    it 'creates a new `MUD::Combat::Attack` instance' do
-      expect(MUD::Combat::Attack).to receive(:new).with(hero, enemy)
-
-      fight_attempt
-    end
-
-    it 'delegates off to the attack instance to deal damage' do
+    it 'delegates off to the `MUD::Combat::Attack` instance to deal damage' do
       expect(attack_instance).to receive(:attack)
 
       fight_attempt
@@ -69,7 +61,6 @@ RSpec.describe MUD::Combat::Fight do
       before do
         allow(fight_instance).to receive(:enemy_dead?).and_return(false, true)
         allow(MUD::Combat::ItemDrops).to receive(:new).and_return(item_drops_instance)
-        allow(item_drops_instance).to receive(:process)
       end
 
       it 'outputs that the enemy has been killed' do
@@ -79,7 +70,7 @@ RSpec.describe MUD::Combat::Fight do
       end
 
       it 'creates a new `MUD::Combat::ItemDrops` instance' do
-        expect(MUD::Combat::ItemDrops).to receive(:new).with(hero, enemy)
+        expect(MUD::Combat::ItemDrops).to receive(:new).with(enemy)
 
         fight_attempt
       end
@@ -95,26 +86,34 @@ RSpec.describe MUD::Combat::Fight do
       before do
         allow(fight_instance).to receive(:enemy_dead?).and_return(false)
         allow(MUD::Combat::Defend).to receive(:new).and_return(defend_instance)
-        allow(defend_instance).to receive(:defend)
       end
 
-      it 'delegates off to the Enemy to see if it will speak' do
+      it 'delegates off to the `MUD::Enemy` to see if it will speak' do
         expect(enemy).to receive(:speak).once
 
         fight_attempt
       end
 
-      it 'creates a new `MUD::Combat::Defend` instance' do
-        expect(MUD::Combat::Defend).to receive(:new).with(hero, enemy)
-
-        fight_attempt
-      end
-
-      it 'delegates off to the defend instance to receive damage' do
+      it 'delegates off to the `MUD::Combat::Defend` instance to receive damage' do
         expect(defend_instance).to receive(:defend)
 
         fight_attempt
       end
+    end
+  end
+
+  describe '#fight_until_death' do
+    let(:times) { 2 }
+    let(:damage_dealt) { 100 }
+
+    before do
+      allow(fight_instance).to receive(:enemy_dead?).and_return(false, false, true)
+    end
+
+    it 'keeps calling `#fight_once` until the enemy dies' do
+      expect(fight_instance).to receive(:fight_once).at_least(:once)
+
+      fight_attempt
     end
   end
 end

@@ -9,7 +9,29 @@ RSpec.describe MUD::Actions::Command do
     player.current_room = MUD::Room.new('blank_room')
   end
 
+  after { remove_test_screen_logs }
+
   describe '#process' do
+    context 'when command input is "a"' do
+      let(:command_input) { 'a' }
+
+      it 'fights the enemy' do
+        expect(player).to receive(:fight)
+
+        command.process
+      end
+    end
+
+    context 'when command input is "attack"' do
+      let(:command_input) { 'attack' }
+
+      it 'fights the enemy' do
+        expect(player).to receive(:fight)
+
+        command.process
+      end
+    end
+
     context 'when command input is an empty string' do
       let(:command_input) { '' }
 
@@ -96,6 +118,16 @@ RSpec.describe MUD::Actions::Command do
       let(:command_input) { 'w' }
 
       include_examples 'Command movement examples'
+    end
+
+    context 'when command input is an unknown command' do
+      let(:command_input) { 'fooBARBaz' }
+
+      it 'informs the user the command is invalid' do
+        expect(MUD::Screen).to receive(:output).with('Input not yet recognised as a valid command'.red.blink)
+
+        command.process
+      end
     end
   end
 end

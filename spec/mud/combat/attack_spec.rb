@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Combat::Attack do
-  subject(:attack_instance) { described_class.new(hero, enemy) }
+  subject(:attack_instance) { described_class.new(enemy) }
 
-  let(:hero) { MUD::Classes::Fighter.new }
+  let(:player) { MUD::Game.player }
   let(:weapon) { MUD::Weapon.of_type('zero') }
   let(:weapon_name) { weapon.name }
   let(:enemy_name) { 'TEST - Bad Enemy' }
@@ -20,7 +20,7 @@ RSpec.describe MUD::Combat::Attack do
     end
 
     before do
-      allow(hero).to receive(:weapon).and_return(weapon)
+      allow(player).to receive(:weapon).and_return(weapon)
       allow(attack_instance).to receive(:damage_dealt).and_return(damage_dealt)
       allow(attack_instance).to receive(:missed?).and_return(missed?)
       switch_logging_to_temp_file
@@ -28,7 +28,7 @@ RSpec.describe MUD::Combat::Attack do
 
     after { remove_test_screen_logs }
 
-    context "when the hero's attack misses" do
+    context "when the player's attack misses" do
       let(:missed?) { true }
 
       it 'informs the player that the attack attempt missed' do

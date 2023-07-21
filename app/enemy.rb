@@ -15,10 +15,11 @@ module MUD
     attr_accessor :id
 
     # @return [MUD::Enemy]
-    # Return an instance of the enemy class with correct id set
+    # Return an instance of the enemy class with correct id set and type pre-loaded
     def self.of_type(type)
       new.tap do |enemy|
         enemy.id = (type || 'no_enemy')
+        enemy.type
       end
     end
 
@@ -147,22 +148,19 @@ module MUD
     end
 
     def enemy?
-      !enemy_yml[id].nil?
+      enemy_yml.key?(id)
     end
 
     def boss?
-      !boss_yml[id].nil?
+      boss_yml.key?(id)
     end
 
     def phrase
-      if phrase1_chance && rand > phrase1_chance
-        phrase1_message
-      elsif phrase2_chance && rand > phrase2_chance
-        phrase2_message
-      else
-        Logger.debug('Neither message triggered. No message output from enemy')
-        nil
-      end
+      return phrase1_message if phrase1_chance && rand > phrase1_chance
+      return phrase2_message if phrase2_chance && rand > phrase2_chance
+
+      Logger.debug('Neither message triggered. No message output from enemy')
+      nil
     end
   end
 end

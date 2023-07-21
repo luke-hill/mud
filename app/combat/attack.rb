@@ -4,18 +4,19 @@ module MUD
   module Combat
     # This provides a single public method +#attack+
     # This is entirely api private but it will be called by using +MUD::Combat::Fight.fight+
-    # This will perform the act of the hero attacking the enemy
+    # This will perform the act of the player attacking the enemy
     # (With the Defend class doing the opposite)
     class Attack
-      attr_reader :hero, :enemy
+      attr_reader :enemy
 
-      def initialize(hero, enemy)
-        @hero = hero
+      include Helpers::Methods
+
+      def initialize(enemy)
         @enemy = enemy
       end
 
       # @return [String, NilClass]
-      # This will make a single hero on enemy attack using the heroes weapon
+      # This will make a single player on enemy attack using the players weapon
       # if the attack misses or deals 0 damage, then a missed message is output.
       # Otherwise the attack succeeds and outputs a message indicating the damage and then
       # deducts that amount from the enemies hp.
@@ -25,7 +26,7 @@ module MUD
         return missed_message if no_damage?
 
         attack_message
-        XP.new(hero, enemy, damage_dealt).increase
+        XP.new(enemy, damage_dealt).increase
         reduce_enemy_hp
         Logger.debug("Enemy hp:#{enemy.hp}hp.")
       end
@@ -41,7 +42,7 @@ module MUD
       end
 
       def weapon_name
-        hero.weapon.name
+        player.weapon.name
       end
 
       def no_damage?
@@ -49,7 +50,7 @@ module MUD
       end
 
       def missed?
-        (rand > hero.accuracy).tap do |result|
+        (rand > player.accuracy).tap do |result|
           Logger.debug("Missed check - #{result}")
         end
       end
@@ -73,11 +74,11 @@ module MUD
       end
 
       def initial_attack_value
-        rand((hero.weapon.min_power)..(hero.weapon.max_power))
+        rand((player.weapon.min_power)..(player.weapon.max_power))
       end
 
       def attack_modifiers
-        (hero.strength / 2).floor + hero.level
+        (player.strength / 2).floor + player.level
       end
 
       def defense_value

@@ -1,15 +1,9 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Actions::Move do
-  let(:player) { MUD::Game.player }
+  before { switch_logging_to_temp_file }
 
-  before do
-    switch_logging_to_temp_file
-  end
-
-  after do
-    remove_test_screen_logs
-  end
+  after { remove_test_screen_logs }
 
   describe '#north' do
     let(:direction) { 'north' }

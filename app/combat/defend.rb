@@ -4,30 +4,31 @@ module MUD
   module Combat
     # This provides a single public method +#defend+
     # This is entirely api private but it will be called by using +MUD::Combat::Fight.fight+
-    # This will perform the act of the enemy attacking the hero
+    # This will perform the act of the enemy attacking the player
     # (With the Attack class doing the opposite)
     class Defend
-      attr_reader :hero, :enemy
+      attr_reader :enemy
 
-      def initialize(hero, enemy)
-        @hero = hero
+      include Helpers::Methods
+
+      def initialize(enemy)
         @enemy = enemy
       end
 
       # @return [String, StandardError]
-      # This will make a single enemy on hero attack using the enemies weapon
+      # This will make a single enemy on player attack using the enemies weapon
       # if the attack misses or deals 0 damage, then a missed message is output.
       # Otherwise the attack succeeds and outputs a message indicating the damage and then
-      # deducts that amount from the heroes hp.
+      # deducts that amount from the players hp.
       #
-      # If the attack kills the hero. The game crashes.
+      # If the attack kills the player. The game crashes.
       def defend
         return missed_message if no_damage?
 
         attack_message
-        reduce_hero_hp
+        reduce_player_hp
 
-        return Screen.output("DEBUG --> YOUR HP:#{hero.hp}hp.") unless hero_killed?
+        return Screen.output("DEBUG --> YOUR HP:#{player.hp}hp.") unless player_killed?
 
         raise StandardError, 'You died!'
       end
@@ -79,24 +80,24 @@ module MUD
       end
 
       def initial_defense_value
-        rand(0..(hero.armor.defense))
+        rand(0..(player.armor.defense))
       end
 
       def defense_modifiers
-        (hero.strength / 3).floor + (hero.level / 2).floor
+        (player.strength / 3).floor + (player.level / 2).floor
       end
 
       def attack_message
         Screen.output("The #{enemy_name} hit you with its #{weapon_name} for #{damage_taken} damage.")
       end
 
-      def reduce_hero_hp
-        hero.hp -= damage_taken
-        hero.prevent_negative_hp
+      def reduce_player_hp
+        player.hp -= damage_taken
+        player.prevent_negative_hp
       end
 
-      def hero_killed?
-        hero.dead?
+      def player_killed?
+        player.dead?
       end
     end
   end

@@ -3,7 +3,7 @@
 module MUD
   module Classes
     # The Fighter class
-    # This is a Physical Hero, that mainly attacks using weapons and physical damage
+    # This is a Physical class, that mainly attacks using weapons and physical damage
     # It does not have access to MP as it cannot cast spells
     # It has the largest inventory of all of the classes
     # It starts off with the highest hp/stats

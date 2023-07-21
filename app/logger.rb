@@ -2,12 +2,15 @@
 
 module MUD
   #
-  # @api private
+  # api private
   #
   class Logger
     class << self
       extend Forwardable
 
+      #
+      # api private
+      #
       def logger
         @logger ||= create_logger
       end

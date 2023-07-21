@@ -6,7 +6,7 @@ module MUD
     # All other classes inherit from this. Here we provide the classes with their
     # base functionality. Things such as viewing attributes, looking around, as well as
     # some basic boolean checks are defined. There are also wrapper calls to each of the
-    # Actions Classes allowing all Heroes to Move or Equip items.
+    # Actions Classes allowing Players to move or qquip items
     class Base
       attr_reader :attributes, :equipment
 
@@ -55,7 +55,7 @@ module MUD
       # @return [String]
       # The wrapper method call that attempts to move in the direction provided
       def move(direction)
-        MUD::Actions::Move.new(self, direction).move
+        MUD::Actions::Move.new(direction).move
       end
 
       # @return [Integer, Nil]
@@ -85,7 +85,7 @@ module MUD
       # @return [String]
       # This delegates to the Equip class and performs the #equip action
       def equip(item_id)
-        MUD::Actions::Equip.new(self, item_id).equip
+        MUD::Actions::Equip.new(item_id).equip
       end
 
       # @return [MUD::Weapon]
@@ -103,13 +103,13 @@ module MUD
       # @return [String]
       # This delegates to the Use class and performs the #use action
       def use(item_id)
-        MUD::Actions::Use.new(self, item_id).use
+        MUD::Actions::Use.new(item_id).use
       end
 
       # @return [String]
       # This delegates to the Fight class and performs the #fight action
       def fight(times = 1)
-        MUD::Combat::Fight.new(self, current_room.enemy).fight(times)
+        MUD::Combat::Fight.new(current_room.enemy).fight(times)
       end
 
       # @return [Boolean]
@@ -119,7 +119,7 @@ module MUD
       end
 
       # @return [Float]
-      # Hero accuracy rating - this equates to ...
+      # Player accuracy rating - this equates to ...
       #
       # 5 - Worst agility (Magic users)
       # Level 1 - 27%

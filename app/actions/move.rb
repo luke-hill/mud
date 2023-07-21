@@ -7,12 +7,12 @@ module MUD
     # in the direction you requested. If all checks pass, you will then move in the desired
     # direction. Then the relevant room variables will be updated.
     class Move
-      include MUD::Helpers::Data
+      include Helpers::Data
+      include Helpers::Methods
 
-      attr_reader :player, :direction
+      attr_reader :direction
 
-      def initialize(player, direction)
-        @player = player
+      def initialize(direction)
         @direction = direction
       end
 
@@ -103,7 +103,7 @@ module MUD
           player.current_room.leave
           player.current_room = fetch_or_create_room(room_id)
         end
-        player.current_room.visit
+        player.current_room.enter
       end
 
       def fetch_or_create_room(room_id)

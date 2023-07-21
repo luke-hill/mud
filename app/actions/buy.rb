@@ -7,12 +7,12 @@ module MUD
     # that is passed in on initialization of the class. If all checks pass. It will deduct the cost
     # of the item from your gold, and then add a copy to your inventory
     class Buy
-      attr_reader :hero, :item_id
+      attr_reader :item_id, :room
 
       include Helpers::Item
+      include Helpers::Methods
 
-      def initialize(hero, item_id, room)
-        @hero = hero
+      def initialize(item_id, room)
         @item_id = item_id
         @room = room
       end
@@ -37,23 +37,25 @@ module MUD
       end
 
       def enough_money?
-        Logger.debug("Current gold amount #{hero.gold}")
-        hero.gold >= cost
+        Logger.debug("Current gold amount #{player.gold}")
+        player.gold >= cost
       end
 
       def enough_space?
-        hero.inventory.compact.length < hero.max_inventory_size
+        player.inventory.compact.length < player.max_inventory_size
       end
 
       def for_sale?
+        return false unless room.shop?
+
         # We need the concept of what items are for sale where
         # For now this will be true for the 1 shop
         true
       end
 
       def buy_item
-        hero.gold -= cost
-        hero.inventory << item_id
+        player.gold -= cost
+        player.inventory << item_id
         Screen.output("You bought a #{item_id.blue} for #{cost.to_s.yellow} gold.")
       end
     end

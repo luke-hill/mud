@@ -5,16 +5,17 @@ module MUD
     # This provides a single public method +#fight+
     # This is the public interface to killing enemies. And is the only method which is public.
     class Fight
-      attr_reader :hero, :enemy
+      attr_reader :enemy
 
-      def initialize(hero, enemy)
-        @hero = hero
+      include Helpers::Methods
+
+      def initialize(enemy)
         @enemy = enemy
       end
 
       # @return [String]
       # Attempt to fight an enemy. A series of checks are made and then attacks are made
-      # in a sequential order (Hero always first).
+      # in a sequential order (The player always attacks first).
       #
       # Once these checks pass / attacks are made. The +Screen.output+ method is called on
       # each invocation and result/s are outputted to the screen about what happened during the
@@ -44,11 +45,11 @@ module MUD
       end
 
       def attack
-        Attack.new(hero, enemy).attack
+        Attack.new(enemy).attack
       end
 
       def defend
-        Defend.new(hero, enemy).defend
+        Defend.new(enemy).defend
       end
 
       def enemy_dead?
@@ -60,11 +61,11 @@ module MUD
       end
 
       def process_item_drops
-        ItemDrops.new(hero, enemy).process
+        ItemDrops.new(enemy).process
       end
 
       def fight_until_death
-        fight_once until hero.dead? || enemy_dead?
+        fight_once until player.dead? || enemy_dead?
       end
     end
   end

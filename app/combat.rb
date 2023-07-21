@@ -5,9 +5,9 @@ module MUD
   #
   # Attack deals with how they physically attack with their weapon (API private)
   # Defend deals with how they guard vs enemies attacks with their weapon (API private)
-  # Fight is the "public" api where both hero and enemy will attack/defend each other
+  # Fight is the "public" api where the player and enemy will attack/defend vs each other
   # ItemDrops is the class that deals with any items being left over after killing an enemy (Including gold)
-  # XP is the class that yields experience points to the hero
+  # XP is the class that yields experience points to the player
   module Combat
   end
 end

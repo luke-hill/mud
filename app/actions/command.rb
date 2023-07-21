@@ -13,7 +13,8 @@ module MUD
       attr_reader :command_input
 
       include Helpers::Data
-      include MUD::Helpers::Unnabbreviater
+      include Helpers::Methods
+      include Helpers::Unnabbreviater
 
       def initialize(command_input)
         @command_input = command_input
@@ -25,21 +26,14 @@ module MUD
       # Return a "Input not yet recognised as a valid command"
       def process
         Logger.debug("Raw input received from user: '#{command_input}'")
-        return process_attack if attack?
+        return player.fight if attack?
         return process_miscellaneous if miscellaneous?
         return process_compass_direction if compass_direction?
 
-        Screen.output('Input not yet recognised as a valid command')
+        Screen.output('Input not yet recognised as a valid command'.red.blink)
       end
 
       private
-
-      def process_attack
-        case command_input
-        when 'a', 'attack'; then player.fight
-        else                raise "Unreachable code - Command Input: #{command_input}"
-        end
-      end
 
       def attack?
         %w[a attack].include?(command_input)
@@ -49,8 +43,7 @@ module MUD
         case command_input
         when '';           then player.look_around
         when 'debug';      then output_diagnostic_info
-        when 'quit';       then die
-        else               raise "Unreachable code - Command Input: #{command_input}"
+        else die
         end
       end
 

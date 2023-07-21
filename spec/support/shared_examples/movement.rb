@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 RSpec.shared_examples 'Movement examples' do
-  subject(:move_attempt) { described_class.new(player, direction).move }
+  subject(:move_attempt) { described_class.new(direction).move }
 
-  let(:new_room_id) { 'blank_room' }
+  let(:player) { MUD::Game.player }
 
   context 'with an available room' do
     before do
