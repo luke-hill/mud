@@ -73,7 +73,7 @@ module MUD
     end
 
     def room_data
-      shop_yml[room_id]
+      @room_data ||= shop_yml[room_id]
     end
   end
 end
