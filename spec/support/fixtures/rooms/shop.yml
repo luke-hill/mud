@@ -6,6 +6,11 @@ valid_shop:
       resell: 50
     - id: demo_endurance
       resell: 5000
+small_shop:
+  potions:
+    - id: demo_healing
+      cost: 50
+      resell: 50
 invalid_shop:
   potions:
     - id: demo_healing
