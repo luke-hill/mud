@@ -4,7 +4,6 @@ RSpec.describe MUD::Combat::Attack do
   subject(:attack_attempt) { attack_instance.attack }
 
   let(:attack_instance) { described_class.new(enemy) }
-  let(:attack_message_regex) { /You hit the #{enemy_name} with your #{weapon_name} for \d+ damage./ }
   let(:enemy) { create(:enemy, 'bad') }
   let(:enemy_name) { 'TEST - Bad Enemy' }
   let(:weapon) { MUD::Weapon.of_type('zero') }
@@ -58,7 +57,7 @@ RSpec.describe MUD::Combat::Attack do
     it 'informs the player that the attack dealt damage' do
       attack_attempt
 
-      expect(log_lines).to include(attack_message_regex)
+      expect(log_lines).to include(/You hit the #{enemy_name} with your #{weapon_name} for \d+ damage./)
     end
 
     it 'reduces the enemies hp by the amount of damage dealt' do
