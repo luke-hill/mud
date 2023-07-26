@@ -3,11 +3,8 @@
 RSpec.describe MUD::Combat::Fight do
   subject(:fight_attempt) { fight_instance.fight(times) }
 
-  let(:fight_instance) { described_class.new(enemy) }
   let(:enemy) { create(:enemy, 'bad') }
-  let(:item_drops_instance) { MUD::Combat::ItemDrops.new(enemy) }
-  let(:attack_instance) { MUD::Combat::Attack.new(enemy) }
-  let(:defend_instance) { MUD::Combat::Defend.new(enemy) }
+  let(:fight_instance) { described_class.new(enemy) }
 
   before { switch_logging_to_temp_file }
 
@@ -36,8 +33,9 @@ RSpec.describe MUD::Combat::Fight do
   end
 
   describe '#fight_once' do
-    let(:times) { 1 }
+    let(:attack_instance) { MUD::Combat::Attack.new(enemy) }
     let(:damage_dealt) { 100 }
+    let(:times) { 1 }
 
     before do
       allow(MUD::Combat::Attack).to receive(:new).and_return(attack_instance)
@@ -58,6 +56,8 @@ RSpec.describe MUD::Combat::Fight do
     end
 
     context 'when the enemy is killed' do
+      let(:item_drops_instance) { MUD::Combat::ItemDrops.new(enemy) }
+
       before do
         allow(fight_instance).to receive(:enemy_dead?).and_return(false, true)
         allow(MUD::Combat::ItemDrops).to receive(:new).and_return(item_drops_instance)
@@ -83,6 +83,8 @@ RSpec.describe MUD::Combat::Fight do
     end
 
     context 'when the enemy is not killed' do
+      let(:defend_instance) { MUD::Combat::Defend.new(enemy) }
+
       before do
         allow(fight_instance).to receive(:enemy_dead?).and_return(false)
         allow(MUD::Combat::Defend).to receive(:new).and_return(defend_instance)
