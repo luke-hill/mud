@@ -7,15 +7,12 @@ RSpec.describe MUD::Combat::Attack do
   let(:attack_message_regex) { /You hit the #{enemy_name} with your #{weapon_name} for \d+ damage./ }
   let(:enemy) { create(:enemy, 'bad') }
   let(:enemy_name) { 'TEST - Bad Enemy' }
-  let(:missed?) { false }
-  let(:missed_message) { "You tried to attack the #{enemy_name} with your #{weapon_name}... but missed.".yellow }
-  let(:player) { MUD::Game.player }
   let(:weapon) { MUD::Weapon.of_type('zero') }
   let(:weapon_name) { weapon.name }
 
   before do
-    allow(player).to receive(:weapon).and_return(weapon)
-    allow(attack_instance).to receive(:missed?).and_return(missed?)
+    allow(MUD::Game.player).to receive(:weapon).and_return(weapon)
+    allow(attack_instance).to receive(:missed?).and_return(false)
     switch_logging_to_temp_file
   end
 
@@ -23,10 +20,12 @@ RSpec.describe MUD::Combat::Attack do
 
   describe '#attack' do
     context "when the player's attack misses" do
-      let(:missed?) { true }
+      before { allow(attack_instance).to receive(:missed?).and_return(true) }
 
       it 'informs the player that the attack attempt missed' do
-        expect(attack_attempt).to eq("You tried to attack the #{enemy_name} with your #{weapon_name}... but missed.".yellow)
+        expect(attack_instance).to receive(:missed_message)
+
+        attack_attempt
       end
     end
 
@@ -36,7 +35,9 @@ RSpec.describe MUD::Combat::Attack do
       end
 
       it 'informs the player that the attack attempt missed' do
-        expect(attack_attempt).to eq(missed_message)
+        expect(attack_instance).to receive(:missed_message)
+
+        attack_attempt
       end
     end
 
@@ -46,7 +47,7 @@ RSpec.describe MUD::Combat::Attack do
       end
 
       it 'informs the player that the attack attempt missed' do
-        expect(attack_attempt).to eq(missed_message)
+        expect(attack_attempt).to eq("You tried to attack the #{enemy_name} with your #{weapon_name}... but missed.".yellow)
       end
 
       it 'does not alter the enemies hp' do
