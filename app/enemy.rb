@@ -156,8 +156,8 @@ module MUD
     end
 
     def phrase
-      return phrase1_message if phrase1_chance && rand > phrase1_chance
-      return phrase2_message if phrase2_chance && rand > phrase2_chance
+      return phrase1_message if phrase1_chance && rand < phrase1_chance
+      return phrase2_message if phrase2_chance && rand < phrase2_chance
 
       Logger.debug('Neither message triggered. No message output from enemy')
       nil
