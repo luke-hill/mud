@@ -7,7 +7,7 @@ RSpec.describe MUD::Enemy do
 
   describe '.of_type' do
     it 'generates an Enemy' do
-      expect(described_class.of_type('bad')).to be_a(MUD::Enemy)
+      expect(described_class.of_type('bad')).to be_a(described_class)
     end
   end
 
