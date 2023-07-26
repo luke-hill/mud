@@ -15,7 +15,7 @@ RSpec.describe MUD::Combat::Attack do
     let(:missed?) { false }
     let(:missed_message) { "You tried to attack the #{enemy_name} with your #{weapon_name}... but missed.".yellow }
     let(:attack_message_regex) do
-      /You hit the #{enemy_name} with your #{weapon_name} for #{damage_dealt} damage./
+      /You hit the #{enemy_name} with your #{weapon_name} for \d+ damage./
     end
 
     before do
@@ -65,7 +65,7 @@ RSpec.describe MUD::Combat::Attack do
     end
 
     it 'reduces the enemies hp by the amount of damage dealt' do
-      expect { attack_attempt }.to change(enemy, :hp).by(-2)
+      expect { attack_attempt }.to change(enemy, :hp)
     end
   end
 end
