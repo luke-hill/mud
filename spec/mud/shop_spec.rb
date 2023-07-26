@@ -5,7 +5,7 @@ RSpec.describe MUD::Shop do
   let(:invalid_shop) { create_shop('invalid_shop') }
   let(:player) { MUD::Game.player }
   let(:shop_items_string) do
-    <<~ITEMS.chomp
+    <<~ITEMS.chomp.blue
       ----------------------------------------
       | demo_healing        |        50 gold |
       ----------------------------------------
