@@ -58,12 +58,7 @@ module MUD
     private
 
     def shop_items_string
-      @shop_items_string ||=
-        if room_data.keys.empty?
-          'There are no potions for sale here yet.... Maybe wait for weapons?!'.blue
-        else
-          Presenters::ShopItems.new(self).string
-        end
+      @shop_items_string ||= Presenters::ShopItems.new(self).string
     end
 
     def validate_enemy_not_present

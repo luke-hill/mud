@@ -28,9 +28,9 @@ module MUD
       # NB: Sometimes items are no longer for sale, but they are still presented to the user
       def string
         case potion_names.length
-        when 1;   then simple_shop_menu
-        when 2..; then complex_shop_menu
-        else raise "This shop has no potions for sale - so the presenter shouldn't be called."
+        when 0;   then 'There are no potions for sale here yet.... Maybe wait for weapons?!'.blue
+        when 1;   then simple_shop_menu.blue
+        else           complex_shop_menu.blue
         end
       end
 

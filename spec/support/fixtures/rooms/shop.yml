@@ -11,6 +11,8 @@ small_shop:
     - id: demo_healing
       cost: 50
       resell: 50
+empty_shop:
+  potions: []
 invalid_shop:
   potions:
     - id: demo_healing
