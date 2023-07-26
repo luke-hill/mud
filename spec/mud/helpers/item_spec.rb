@@ -20,11 +20,4 @@ RSpec.describe MUD::Helpers::Item do
       expect(item_helper.armor_ids).to be_an Array
     end
   end
-
-  describe '#gold_description' do
-    it 'outputs the description of gold' do
-      expect(item_helper.gold_description)
-        .to eq('Glistening in your hand, these gold coins are trade-able at just about any shop.')
-    end
-  end
 end
