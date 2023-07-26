@@ -4,6 +4,8 @@ RSpec.describe MUD::Enemy do
   subject(:enemy) { create(:enemy, 'bad') }
 
   let(:dead_enemy) { create(:enemy, 'dead') }
+  let(:boss) { create(:enemy, 'big_boss') }
+  let(:unknown_enemy) { create(:enemy, 'not_understood') }
 
   describe '.of_type' do
     it 'generates an Enemy' do
@@ -14,6 +16,24 @@ RSpec.describe MUD::Enemy do
   describe '.properties' do
     it 'lists all properties of all types of Enemy' do
       expect(described_class.properties).to be_an(Array)
+    end
+
+    it 'defines a list of methods available for enemies' do
+      described_class.properties.each do |property|
+        expect { enemy.send(property) }.not_to raise_error
+      end
+    end
+
+    it 'defines a list of methods available for bosses' do
+      described_class.properties.each do |property|
+        expect { boss.send(property) }.not_to raise_error
+      end
+    end
+
+    it 'does not define a list of methods for misunderstood enemies' do
+      described_class.properties.each do |property|
+        expect { unknown_enemy.send(property) }.to raise_error.with_message('Enemy/Boss not found with ID: not_understood')
+      end
     end
   end
 
@@ -129,9 +149,6 @@ RSpec.describe MUD::Enemy do
   end
 
   describe '#type' do
-    let(:boss) { create(:enemy, 'big_boss') }
-    let(:unknown_enemy) { create(:enemy, 'not_understood') }
-
     it 'can classify regular enemies' do
       expect(enemy.type).to eq(:enemy)
     end
