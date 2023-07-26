@@ -22,7 +22,7 @@ module MUD
       def string
         return 'No enemies are in the room.' if enemy.id == 'no_enemy' || enemy.dead?
         return "The #{enemy.name} is here with you.".bold if boss?
-        
+
         "A #{enemy.name} is here with you."
       end
 

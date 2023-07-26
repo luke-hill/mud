@@ -9,8 +9,14 @@ module MUD
     # purchase and then present them to the user
     class ShopItems
       include Helpers::Data
+      extend Forwardable
 
       attr_reader :shop
+
+      def_delegators \
+        :shop,
+        :potion_names,
+        :potion_costs
 
       def initialize(shop)
         @shop = shop
@@ -86,15 +92,11 @@ module MUD
       end
 
       def longest_potion_cost_length
-        shop.potion_costs.map { |cost| cost.to_i.digits.length }.max
+        potion_costs.map { |cost| cost.to_i.digits.length }.max
       end
 
       def price(item_id)
         shop.price(item_id)
-      end
-
-      def potion_names
-        shop.potion_names
       end
     end
   end
