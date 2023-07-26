@@ -93,10 +93,6 @@ module MUD
         enemy.hp -= damage_dealt
         enemy.prevent_negative_hp
       end
-
-      def enemy_killed?
-        enemy.dead?
-      end
     end
   end
 end

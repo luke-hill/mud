@@ -1,35 +1,30 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Combat::Defend do
+  subject(:defend_attempt) { defend_instance.defend }
+
+  let(:damage_taken) { 2 }
   let(:defend_instance) { described_class.new(enemy) }
-  let(:enemy_name) { 'TEST - Bad Enemy' }
   let(:enemy) { create(:enemy, 'bad') }
-  let(:player) { MUD::Game.player }
+  let(:enemy_name) { 'TEST - Bad Enemy' }
   let(:weapon_name) { MUD::Weapon.of_type('zero').name }
 
+  before do
+    allow(defend_instance).to receive(:damage_taken).and_return(damage_taken)
+    allow(defend_instance).to receive(:missed?).and_return(false)
+    switch_logging_to_temp_file
+  end
+
+  after { remove_test_screen_logs }
+
   describe '#defend' do
-    subject(:defend_attempt) { defend_instance.defend }
-
-    let(:damage_taken) { 2 }
-    let(:missed?) { false }
-    let(:missed_message) { "The #{enemy_name} swung at you with its #{weapon_name}, but missed.".yellow }
-    let(:attack_message_regex) do
-      /The #{enemy_name} hit you with its #{weapon_name} for #{damage_taken} damage./
-    end
-
-    before do
-      allow(defend_instance).to receive(:damage_taken).and_return(damage_taken)
-      allow(defend_instance).to receive(:missed?).and_return(missed?)
-      switch_logging_to_temp_file
-    end
-
-    after { remove_test_screen_logs }
-
     context 'when the enemies attack misses' do
-      let(:missed?) { true }
+      before { allow(defend_instance).to receive(:missed?).and_return(true) }
 
-      it 'informs the player that the attack attempt missed' do
-        expect(defend_attempt).to eq(missed_message)
+      it 'informs the player that the enemy attack attempt missed' do
+        expect(defend_instance).to receive(:missed_message)
+
+        defend_attempt
       end
     end
 
@@ -37,18 +32,20 @@ RSpec.describe MUD::Combat::Defend do
       let(:damage_taken) { 0 }
 
       it 'informs the player that the enemy attack attempt missed' do
-        expect(defend_attempt).to eq(missed_message)
+        expect(defend_instance).to receive(:missed_message)
+
+        defend_attempt
       end
     end
 
     it 'informs the player that the attack dealt damage' do
       defend_attempt
 
-      expect(log_lines).to include(attack_message_regex)
+      expect(log_lines).to include(/The #{enemy_name} hit you with its #{weapon_name} for #{damage_taken} damage./)
     end
 
     it 'reduces the players hp by the amount of damage dealt' do
-      expect { defend_attempt }.to change(player, :hp).by(-2)
+      expect { defend_attempt }.to change(MUD::Game.player, :hp).by(-2)
     end
 
     it 'sends a debug statement with the players new hp value' do

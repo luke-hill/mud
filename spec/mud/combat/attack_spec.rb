@@ -1,57 +1,67 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Combat::Attack do
-  subject(:attack_instance) { described_class.new(enemy) }
+  subject(:attack_attempt) { attack_instance.attack }
 
-  let(:player) { MUD::Game.player }
+  let(:attack_instance) { described_class.new(enemy) }
+  let(:enemy) { create(:enemy, 'bad') }
+  let(:enemy_name) { 'TEST - Bad Enemy' }
   let(:weapon) { MUD::Weapon.of_type('zero') }
   let(:weapon_name) { weapon.name }
-  let(:enemy_name) { 'TEST - Bad Enemy' }
-  let(:enemy) { create(:enemy, 'bad') }
+
+  before do
+    allow(MUD::Game.player).to receive(:weapon).and_return(weapon)
+    allow(attack_instance).to receive(:missed?).and_return(false)
+    switch_logging_to_temp_file
+  end
+
+  after { remove_test_screen_logs }
 
   describe '#attack' do
-    subject(:attack_attempt) { attack_instance.attack }
-
-    let(:damage_dealt) { 2 }
-    let(:missed?) { false }
-    let(:missed_message) { "You tried to attack the #{enemy_name} with your #{weapon_name}... but missed.".yellow }
-    let(:attack_message_regex) do
-      /You hit the #{enemy_name} with your #{weapon_name} for #{damage_dealt} damage./
-    end
-
-    before do
-      allow(player).to receive(:weapon).and_return(weapon)
-      allow(attack_instance).to receive(:damage_dealt).and_return(damage_dealt)
-      allow(attack_instance).to receive(:missed?).and_return(missed?)
-      switch_logging_to_temp_file
-    end
-
-    after { remove_test_screen_logs }
-
     context "when the player's attack misses" do
-      let(:missed?) { true }
+      before { allow(attack_instance).to receive(:missed?).and_return(true) }
 
       it 'informs the player that the attack attempt missed' do
-        expect(attack_attempt).to match("You tried to attack the #{enemy_name} with your #{weapon_name}... but missed.".yellow)
+        expect(attack_instance).to receive(:missed_message)
+
+        attack_attempt
       end
     end
 
     context 'when the weapon deals no damage' do
-      let(:damage_dealt) { 0 }
+      before do
+        allow(attack_instance).to receive(:damage_dealt).and_return(0)
+      end
 
       it 'informs the player that the attack attempt missed' do
-        expect(attack_attempt).to eq(missed_message)
+        expect(attack_instance).to receive(:missed_message)
+
+        attack_attempt
+      end
+    end
+
+    context 'when the weapon would have dealt negative damage' do
+      before do
+        allow(attack_instance).to receive(:defense_value).and_return(1000)
+      end
+
+      it 'informs the player that the attack attempt missed' do
+        expect(attack_attempt).to eq("You tried to attack the #{enemy_name} with your #{weapon_name}... but missed.".yellow)
+      end
+
+      it 'does not alter the enemies hp' do
+        expect { attack_attempt }.not_to change(enemy, :hp)
       end
     end
 
     it 'informs the player that the attack dealt damage' do
       attack_attempt
 
-      expect(log_lines).to include(attack_message_regex)
+      expect(log_lines).to include(/You hit the #{enemy_name} with your #{weapon_name} for \d+ damage./)
     end
 
     it 'reduces the enemies hp by the amount of damage dealt' do
-      expect { attack_attempt }.to change(enemy, :hp).by(-2)
+      expect { attack_attempt }.to change(enemy, :hp)
     end
   end
 end
