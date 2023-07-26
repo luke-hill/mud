@@ -1,4 +1,3 @@
-1) Allow gold to be dropped and picked up (Currently just traded from hand) - Low Priority!
 2) Add quest to be able to begin to work towards obtaining draz-ghun's fleece from newtown - Obtain a few materials
 4) Consume the `use_message` property on Aurel Bark Key (`v3.0` - Requires Lone Ranger)
 5) Add in simplecov coverage up 100%

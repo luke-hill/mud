@@ -18,12 +18,6 @@ module MUD
       def armor_ids
         armor_yml.keys
       end
-
-      # @return [String]
-      # The description of gold coins, this needs placing somewhere relevant or removing
-      def gold_description
-        'Glistening in your hand, these gold coins are trade-able at just about any shop.'
-      end
     end
   end
 end

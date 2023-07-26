@@ -21,12 +21,15 @@ module MUD
       # The enemy name formatted appropriately
       def string
         return 'No enemies are in the room.' if enemy.id == 'no_enemy' || enemy.dead?
+        return "The #{enemy.name} is here with you.".bold if boss?
 
-        case enemy.type
-        when :enemy; then "A #{enemy.name} is here with you."
-        when :boss;  then "The #{enemy.name} is here with you.".bold
-        else raise "This room (Room-ID: #{room_id}), is incorrectly configured"
-        end
+        "A #{enemy.name} is here with you."
+      end
+
+      private
+
+      def boss?
+        enemy.type == :boss
       end
     end
   end

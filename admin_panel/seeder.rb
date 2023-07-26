@@ -130,7 +130,7 @@ module AdminPanel
     end
 
     def new_values
-      data.merge(options.stringify_keys)
+      data.merge(options.deep_stringify_keys)
     end
 
     def data

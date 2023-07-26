@@ -15,7 +15,7 @@ RSpec.describe MUD::Room do
     end
 
     it 'returns the directions after the description' do
-      expect(filled_room.description).to end_with('You can go north, east, south and west'.yellow)
+      expect(filled_room.description).to end_with('You can go north, east, south, west, up and down'.yellow)
     end
   end
 
@@ -29,7 +29,7 @@ RSpec.describe MUD::Room do
     end
 
     it 'returns the directions after the advanced description' do
-      expect(filled_room.advanced_description).to end_with('You can go north, east, south and west'.yellow)
+      expect(filled_room.advanced_description).to end_with('You can go north, east, south, west, up and down'.yellow)
     end
   end
 

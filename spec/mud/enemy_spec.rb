@@ -5,39 +5,27 @@ RSpec.describe MUD::Enemy do
 
   let(:dead_enemy) { create(:enemy, 'dead') }
 
-  describe 'Gold' do
-    describe '#gold' do
-      it 'spawns with an amount of gold inside the permitted values' do
-        expect(enemy.gold).to be_between(enemy.lower_gold_limit, enemy.upper_gold_limit)
-      end
-    end
-
-    describe '#gold=' do
-      it 'Updates the enemies gold' do
-        initial_gold = enemy.gold
-        enemy.gold -= 1
-        updated_gold = enemy.gold
-
-        expect(initial_gold).not_to eq(updated_gold)
-      end
+  describe '.of_type' do
+    it 'generates an Enemy' do
+      expect(described_class.of_type('bad')).to be_a(MUD::Enemy)
     end
   end
 
-  describe 'Hit Points' do
-    describe '#hp' do
-      it 'spawns with an initial hp inside the permitted values' do
-        expect(enemy.hp).to be_between(enemy.lower_hp_limit, enemy.upper_hp_limit)
-      end
+  describe '.properties' do
+    it 'lists all properties of all types of Enemy' do
+      expect(described_class.properties).to be_an(Array)
     end
+  end
 
-    describe '#hp=' do
-      it 'Updates the enemies hit points' do
-        initial_hp = enemy.hp
-        enemy.hp -= 1
-        updated_hp = enemy.hp
+  describe '#gold' do
+    it 'spawns with an amount of gold inside the permitted values' do
+      expect(enemy.gold).to be_between(enemy.lower_gold_limit, enemy.upper_gold_limit)
+    end
+  end
 
-        expect(initial_hp).not_to eq(updated_hp)
-      end
+  describe '#hp' do
+    it 'spawns with an initial hp inside the permitted values' do
+      expect(enemy.hp).to be_between(enemy.lower_hp_limit, enemy.upper_hp_limit)
     end
   end
 
@@ -93,6 +81,67 @@ RSpec.describe MUD::Enemy do
   describe '#defense' do
     it 'returns the integer value of the defense value of the equipped armor' do
       expect(enemy.defense).to eq(0)
+    end
+  end
+
+  describe '#potion?' do
+    it 'returns true if the enemy is carrying a potion that could be dropped' do
+      expect(dead_enemy.potion?).to be true
+    end
+
+    it 'returns false if the enemy is not carrying a potion that could be dropped' do
+      expect(enemy.potion?).to be false
+    end
+  end
+
+  describe '#weapon?' do
+    it 'returns true if the enemy is carrying a weapon that could be dropped' do
+      expect(dead_enemy.weapon?).to be true
+    end
+
+    it 'returns false if the enemy is not carrying a weapon that could be dropped' do
+      expect(enemy.weapon?).to be false
+    end
+  end
+
+  describe '#armor?' do
+    it 'returns true if the enemy is carrying armor that could be dropped' do
+      expect(dead_enemy.armor?).to be true
+    end
+
+    it 'returns false if the enemy is not carrying armor that could be dropped' do
+      expect(enemy.armor?).to be false
+    end
+  end
+
+  describe '#speak' do
+    it 'can say something if the enemy has a phrase' do
+      expect(MUD::Screen).to receive(:output).with("#{'TEST - Equipped DEAD Enemy'.blue}: #{'Hello there ... Yes you!'.green}")
+
+      dead_enemy.speak
+    end
+
+    it 'cannot say anything if the enemy has no phrases' do
+      expect(MUD::Screen).not_to receive(:output)
+
+      enemy.speak
+    end
+  end
+
+  describe '#type' do
+    let(:boss) { create(:enemy, 'big_boss') }
+    let(:unknown_enemy) { create(:enemy, 'not_understood') }
+
+    it 'can classify regular enemies' do
+      expect(enemy.type).to eq(:enemy)
+    end
+
+    it 'can classify bosses' do
+      expect(boss.type).to eq(:boss)
+    end
+
+    it 'classifies unknown enemies accordingly' do
+      expect(unknown_enemy.type).to eq(:unknown)
     end
   end
 end

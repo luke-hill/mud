@@ -1,7 +1,7 @@
 ---
 bad:
   name: TEST - Bad Enemy
-  description: This enemy will always miss
+  description: This enemy will always miss and never talk
   weapon_id: zero
   armor_id: zero_shield
   lower_hp_limit: 5
@@ -14,7 +14,7 @@ bad:
   stamina: 1
 dead:
   name: TEST - Equipped DEAD Enemy
-  description: This enemy is always dead
+  description: This enemy is always dead but always drops items and talks
   weapon_id: zero
   armor_id: unarmored
   lower_hp_limit: 0
@@ -31,3 +31,5 @@ dead:
   dropped_armor_id: bandit_leathers
   dropped_armor_chance: 1
   dropped_armor_message: Bandit Leathers dropped
+  phrase1_message: Hello there ... Yes you!
+  phrase1_chance: 1

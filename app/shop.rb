@@ -29,14 +29,36 @@ module MUD
       Screen.output(shop_items_string)
     end
 
+    # @return [Boolean]
+    # Whether the item_id is for sale in the current shop
     def for_sale?(item_id)
       !price(item_id).nil?
+    end
+
+    # @return [Array => Integer]
+    # A list of the costs of each item in the shop
+    def potion_costs
+      potion_data.map { |data| data['cost'] }
+    end
+
+    # @return Integer
+    # The price of the specific item_id requested
+    def price(item_id)
+      raise "Item not understood in shop - Room-ID: #{room_id}" unless present?(item_id)
+
+      find_item(item_id).fetch('cost', nil)
+    end
+
+    # @return [Array => String]
+    # A list of the names of each item in the shop
+    def potion_names
+      potion_data.map { |data| data['id'] }
     end
 
     private
 
     def shop_items_string
-      @shop_items_string ||= Presenters::ShopItems.new(room_id).string
+      @shop_items_string ||= Presenters::ShopItems.new(self).string
     end
 
     def validate_enemy_not_present
@@ -44,12 +66,6 @@ module MUD
 
       Logger.debug("Enemy found: #{enemy.inspect}")
       raise "There shouldn't be any enemies in shops!"
-    end
-
-    def price(item_id)
-      raise "Item not understood in shop - Room-ID: #{room_id}" unless present?(item_id)
-
-      find_item(item_id).fetch('cost', nil)
     end
 
     def present?(item_id)
@@ -60,20 +76,12 @@ module MUD
       potion_data.detect { |data| data['id'] == item_id }
     end
 
-    def potion_names
-      potion_data.map { |data| data['id'] }
-    end
-
-    def potion_costs
-      potion_data.map { |data| data['cost'] }
-    end
-
     def potion_data
       room_data['potions']
     end
 
     def room_data
-      shop_yml[room_id]
+      @room_data ||= shop_yml[room_id]
     end
   end
 end
