@@ -12,7 +12,6 @@ RSpec.describe MUD::Combat::Attack do
   describe '#attack' do
     subject(:attack_attempt) { attack_instance.attack }
 
-    let(:damage_dealt) { 2 }
     let(:missed?) { false }
     let(:missed_message) { "You tried to attack the #{enemy_name} with your #{weapon_name}... but missed.".yellow }
     let(:attack_message_regex) do
@@ -21,7 +20,6 @@ RSpec.describe MUD::Combat::Attack do
 
     before do
       allow(player).to receive(:weapon).and_return(weapon)
-      allow(attack_instance).to receive(:damage_dealt).and_return(damage_dealt)
       allow(attack_instance).to receive(:missed?).and_return(missed?)
       switch_logging_to_temp_file
     end
@@ -37,10 +35,26 @@ RSpec.describe MUD::Combat::Attack do
     end
 
     context 'when the weapon deals no damage' do
-      let(:damage_dealt) { 0 }
+      before do
+        allow(attack_instance).to receive(:damage_dealt).and_return(0)
+      end
 
       it 'informs the player that the attack attempt missed' do
         expect(attack_attempt).to eq(missed_message)
+      end
+    end
+
+    context 'when the weapon would have dealt negative damage' do
+      before do
+        allow(attack_instance).to receive(:defense_value).and_return(1000)
+      end
+
+      it 'informs the player that the attack attempt missed' do
+        expect(attack_attempt).to eq(missed_message)
+      end
+
+      it 'does not alter the enemies hp' do
+        expect { attack_attempt }.not_to change(enemy, :hp)
       end
     end
 
