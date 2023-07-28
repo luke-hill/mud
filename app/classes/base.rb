@@ -17,7 +17,7 @@ module MUD
       include MUD::Helpers::AttributeAccessors
       include Helpers::Data
       include Helpers::Item
-      include Helpers::Unnabbreviater
+      include Helpers::Unabbreviater
 
       def initialize
         @current_room = starting_room

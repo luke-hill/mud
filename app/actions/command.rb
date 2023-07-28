@@ -14,7 +14,7 @@ module MUD
 
       include Helpers::Data
       include Helpers::Methods
-      include Helpers::Unnabbreviater
+      include Helpers::Unabbreviater
 
       def initialize(command_input)
         @command_input = command_input

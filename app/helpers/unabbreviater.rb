@@ -3,7 +3,7 @@
 module MUD
   module Helpers
     # A way of converting short-hand command inputs back into their verbose requirements
-    module Unnabbreviater
+    module Unabbreviater
       # @return String
       # Convert an input argument that's abbreviated into the verbose form
       # Requires an argument detailing the type

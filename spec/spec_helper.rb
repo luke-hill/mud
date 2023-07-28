@@ -27,7 +27,7 @@ RSpec.configure do |config|
   config.include SpecSupport::Room
 
   config.include MUD::Helpers::Data
-  config.include MUD::Helpers::Unnabbreviater
+  config.include MUD::Helpers::Unabbreviater
 
   config.add_formatter :documentation
 
