@@ -115,6 +115,30 @@ RSpec.describe MUD::Actions::Command do
       include_examples 'Command movement examples'
     end
 
+    context 'when command input is "up"' do
+      let(:command_input) { 'up' }
+
+      include_examples 'Command movement examples'
+    end
+
+    context 'when command input is "u"' do
+      let(:command_input) { 'u' }
+
+      include_examples 'Command movement examples'
+    end
+
+    context 'when command input is "down"' do
+      let(:command_input) { 'down' }
+
+      include_examples 'Command movement examples'
+    end
+
+    context 'when command input is "d"' do
+      let(:command_input) { 'd' }
+
+      include_examples 'Command movement examples'
+    end
+
     context 'when command input is an unknown command' do
       let(:command_input) { 'fooBARBaz' }
 
