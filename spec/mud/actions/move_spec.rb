@@ -56,4 +56,37 @@ RSpec.describe MUD::Actions::Move do
       move_attempt
     end
   end
+
+  context 'when trying to move through a locked door WITHOUT the required key' do
+    let(:direction) { 'north' }
+
+    before { player.current_room = MUD::Room.new('locked_room') }
+
+    it 'does not let the player leave' do
+      expect { move_attempt }.not_to(change { current_room_id })
+    end
+
+    it 'informs the player you need a key' do
+      expect(MUD::Screen).to receive(:output).with("Oh dear, no key!".red)
+
+      move_attempt
+    end
+  end
+
+  context 'when trying to move through a locked door WITH the required key' do
+    let(:direction) { 'north' }
+
+    before do
+      player.current_room = MUD::Room.new('locked_room')
+      player.inventory << 'dummy'
+    end
+
+    it 'allows the player to move to the next room' do
+      expect { move_attempt }.to change { current_room_id }.to('blank_room')
+    end
+
+    it 'uses up the key' do
+      expect { move_attempt }.to change(player.inventory, :length).by(-1)
+    end
+  end
 end
