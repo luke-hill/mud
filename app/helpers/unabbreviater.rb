@@ -24,7 +24,7 @@ module MUD
         when 'w', 'west';  then 'west'
         when 'u', 'up';    then 'up'
         when 'd', 'down';  then 'down'
-        else raise "Unreachable code - Unabbreviated movement request: #{string}"
+        else raise "Invalid unabbreviated movement request: #{string}"
         end
       end
     end
