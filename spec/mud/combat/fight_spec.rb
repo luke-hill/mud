@@ -5,6 +5,9 @@ RSpec.describe MUD::Combat::Fight do
 
   let(:enemy) { create(:enemy, 'bad') }
   let(:fight_instance) { described_class.new(enemy) }
+  let(:player) { MUD::Game.player }
+
+  before { player.hp = player.max_hp }
 
   describe '#fight' do
     context 'when times parameter is 1' do
