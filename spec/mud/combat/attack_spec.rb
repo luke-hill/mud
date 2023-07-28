@@ -14,8 +14,6 @@ RSpec.describe MUD::Combat::Attack do
     allow(attack_instance).to receive(:missed?).and_return(false)
   end
 
-  after { remove_test_screen_logs }
-
   describe '#attack' do
     context "when the player's attack misses" do
       before { allow(attack_instance).to receive(:missed?).and_return(true) }

@@ -14,8 +14,6 @@ RSpec.describe MUD::Combat::Defend do
     allow(defend_instance).to receive(:missed?).and_return(false)
   end
 
-  after { remove_test_screen_logs }
-
   describe '#defend' do
     context 'when the enemies attack misses' do
       before { allow(defend_instance).to receive(:missed?).and_return(true) }

@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Actions::Move do
-  after { remove_test_screen_logs }
-
   describe '#north' do
     let(:direction) { 'north' }
 

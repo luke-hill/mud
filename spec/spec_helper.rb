@@ -35,4 +35,8 @@ RSpec.configure do |config|
     swallow_console_spam
     switch_logging_to_temp_file
   end
+
+  config.after do
+    remove_test_screen_logs
+  end
 end

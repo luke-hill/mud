@@ -6,8 +6,6 @@ RSpec.describe MUD::Actions::Command do
 
   before { player.current_room = MUD::Room.new('blank_room') }
 
-  after { remove_test_screen_logs }
-
   describe '#process' do
     context 'when command input is "a"' do
       let(:command_input) { 'a' }

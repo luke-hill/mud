@@ -6,8 +6,6 @@ RSpec.describe MUD::Combat::Fight do
   let(:enemy) { create(:enemy, 'bad') }
   let(:fight_instance) { described_class.new(enemy) }
 
-  after { remove_test_screen_logs }
-
   describe '#fight' do
     context 'when times parameter is 1' do
       let(:times) { 1 }

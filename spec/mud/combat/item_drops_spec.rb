@@ -8,8 +8,6 @@ RSpec.describe MUD::Combat::ItemDrops do
   describe '#process' do
     subject(:drop_items) { item_drops_instance.process }
 
-    after { remove_test_screen_logs }
-
     context 'when dropping a potion' do
       let(:dropped_potion_chance) { 1 }
 

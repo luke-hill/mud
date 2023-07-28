@@ -10,8 +10,6 @@ RSpec.describe MUD::Combat::XP do
 
   before { allow(player).to receive(:capped?).and_return(capped?) }
 
-  after { remove_test_screen_logs }
-
   describe '#increase' do
     context 'when player is already capped' do
       let(:capped?) { true }

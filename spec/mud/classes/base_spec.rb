@@ -6,8 +6,6 @@ RSpec.describe MUD::Classes::Base do
     allow(player).to receive(:current_room).and_return(MUD::Room.new('blank_room'))
   end
 
-  after { remove_test_screen_logs }
-
   let(:starting_attributes) do
     {
       name: 'Test Player',
