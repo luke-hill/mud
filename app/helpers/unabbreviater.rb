@@ -7,16 +7,16 @@ module MUD
       # @return String
       # Convert an input argument that's abbreviated into the verbose form
       # Requires an argument detailing the type
-      def unnabbreviate(string, type:)
+      def unabbreviate(string, type:)
         case type
-        when :movement; then unnabbreviate_movement(string)
-        else raise "Unreachable code - Abbreviate request: #{string}"
+        when :movement; then unabbreviate_movement(string)
+        else raise "Unreachable code - Unabbreviated request: #{string}"
         end
       end
 
       private
 
-      def unnabbreviate_movement(string)
+      def unabbreviate_movement(string)
         case string
         when 'n', 'north'; then 'north'
         when 's', 'south'; then 'south'
@@ -24,7 +24,7 @@ module MUD
         when 'w', 'west';  then 'west'
         when 'u', 'up';    then 'up'
         when 'd', 'down';  then 'down'
-        else raise "Unreachable code - Abbreviated movement request: #{string}"
+        else raise "Unreachable code - Unabbreviated movement request: #{string}"
         end
       end
     end

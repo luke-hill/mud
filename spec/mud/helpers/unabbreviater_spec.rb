@@ -8,13 +8,13 @@ RSpec.describe MUD::Helpers::Unabbreviater do
     end
   end
 
-  describe '#unnabbreviate' do
+  describe '#unabbreviate' do
     it 'can unabbreviate a direction to move in' do
-      expect { unabbreviater_helper.unnabbreviate('n', type: :movement) }.not_to raise_error
+      expect { unabbreviater_helper.unabbreviate('n', type: :movement) }.not_to raise_error
     end
 
     it 'cannot unabbreviate anything else' do
-      expect { unabbreviater_helper.unnabbreviate('nm', type: :not_movement) }
+      expect { unabbreviater_helper.unabbreviate('nm', type: :not_movement) }
         .to raise_error
         .with_message('Unreachable code - Abbreviate request: nm')
     end
