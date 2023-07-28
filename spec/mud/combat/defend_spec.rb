@@ -12,7 +12,6 @@ RSpec.describe MUD::Combat::Defend do
   before do
     allow(defend_instance).to receive(:damage_taken).and_return(damage_taken)
     allow(defend_instance).to receive(:missed?).and_return(false)
-    switch_logging_to_temp_file
   end
 
   after { remove_test_screen_logs }

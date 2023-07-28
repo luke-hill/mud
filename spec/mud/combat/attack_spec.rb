@@ -12,7 +12,6 @@ RSpec.describe MUD::Combat::Attack do
   before do
     allow(MUD::Game.player).to receive(:weapon).and_return(weapon)
     allow(attack_instance).to receive(:missed?).and_return(false)
-    switch_logging_to_temp_file
   end
 
   after { remove_test_screen_logs }

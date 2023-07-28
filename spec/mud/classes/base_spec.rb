@@ -4,7 +4,6 @@ RSpec.describe MUD::Classes::Base do
   before do
     allow(player).to receive(:attributes).and_return(starting_attributes)
     allow(player).to receive(:current_room).and_return(MUD::Room.new('blank_room'))
-    switch_logging_to_temp_file
   end
 
   after { remove_test_screen_logs }

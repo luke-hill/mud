@@ -4,10 +4,7 @@ RSpec.describe MUD::Actions::Command do
   let(:command) { described_class.new(command_input) }
   let(:player) { MUD::Game.player }
 
-  before do
-    switch_logging_to_temp_file
-    player.current_room = MUD::Room.new('blank_room')
-  end
+  before { player.current_room = MUD::Room.new('blank_room') }
 
   after { remove_test_screen_logs }
 

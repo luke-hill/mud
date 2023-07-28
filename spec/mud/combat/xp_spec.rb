@@ -8,10 +8,7 @@ RSpec.describe MUD::Combat::XP do
   let(:player) { MUD::Game.player }
   let(:damage_dealt) { 10 }
 
-  before do
-    switch_logging_to_temp_file
-    allow(player).to receive(:capped?).and_return(capped?)
-  end
+  before { allow(player).to receive(:capped?).and_return(capped?) }
 
   after { remove_test_screen_logs }
 

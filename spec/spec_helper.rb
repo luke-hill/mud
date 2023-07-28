@@ -33,5 +33,6 @@ RSpec.configure do |config|
 
   config.before do
     swallow_console_spam
+    switch_logging_to_temp_file
   end
 end

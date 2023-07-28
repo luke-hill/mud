@@ -6,8 +6,6 @@ RSpec.describe MUD::Combat::Fight do
   let(:enemy) { create(:enemy, 'bad') }
   let(:fight_instance) { described_class.new(enemy) }
 
-  before { switch_logging_to_temp_file }
-
   after { remove_test_screen_logs }
 
   describe '#fight' do
