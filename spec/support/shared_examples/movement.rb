@@ -1,14 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.shared_examples 'Movement examples' do
-  subject(:move_attempt) { described_class.new(direction).move }
-
-  let(:player) { MUD::Game.player }
-
   context 'with an available room' do
-    before do
-      player.current_room = MUD::Room.new('blank_room')
-    end
+    before { player.current_room = MUD::Room.new('blank_room') }
 
     it 'moves to the room' do
       expect { move_attempt }.to change { current_room_id }.to('filled_room')

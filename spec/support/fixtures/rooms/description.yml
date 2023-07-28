@@ -11,6 +11,17 @@ filled_room:
   location_id: irrelevant
   enemy_id: bad
   type: Town
+enemy_ktp_room:
+  description: This is a ktp room
+  location_id: irrelevant
+  enemy_id: bad
+  ktp: true
+  type: Outside
+locked_room:
+  description: This is a locked room
+  location_id: irrelevant
+  enemy_id: bad
+  type: Outside
 trashed_room:
   description: This is a room containing a dead enemy
   advanced_description: The enemy has just died

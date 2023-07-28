@@ -7,15 +7,14 @@ RSpec.describe MUD::Combat::Defend do
   let(:defend_instance) { described_class.new(enemy) }
   let(:enemy) { create(:enemy, 'bad') }
   let(:enemy_name) { 'TEST - Bad Enemy' }
+  let(:player) { MUD::Game.player }
   let(:weapon_name) { MUD::Weapon.of_type('zero').name }
 
   before do
     allow(defend_instance).to receive(:damage_taken).and_return(damage_taken)
     allow(defend_instance).to receive(:missed?).and_return(false)
-    switch_logging_to_temp_file
+    player.hp = player.max_hp
   end
-
-  after { remove_test_screen_logs }
 
   describe '#defend' do
     context 'when the enemies attack misses' do

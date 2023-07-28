@@ -14,7 +14,7 @@ module MUD
 
       include Helpers::Data
       include Helpers::Methods
-      include Helpers::Unnabbreviater
+      include Helpers::Unabbreviater
 
       def initialize(command_input)
         @command_input = command_input
@@ -52,7 +52,7 @@ module MUD
       end
 
       def process_compass_direction
-        player.move(unnabbreviate(command_input, type: :movement))
+        player.move(unabbreviate(command_input, type: :movement))
       end
 
       def compass_direction?

@@ -15,5 +15,8 @@ filled_room:
   down: blank_room
 trapped_room: {}
   # No directions available
+locked_room:
+  north: blank_room
+  north_key_id: dummy
 corridor:
   north: corridor

@@ -8,12 +8,7 @@ RSpec.describe MUD::Combat::XP do
   let(:player) { MUD::Game.player }
   let(:damage_dealt) { 10 }
 
-  before do
-    switch_logging_to_temp_file
-    allow(player).to receive(:capped?).and_return(capped?)
-  end
-
-  after { remove_test_screen_logs }
+  before { allow(player).to receive(:capped?).and_return(capped?) }
 
   describe '#increase' do
     context 'when player is already capped' do
@@ -35,6 +30,22 @@ RSpec.describe MUD::Combat::XP do
 
       it 'will increase the players xp' do
         expect { xp_attempt }.to change(player, :experience)
+      end
+
+      it 'yields a killshot bonus if the enemy dies' do
+        allow(xp_instance).to receive(:killshot?).and_return(true)
+
+        expect(enemy).to receive(:xp_killshot).at_least(:once).and_call_original
+
+        xp_attempt
+      end
+
+      it 'does not yield a killshot bonus if the enemy does not die' do
+        allow(xp_instance).to receive(:killshot?).and_return(false)
+
+        expect(enemy).not_to receive(:xp_killshot)
+
+        xp_attempt
       end
     end
   end

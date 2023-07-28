@@ -4,12 +4,7 @@ RSpec.describe MUD::Actions::Command do
   let(:command) { described_class.new(command_input) }
   let(:player) { MUD::Game.player }
 
-  before do
-    switch_logging_to_temp_file
-    player.current_room = MUD::Room.new('blank_room')
-  end
-
-  after { remove_test_screen_logs }
+  before { player.current_room = MUD::Room.new('blank_room') }
 
   describe '#process' do
     context 'when command input is "a"' do
@@ -116,6 +111,30 @@ RSpec.describe MUD::Actions::Command do
 
     context 'when command input is "w"' do
       let(:command_input) { 'w' }
+
+      include_examples 'Command movement examples'
+    end
+
+    context 'when command input is "up"' do
+      let(:command_input) { 'up' }
+
+      include_examples 'Command movement examples'
+    end
+
+    context 'when command input is "u"' do
+      let(:command_input) { 'u' }
+
+      include_examples 'Command movement examples'
+    end
+
+    context 'when command input is "down"' do
+      let(:command_input) { 'down' }
+
+      include_examples 'Command movement examples'
+    end
+
+    context 'when command input is "d"' do
+      let(:command_input) { 'd' }
 
       include_examples 'Command movement examples'
     end

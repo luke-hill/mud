@@ -60,13 +60,6 @@ module MUD
       @type ||= determine_type
     end
 
-    # @return [String]
-    # This method will return either the standard message for using the potion correctly
-    # If a use_message cannot be found, it will return a fallback message that indicates we need to code something
-    def message
-      use_message || fallback_message
-    end
-
     private
 
     def fallback_message
@@ -94,10 +87,12 @@ module MUD
     end
 
     def dynamic_used_message
+      return fallback_message unless use_message
+
       case type
-      when :healing;  then "#{message} #{value}hp. #{full_hp_restored_message}".yellow
-      when :mana;     then "#{message} #{value}mp. #{full_hp_restored_message}".blue
-      else                 "#{message} #{value}hp.".blink
+      when :healing;  then "#{use_message} #{value}hp. #{full_hp_restored_message}".yellow
+      when :mana;     then "#{use_message} #{value}mp. #{full_mp_restored_message}".blue
+      else                 "#{use_message} #{value}hp.".blink
       end
     end
 

@@ -27,11 +27,16 @@ RSpec.configure do |config|
   config.include SpecSupport::Room
 
   config.include MUD::Helpers::Data
-  config.include MUD::Helpers::Unnabbreviater
+  config.include MUD::Helpers::Unabbreviater
 
   config.add_formatter :documentation
 
   config.before do
     swallow_console_spam
+    switch_logging_to_temp_file
+  end
+
+  config.after do
+    remove_test_screen_logs
   end
 end
