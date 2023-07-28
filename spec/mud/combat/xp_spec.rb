@@ -31,6 +31,22 @@ RSpec.describe MUD::Combat::XP do
       it 'will increase the players xp' do
         expect { xp_attempt }.to change(player, :experience)
       end
+
+      it 'yields a killshot bonus if the enemy dies' do
+        allow(xp_instance).to receive(:killshot?).and_return(true)
+
+        expect(enemy).to receive(:xp_killshot).at_least(:once).and_call_original
+
+        xp_attempt
+      end
+
+      it 'does not yield a killshot bonus if the enemy does not die' do
+        allow(xp_instance).to receive(:killshot?).and_return(false)
+
+        expect(enemy).not_to receive(:xp_killshot)
+
+        xp_attempt
+      end
     end
   end
 end
