@@ -91,7 +91,7 @@ module MUD
 
       case type
       when :healing;  then "#{use_message} #{value}hp. #{full_hp_restored_message}".yellow
-      when :mana;     then "#{use_message} #{value}mp. #{full_hp_restored_message}".blue
+      when :mana;     then "#{use_message} #{value}mp. #{full_mp_restored_message}".blue
       else                 "#{use_message} #{value}hp.".blink
       end
     end
