@@ -1,6 +1,5 @@
 ---
 demo_mana:
   name: Demo Mana Potion
-  use_message: This is a demo consumption
-  description: Demo Mana Potion Description
+  description: Demo Mana Potion Description - No Use Message
   value: 5

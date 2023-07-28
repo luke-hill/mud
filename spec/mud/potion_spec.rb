@@ -32,6 +32,16 @@ RSpec.describe MUD::Potion do
         potion.use
       end
     end
+
+    context 'when the potion has no use_message property' do
+      let(:potion) { create(:potion, 'demo_mana') }
+
+      it 'will output a generic use message' do
+        expect(MUD::Screen).to receive(:output).with('ERROR: Unknown Potion - Will use up and continue.')
+
+        potion.use
+      end
+    end
   end
 
   it 'has a name' do
