@@ -67,7 +67,7 @@ RSpec.describe MUD::Actions::Move do
     end
 
     it 'informs the player you need a key' do
-      expect(MUD::Screen).to receive(:output).with("Oh dear, no key!".red)
+      expect(MUD::Screen).to receive(:output).with('Oh dear, no key!'.red)
 
       move_attempt
     end
