@@ -82,7 +82,7 @@ module MUD
       end
 
       def item_ids(types)
-        types.map { |type| send("#{type}_ids") }.flatten
+        types.map { |type| send(:"#{type}_ids") }.flatten
       end
 
       def weapon?

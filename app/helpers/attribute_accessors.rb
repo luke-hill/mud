@@ -66,7 +66,7 @@ module MUD
           attributes[name]
         end
 
-        define_method("#{name}=") do |value|
+        define_method(:"#{name}=") do |value|
           Logger.debug("Call made to set attributes: #{attributes}")
           attributes[name] = value
           Logger.debug("Your #{name} was updated")
