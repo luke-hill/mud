@@ -1,17 +1,16 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Actions::Buy do
-  subject(:buy_instance) { described_class.new(item_id, valid_shop) }
-
-  let(:player) { MUD::Game.player }
-  let(:item_id) { 'demo_healing' }
+  let(:buy_instance) { described_class.new(item_id, create_shop('valid_shop')) }
   let(:gold) { 51 }
-  let(:enough_space?) { true }
-  let(:valid_shop) { create_shop('valid_shop') }
+  let(:item_id) { 'demo_healing' }
+  let(:max_inventory_size) { 10 }
+  let(:player) { MUD::Game.player }
 
   before do
-    allow(buy_instance).to receive(:enough_space?).and_return(enough_space?)
     player.gold = gold
+    player.inventory = []
+    player.max_inventory_size = max_inventory_size
   end
 
   describe '#buy' do
@@ -50,7 +49,7 @@ RSpec.describe MUD::Actions::Buy do
     end
 
     context "when the player doesn't have enough space for the item_id" do
-      let(:enough_space?) { false }
+      let(:max_inventory_size) { 0 }
 
       it "informs the player that they don't have enough space" do
         expect(buy_attempt).to eq('You do not have enough space for that.'.red)
