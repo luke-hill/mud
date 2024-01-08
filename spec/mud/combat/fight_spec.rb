@@ -5,9 +5,8 @@ RSpec.describe MUD::Combat::Fight do
 
   let(:enemy) { create(:enemy, 'bad') }
   let(:fight_instance) { described_class.new(enemy) }
-  let(:player) { MUD::Game.player }
 
-  before { player.hp = player.max_hp }
+  before { fight_instance.player.hp = fight_instance.player.max_hp }
 
   describe '#fight' do
     context 'when times parameter is 1' do
@@ -33,13 +32,11 @@ RSpec.describe MUD::Combat::Fight do
 
   describe '#fight_once' do
     let(:attack_instance) { MUD::Combat::Attack.new(enemy) }
-    let(:damage_dealt) { 100 }
     let(:times) { 1 }
 
     before do
       allow(MUD::Combat::Attack).to receive(:new).and_return(attack_instance)
       allow(attack_instance).to receive(:attack)
-      allow(attack_instance).to receive(:damage_dealt).and_return(damage_dealt)
     end
 
     it 'delegates off to the `MUD::Combat::Attack` instance to deal damage' do
@@ -105,7 +102,6 @@ RSpec.describe MUD::Combat::Fight do
 
   describe '#fight_until_death' do
     let(:times) { 2 }
-    let(:damage_dealt) { 100 }
 
     before do
       allow(fight_instance).to receive(:enemy_dead?).and_return(false, false, true)
