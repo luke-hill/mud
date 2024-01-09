@@ -8,8 +8,8 @@ RSpec.describe MUD::Actions::Buy do
   let(:player) { MUD::Game.player }
 
   before do
+    reset_inventory
     player.gold = gold
-    player.inventory = []
     player.max_inventory_size = max_inventory_size
   end
 
