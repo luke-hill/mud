@@ -5,10 +5,7 @@ RSpec.describe MUD::Combat::ItemDrops do
   let(:player) { MUD::Game.player }
   let(:enemy) { create(:enemy, 'dead') }
 
-  before do
-    player.inventory = []
-    allow(player).to receive(:max_inventory_size).and_return(10)
-  end
+  before { reset_inventory }
 
   describe '#process' do
     subject(:drop_items) { item_drops_instance.process }

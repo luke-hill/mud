@@ -41,10 +41,7 @@ RSpec.describe MUD::Actions::PickUp do
     end
 
     context 'when the item is on the floor' do
-      before do
-        player.inventory = []
-        allow(player).to receive(:max_inventory_size).and_return(10)
-      end
+      before { reset_inventory }
 
       it 'adds the item to the players inventory' do
         expect { pick_up_attempt }.to change(player.inventory, :length).by(1)

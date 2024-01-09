@@ -24,6 +24,7 @@ RSpec.configure do |config|
   config.include SpecSupport::Console
   config.include SpecSupport::Factory
   config.include SpecSupport::File
+  config.include SpecSupport::Player
   config.include SpecSupport::Room
 
   config.include MUD::Helpers::Data
