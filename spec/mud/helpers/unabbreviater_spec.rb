@@ -2,6 +2,7 @@
 
 RSpec.describe MUD::Helpers::Unabbreviater do
   subject(:unabbreviater_helper) { klass.new }
+
   let(:klass) do
     Class.new do
       include MUD::Helpers::Unabbreviater
