@@ -5,12 +5,12 @@ RSpec.describe MUD::Combat::ItemDrops do
   let(:player) { MUD::Game.player }
   let(:enemy) { create(:enemy, 'dead') }
 
+  before { reset_inventory }
+
   describe '#process' do
     subject(:drop_items) { item_drops_instance.process }
 
     context 'when dropping a potion' do
-      let(:dropped_potion_chance) { 1 }
-
       it 'places the potion in the inventory of the player' do
         drop_items
 

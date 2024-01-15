@@ -31,9 +31,7 @@ module MUD
       private
 
       def cost
-        # We need a new database seeding of shop locations with items!
-        # Lesser Healing Pots are 25 and Heal for 10 (That is it currently!)
-        25
+        room.price(item_id)
       end
 
       def enough_money?
@@ -46,11 +44,7 @@ module MUD
       end
 
       def for_sale?
-        return false unless room.shop?
-
-        # We need the concept of what items are for sale where
-        # For now this will be true for the 1 shop
-        true
+        room.shop? && room.for_sale?(item_id)
       end
 
       def buy_item
