@@ -76,7 +76,7 @@ RSpec.describe MUD::Helpers::AttributeAccessors do
       it "writes to #{attribute} through the attributes hash" do
         expect(attributes).to receive(:[]=).with(attribute, value)
 
-        player.public_send("#{attribute}=", value)
+        player.public_send(:"#{attribute}=", value)
       end
     end
   end
