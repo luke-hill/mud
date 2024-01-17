@@ -75,8 +75,7 @@ RSpec.describe MUD::Room do
     subject { filled_room.exitable? }
 
     before do
-      allow(filled_room).to receive(:ktp?).and_return(ktp?)
-      allow(filled_room).to receive(:enemy?).and_return(enemy?)
+      allow(filled_room).to receive_messages(ktp?: ktp?, enemy?: enemy?)
     end
 
     context 'when the room has an enemy that is kill-to-pass' do

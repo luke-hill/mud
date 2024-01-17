@@ -7,7 +7,7 @@ RSpec.describe MUD::Potion do
 
   describe '#use' do
     context 'when the potion is a "healing" potion' do
-      it 'will recover some hp for the player' do
+      it 'recovers some hp for the player' do
         expect(player).to receive(:hp=).at_least(:once)
 
         potion.use
@@ -25,7 +25,7 @@ RSpec.describe MUD::Potion do
     context 'when the potion is a "mana" potion' do
       let(:potion) { create(:potion, 'demo_mana') }
 
-      it 'will recover some mp for the player' do
+      it 'recovers some mp for the player' do
         expect(player).to receive(:mp=).at_least(:once)
 
         potion.use
@@ -43,7 +43,7 @@ RSpec.describe MUD::Potion do
     context 'when the potion is a "hp bonus" potion' do
       let(:potion) { create(:potion, 'demo_endurance') }
 
-      it 'will increase the players `max_hp`' do
+      it 'increases the players maximum hp' do
         expect(player).to receive(:max_hp=).once
 
         potion.use
@@ -53,7 +53,7 @@ RSpec.describe MUD::Potion do
     context 'when the potion has no use_message property' do
       let(:potion) { create(:potion, 'missing_message') }
 
-      it 'will output a generic use message' do
+      it 'outputs a generic use message' do
         expect(MUD::Screen).to receive(:output).with('ERROR: Unknown Potion - Will use up and continue.')
 
         potion.use
@@ -61,7 +61,7 @@ RSpec.describe MUD::Potion do
     end
 
     context 'when invalid' do
-      it 'will crash when attempting to be used' do
+      it 'crashes when used' do
         expect { invalid_potion.use }.to raise_error.with_message('Potion not found with ID: does_not_exist')
       end
     end
@@ -83,7 +83,7 @@ RSpec.describe MUD::Potion do
     expect(potion.value).to eq(10)
   end
 
-  it 'will crash when attempting to access any potion methods' do
+  it 'crashes when accessing any potion method' do
     expect { invalid_potion.name }.to raise_error.with_message('Potion not found with ID: does_not_exist')
   end
 end
