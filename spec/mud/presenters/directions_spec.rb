@@ -45,7 +45,7 @@ RSpec.describe MUD::Presenters::Directions do
         allow(open_room_presenter.directions).to receive(:keys).and_return(%w[north east south west up down left right])
       end
 
-      it 'will just show the standard 6 directions show no directions' do
+      it 'shows just the standard 6 directions' do
         expect(open_room_presenter.string).to eq('You can go north, east, south, west, up and down')
       end
     end

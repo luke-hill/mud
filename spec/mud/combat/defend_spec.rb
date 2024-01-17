@@ -11,8 +11,7 @@ RSpec.describe MUD::Combat::Defend do
   let(:weapon_name) { MUD::Weapon.of_type('zero').name }
 
   before do
-    allow(defend_instance).to receive(:damage_taken).and_return(damage_taken)
-    allow(defend_instance).to receive(:missed?).and_return(false)
+    allow(defend_instance).to receive_messages(damage_taken:, missed?: false)
     player.hp = player.max_hp
   end
 

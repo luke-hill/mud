@@ -2,8 +2,7 @@
 
 RSpec.describe MUD::Classes::Base do
   before do
-    allow(player).to receive(:attributes).and_return(starting_attributes)
-    allow(player).to receive(:current_room).and_return(MUD::Room.new('blank_room'))
+    allow(player).to receive_messages(attributes: starting_attributes, current_room: MUD::Room.new('blank_room'))
   end
 
   let(:starting_attributes) do

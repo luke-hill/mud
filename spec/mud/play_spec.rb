@@ -30,7 +30,7 @@ RSpec.describe MUD::Play do
         play_game
       end
 
-      it 'will continue to play the game' do
+      it 'continues to play the game' do
         expect(described_class).to receive(:play).at_least(:once)
 
         play_game
@@ -42,13 +42,13 @@ RSpec.describe MUD::Play do
         allow(player).to receive(:alive?).and_return(false)
       end
 
-      it 'will cease to continue the game' do
+      it 'ceases to continue the game' do
         expect(described_class).to receive(:play).once
 
         play_game
       end
 
-      it 'will exit the game' do
+      it 'exits the game' do
         expect(Kernel).to receive(:exit)
 
         play_game

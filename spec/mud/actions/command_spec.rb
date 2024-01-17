@@ -41,8 +41,7 @@ RSpec.describe MUD::Actions::Command do
       let(:command_input) { 'debug' }
 
       before do
-        allow(player).to receive(:weapon).and_return(MUD::Weapon.of_type('zero'))
-        allow(player).to receive(:armor).and_return(MUD::Armor.of_type('zero_shield'))
+        allow(player).to receive_messages(weapon: MUD::Weapon.of_type('zero'), armor: MUD::Armor.of_type('zero_shield'))
       end
 
       it 'returns a debug dump of all the diagnostic info on the game' do

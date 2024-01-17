@@ -14,11 +14,11 @@ RSpec.describe MUD::Combat::XP do
     context 'when player is already capped' do
       let(:capped?) { true }
 
-      it 'will not increase the players xp' do
+      it 'does not increase the players xp' do
         expect { xp_attempt }.not_to change(player, :experience)
       end
 
-      it 'will inform the player they are capped' do
+      it 'informs the player they are capped' do
         expect(MUD::Screen).to receive(:output).with('You feel strong enough to reach the next level. Seek out a Guild.'.yellow.blink)
 
         xp_attempt
@@ -28,7 +28,7 @@ RSpec.describe MUD::Combat::XP do
     context 'when player is not capped' do
       let(:capped?) { false }
 
-      it 'will increase the players xp' do
+      it 'increases the players xp' do
         expect { xp_attempt }.to change(player, :experience)
       end
 

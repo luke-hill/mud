@@ -10,10 +10,7 @@ RSpec.describe MUD::Actions::Buy do
   let(:enough_space?) { true }
 
   before do
-    allow(buy_instance).to receive(:cost).and_return(1)
-    allow(buy_instance).to receive(:for_sale?).and_return(for_sale?)
-    allow(buy_instance).to receive(:enough_money?).and_return(enough_money?)
-    allow(buy_instance).to receive(:enough_space?).and_return(enough_space?)
+    allow(buy_instance).to receive_messages(cost: 1, for_sale?: for_sale?, enough_money?: enough_money?, enough_space?: enough_space?)
   end
 
   describe '#buy' do

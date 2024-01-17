@@ -7,7 +7,7 @@ RSpec.describe MUD::Presenters::ShopItems do
     context 'with no items for sale' do
       let(:shop) { create_shop('empty_shop') }
 
-      it 'will inform the user no items are for sale' do
+      it 'informs the user that no items are for sale' do
         expect(shop_items_presenter.string).to eq('There are no potions for sale here yet.... Maybe wait for weapons?!'.blue)
       end
     end
@@ -15,7 +15,7 @@ RSpec.describe MUD::Presenters::ShopItems do
     context 'with 1 item for sale' do
       let(:shop) { create_shop('small_shop') }
 
-      it 'will display a list formatted with just the single item' do
+      it 'displays a list formatted with just the single item' do
         expect(shop_items_presenter.string.lines.length).to eq(3)
       end
     end
@@ -23,7 +23,7 @@ RSpec.describe MUD::Presenters::ShopItems do
     context 'with multiple items for sale' do
       let(:shop) { create_shop('valid_shop') }
 
-      it 'will display a list formatted with all of the items' do
+      it 'displays a list formatted with all of the items' do
         expect(shop_items_presenter.string.lines.length).to be >= 5
       end
     end

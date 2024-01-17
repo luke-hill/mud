@@ -5,18 +5,18 @@ RSpec.describe MUD::Key do
   let(:key) { create(:key, 'dummy') }
 
   describe '#use' do
-    context 'when the key has a defined `use_message`' do
-      it 'will output the keys use_message property' do
+    context 'when the key has a defined message to be shown when used' do
+      it 'outputs the keys `use_message` property' do
         expect(MUD::Screen).to receive(:output).with('I g0t used'.yellow)
 
         key.use
       end
     end
 
-    context 'when the key does not have a defined `use_message`' do
+    context 'when the key does not have a defined message to be shown when used' do
       let(:key) { create(:key, 'half_configured') }
 
-      it 'will output a standard fallback message' do
+      it 'outputs a standard fallback message' do
         expect(MUD::Screen).to receive(:output).with('ERROR: Unknown Key - Will use up and continue.'.yellow)
 
         key.use
