@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Helpers::Item do
-  let(:item_helper) { klass.new }
+  subject(:item_helper) { klass.new }
 
   let(:klass) do
     Class.new do

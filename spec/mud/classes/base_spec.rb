@@ -90,6 +90,7 @@ RSpec.describe MUD::Classes::Base do
     it 'prevents your hp from going negative' do
       player.hp = -3
       player.prevent_negative_hp
+
       expect(player.hp).to eq(0)
     end
   end
@@ -98,6 +99,7 @@ RSpec.describe MUD::Classes::Base do
     it 'prevents your hp from going over your max amount' do
       player.hp = 26
       player.prevent_overflow_hp
+
       expect(player.hp).to eq(25)
     end
   end
@@ -106,6 +108,7 @@ RSpec.describe MUD::Classes::Base do
     it 'prevents your hp from going negative' do
       player.mp = -3
       player.prevent_negative_mp
+
       expect(player.mp).to eq(0)
     end
   end
@@ -114,6 +117,7 @@ RSpec.describe MUD::Classes::Base do
     it 'prevents your mp from going over your max amount' do
       player.mp = 26
       player.prevent_overflow_mp
+
       expect(player.mp).to eq(0)
     end
   end

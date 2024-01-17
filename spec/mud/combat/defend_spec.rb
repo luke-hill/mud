@@ -6,9 +6,8 @@ RSpec.describe MUD::Combat::Defend do
   let(:damage_taken) { 2 }
   let(:defend_instance) { described_class.new(enemy) }
   let(:enemy) { create(:enemy, 'bad') }
-  let(:enemy_name) { 'TEST - Bad Enemy' }
   let(:player) { MUD::Game.player }
-  let(:weapon_name) { MUD::Weapon.of_type('zero').name }
+  let(:weapon_name) { MUD::Weapon.of_type(enemy.weapon_id).name }
 
   before do
     allow(defend_instance).to receive_messages(damage_taken:, missed?: false)
@@ -39,7 +38,7 @@ RSpec.describe MUD::Combat::Defend do
     it 'informs the player that the attack dealt damage' do
       defend_attempt
 
-      expect(log_lines).to include(/The #{enemy_name} hit you with its #{weapon_name} for #{damage_taken} damage./)
+      expect(log_lines).to include(/The #{enemy.name} hit you with its #{weapon_name} for #{damage_taken} damage./)
     end
 
     it 'reduces the players hp by the amount of damage dealt' do

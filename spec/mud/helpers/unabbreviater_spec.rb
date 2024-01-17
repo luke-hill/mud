@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.describe MUD::Helpers::Unabbreviater do
-  let(:unabbreviater_helper) { klass.new }
+  subject(:unabbreviater_helper) { klass.new }
+
   let(:klass) do
     Class.new do
       include MUD::Helpers::Unabbreviater

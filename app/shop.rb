@@ -44,9 +44,7 @@ module MUD
     # @return Integer
     # The price of the specific item_id requested
     def price(item_id)
-      raise "Item not understood in shop - Room-ID: #{room_id}" unless present?(item_id)
-
-      find_item(item_id).fetch('cost', nil)
+      find_item(item_id)&.fetch('cost', nil)
     end
 
     # @return [Array => String]
