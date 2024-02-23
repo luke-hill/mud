@@ -22,9 +22,7 @@ RSpec.describe MUD::Combat::Defend do
     end
 
     context 'when the player takes no damage' do
-      before { allow(defend_instance).to receive_messages(damage_taken:, missed?: false) }
-
-      let(:damage_taken) { 0 }
+      before { allow(defend_instance).to receive_messages(defense_value: 3, missed?: false) }
 
       it 'informs the player that the enemy attack attempt missed' do
         expect(defend_instance).to receive(:missed_message)
