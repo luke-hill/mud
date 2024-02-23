@@ -1,4 +1,8 @@
 ---
+unarmored:
+  name: Unarmored
+  description: Just skin and bones! nothing that will stop an enemies strike
+  defense: 0
 zero_shield:
   name: Zero Shield
   description: A description for the shield
