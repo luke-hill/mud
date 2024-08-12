@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 ruby '3.1.4'
 
-gem 'activesupport', '~> 7.1'
+gem 'activesupport', '~> 7.2'
 gem 'colorize'
 gem 'delegate_matcher'
 gem 'rake'
