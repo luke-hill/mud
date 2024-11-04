@@ -8,8 +8,8 @@ inherit_mode:
     - Exclude
 
 AllCops:
-  # Match minimum target version in .ruby-version
-  TargetRubyVersion: 3.1.4
+  # Match .ruby-version
+  TargetRubyVersion: 3.1
   # Display all verbose info on failures to help people triage how to fix
   DisplayCopNames: true
   DisplayStyleGuide: true
