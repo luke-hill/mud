@@ -11,7 +11,7 @@ module MUD
   # available for the player. Alongside this, the traditional Room properties/booleans are also available
   class Shop < Room
     def initialize(*args)
-      super(*args)
+      super
       validate_enemy_not_present
     end
 
