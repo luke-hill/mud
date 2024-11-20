@@ -32,7 +32,7 @@ RSpec.describe MUD::Enemy do
 
     it 'does not define a list of methods for misunderstood enemies' do
       described_class.properties.each do |property|
-        expect { unknown_enemy.send(property) }.to raise_error.with_message('Enemy/Boss not found with ID: not_understood')
+        expect { unknown_enemy.send(property) }.to raise_error(RuntimeError).with_message('Enemy/Boss not found with ID: not_understood')
       end
     end
   end

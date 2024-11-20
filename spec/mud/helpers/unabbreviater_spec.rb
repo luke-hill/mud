@@ -16,13 +16,13 @@ RSpec.describe MUD::Helpers::Unabbreviater do
 
     it 'cannot unabbreviate an invalid direction' do
       expect { unabbreviater_helper.unabbreviate('sw', type: :movement) }
-        .to raise_error
+        .to raise_error(RuntimeError)
         .with_message('Invalid unabbreviated movement request: sw')
     end
 
     it 'cannot unabbreviate anything else' do
       expect { unabbreviater_helper.unabbreviate('nm', type: :not_movement) }
-        .to raise_error
+        .to raise_error(RuntimeError)
         .with_message('Unreachable code - Unabbreviated request: nm')
     end
   end
