@@ -62,7 +62,7 @@ RSpec.describe MUD::Potion do
 
     context 'when invalid' do
       it 'crashes when used' do
-        expect { invalid_potion.use }.to raise_error.with_message('Potion not found with ID: does_not_exist')
+        expect { invalid_potion.use }.to raise_error(RuntimeError).with_message('Potion not found with ID: does_not_exist')
       end
     end
   end
@@ -84,6 +84,6 @@ RSpec.describe MUD::Potion do
   end
 
   it 'crashes when accessing any potion method' do
-    expect { invalid_potion.name }.to raise_error.with_message('Potion not found with ID: does_not_exist')
+    expect { invalid_potion.name }.to raise_error(RuntimeError).with_message('Potion not found with ID: does_not_exist')
   end
 end

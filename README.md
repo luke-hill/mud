@@ -4,12 +4,15 @@ This README would normally document whatever steps are necessary to get the
 application up and running.
 
 * Ruby version
-  * Ruby 3.1.4
+  * Ruby 3.1.6
 * System dependencies
+  * `bundler`
   * Anything that can bundle the game
 * Configuration
   * N/A
 * Database creation
-  * Seed from admin panel
+  * Seed from admin panel: `bundle exec rake seed`
 * How to run the test suite
-  * bundle exec rake spec
+  * `bundle exec rake spec`
+* How to play the game
+  * `ruby play.rb`
