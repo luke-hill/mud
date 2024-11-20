@@ -9,3 +9,4 @@
 9) Add a second usable key to the codebase, and validate both key usages work (This is likely to be tricky)
 10) Symbolize keys in data lookups (Big change)
 11) Lean on fixtures more in specs and less on stubs
+12) Lower some of the message chances of saying things

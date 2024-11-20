@@ -11,6 +11,8 @@ application up and running.
 * Configuration
   * N/A
 * Database creation
-  * Seed from admin panel `bundle exec rake seed`
+  * Seed from admin panel: `bundle exec rake seed`
 * How to run the test suite
-  * bundle exec rake spec
+  * `bundle exec rake spec`
+* How to play the game
+  * `ruby play.rb`
