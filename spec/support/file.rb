@@ -19,7 +19,7 @@ module SpecSupport
     end
 
     def remove_test_screen_logs
-      ::File.delete(file_location) if ::File.exist?(file_location)
+      ::FileUtils.rm_f(file_location)
     end
 
     def file_location
