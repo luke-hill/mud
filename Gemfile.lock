@@ -29,7 +29,7 @@ GEM
       tins (~> 1.0)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
-    json (2.16.0)
+    json (2.18.0)
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
     logger (1.7.0)
@@ -38,7 +38,7 @@ GEM
     parser (3.3.10.0)
       ast (~> 2.4.1)
       racc
-    prism (1.6.0)
+    prism (1.7.0)
     proc_extensions (0.2)
       sourcify (~> 0.5)
     racc (1.8.1)
@@ -69,9 +69,9 @@ GEM
       rubocop-ast (>= 1.47.1, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
-    rubocop-ast (1.48.0)
+    rubocop-ast (1.49.0)
       parser (>= 3.3.7.2)
-      prism (~> 1.4)
+      prism (~> 1.7)
     rubocop-performance (1.26.1)
       lint_roller (~> 1.1)
       rubocop (>= 1.75.0, < 2.0)
@@ -79,9 +79,9 @@ GEM
     rubocop-rake (0.7.1)
       lint_roller (~> 1.1)
       rubocop (>= 1.72.1)
-    rubocop-rspec (3.5.0)
+    rubocop-rspec (3.9.0)
       lint_roller (~> 1.1)
-      rubocop (~> 1.72, >= 1.72.1)
+      rubocop (~> 1.81)
     ruby-progressbar (1.13.0)
     ruby2ruby (2.5.1)
       ruby_parser (~> 3.1)
@@ -110,7 +110,7 @@ GEM
       concurrent-ruby (~> 1.0)
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
-    unicode-emoji (4.1.0)
+    unicode-emoji (4.2.0)
     yard (0.9.37)
 
 PLATFORMS
@@ -125,7 +125,7 @@ DEPENDENCIES
   rubocop (~> 1.81.7)
   rubocop-performance (~> 1.26.1)
   rubocop-rake (~> 0.7.1)
-  rubocop-rspec (~> 3.5.0)
+  rubocop-rspec (~> 3.9.0)
   simplecov
   yard
 
